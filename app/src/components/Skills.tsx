@@ -1,5 +1,6 @@
 'use client';
 
+import { siteConfig } from '@/data/config';
 import { skills } from '@/data/skills';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
@@ -29,7 +30,7 @@ export const Skills = () => {
                     My <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-blue-dim">Skills</span>
                 </h2>
                 <p className="text-foreground-muted max-w-2xl mx-auto text-lg">
-                    A curated list of technologies I use to build digital experiences.
+                    {siteConfig.sections.skills.description}
                 </p>
             </motion.div>
 

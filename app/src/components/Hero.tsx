@@ -41,7 +41,7 @@ export const Hero = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-blue"></span>
                             </span>
-                            AVAILABLE FOR WORK
+                            {siteConfig.sections.hero.availableForWork}
                         </span>
                     </motion.div>
 

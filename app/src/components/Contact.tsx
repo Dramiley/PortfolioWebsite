@@ -32,8 +32,8 @@ export const Contact = () => {
                         transition={{ delay: 0.2, duration: 0.6 }}
                     >
                         <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tight">
-                            Ready to start your next <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-soft to-primary animate-gradient-x">Project?</span>
+                            {siteConfig.sections.contact.titlePrefix} <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-soft to-primary animate-gradient-x">{siteConfig.sections.contact.titleHighlight}</span>
                         </h2>
                     </motion.div>
 
@@ -44,7 +44,7 @@ export const Contact = () => {
                         transition={{ delay: 0.4, duration: 0.6 }}
                         className="text-foreground-muted mb-12 max-w-xl mx-auto text-xl leading-relaxed"
                     >
-                        I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                        {siteConfig.sections.contact.description}
                     </motion.p>
 
                     <motion.div
@@ -57,7 +57,7 @@ export const Contact = () => {
                             href={`mailto:${siteConfig.social.email}`}
                             className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white transition-all duration-300 bg-primary rounded-full hover:bg-primary-soft hover:scale-105 hover:shadow-[0_0_40px_rgba(249,115,22,0.5)]"
                         >
-                            <span className="mr-2">Say Hello</span>
+                            <span className="mr-2">{siteConfig.sections.contact.buttonText}</span>
                             <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </motion.div>

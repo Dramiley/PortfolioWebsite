@@ -1,5 +1,6 @@
 'use client';
 
+import { siteConfig } from '@/data/config';
 import { projects } from '@/data/projects';
 import { Section } from './Section';
 import Image from 'next/image';
@@ -19,7 +20,7 @@ export const Projects = () => {
                     Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-soft">Projects</span>
                 </h2>
                 <p className="text-foreground-muted text-lg max-w-2xl">
-                    A selection of work that demonstrates my passion for building polished web experiences.
+                    {siteConfig.sections.projects.description}
                 </p>
             </motion.div>
 

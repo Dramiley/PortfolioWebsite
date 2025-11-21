@@ -35,4 +35,21 @@ export interface SiteConfig {
     github: string;
     email: string;
   };
+  sections: {
+    hero: {
+      availableForWork: string;
+    };
+    projects: {
+      description: string;
+    };
+    skills: {
+      description: string;
+    };
+    contact: {
+      titlePrefix: string;
+      titleHighlight: string;
+      description: string;
+      buttonText: string;
+    };
+  };
 }
