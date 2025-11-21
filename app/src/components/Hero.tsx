@@ -16,7 +16,7 @@ export const Hero = () => {
             <div className="flex gap-4">
                 <a
                     href="#contact"
-                    className="inline-flex items-center justify-center rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors"
+                    className="inline-flex items-center justify-center rounded-full bg-primary text-white px-6 py-3 text-sm font-medium hover:bg-blue-700 dark:hover:bg-blue-400 transition-colors"
                 >
                     Contact Me
                 </a>
@@ -24,7 +24,7 @@ export const Hero = () => {
                     href={siteConfig.social.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-white px-6 py-3 text-sm font-medium hover:bg-zinc-50 dark:border-zinc-800 dark:bg-black dark:hover:bg-zinc-900 transition-colors"
+                    className="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-white px-6 py-3 text-sm font-medium hover:border-accent hover:text-accent dark:border-zinc-800 dark:bg-black dark:hover:border-accent dark:hover:text-accent transition-colors"
                 >
                     GitHub
                 </a>

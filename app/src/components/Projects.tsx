@@ -29,10 +29,10 @@ export const Projects = () => {
                                 <h3 className="font-semibold text-xl">{project.title}</h3>
                                 <div className="flex gap-2">
                                     {project.link && (
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-black dark:hover:text-white">Live</a>
+                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-primary transition-colors">Live</a>
                                     )}
                                     {project.githubUrl && (
-                                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-black dark:hover:text-white">Code</a>
+                                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 hover:text-primary transition-colors">Code</a>
                                     )}
                                 </div>
                             </div>
@@ -43,7 +43,7 @@ export const Projects = () => {
                                 {project.tags.map((tag) => (
                                     <span
                                         key={tag}
-                                        className="px-3 py-1 text-xs font-medium rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400"
+                                        className="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary"
                                     >
                                         {tag}
                                     </span>

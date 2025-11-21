@@ -11,7 +11,7 @@ export const Contact = () => {
                 </p>
                 <a
                     href={`mailto:${siteConfig.social.email}`}
-                    className="inline-flex items-center justify-center rounded-full bg-black text-white px-8 py-3 font-medium hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200 transition-colors"
+                    className="inline-flex items-center justify-center rounded-full bg-accent text-white px-8 py-3 font-medium hover:bg-orange-600 dark:hover:bg-orange-400 transition-colors"
                 >
                     Say Hello
                 </a>

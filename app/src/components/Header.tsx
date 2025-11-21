@@ -13,7 +13,7 @@ export const Header = () => {
     return (
         <header className="sticky top-0 z-50 w-full bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-zinc-100 dark:border-zinc-900">
             <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
-                <Link href="/" className="font-bold text-xl tracking-tight">
+                <Link href="/" className="font-bold text-xl tracking-tight text-primary">
                     RM
                 </Link>
                 <nav className="hidden sm:flex gap-6">
