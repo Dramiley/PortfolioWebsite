@@ -6,30 +6,39 @@ import { motion } from 'framer-motion';
 
 export const About = () => {
     return (
-        <Section id="about" className="bg-background-secondary/30">
+        <Section id="about" className="relative">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-4xl mx-auto"
             >
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
-                    {aboutContent.title.split(' ')[0]} <span className="text-primary">{aboutContent.title.split(' ').slice(1).join(' ')}</span>
-                </h2>
+                <div className="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden group">
+                    {/* Decorative gradient blob */}
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-neon-blue/10 rounded-full blur-[80px] group-hover:bg-neon-blue/20 transition-colors duration-700" />
 
-                <div className="space-y-6 text-lg text-foreground-muted leading-relaxed max-w-3xl mx-auto">
-                    {aboutContent.bio.map((paragraph, index) => (
-                        <motion.p
-                            key={index}
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                        >
-                            {paragraph}
-                        </motion.p>
-                    ))}
+                    <h2 className="text-3xl md:text-5xl font-bold mb-10 text-white relative z-10">
+                        {aboutContent.title.split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-soft">{aboutContent.title.split(' ').slice(1).join(' ')}</span>
+                    </h2>
+
+                    <div className="space-y-6 text-lg md:text-xl text-foreground-muted leading-relaxed relative z-10">
+                        {aboutContent.bio.map((paragraph, index) => (
+                            <motion.p
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                                className="hover:text-foreground transition-colors duration-300"
+                            >
+                                {paragraph}
+                            </motion.p>
+                        ))}
+                    </div>
+
+                    {/* Bottom accent line */}
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50" />
                 </div>
             </motion.div>
         </Section>

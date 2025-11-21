@@ -2,35 +2,46 @@
 
 :root {
   /* Deep Navy Backgrounds */
-  --background: #0A0F1F;
-  --background-secondary: #0E162C;
+  --background: #020617;
+  --background-secondary: #0f172a;
+  --background-tertiary: #1e293b;
 
   /* Text Colors */
-  --foreground: #F8FAFC;
-  --foreground-muted: #94A3B8;
+  --foreground: #f8fafc;
+  --foreground-muted: #94a3b8;
+  --foreground-accent: #38bdf8;
 
   /* Brand Colors */
-  --primary: #FF8B3D;
-  /* Bright Orange */
-  --primary-soft: #FFB078;
-  /* Soft Orange */
+  --primary: #f97316; /* Vibrant Orange */
+  --primary-soft: #fb923c;
+  --primary-glow: rgba(249, 115, 22, 0.4);
 
   /* Tech Accents */
-  --neon-blue: #59DFFF;
-  /* Neon Ice Blue */
-  --neon-blue-dim: #4BBEFF;
-  /* Electric Blue */
+  --neon-blue: #0ea5e9; /* Sky Blue */
+  --neon-blue-dim: #0284c7;
+  --neon-glow: rgba(14, 165, 233, 0.4);
+  
+  /* Status */
+  --success: #22c55e;
+  --error: #ef4444;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-accent: var(--foreground-accent);
+  
   --color-primary: var(--primary);
   --color-primary-soft: var(--primary-soft);
+  --color-primary-glow: var(--primary-glow);
+  
   --color-neon-blue: var(--neon-blue);
   --color-neon-blue-dim: var(--neon-blue-dim);
+  --color-neon-glow: var(--neon-glow);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -44,21 +55,57 @@ body {
 }
 
 /* Custom Utilities */
+/* Custom Utilities */
 @layer utilities {
   .glass-panel {
-    background: rgba(14, 22, 44, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(89, 223, 255, 0.1);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .neon-glow {
-    box-shadow: 0 0 10px rgba(89, 223, 255, 0.3);
+  .glass-card {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-card:hover {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(14, 165, 233, 0.3);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+  }
+  
+  .neon-border {
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.2), inset 0 0 5px rgba(14, 165, 233, 0.1);
   }
 
   .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(to right, #F8FAFC, #94A3B8);
+    background-image: linear-gradient(to right, #f8fafc, #94a3b8);
+  }
+  
+  .text-gradient-primary {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #f97316, #fb923c);
+  }
+  
+  .text-gradient-blue {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #0ea5e9, #38bdf8);
   }
 }
