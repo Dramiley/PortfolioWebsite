@@ -10,7 +10,7 @@ export const Experience = () => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
             >
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
@@ -27,7 +27,7 @@ export const Experience = () => {
                         key={job.id}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                         className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
                             }`}

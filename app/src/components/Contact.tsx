@@ -10,7 +10,7 @@ export const Contact = () => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-24 text-center glass-panel group"
             >
@@ -22,13 +22,13 @@ export const Contact = () => {
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-colors duration-1000 animate-pulse-slow delay-700" />
 
                 {/* Noise Texture */}
-                <div className="absolute inset-0 opacity-[0.05] bg-[url('/noise.png')] mix-blend-overlay z-0" />
+                <div className="absolute inset-0 opacity-[0.05] bg-noise mix-blend-overlay z-0" />
 
                 <div className="relative z-10 flex flex-col items-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ delay: 0.2, duration: 0.6 }}
                     >
                         <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tight">
@@ -40,7 +40,7 @@ export const Contact = () => {
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ delay: 0.4, duration: 0.6 }}
                         className="text-foreground-muted mb-12 max-w-xl mx-auto text-xl leading-relaxed"
                     >
@@ -50,7 +50,7 @@ export const Contact = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ delay: 0.6, duration: 0.6 }}
                     >
                         <a

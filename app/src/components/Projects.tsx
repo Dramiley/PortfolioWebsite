@@ -11,7 +11,7 @@ export const Projects = () => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
                 className="mb-16"
             >
@@ -29,7 +29,7 @@ export const Projects = () => {
                         key={project.id}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: false, amount: 0.2, margin: "-100px" }}
                         transition={{ duration: 0.8, delay: index * 0.1 }}
                         className="group relative rounded-3xl overflow-hidden glass-panel border border-white/5 hover:border-neon-blue/30 transition-all duration-500"
                     >

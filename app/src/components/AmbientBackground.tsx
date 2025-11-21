@@ -71,7 +71,7 @@ export default function AmbientBackground() {
             />
 
             {/* Noise Overlay for texture */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.png')] mix-blend-overlay"></div>
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-noise mix-blend-overlay"></div>
         </div>
     );
 }

@@ -21,7 +21,7 @@ export const Skills = () => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
                 className="mb-16 text-center"
             >
@@ -39,7 +39,7 @@ export const Skills = () => {
                         key={category}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.6, delay: idx * 0.1 }}
                         className="glass-card rounded-2xl p-8 hover:border-neon-blue/30 group relative overflow-hidden"
                     >
@@ -56,7 +56,6 @@ export const Skills = () => {
                                 <div key={skill.name}>
                                     <div className="flex justify-between mb-2">
                                         <span className="text-sm font-medium text-foreground-muted group-hover:text-foreground transition-colors">{skill.name}</span>
-                                        <span className="text-xs font-mono text-neon-blue opacity-0 group-hover:opacity-100 transition-opacity">{skill.proficiency}%</span>
                                     </div>
                                     <div className="w-full bg-background-tertiary rounded-full h-2 overflow-hidden border border-white/5">
                                         <motion.div
@@ -67,7 +66,7 @@ export const Skills = () => {
                                             }}
                                             initial={{ width: 0 }}
                                             whileInView={{ width: `${skill.proficiency}%` }}
-                                            viewport={{ once: true }}
+                                            viewport={{ once: false, amount: 0.2 }}
                                             transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 + (skillIdx * 0.05) }}
                                         >
                                             <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-white/50" />
