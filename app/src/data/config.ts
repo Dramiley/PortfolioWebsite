@@ -2,7 +2,7 @@ import { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
     name: "Robin Morgenstern",
-    tagline: "Software Engineer — Building reliable systems and delightful user experiences.",
+    tagline: "Software Engineer",
     subtitle: "Full-stack TypeScript • Scalable Systems • Visual & ML Tools",
     social: {
         github: "https://github.com/robinmorgenstern",

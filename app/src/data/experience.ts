@@ -3,24 +3,24 @@ import { Experience } from '@/types';
 export const experience: Experience[] = [
     {
         id: 'senior-engineer',
-        role: 'Senior Software Engineer',
-        company: 'TechCorp Solutions',
-        period: '2022 - Present',
+        role: 'Independent Software Engineer',
+        company: 'Own business',
+        period: '2025 - Present',
         description: [
-            'Lead a team of 5 engineers in developing scalable microservices.',
-            'Optimized database queries reducing latency by 40%.',
-            'Implemented CI/CD pipelines improving deployment frequency.'
+            'TODO',
+            'TODO',
+            'TODO'
         ]
     },
     {
-        id: 'software-engineer',
-        role: 'Software Engineer',
-        company: 'Innovate Inc.',
-        period: '2019 - 2022',
+        id: 'industry-assistent',
+        role: 'student assistant',
+        company: 'TU Dresden',
+        period: '2024 - Present',
         description: [
-            'Built full-stack features for a high-traffic e-commerce platform.',
-            'Collaborated with designers to implement responsive UI components.',
-            'Mentored junior developers and conducted code reviews.'
+            'Training and implementing an AI for object detection on industry machines',
+            'Setting up a Raspberry Pi for industrial use',
+            'Setting up Docker Containers for easy usage across other systems'
         ]
     }
 ];
