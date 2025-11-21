@@ -40,7 +40,7 @@ export const Skills = () => {
                 transition={{ duration: 0.6 }}
             >
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
-                    Technical <span className="text-neon-blue">Arsenal</span>
+                    My <span className="text-primary">Skills</span>
                 </h2>
             </motion.div>
 

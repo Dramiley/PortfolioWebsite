@@ -3,6 +3,7 @@
 import { siteConfig } from '@/data/config';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export const Hero = () => {
     return (
@@ -58,11 +59,14 @@ export const Hero = () => {
                     className="relative flex justify-center md:justify-end"
                 >
                     <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl shadow-neon-blue/20 group">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-neon-blue/20 to-primary/20 group-hover:opacity-0 transition-opacity duration-500" />
-                        {/* Placeholder for user photo */}
-                        <div className="w-full h-full bg-background-secondary flex items-center justify-center text-foreground-muted">
-                            <span className="text-sm">Photo Placeholder</span>
-                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-tr from-neon-blue/20 to-primary/20 group-hover:opacity-0 transition-opacity duration-500 z-10" />
+                        <Image
+                            src="/images/profile.jpg"
+                            alt="Robin Morgenstern"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
                     </div>
                     {/* Decorative circle behind */}
                     <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-neon-blue/20 to-primary/20 rounded-full blur-2xl transform scale-110" />
