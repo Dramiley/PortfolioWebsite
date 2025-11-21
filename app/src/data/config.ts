@@ -5,8 +5,7 @@ export const siteConfig: SiteConfig = {
     tagline: "Software Engineer",
     subtitle: "Full-stack TypeScript • Scalable Systems • Visual & ML Tools",
     social: {
-        github: "https://github.com/robinmorgenstern",
-        linkedin: "https://linkedin.com/in/robinmorgenstern",
-        email: "robin@example.com"
+        github: "https://github.com/Dramiley",
+        email: "morgensternrobin04@gmail.com"
     }
 };

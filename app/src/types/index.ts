@@ -33,7 +33,6 @@ export interface SiteConfig {
   subtitle: string;
   social: {
     github: string;
-    linkedin: string;
     email: string;
   };
 }

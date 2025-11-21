@@ -26,8 +26,8 @@ export const Header = () => {
     return (
         <header
             className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled
-                    ? 'bg-[#0A0F1F]/80 backdrop-blur-md border-b border-neon-blue/10'
-                    : 'bg-transparent'
+                ? 'bg-[#0A0F1F]/80 backdrop-blur-md border-b border-neon-blue/10'
+                : 'bg-transparent'
                 }`}
         >
             <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
