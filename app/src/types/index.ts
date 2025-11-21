@@ -24,6 +24,7 @@ export interface Experience {
 export interface Skill {
   name: string;
   category: 'frontend' | 'backend' | 'tools' | 'other';
+  proficiency: number; // 0-100
 }
 
 export interface SiteConfig {

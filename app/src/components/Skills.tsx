@@ -10,9 +10,9 @@ export const Skills = () => {
         if (!acc[skill.category]) {
             acc[skill.category] = [];
         }
-        acc[skill.category].push(skill.name);
+        acc[skill.category].push(skill);
         return acc;
-    }, {} as Record<string, string[]>);
+    }, {} as Record<string, typeof skills>);
 
     const categories = Object.keys(skillsByCategory);
 
@@ -58,23 +58,24 @@ export const Skills = () => {
                             <span className="w-2 h-8 bg-primary rounded-full mr-4" />
                             {category}
                         </h3>
-                        <motion.div
-                            variants={container}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: true }}
-                            className="flex flex-wrap gap-3"
-                        >
+                        <div className="space-y-6">
                             {skillsByCategory[category].map((skill) => (
-                                <motion.span
-                                    key={skill}
-                                    variants={item}
-                                    className="px-4 py-2 text-sm font-medium bg-background border border-white/10 rounded-lg text-foreground-muted hover:text-neon-blue hover:border-neon-blue/50 transition-all duration-300 cursor-default shadow-sm"
-                                >
-                                    {skill}
-                                </motion.span>
+                                <div key={skill.name}>
+                                    <div className="flex justify-between mb-2">
+                                        <span className="text-sm font-medium text-foreground-muted">{skill.name}</span>
+                                    </div>
+                                    <div className="w-full bg-background rounded-full h-2.5 overflow-hidden">
+                                        <motion.div
+                                            className="bg-gradient-to-r from-neon-blue to-primary h-2.5 rounded-full"
+                                            initial={{ width: 0 }}
+                                            whileInView={{ width: `${skill.proficiency}%` }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                                        />
+                                    </div>
+                                </div>
                             ))}
-                        </motion.div>
+                        </div>
                     </motion.div>
                 ))}
             </div>
