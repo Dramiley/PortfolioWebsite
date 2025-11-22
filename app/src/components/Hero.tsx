@@ -89,7 +89,7 @@ export const Hero = () => {
     };
 
     return (
-        <Section className="pt-32 md:pt-48 min-h-screen flex flex-col justify-center relative">
+        <Section id="hero" className="pt-32 md:pt-48 min-h-screen flex flex-col justify-center relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                 <motion.div
                     variants={containerVariants}

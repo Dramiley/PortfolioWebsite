@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue, useTransform, useReducedMotion } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, useSpring, useMotionValue, useTransform, useReducedMotion, useScroll } from 'framer-motion';
 
 export default function AmbientBackground() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
     const shouldReduceMotion = useReducedMotion();
+    const { scrollYProgress } = useScroll();
 
     // Smooth spring animation for mouse movement
     const springConfig = { damping: 50, stiffness: 400 };
@@ -21,10 +22,10 @@ export default function AmbientBackground() {
     const x3 = useTransform(x, (value) => value * 0.8);
     const y3 = useTransform(y, (value) => value * 0.8);
 
-    const [isMounted, setIsMounted] = useState(false);
+    // Scroll-reactive transforms
+    const scrollY1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
     useEffect(() => {
-        setIsMounted(true);
         if (shouldReduceMotion) return;
 
         const handleMouseMove = (e: MouseEvent) => {
@@ -45,30 +46,62 @@ export default function AmbientBackground() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, [mouseX, mouseY, shouldReduceMotion]);
 
-    if (!isMounted) return null;
+    // Guard against SSR
+    if (typeof window === 'undefined') return null;
 
     return (
         <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#020617]">
             {/* Layer 1: Deep Base Gradient (Vignette) */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background-secondary)_0%,_#000000_100%)] opacity-80" />
 
-            {/* Layer 2: Atmospheric Light Beams */}
+            {/* Layer 2: Atmospheric Light Beams with Wandering + Mouse Tracking */}
+            {/* Orange blob - Outer div for wandering, inner for mouse parallax */}
             <motion.div
-                className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.25] blur-[100px] will-change-transform"
-                style={{
-                    background: 'radial-gradient(circle, var(--primary) 0%, transparent 60%)',
-                    x: x2,
-                    y: y2,
+                className="absolute will-change-transform"
+                animate={{
+                    x: [0, 30, -20, 0],
+                    y: [0, -20, 30, 0],
                 }}
-            />
+                transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            >
+                <motion.div
+                    className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.25] blur-[100px]"
+                    style={{
+                        background: 'radial-gradient(circle, var(--primary) 0%, transparent 60%)',
+                        x: x2,
+                        y: y2,
+                        mixBlendMode: 'screen',
+                    }}
+                />
+            </motion.div>
+
+            {/* Blue blob - Outer div for wandering, inner for mouse parallax */}
             <motion.div
-                className="absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.2] blur-[120px] will-change-transform"
-                style={{
-                    background: 'radial-gradient(circle, var(--neon-blue) 0%, transparent 60%)',
-                    x: x1,
-                    y: y1,
+                className="absolute will-change-transform"
+                animate={{
+                    x: [0, -40, 20, 0],
+                    y: [0, 30, -30, 0],
                 }}
-            />
+                transition={{
+                    duration: 25,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            >
+                <motion.div
+                    className="absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.2] blur-[120px]"
+                    style={{
+                        background: 'radial-gradient(circle, var(--neon-blue) 0%, transparent 60%)',
+                        x: x1,
+                        y: y1,
+                        mixBlendMode: 'screen',
+                    }}
+                />
+            </motion.div>
 
             {/* Layer 3: Subtle Particles (CSS Box Shadow Trick for Performance) */}
             {/* We use a static set of particles for performance, animated via transform */}
@@ -83,12 +116,14 @@ export default function AmbientBackground() {
                 <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-neon-blue rounded-full shadow-[0_0_8px_var(--neon-blue)] opacity-20" />
             </motion.div>
 
-            {/* Layer 4: Moving Light Streaks (Aurora effect) */}
+            {/* Layer 4: Moving Light Streaks (Aurora effect) - Scroll Reactive */}
             <motion.div
                 className="absolute top-0 left-0 right-0 h-[500px] opacity-10 blur-[80px] will-change-transform"
                 style={{
                     background: 'linear-gradient(180deg, var(--neon-blue-dim) 0%, transparent 100%)',
                     x: x2,
+                    y: scrollY1,
+                    mixBlendMode: 'screen',
                 }}
             />
 
