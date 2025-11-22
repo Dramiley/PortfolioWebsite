@@ -10,7 +10,8 @@ export const siteConfig: SiteConfig = {
     },
     sections: {
         hero: {
-            availableForWork: "AVAILABLE FOR WORK"
+            availableForWork: "AVAILABLE FOR WORK",
+            typewriterWords: ["Software Engineer", "Full Stack Dev", "Problem Solver", "Builder"]
         },
         projects: {
             description: "A selection of work that demonstrates my passion for building polished web experiences."

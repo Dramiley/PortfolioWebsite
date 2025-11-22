@@ -54,7 +54,7 @@ export default function AmbientBackground() {
 
             {/* Layer 2: Atmospheric Light Beams */}
             <motion.div
-                className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.25] blur-[100px]"
+                className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.25] blur-[100px] will-change-transform"
                 style={{
                     background: 'radial-gradient(circle, var(--primary) 0%, transparent 60%)',
                     x: x2,
@@ -62,7 +62,7 @@ export default function AmbientBackground() {
                 }}
             />
             <motion.div
-                className="absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.2] blur-[120px]"
+                className="absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.2] blur-[120px] will-change-transform"
                 style={{
                     background: 'radial-gradient(circle, var(--neon-blue) 0%, transparent 60%)',
                     x: x1,
@@ -73,7 +73,7 @@ export default function AmbientBackground() {
             {/* Layer 3: Subtle Particles (CSS Box Shadow Trick for Performance) */}
             {/* We use a static set of particles for performance, animated via transform */}
             <motion.div
-                className="absolute inset-0 opacity-30"
+                className="absolute inset-0 opacity-30 will-change-transform"
                 style={{ x: x3, y: y3 }}
             >
                 <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full shadow-[0_0_10px_white] opacity-20" />
@@ -85,7 +85,7 @@ export default function AmbientBackground() {
 
             {/* Layer 4: Moving Light Streaks (Aurora effect) */}
             <motion.div
-                className="absolute top-0 left-0 right-0 h-[500px] opacity-10 blur-[80px]"
+                className="absolute top-0 left-0 right-0 h-[500px] opacity-10 blur-[80px] will-change-transform"
                 style={{
                     background: 'linear-gradient(180deg, var(--neon-blue-dim) 0%, transparent 100%)',
                     x: x2,

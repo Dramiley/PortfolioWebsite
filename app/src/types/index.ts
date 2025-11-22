@@ -38,6 +38,7 @@ export interface SiteConfig {
   sections: {
     hero: {
       availableForWork: string;
+      typewriterWords: string[];
     };
     projects: {
       description: string;
