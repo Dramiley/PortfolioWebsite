@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+html {
+  font-size: 14px; /* Default for Desktop (approx 87.5% scale) */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 12px; /* Default for Mobile (approx 75% scale) */
+  }
+}
+
 :root {
   /* Deep Navy Backgrounds */
   --background: #020617;
