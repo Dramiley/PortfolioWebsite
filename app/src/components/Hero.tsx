@@ -162,8 +162,8 @@ export const Hero = () => {
                             transformStyle: "preserve-3d"
                         }}
                     >
-                        {/* Background Glow */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-neon-blue/20 to-primary/20 rounded-full blur-[80px] -z-10 animate-pulse-slow transform translate-z-[-50px]" />
+                        {/* Subtle Background Glow */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-neon-blue/10 to-primary/10 rounded-full blur-[60px] -z-10" />
 
                         {/* Image Container */}
                         <div className="absolute inset-4 rounded-full overflow-hidden border border-white/10 shadow-2xl shadow-neon-blue/10 z-10 transform translate-z-[20px] bg-slate-900">
@@ -176,10 +176,6 @@ export const Hero = () => {
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
-
-                        {/* Decorative Elements */}
-                        <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-neon-blue/20 to-transparent rounded-full blur-xl -z-10" />
-                        <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-xl -z-10" />
                     </motion.div>
                 </motion.div>
             </div>
