@@ -68,7 +68,7 @@ export const Hero = () => {
 
         const timer = setTimeout(handleType, isDeleting ? deleteSpeed : typeSpeed);
         return () => clearTimeout(timer);
-    }, [displayText, isDeleting, titleIndex, titles]);
+    }, [displayText, isDeleting, titleIndex, titles, effectsEnabled]);
 
     // 3D Tilt Effect
     const x = useMotionValue(0);
