@@ -3,7 +3,7 @@ import { SiteConfig } from '@/types';
 export const siteConfig: SiteConfig = {
     name: "Robin Morgenstern",
     tagline: "Software Engineer",
-    subtitle: "Full-stack TypeScript • Scalable Systems • Visual & ML Tools",
+    subtitle: "Bachelor of Science in Computer Science",
     social: {
         github: "https://github.com/Dramiley",
         email: "morgensternrobin04@gmail.com"
@@ -11,13 +11,13 @@ export const siteConfig: SiteConfig = {
     sections: {
         hero: {
             availableForWork: "AVAILABLE FOR WORK",
-            typewriterWords: ["Software Engineer", "Full Stack Dev", "Problem Solver", "Builder"]
+            typewriterWords: ["Software Engineer", "Full Stack Developer", "Programmer", "Bachelor in Computer Science"]
         },
         projects: {
-            description: "A selection of work that demonstrates my passion for building polished web experiences."
+            description: "A selection of work that demonstrates my passion for programming and software development."
         },
         skills: {
-            description: "A curated list of technologies I use to build digital experiences."
+            description: "A curated list of technologies I use to build software."
         },
         contact: {
             titlePrefix: "Ready to start your next",
