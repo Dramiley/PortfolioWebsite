@@ -3,15 +3,18 @@
 import { siteConfig } from '@/data/config';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
+import { useEffects } from '@/context/EffectsContext';
 
 export const Contact = () => {
+    const { effectsEnabled } = useEffects();
+
     return (
         <Section id="contact" className="mb-20 relative">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: effectsEnabled ? 0.8 : 0, ease: [0.16, 1, 0.3, 1] }}
                 className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-24 text-center glass-panel group"
             >
                 {/* Animated Background Gradient */}
@@ -29,7 +32,7 @@ export const Contact = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
+                        transition={{ delay: effectsEnabled ? 0.2 : 0, duration: effectsEnabled ? 0.6 : 0 }}
                     >
                         <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tight">
                             {siteConfig.sections.contact.titlePrefix} <br />
@@ -41,7 +44,7 @@ export const Contact = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
+                        transition={{ delay: effectsEnabled ? 0.4 : 0, duration: effectsEnabled ? 0.6 : 0 }}
                         className="text-foreground-muted mb-12 max-w-xl mx-auto text-xl leading-relaxed"
                     >
                         {siteConfig.sections.contact.description}
@@ -51,7 +54,7 @@ export const Contact = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: false, amount: 0.2 }}
-                        transition={{ delay: 0.6, duration: 0.6 }}
+                        transition={{ delay: effectsEnabled ? 0.6 : 0, duration: effectsEnabled ? 0.6 : 0 }}
                     >
                         <a
                             href={`mailto:${siteConfig.social.email}`}

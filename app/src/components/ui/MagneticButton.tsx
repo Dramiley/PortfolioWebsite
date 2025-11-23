@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ReactNode, useRef } from 'react';
+import { useEffects } from '@/context/EffectsContext';
 
 interface MagneticButtonProps {
     children: ReactNode;
@@ -17,7 +18,11 @@ export const MagneticButton = ({ children, className = "", strength = 0.5 }: Mag
     const mouseX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
     const mouseY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
+    const { effectsEnabled } = useEffects();
+
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!effectsEnabled) return;
+
         const { clientX, clientY } = e;
         const { left, top, width, height } = ref.current!.getBoundingClientRect();
         const center = { x: left + width / 2, y: top + height / 2 };

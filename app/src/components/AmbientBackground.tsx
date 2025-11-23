@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue, useTransform, useReducedMotion, useScroll } from 'framer-motion';
+import { useEffects } from '@/context/EffectsContext';
 
 export default function AmbientBackground() {
     const [isClient, setIsClient] = useState(false);
@@ -26,12 +27,14 @@ export default function AmbientBackground() {
     // Scroll-reactive transforms
     const scrollY1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
+    const { effectsEnabled } = useEffects();
+
     useEffect(() => {
         // Set client flag after mount
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsClient(true);
 
-        if (shouldReduceMotion) return;
+        if (shouldReduceMotion || !effectsEnabled) return;
 
         const handleMouseMove = (e: MouseEvent) => {
             const { clientX, clientY } = e;
@@ -56,8 +59,8 @@ export default function AmbientBackground() {
             {/* Layer 1: Deep Base Gradient (Vignette) */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background-secondary)_0%,_#000000_100%)] opacity-80" />
 
-            {/* Only render animated elements on client */}
-            {isClient && (
+            {/* Only render animated elements on client and if effects are enabled */}
+            {isClient && effectsEnabled && (
                 <>
                     {/* Layer 2: Atmospheric Light Beams with Wandering + Mouse Tracking */}
                     {/* Orange blob - Outer div for wandering, inner for mouse parallax */}

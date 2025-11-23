@@ -14,6 +14,7 @@ interface SectionProps {
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useEffects } from '@/context/EffectsContext';
 
 export const Section = ({ children, className = '', id }: SectionProps) => {
     // Default to desktop settings to match server-side rendering
@@ -33,6 +34,8 @@ export const Section = ({ children, className = '', id }: SectionProps) => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    const { effectsEnabled } = useEffects();
+
     return (
         <section
             id={id}
@@ -49,7 +52,7 @@ export const Section = ({ children, className = '', id }: SectionProps) => {
                     amount: isMobile ? 0.1 : 0.2,
                     margin: isMobile ? "-20px" : "-100px"
                 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: effectsEnabled ? 0.8 : 0, ease: "easeOut" }}
             >
                 {children}
             </motion.div>

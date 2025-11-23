@@ -3,15 +3,18 @@
 import { aboutContent } from '@/data/about';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
+import { useEffects } from '@/context/EffectsContext';
 
 export const About = () => {
+    const { effectsEnabled } = useEffects();
+
     return (
         <Section id="about" className="relative">
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: effectsEnabled ? 0.8 : 0, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-4xl mx-auto"
             >
                 <div className="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden group">
@@ -29,7 +32,7 @@ export const About = () => {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
-                                transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                                transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? index * 0.1 + 0.2 : 0 }}
                                 className="hover:text-foreground transition-colors duration-300"
                             >
                                 {paragraph}

@@ -1,14 +1,18 @@
 'use client';
 
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { useEffects } from '@/context/EffectsContext';
 
 export const ScrollProgress = () => {
+    const { effectsEnabled } = useEffects();
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
         restDelta: 0.001
     });
+
+    if (!effectsEnabled) return null;
 
     return (
         <motion.div

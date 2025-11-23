@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 html {
-  font-size: 14px; /* Default for Desktop (approx 87.5% scale) */
+  font-size: 14px;
+  /* Default for Desktop (approx 87.5% scale) */
 }
 
 @media (max-width: 768px) {
   html {
-    font-size: 12px; /* Default for Mobile (approx 75% scale) */
+    font-size: 12px;
+    /* Default for Mobile (approx 75% scale) */
   }
 }
 
@@ -67,7 +69,6 @@ body {
 }
 
 /* Custom Utilities */
-/* Custom Utilities */
 @layer utilities {
   .glass-panel {
     background: rgba(15, 23, 42, 0.6);
@@ -100,16 +101,19 @@ body {
   .glass-card:hover {
     background: rgba(30, 41, 59, 0.6);
     border-color: rgba(14, 165, 233, 0.3);
-    box-shadow: 0 0 20px rgba(14, 165, 233, 0.15); /* Slightly sharper shadow */
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.15);
+    /* Slightly sharper shadow */
     transform: translateY(-2px);
   }
 
   .neon-text {
-    text-shadow: 0 0 5px rgba(14, 165, 233, 0.8), 0 0 10px rgba(14, 165, 233, 0.4); /* Sharper, layered glow */
+    text-shadow: 0 0 5px rgba(14, 165, 233, 0.8), 0 0 10px rgba(14, 165, 233, 0.4);
+    /* Sharper, layered glow */
   }
 
   .neon-border {
-    box-shadow: 0 0 5px rgba(14, 165, 233, 0.5), inset 0 0 5px rgba(14, 165, 233, 0.2); /* Sharper border glow */
+    box-shadow: 0 0 5px rgba(14, 165, 233, 0.5), inset 0 0 5px rgba(14, 165, 233, 0.2);
+    /* Sharper border glow */
   }
 
   .text-gradient {
@@ -139,9 +143,30 @@ body {
 
   /* Mobile Optimization for Blur */
   @media (max-width: 768px) {
-    .glass-panel, .glass-card {
-      backdrop-filter: blur(8px); /* Reduced blur for performance */
+
+    .glass-panel,
+    .glass-card {
+      backdrop-filter: blur(8px);
+      /* Reduced blur for performance */
       -webkit-backdrop-filter: blur(8px);
     }
   }
+}
+
+/* Reduced Motion / Effects Disabled Overrides */
+body.no-effects * {
+  transition: none !important;
+  animation: none !important;
+}
+
+body.no-effects .animate-pulse,
+body.no-effects .animate-ping,
+body.no-effects .animate-gradient-x {
+  animation: none !important;
+  opacity: 1 !important;
+  /* Ensure visibility for things that might fade in/out */
+}
+
+body.no-effects .group:hover .group-hover\:opacity-100 {
+  opacity: 0 !important;
 }

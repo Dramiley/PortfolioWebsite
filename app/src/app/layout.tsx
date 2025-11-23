@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AmbientBackground from "@/components/AmbientBackground";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { EffectsProvider } from "@/context/EffectsContext";
+import { EffectsToggle } from "@/components/ui/EffectsToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased text-slate-200 selection:bg-orange-500/30">
-        <ScrollProgress />
-        <AmbientBackground />
-        <main className="relative z-10 min-h-screen flex flex-col">
-          {children}
-        </main>
+        <EffectsProvider>
+          <ScrollProgress />
+          <AmbientBackground />
+          <main className="relative z-10 min-h-screen flex flex-col">
+            {children}
+          </main>
+          <EffectsToggle />
+        </EffectsProvider>
       </body>
     </html>
   );

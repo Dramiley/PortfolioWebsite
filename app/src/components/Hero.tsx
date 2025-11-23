@@ -7,14 +7,18 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { MagneticButton } from './ui/MagneticButton';
 
+import { useEffects } from '@/context/EffectsContext';
+
 export const Hero = () => {
+    const { effectsEnabled } = useEffects();
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.3,
+                staggerChildren: effectsEnabled ? 0.1 : 0,
+                delayChildren: effectsEnabled ? 0.3 : 0,
             },
         },
     };
@@ -24,7 +28,7 @@ export const Hero = () => {
         visible: {
             y: 0,
             opacity: 1,
-            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
+            transition: { duration: effectsEnabled ? 0.8 : 0, ease: [0.16, 1, 0.3, 1] as const },
         },
     };
 
@@ -41,6 +45,11 @@ export const Hero = () => {
         const pauseTime = 2000;
 
         const handleType = () => {
+            if (!effectsEnabled) {
+                setDisplayText(currentTitle);
+                return;
+            }
+
             if (!isDeleting) {
                 if (displayText.length < currentTitle.length) {
                     setDisplayText(currentTitle.slice(0, displayText.length + 1));
@@ -72,6 +81,8 @@ export const Hero = () => {
     const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-7deg", "7deg"]);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!effectsEnabled) return;
+
         const rect = e.currentTarget.getBoundingClientRect();
         const width = rect.width;
         const height = rect.height;
@@ -149,7 +160,7 @@ export const Hero = () => {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
+                    transition={{ duration: effectsEnabled ? 1 : 0, delay: effectsEnabled ? 0.2 : 0, ease: [0.16, 1, 0.3, 1] as const }}
                     className="relative flex justify-center lg:justify-end perspective-1000"
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
@@ -181,15 +192,17 @@ export const Hero = () => {
             </div>
 
             {/* Scroll Indicator */}
-            <motion.div
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 1 }}
-            >
-                <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Scroll</span>
-                <div className="w-[1px] h-16 bg-gradient-to-b from-neon-blue/0 via-neon-blue to-neon-blue/0 animate-pulse" />
-            </motion.div>
+            {effectsEnabled && (
+                <motion.div
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.5, duration: 1 }}
+                >
+                    <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Scroll</span>
+                    <div className="w-[1px] h-16 bg-gradient-to-b from-neon-blue/0 via-neon-blue to-neon-blue/0 animate-pulse" />
+                </motion.div>
+            )}
         </Section>
     );
 };

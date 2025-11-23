@@ -5,15 +5,18 @@ import { projects } from '@/data/projects';
 import { Section } from './Section';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useEffects } from '@/context/EffectsContext';
 
 export const Projects = () => {
+    const { effectsEnabled } = useEffects();
+
     return (
         <Section id="projects" className="relative">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: effectsEnabled ? 0.6 : 0 }}
                 className="mb-24"
             >
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -31,7 +34,7 @@ export const Projects = () => {
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2, margin: "-100px" }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: effectsEnabled ? 0.8 : 0 }}
                         className="group relative"
                     >
                         <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}>
