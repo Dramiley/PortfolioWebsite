@@ -56,13 +56,15 @@ export const Header = () => {
                         ))}
                     </nav>
 
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-5 py-2 text-sm font-medium bg-primary/10 text-primary border border-primary/20 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(249,115,22,0.1)] hover:shadow-[0_0_25px_rgba(249,115,22,0.4)]"
-                    >
-                        Resume
-                    </motion.button>
+                    <a href="/resume.pdf" download="resume.pdf">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-5 py-2 text-sm font-medium bg-primary/10 text-primary border border-primary/20 rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(249,115,22,0.1)] hover:shadow-[0_0_25px_rgba(249,115,22,0.4)]"
+                        >
+                            Resume
+                        </motion.button>
+                    </a>
                 </div>
             </div>
         </motion.header>
