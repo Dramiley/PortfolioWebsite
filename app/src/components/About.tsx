@@ -18,6 +18,7 @@ export const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2, margin: isMobile ? "100px" : "-100px" }}
                 transition={{ duration: effectsEnabled ? 0.8 : 0, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: 'transform, opacity' }}
                 className="max-w-4xl mx-auto"
             >
                 <div className="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden group">
@@ -36,6 +37,7 @@ export const About = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                                 transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? index * 0.1 + 0.2 : 0 }}
+                                style={{ willChange: 'transform, opacity' }}
                                 className="hover:text-foreground transition-colors duration-300"
                             >
                                 {paragraph}

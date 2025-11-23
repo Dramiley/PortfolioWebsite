@@ -39,6 +39,7 @@ export const Section = ({ children, className = '', id }: SectionProps) => {
                     margin: isMobile ? "100px" : "-100px"
                 }}
                 transition={{ duration: effectsEnabled ? 0.8 : 0, ease: "easeOut" }}
+                style={{ willChange: 'transform, opacity' }}
             >
                 {children}
             </motion.div>

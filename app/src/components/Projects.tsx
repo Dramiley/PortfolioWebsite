@@ -20,6 +20,7 @@ export const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                 transition={{ duration: effectsEnabled ? 0.6 : 0 }}
+                style={{ willChange: 'transform, opacity' }}
                 className="mb-24"
             >
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -38,6 +39,7 @@ export const Projects = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2, margin: isMobile ? "100px" : "-100px" }}
                         transition={{ duration: effectsEnabled ? 0.8 : 0 }}
+                        style={{ willChange: 'transform, opacity' }}
                         className="group relative"
                     >
                         <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}>

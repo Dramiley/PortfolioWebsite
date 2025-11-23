@@ -18,6 +18,7 @@ export const Experience = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                 transition={{ duration: effectsEnabled ? 0.6 : 0 }}
+                style={{ willChange: 'transform, opacity' }}
             >
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
                     Work <span className="text-primary">Experience</span>
@@ -35,6 +36,7 @@ export const Experience = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? index * 0.1 : 0 }}
+                        style={{ willChange: 'transform, opacity' }}
                         className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
                             }`}
                     >

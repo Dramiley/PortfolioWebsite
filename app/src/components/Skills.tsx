@@ -30,6 +30,7 @@ export const Skills = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                 transition={{ duration: effectsEnabled ? 0.6 : 0 }}
+                style={{ willChange: 'transform, opacity' }}
                 className="mb-16 text-center"
             >
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -48,6 +49,7 @@ export const Skills = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? idx * 0.1 : 0 }}
+                        style={{ willChange: 'transform, opacity' }}
                         className="glass-card rounded-2xl p-8 hover:border-neon-blue/30 group relative overflow-hidden"
                     >
                         {/* Hover Glow */}
@@ -69,7 +71,8 @@ export const Skills = () => {
                                             className="h-full rounded-full relative"
                                             style={{
                                                 background: 'linear-gradient(90deg, var(--neon-blue-dim), var(--neon-blue))',
-                                                boxShadow: '0 0 10px rgba(14, 165, 233, 0.3)'
+                                                boxShadow: '0 0 10px rgba(14, 165, 233, 0.3)',
+                                                willChange: 'transform, opacity, width'
                                             }}
                                             initial={{ width: 0 }}
                                             whileInView={{ width: `${skill.proficiency}%` }}
