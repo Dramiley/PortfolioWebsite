@@ -34,9 +34,9 @@ export const Section = ({ children, className = '', id }: SectionProps) => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{
-                    once: isMobile,
-                    amount: isMobile ? 0 : 0.2,
-                    margin: isMobile ? "100px" : "-100px"
+                    once: isMobile || !effectsEnabled,
+                    amount: (isMobile || !effectsEnabled) ? 0 : 0.2,
+                    margin: (isMobile || !effectsEnabled) ? "100px" : "-100px"
                 }}
                 transition={{ duration: effectsEnabled ? 0.8 : 0, ease: "easeOut" }}
                 style={{ willChange: 'transform, opacity' }}
