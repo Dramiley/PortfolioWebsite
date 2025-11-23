@@ -65,6 +65,7 @@ export const Skills = () => {
                                 <div key={skill.name}>
                                     <div className="flex justify-between mb-2">
                                         <span className="text-sm font-medium text-foreground-muted group-hover:text-foreground transition-colors">{skill.name}</span>
+                                        <span className="text-xs font-medium text-neon-blue/80">{skill.level}</span>
                                     </div>
                                     <div className="w-full bg-background-tertiary rounded-full h-2 overflow-hidden border border-white/5">
                                         <motion.div
@@ -75,7 +76,10 @@ export const Skills = () => {
                                                 willChange: 'transform, opacity, width'
                                             }}
                                             initial={{ width: 0 }}
-                                            whileInView={{ width: `${skill.proficiency}%` }}
+                                            whileInView={{
+                                                width: skill.level === 'Advanced' ? '100%' :
+                                                    skill.level === 'Intermediate' ? '66%' : '33%'
+                                            }}
                                             viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                                             transition={{ duration: effectsEnabled ? 1.2 : 0, ease: "easeOut", delay: effectsEnabled ? 0.2 + (skillIdx * 0.05) : 0 }}
                                         >
