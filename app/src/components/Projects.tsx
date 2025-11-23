@@ -54,6 +54,7 @@ export const Projects = () => {
                                         alt={project.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105 group-hover:rotate-1"
+                                        sizes="(max-width: 1024px) 100vw, 60vw"
                                     />
                                 ) : (
                                     <div className="absolute inset-0 flex items-center justify-center text-foreground-muted bg-background-secondary">
