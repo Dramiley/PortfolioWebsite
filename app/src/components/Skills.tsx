@@ -41,56 +41,63 @@ export const Skills = () => {
                 </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {categories.map((category, idx) => (
-                    <motion.div
-                        key={category}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
-                        transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? idx * 0.1 : 0 }}
-                        style={{ willChange: 'transform, opacity' }}
-                        className="glass-card rounded-2xl p-8 hover:border-neon-blue/30 group relative overflow-hidden"
-                    >
-                        {/* Hover Glow */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {categories.map((category, idx) => {
+                    // Logic for centering the last item on medium screens if we have an odd number of items
+                    const isLastItem = idx === categories.length - 1;
+                    const isOddCount = categories.length % 2 !== 0;
+                    const shouldCenterOnMedium = isLastItem && isOddCount;
 
-                        <h3 className="text-xl font-bold text-white capitalize mb-8 flex items-center relative z-10">
-                            <span className="w-1.5 h-6 bg-gradient-to-b from-neon-blue to-transparent rounded-full mr-4 shadow-[0_0_10px_rgba(14,165,233,0.5)]" />
-                            {category}
-                        </h3>
+                    return (
+                        <motion.div
+                            key={category}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                            transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? idx * 0.1 : 0 }}
+                            style={{ willChange: 'transform, opacity' }}
+                            className={`glass-card rounded-2xl p-8 hover:border-neon-blue/30 group relative overflow-hidden ${shouldCenterOnMedium ? 'md:col-span-2 md:w-[calc(50%-1rem)] md:justify-self-center lg:col-span-1 lg:w-auto lg:justify-self-auto' : ''}`}
+                        >
+                            {/* Hover Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        <div className="space-y-6 relative z-10">
-                            {skillsByCategory[category].map((skill, skillIdx) => (
-                                <div key={skill.name}>
-                                    <div className="flex justify-between mb-2">
-                                        <span className="text-sm font-medium text-foreground-muted group-hover:text-foreground transition-colors">{skill.name}</span>
-                                        <span className="text-xs font-medium text-neon-blue/80">{skill.level}</span>
+                            <h3 className="text-xl font-bold text-white capitalize mb-8 flex items-center relative z-10">
+                                <span className="w-1.5 h-6 bg-gradient-to-b from-neon-blue to-transparent rounded-full mr-4 shadow-[0_0_10px_rgba(14,165,233,0.5)]" />
+                                {category}
+                            </h3>
+
+                            <div className="space-y-6 relative z-10">
+                                {skillsByCategory[category].map((skill, skillIdx) => (
+                                    <div key={skill.name}>
+                                        <div className="flex justify-between mb-2">
+                                            <span className="text-sm font-medium text-foreground-muted group-hover:text-foreground transition-colors">{skill.name}</span>
+                                            <span className="text-xs font-medium text-neon-blue/80">{skill.level}</span>
+                                        </div>
+                                        <div className="w-full bg-background-tertiary rounded-full h-2 overflow-hidden border border-white/5">
+                                            <motion.div
+                                                className="h-full rounded-full relative"
+                                                style={{
+                                                    background: 'linear-gradient(90deg, var(--neon-blue-dim), var(--neon-blue))',
+                                                    boxShadow: '0 0 10px rgba(14, 165, 233, 0.3)',
+                                                    willChange: 'transform, opacity, width'
+                                                }}
+                                                initial={{ width: 0 }}
+                                                whileInView={{
+                                                    width: skill.level === 'Advanced' ? '100%' :
+                                                        skill.level === 'Intermediate' ? '66%' : '33%'
+                                                }}
+                                                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                                                transition={{ duration: effectsEnabled ? 1.2 : 0, ease: "easeOut", delay: effectsEnabled ? 0.2 + (skillIdx * 0.05) : 0 }}
+                                            >
+                                                <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-white/50" />
+                                            </motion.div>
+                                        </div>
                                     </div>
-                                    <div className="w-full bg-background-tertiary rounded-full h-2 overflow-hidden border border-white/5">
-                                        <motion.div
-                                            className="h-full rounded-full relative"
-                                            style={{
-                                                background: 'linear-gradient(90deg, var(--neon-blue-dim), var(--neon-blue))',
-                                                boxShadow: '0 0 10px rgba(14, 165, 233, 0.3)',
-                                                willChange: 'transform, opacity, width'
-                                            }}
-                                            initial={{ width: 0 }}
-                                            whileInView={{
-                                                width: skill.level === 'Advanced' ? '100%' :
-                                                    skill.level === 'Intermediate' ? '66%' : '33%'
-                                            }}
-                                            viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
-                                            transition={{ duration: effectsEnabled ? 1.2 : 0, ease: "easeOut", delay: effectsEnabled ? 0.2 + (skillIdx * 0.05) : 0 }}
-                                        >
-                                            <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-white/50" />
-                                        </motion.div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
+                                ))}
+                            </div>
+                        </motion.div>
+                    );
+                })}
             </div>
         </Section>
     );
