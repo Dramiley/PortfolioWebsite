@@ -6,9 +6,8 @@ export interface AboutContent {
 export const aboutContent: AboutContent = {
     title: "About Me",
     bio: [
-        "Hello! I'm Robin Morgenstern, a passionate Software Engineer dedicated to building digital experiences that truly matter.",
-        "With a strong foundation in full-stack development and a keen eye for design, I bridge the gap between technical functionality and user-centric aesthetics. I specialize in creating scalable systems, intuitive interfaces, and leveraging machine learning tools to solve complex problems.",
-        "My journey in tech has been driven by curiosity and a relentless desire to learn. Whether it's optimizing backend performance or crafting pixel-perfect frontend interactions, I approach every challenge with enthusiasm and precision.",
-        "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying the outdoors."
+        "Hello, I'm Robin Morgenstern. I'm currently studying for a master's degree in computer science and working both as a student assistant and as a freelance software developer. ",
+        "In my student assistant position, I am primarily involved in AI development and the automation of a Raspberry Pi system to support the maintenance of industrial machines. Technically, I mainly work in the full-stack and backend areas as well as in machine learning. ",
+        "I love breaking down problems, automating processes, and finding creative ways to make them more efficient. I am fast, eager to experiment, and enjoy familiarizing myself with complex systems. ",
     ]
 };
