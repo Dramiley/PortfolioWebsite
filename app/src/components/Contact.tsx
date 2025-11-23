@@ -5,15 +5,18 @@ import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 
+import { useMobile } from '@/hooks/useMobile';
+
 export const Contact = () => {
     const { effectsEnabled } = useEffects();
+    const isMobile = useMobile();
 
     return (
         <Section id="contact" className="mb-20 relative">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                 transition={{ duration: effectsEnabled ? 0.8 : 0, ease: [0.16, 1, 0.3, 1] }}
                 className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-24 text-center glass-panel group"
             >
@@ -31,7 +34,7 @@ export const Contact = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ delay: effectsEnabled ? 0.2 : 0, duration: effectsEnabled ? 0.6 : 0 }}
                     >
                         <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tight">
@@ -43,7 +46,7 @@ export const Contact = () => {
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ delay: effectsEnabled ? 0.4 : 0, duration: effectsEnabled ? 0.6 : 0 }}
                         className="text-foreground-muted mb-12 max-w-xl mx-auto text-xl leading-relaxed"
                     >
@@ -53,7 +56,7 @@ export const Contact = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ delay: effectsEnabled ? 0.6 : 0, duration: effectsEnabled ? 0.6 : 0 }}
                     >
                         <a

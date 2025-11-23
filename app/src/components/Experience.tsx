@@ -5,15 +5,18 @@ import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 
+import { useMobile } from '@/hooks/useMobile';
+
 export const Experience = () => {
     const { effectsEnabled } = useEffects();
+    const isMobile = useMobile();
 
     return (
         <Section id="experience">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                 transition={{ duration: effectsEnabled ? 0.6 : 0 }}
             >
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
@@ -30,7 +33,7 @@ export const Experience = () => {
                         key={job.id}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? index * 0.1 : 0 }}
                         className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
                             }`}

@@ -7,15 +7,18 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 
+import { useMobile } from '@/hooks/useMobile';
+
 export const Projects = () => {
     const { effectsEnabled } = useEffects();
+    const isMobile = useMobile();
 
     return (
         <Section id="projects" className="relative">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                 transition={{ duration: effectsEnabled ? 0.6 : 0 }}
                 className="mb-24"
             >
@@ -33,7 +36,7 @@ export const Projects = () => {
                         key={project.id}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2, margin: "-100px" }}
+                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2, margin: isMobile ? "100px" : "-100px" }}
                         transition={{ duration: effectsEnabled ? 0.8 : 0 }}
                         className="group relative"
                     >

@@ -15,24 +15,10 @@ interface SectionProps {
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useEffects } from '@/context/EffectsContext';
+import { useMobile } from '@/hooks/useMobile';
 
 export const Section = ({ children, className = '', id }: SectionProps) => {
-    // Default to desktop settings to match server-side rendering
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        // Check initially
-        checkMobile();
-
-        // Add listener for resize
-        window.addEventListener('resize', checkMobile);
-
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
+    const isMobile = useMobile();
 
     const { effectsEnabled } = useEffects();
 
@@ -48,9 +34,9 @@ export const Section = ({ children, className = '', id }: SectionProps) => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{
-                    once: false,
-                    amount: isMobile ? 0.1 : 0.2,
-                    margin: isMobile ? "-20px" : "-100px"
+                    once: isMobile,
+                    amount: isMobile ? 0 : 0.2,
+                    margin: isMobile ? "100px" : "-100px"
                 }}
                 transition={{ duration: effectsEnabled ? 0.8 : 0, ease: "easeOut" }}
             >

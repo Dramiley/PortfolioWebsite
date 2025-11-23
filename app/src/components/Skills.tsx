@@ -6,8 +6,11 @@ import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 
+import { useMobile } from '@/hooks/useMobile';
+
 export const Skills = () => {
     const { effectsEnabled } = useEffects();
+    const isMobile = useMobile();
 
     // Group skills by category
     const skillsByCategory = skills.reduce((acc, skill) => {
@@ -25,7 +28,7 @@ export const Skills = () => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                 transition={{ duration: effectsEnabled ? 0.6 : 0 }}
                 className="mb-16 text-center"
             >
@@ -43,7 +46,7 @@ export const Skills = () => {
                         key={category}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
+                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? idx * 0.1 : 0 }}
                         className="glass-card rounded-2xl p-8 hover:border-neon-blue/30 group relative overflow-hidden"
                     >
@@ -70,7 +73,7 @@ export const Skills = () => {
                                             }}
                                             initial={{ width: 0 }}
                                             whileInView={{ width: `${skill.proficiency}%` }}
-                                            viewport={{ once: false, amount: 0.2 }}
+                                            viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                                             transition={{ duration: effectsEnabled ? 1.2 : 0, ease: "easeOut", delay: effectsEnabled ? 0.2 + (skillIdx * 0.05) : 0 }}
                                         >
                                             <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-white/50" />
