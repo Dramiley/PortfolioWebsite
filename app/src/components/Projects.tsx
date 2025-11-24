@@ -7,21 +7,30 @@ import { Section } from './Section';
 import { motion, useInView } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 import { ProjectCard } from './ProjectCard';
+import { useProjectsScrollRestoration } from '@/hooks/useProjectsScrollRestoration';
 
 /**
  * Projects Component
  * 
- * Renders a list of projects in an alternating layout.
+ * Renders a list of projects in an alternating layout with robust state restoration.
+ * 
+ * Features:
+ * - Preserves scroll position when navigating to/from project details
+ * - Prevents animation flicker when returning from detail pages
+ * - Handles both in-page navigation and browser back/forward
+ * - Respects prefers-reduced-motion accessibility setting
+ * 
  * Each project card features:
  * - A project screenshot with hover effects
  * - Title, description, and tags
- * - Links to the live site and GitHub repository
+ * - Links to the live site and project detail page
  * 
  * @returns {JSX.Element} The rendered Projects section.
  */
 export const Projects = () => {
     const { effectsEnabled } = useEffects();
     const [hasVisited, setHasVisited] = useState(false);
+    const { shouldForceVisible, saveScrollPosition } = useProjectsScrollRestoration();
 
     const headerRef = useRef(null);
     const headerInView = useInView(headerRef, { once: true });
@@ -35,16 +44,16 @@ export const Projects = () => {
         }
     }, []);
 
-    const shouldShowHeader = !effectsEnabled || hasVisited || headerInView;
+    const shouldShowHeader = shouldForceVisible || !effectsEnabled || hasVisited || headerInView;
 
     return (
         <Section id="projects" className="relative">
             <motion.div
                 ref={headerRef}
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={shouldShowHeader ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: (effectsEnabled && !hasVisited) ? 0.6 : 0 }}
-                style={{ willChange: 'transform, opacity' }}
+                transition={{ duration: (effectsEnabled && !hasVisited && !shouldForceVisible) ? 0.6 : 0 }}
+                style={{ willChange: (effectsEnabled && !hasVisited && !shouldForceVisible) ? 'transform, opacity' : undefined }}
                 className="mb-24"
             >
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -63,6 +72,8 @@ export const Projects = () => {
                         index={index}
                         hasVisited={hasVisited}
                         effectsEnabled={effectsEnabled}
+                        forceVisible={shouldForceVisible}
+                        onNavigate={saveScrollPosition}
                     />
                 ))}
             </div>

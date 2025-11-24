@@ -11,6 +11,8 @@ Built with **Next.js 16** and **React 19**, this application leverages **Framer 
 - **Ambient Interactivity**: A custom background system (`AmbientBackground.tsx`) that generates wandering light sources and reacts to cursor movement with parallax depth.
 - **Physics-Based UI**: 3D tilt effects on the hero profile and magnetic button interactions that follow the cursor.
 - **Scroll-Linked Navigation**: A floating sidebar that tracks viewport intersection to highlight the active section dynamically.
+- **Dynamic Project Routes**: Conditional routing system that generates dedicated pages (`/projects/[slug]`) for featured projects while maintaining a lightweight modal view for others.
+- **State Preservation**: Robust navigation state management that preserves scroll position and UI state when navigating between project details and the main portfolio, eliminating visual disruptions.
 - **Data-Driven Architecture**: Content is decoupled from presentation. All text, projects, and skills are managed in `src/data/`, making updates trivial without touching React components.
 - **Performance First**: Optimized for Core Web Vitals with efficient re-renders and hardware-accelerated animations.
 
@@ -35,7 +37,14 @@ export const siteConfig = {
 };
 ```
 
-To add new projects or skills, simply modify the respective arrays in `src/data/config.ts`. The UI will automatically adapt to display the new content.
+### Managing Projects
+
+Projects are defined in `src/data/projects.ts`. Each project supports:
+- Dynamic detail pages (`hasDetailPage: true`) for in-depth case studies
+- Inline modal views (`hasDetailPage: false`) for lightweight presentations
+- Rich metadata including tech stack, timeline, and feature breakdowns
+
+See [PROJECT_GUIDE.md](PROJECT_GUIDE.md) for detailed instructions on adding projects.
 
 ## Development
 
@@ -56,11 +65,30 @@ To add new projects or skills, simply modify the respective arrays in `src/data/
 
 ## Project Structure
 
-- `src/components`: Reusable UI components and section layouts.
-- `src/context`: Global state management (e.g., `EffectsContext` for toggling animations).
-- `src/data`: Centralized content and configuration.
-- `src/hooks`: Custom hooks (e.g., `useMobile` for responsive logic).
-- `src/types`: TypeScript definitions for data consistency.
+- `src/app`: Next.js App Router pages and layouts
+  - `projects/[slug]`: Dynamic project detail pages
+- `src/components`: Reusable UI components and section layouts
+- `src/context`: Global state management (e.g., `EffectsContext` for toggling animations)
+- `src/data`: Centralized content and configuration
+- `src/hooks`: Custom hooks for responsive logic, scroll restoration, and more
+- `src/types`: TypeScript definitions for data consistency
+
+## Navigation & State Management
+
+This portfolio implements a sophisticated state preservation system to ensure seamless navigation:
+- Scroll positions are saved when navigating to project details
+- Returning from any project (via browser back, top button, or bottom button) restores the exact scroll position
+- Animation states are preserved to prevent flicker or re-triggering
+- All navigation methods (browser back/forward, in-page links, direct URLs) are handled consistently
+
+Technical details are available in [PROJECTS_STATE_RESTORATION.md](PROJECTS_STATE_RESTORATION.md).
+
+## Accessibility
+
+- Respects `prefers-reduced-motion` for users with motion sensitivity
+- Keyboard navigation fully supported across all interactive elements
+- Semantic HTML structure for screen reader compatibility
+- Focus management ensures intuitive tab order
 
 ---
 

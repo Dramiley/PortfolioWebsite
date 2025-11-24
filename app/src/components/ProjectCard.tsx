@@ -10,26 +10,37 @@ interface ProjectCardProps {
     index: number;
     hasVisited: boolean;
     effectsEnabled: boolean;
+    forceVisible?: boolean;
+    onNavigate?: () => void;
 }
 
-export const ProjectCard = ({ project, index, hasVisited, effectsEnabled }: ProjectCardProps) => {
+export const ProjectCard = ({
+    project,
+    index,
+    hasVisited,
+    effectsEnabled,
+    forceVisible = false,
+    onNavigate
+}: ProjectCardProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    // If visited, show immediately. If not, wait for view.
+    // If forceVisible is true (returning from detail), show immediately without animation
+    // Otherwise, if visited, show immediately. If not, wait for view.
     // If effects disabled, show immediately.
-    const shouldShow = !effectsEnabled || hasVisited || isInView;
+    const shouldShow = forceVisible || !effectsEnabled || hasVisited || isInView;
+    const shouldAnimate = !forceVisible && effectsEnabled && !hasVisited;
 
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 40 }}
+            initial={false}
             animate={shouldShow ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{
-                duration: (effectsEnabled && !hasVisited) ? 0.8 : 0,
-                delay: (effectsEnabled && !hasVisited) ? index * 0.1 : 0
+                duration: shouldAnimate ? 0.8 : 0,
+                delay: shouldAnimate ? index * 0.1 : 0
             }}
-            style={{ willChange: 'transform, opacity' }}
+            style={{ willChange: shouldAnimate ? 'transform, opacity' : undefined }}
             className="group relative"
         >
             <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}>
@@ -83,6 +94,7 @@ export const ProjectCard = ({ project, index, hasVisited, effectsEnabled }: Proj
                             {project.hasDetailPage && (
                                 <a
                                     href={`/projects/${project.slug}`}
+                                    onClick={onNavigate}
                                     className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary hover:bg-primary-soft text-white transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)]"
                                 >
                                     <span className="font-medium">View Details</span>

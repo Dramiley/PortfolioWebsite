@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Section } from '@/components/Section';
 import AmbientBackground from '@/components/AmbientBackground';
+import { BackToProjectsButton } from '@/components/BackToProjectsButton';
 import { Project } from '@/types';
 
 export default function ProjectContent({ project }: { project: Project }) {
@@ -39,10 +39,7 @@ export default function ProjectContent({ project }: { project: Project }) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <Link href="/#projects" className="inline-flex items-center text-sm text-neon-blue mb-6 hover:underline">
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                            Back to Projects
-                        </Link>
+                        <BackToProjectsButton variant="top" />
                         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
                             {project.title}
                         </h1>
@@ -225,12 +222,7 @@ export default function ProjectContent({ project }: { project: Project }) {
 
             {/* Next Project CTA */}
             <section className="py-32 text-center">
-                <Link
-                    href="/#projects"
-                    className="inline-block px-12 py-6 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xl transition-all hover:scale-105"
-                >
-                    View All Projects
-                </Link>
+                <BackToProjectsButton variant="bottom" />
             </section>
         </main>
     );
