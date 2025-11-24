@@ -8,16 +8,23 @@
  */
 export interface Project {
   id: string;
+  slug: string;
+  hasDetailPage: boolean;
   title: string;
-  description: string;
+  shortDescription: string;
+  fullDescription: string;
   tags: string[];
-  imageUrl: string;
+  techStack: { name: string; icon?: string }[];
+  heroImage: string;
+  galleryImages: string[];
   link?: string;
   githubUrl?: string;
-  details?: {
+  details: {
     problem: string;
-    process: string;
-    results: string;
+    solution: string;
+    architecture?: string;
+    features: { title: string; description: string }[];
+    timeline?: { date: string; title: string; description: string }[];
   };
 }
 
