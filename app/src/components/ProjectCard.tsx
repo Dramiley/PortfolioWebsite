@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { Project } from '@/types';
 
 interface ProjectCardProps {
@@ -23,10 +24,18 @@ export const ProjectCard = ({
     onNavigate
 }: ProjectCardProps) => {
     const ref = useRef(null);
+    const router = useRouter();
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     const shouldShow = forceVisible || !effectsEnabled || hasVisited || isInView;
     const shouldAnimate = !forceVisible && effectsEnabled && !hasVisited;
+
+    const handleCardClick = () => {
+        if (project.hasDetailPage && onNavigate) {
+            onNavigate();
+            router.push(`/projects/${project.slug}`);
+        }
+    };
 
     return (
         <motion.div
@@ -41,8 +50,11 @@ export const ProjectCard = ({
             className="group relative"
         >
             <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}>
-                {/* Image Section */}
-                <div className="w-full lg:w-3/5 relative aspect-video rounded-2xl overflow-hidden glass-card border border-white/5 group-hover:border-neon-blue/30 transition-colors duration-500 shadow-2xl shadow-black/50">
+                {/* Image Section - Clickable */}
+                <div
+                    onClick={handleCardClick}
+                    className={`w-full lg:w-3/5 relative aspect-video rounded-2xl overflow-hidden glass-card border border-white/5 group-hover:border-neon-blue/30 transition-colors duration-500 shadow-2xl shadow-black/50 ${project.hasDetailPage ? 'cursor-pointer' : ''}`}
+                >
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40 z-10" />
                     <div className="absolute inset-0 bg-neon-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
 
@@ -68,11 +80,19 @@ export const ProjectCard = ({
                     </div>
 
                     <div className="relative z-10">
-                        <h3 className="text-3xl font-bold text-white group-hover:text-neon-blue transition-colors duration-300 mb-4">
+                        {/* Title - Clickable */}
+                        <h3
+                            onClick={handleCardClick}
+                            className={`text-3xl font-bold text-white group-hover:text-neon-blue transition-colors duration-300 mb-4 ${project.hasDetailPage ? 'cursor-pointer' : ''}`}
+                        >
                             {project.title}
                         </h3>
 
-                        <p className="text-foreground-muted mb-8 leading-relaxed text-lg">
+                        {/* Description - Clickable */}
+                        <p
+                            onClick={handleCardClick}
+                            className={`text-foreground-muted mb-8 leading-relaxed text-lg ${project.hasDetailPage ? 'cursor-pointer' : ''}`}
+                        >
                             {project.shortDescription}
                         </p>
 
