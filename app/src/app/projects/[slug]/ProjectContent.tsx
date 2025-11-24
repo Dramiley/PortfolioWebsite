@@ -117,20 +117,27 @@ export default function ProjectContent({ project }: { project: Project }) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+                        className={`grid grid-cols-1 ${project.details.problemImage ? 'md:grid-cols-2' : ''} gap-12 items-center`}
                     >
-                        <div className="order-2 md:order-1">
+                        <div className={`${project.details.problemImage ? 'order-2 md:order-1' : ''}`}>
                             <div className="w-12 h-1 bg-gradient-to-r from-red-500 to-transparent mb-6" />
                             <h2 className="text-3xl font-bold text-white mb-6">The Challenge</h2>
                             <p className="text-lg text-foreground-muted leading-relaxed">
                                 {project.details.problem}
                             </p>
                         </div>
-                        <div className="order-1 md:order-2 bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
-                            <div className="aspect-video relative rounded-lg overflow-hidden bg-black/50 flex items-center justify-center">
-                                <span className="text-white/20 font-mono text-sm">Problem Visualization</span>
+                        {project.details.problemImage && (
+                            <div className="order-1 md:order-2 bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
+                                <div className="aspect-video relative rounded-lg overflow-hidden bg-black/50 flex items-center justify-center">
+                                    <Image
+                                        src={project.details.problemImage}
+                                        alt="Problem Visualization"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </motion.div>
 
                     {/* Solution */}
@@ -139,13 +146,20 @@ export default function ProjectContent({ project }: { project: Project }) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+                        className={`grid grid-cols-1 ${project.details.solutionImage ? 'md:grid-cols-2' : ''} gap-12 items-center`}
                     >
-                        <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
-                            <div className="aspect-video relative rounded-lg overflow-hidden bg-black/50 flex items-center justify-center">
-                                <span className="text-white/20 font-mono text-sm">Solution Visualization</span>
+                        {project.details.solutionImage && (
+                            <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
+                                <div className="aspect-video relative rounded-lg overflow-hidden bg-black/50 flex items-center justify-center">
+                                    <Image
+                                        src={project.details.solutionImage}
+                                        alt="Solution Visualization"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        )}
                         <div>
                             <div className="w-12 h-1 bg-gradient-to-r from-neon-blue to-transparent mb-6" />
                             <h2 className="text-3xl font-bold text-white mb-6">The Solution</h2>

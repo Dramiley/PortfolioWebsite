@@ -21,7 +21,9 @@ export interface Project {
   githubUrl?: string;
   details: {
     problem: string;
+    problemImage?: string;
     solution: string;
+    solutionImage?: string;
     architecture?: string;
     features: { title: string; description: string }[];
     timeline?: { date: string; title: string; description: string }[];

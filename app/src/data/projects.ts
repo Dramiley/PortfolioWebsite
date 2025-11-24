@@ -22,7 +22,9 @@ export const projects: Project[] = [
         githubUrl: 'closed source',
         details: {
             problem: 'Manual inspection of industrial components was slow, inconsistent, and prone to human error. The lack of structured data made it difficult to analyze long-term quality trends or identify root causes of defects.',
+            problemImage: '',
             solution: 'We developed an end-to-end automated pipeline. High-resolution cameras capture component images, which are processed by a custom-trained YOLOv8 model to detect defects. The results are spatially reconciled across multiple views and exported into an OWL knowledge graph, enabling complex semantic queries about defect types and locations.',
+            solutionImage: '',
             architecture: 'The system consists of a distributed sensor network feeding into a central processing unit. The inference engine runs on edge devices for low latency, while the knowledge graph and analytics dashboard are hosted on a central server. Communication is handled via MQTT and REST APIs.',
             features: [
                 { title: 'Real-time Detection', description: 'Process video streams at 30fps with <50ms latency.' },
@@ -59,7 +61,9 @@ export const projects: Project[] = [
         githubUrl: 'https://github.com/Dramiley/PortfolioWebsite/tree/main',
         details: {
             problem: 'Existing portfolio templates felt static and generic. I needed a platform that could showcase my technical skills not just through content, but through the implementation itself. It also needed to be easy to maintain without touching code for every content update.',
+            problemImage: '',
             solution: 'I architected a completely data-driven solution. All content—projects, skills, experience—is stored in typed data files. The frontend dynamically renders this content, ensuring that the design remains consistent. I implemented a custom "Ambient Background" and physics-based interactions to give the site a unique, premium feel.',
+            solutionImage: '',
             architecture: 'The site uses Next.js App Router for server-side rendering and static generation. Framer Motion handles all animations, including complex scroll-linked effects. Tailwind CSS provides a utility-first styling engine, configured with a custom design system for consistent theming.',
             features: [
                 { title: 'Data-Driven Content', description: 'Add new projects or skills by simply editing a JSON-like structure.' },
@@ -92,7 +96,9 @@ export const projects: Project[] = [
         galleryImages: [],
         details: {
             problem: 'Different teams were building inconsistent UIs, leading to a fragmented user experience and duplicated effort.',
+            problemImage: '',
             solution: 'We established a centralized design system with strict accessibility standards. We used Storybook for documentation and automated testing to ensure component reliability.',
+            solutionImage: '',
             features: [
                 { title: 'Accessible Components', description: 'WCAG 2.1 AA compliant components.' },
                 { title: 'Live Documentation', description: 'Interactive playground for developers.' },
