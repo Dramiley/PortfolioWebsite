@@ -44,6 +44,14 @@ export const Footer = () => {
                         GitHub
                     </a>
                     <a
+                        href={siteConfig.social.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-foreground-muted hover:text-neon-blue transition-colors duration-300 hover:scale-105 transform"
+                    >
+                        LinkedIn
+                    </a>
+                    <a
                         href={`mailto:${siteConfig.social.email}`}
                         className="text-sm font-medium text-foreground-muted hover:text-primary transition-colors duration-300 hover:scale-105 transform"
                     >

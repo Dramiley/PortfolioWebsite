@@ -171,7 +171,17 @@ export const Hero = () => {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center px-8 py-4 font-bold text-foreground transition-all duration-300 rounded-full glass-panel hover:bg-white/5 hover:border-neon-blue/50 hover:text-neon-blue hover:shadow-[0_0_20px_rgba(14,165,233,0.2)]"
                             >
-                                GitHub Profile
+                                GitHub
+                            </a>
+                        </MagneticButton>
+                        <MagneticButton>
+                            <a
+                                href={siteConfig.social.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center px-8 py-4 font-bold text-foreground transition-all duration-300 rounded-full glass-panel hover:bg-white/5 hover:border-neon-blue/50 hover:text-neon-blue hover:shadow-[0_0_20px_rgba(14,165,233,0.2)]"
+                            >
+                                LinkedIn
                             </a>
                         </MagneticButton>
                     </motion.div>
