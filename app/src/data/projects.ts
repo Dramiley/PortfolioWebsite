@@ -43,9 +43,9 @@ export const projects: Project[] = [
         slug: 'portfolio-website',
         hasDetailPage: true,
         title: 'Portfolio Website',
-        shortDescription: 'A high-performance, data-driven portfolio website built with Next.js and Tailwind CSS.',
+        shortDescription: 'A data-driven portfolio website to showcase my skills and projects.',
         fullDescription: 'A personal portfolio designed to be more than just a resume. It serves as a playground for experimenting with modern web technologies, motion design, and accessible UI patterns. The site is built for performance, achieving perfect Lighthouse scores while delivering a rich, immersive user experience.',
-        tags: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
+        tags: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Framer Motion'],
         techStack: [
             { name: 'Next.js 16' },
             { name: 'React 19' },

@@ -11,7 +11,7 @@ import { Section } from './Section';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { MagneticButton } from './ui/MagneticButton';
+
 
 import { useEffects } from '@/context/EffectsContext';
 
@@ -120,7 +120,7 @@ export const Hero = () => {
     };
 
     return (
-        <Section id="hero" className="pt-32 md:pt-48 min-h-screen flex flex-col justify-center relative">
+        <Section id="hero" className="pt-32 md:pt-48 pb-32 min-h-screen flex flex-col justify-center relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
                 <motion.div
                     variants={containerVariants}
@@ -152,38 +152,48 @@ export const Hero = () => {
                         <span className="ml-1 w-0.5 h-6 bg-primary animate-pulse"></span>
                     </motion.div>
 
-                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-                        <MagneticButton>
-                            <a
-                                href="#projects"
-                                className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-primary rounded-full hover:bg-primary-soft hover:scale-105 hover:shadow-[0_0_30px_rgba(249,115,22,0.4)]"
-                            >
-                                <span className="mr-2">View Projects</span>
-                                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </MagneticButton>
-                        <MagneticButton>
+                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        {/* Primary: View Projects */}
+                        <a
+                            href="#projects"
+                            className="group relative flex items-center justify-center h-12 px-8 font-bold text-white transition-all duration-300 bg-primary rounded-full hover:bg-primary-soft hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:scale-105 active:scale-95"
+                        >
+                            <span className="mr-2">Projects</span>
+                            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+
+                        {/* Secondary Group */}
+                        <div className="flex gap-4 w-full sm:w-auto justify-center">
+                            {/* GitHub */}
                             <a
                                 href={siteConfig.social.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center px-8 py-4 font-bold text-foreground transition-all duration-300 rounded-full glass-panel hover:bg-white/5 hover:border-neon-blue/50 hover:text-neon-blue hover:shadow-[0_0_20px_rgba(14,165,233,0.2)]"
+                                className="group relative flex items-center justify-center h-12 px-6 font-medium text-foreground transition-all duration-300 rounded-full glass-panel border border-white/10 hover:bg-white/10 hover:border-neon-blue/50 hover:text-neon-blue hover:shadow-[0_0_20px_rgba(14,165,233,0.2)] hover:scale-105 active:scale-95"
+                                aria-label="GitHub Profile"
                             >
-                                GitHub
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                                </svg>
+                                <span className="ml-2">GitHub</span>
                             </a>
-                        </MagneticButton>
-                        <MagneticButton>
+
+                            {/* LinkedIn */}
                             <a
                                 href={siteConfig.social.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center px-8 py-4 font-bold text-foreground transition-all duration-300 rounded-full glass-panel hover:bg-white/5 hover:border-neon-blue/50 hover:text-neon-blue hover:shadow-[0_0_20px_rgba(14,165,233,0.2)]"
+                                className="group relative flex items-center justify-center h-12 px-6 font-medium text-foreground transition-all duration-300 rounded-full glass-panel border border-white/10 hover:bg-white/10 hover:border-neon-blue/50 hover:text-neon-blue hover:shadow-[0_0_20px_rgba(14,165,233,0.2)] hover:scale-105 active:scale-95"
+                                aria-label="LinkedIn Profile"
                             >
-                                LinkedIn
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+                                </svg>
+                                <span className="ml-2">LinkedIn</span>
                             </a>
-                        </MagneticButton>
+                        </div>
                     </motion.div>
                 </motion.div>
 

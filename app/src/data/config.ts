@@ -24,16 +24,16 @@ export const siteConfig: SiteConfig = {
             typewriterWords: ["Software Engineer", "Full Stack Developer", "Programmer", "Bachelor in Computer Science"]
         },
         projects: {
-            description: "A selection of work that demonstrates my passion for programming and software development."
+            description: "A selection of projects that I have done."
         },
         skills: {
-            description: "A curated list of technologies I use to build software."
+            description: "A list of technologies that I use to build software."
         },
         contact: {
             titlePrefix: "Ready to start your next",
             titleHighlight: "Project?",
-            description: "I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
-            buttonText: "Say Hello"
+            description: "I'm currently open to new opportunities. I'll try my best to get back to you!",
+            buttonText: "Contact Me"
         }
     }
 };
