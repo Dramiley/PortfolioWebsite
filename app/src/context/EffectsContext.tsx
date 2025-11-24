@@ -11,15 +11,14 @@ const EffectsContext = createContext<EffectsContextType | undefined>(undefined);
 
 export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [effectsEnabled, setEffectsEnabled] = useState(true);
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         const stored = localStorage.getItem('effectsEnabled');
         if (stored !== null) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setEffectsEnabled(stored === 'true');
         }
-        setMounted(true);
-    }, []);
+    }, [setEffectsEnabled]);
 
     useEffect(() => {
         if (effectsEnabled) {

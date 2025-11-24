@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file About.tsx
+ * @description The About section component.
+ * Displays personal information and biography.
+ */
+
 import { aboutContent } from '@/data/about';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
@@ -7,6 +13,16 @@ import { useEffects } from '@/context/EffectsContext';
 
 import { useMobile } from '@/hooks/useMobile';
 
+/**
+ * About Component
+ * 
+ * Displays the user's biography in a styled glass panel.
+ * Features:
+ * - Animated entrance for text paragraphs
+ * - Decorative background elements
+ * 
+ * @returns {JSX.Element} The rendered About section.
+ */
 export const About = () => {
     const { effectsEnabled } = useEffects();
     const isMobile = useMobile();

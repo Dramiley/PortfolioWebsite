@@ -1,11 +1,23 @@
+/**
+ * @file Section.tsx
+ * @description A reusable wrapper component for page sections.
+ * Handles consistent spacing, max-width, and scroll-triggered entrance animations.
+ */
+
 import React from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+/**
+ * Utility to merge Tailwind classes.
+ */
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
+/**
+ * Props for the Section component.
+ */
 interface SectionProps {
     children: React.ReactNode;
     className?: string;
@@ -13,10 +25,18 @@ interface SectionProps {
 }
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import { useEffects } from '@/context/EffectsContext';
 import { useMobile } from '@/hooks/useMobile';
 
+/**
+ * Section Component
+ * 
+ * Wraps content in a semantic <section> tag with standard padding and constraints.
+ * Applies a default fade-in/slide-up animation when the section comes into view.
+ * 
+ * @param {SectionProps} props - Component props
+ * @returns {JSX.Element} The rendered Section wrapper.
+ */
 export const Section = ({ children, className = '', id }: SectionProps) => {
     const isMobile = useMobile();
 

@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Skills.tsx
+ * @description The Skills section component.
+ * Displays a grid of technical skills grouped by category with animated progress bars.
+ */
+
 import { siteConfig } from '@/data/config';
 import { skills } from '@/data/skills';
 import { Section } from './Section';
@@ -8,6 +14,17 @@ import { useEffects } from '@/context/EffectsContext';
 
 import { useMobile } from '@/hooks/useMobile';
 
+/**
+ * Skills Component
+ * 
+ * Renders skills grouped by category (e.g., Frontend, Backend, Tools).
+ * Features:
+ * - Responsive grid layout
+ * - Animated progress bars for skill proficiency
+ * - Hover effects on skill cards
+ * 
+ * @returns {JSX.Element} The rendered Skills section.
+ */
 export const Skills = () => {
     const { effectsEnabled } = useEffects();
     const isMobile = useMobile();

@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased text-slate-200 selection:bg-orange-500/30">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-slate-200 selection:bg-orange-500/30`}>
         <EffectsProvider>
           <ScrollProgress />
           <AmbientBackground />

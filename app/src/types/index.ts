@@ -1,3 +1,11 @@
+/**
+ * @file index.ts
+ * @description TypeScript definitions for the application's data structures.
+ */
+
+/**
+ * Represents a single project in the portfolio.
+ */
 export interface Project {
   id: string;
   title: string;
@@ -13,6 +21,9 @@ export interface Project {
   };
 }
 
+/**
+ * Represents a work experience entry.
+ */
 export interface Experience {
   id: string;
   role: string;
@@ -21,12 +32,18 @@ export interface Experience {
   description: string[];
 }
 
+/**
+ * Represents a technical skill.
+ */
 export interface Skill {
   name: string;
   category: 'frontend' | 'backend' | 'tools' | 'other';
   level: 'Basic' | 'Intermediate' | 'Advanced';
 }
 
+/**
+ * Global configuration for the website content.
+ */
 export interface SiteConfig {
   name: string;
   tagline: string;

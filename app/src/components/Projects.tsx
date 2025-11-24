@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Projects.tsx
+ * @description The Projects section component.
+ * Displays a list of featured projects with images, descriptions, and links.
+ */
+
 import { siteConfig } from '@/data/config';
 import { projects } from '@/data/projects';
 import { Section } from './Section';
@@ -9,6 +15,17 @@ import { useEffects } from '@/context/EffectsContext';
 
 import { useMobile } from '@/hooks/useMobile';
 
+/**
+ * Projects Component
+ * 
+ * Renders a list of projects in an alternating layout.
+ * Each project card features:
+ * - A project screenshot with hover effects
+ * - Title, description, and tags
+ * - Links to the live site and GitHub repository
+ * 
+ * @returns {JSX.Element} The rendered Projects section.
+ */
 export const Projects = () => {
     const { effectsEnabled } = useEffects();
     const isMobile = useMobile();

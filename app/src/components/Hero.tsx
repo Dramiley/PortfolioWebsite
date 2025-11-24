@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Hero.tsx
+ * @description The Hero section component.
+ * Displays the main introduction, a typewriter effect for roles, and a 3D tilt interactive profile image.
+ */
+
 import { siteConfig } from '@/data/config';
 import { Section } from './Section';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
@@ -9,9 +15,22 @@ import { MagneticButton } from './ui/MagneticButton';
 
 import { useEffects } from '@/context/EffectsContext';
 
+/**
+ * Hero Component
+ * 
+ * The first section the user sees.
+ * Features:
+ * - Animated entrance
+ * - Typewriter text effect
+ * - 3D mouse-following tilt effect for the profile image
+ * - Call to action buttons
+ * 
+ * @returns {JSX.Element} The rendered Hero section.
+ */
 export const Hero = () => {
     const { effectsEnabled } = useEffects();
 
+    // Animation variants for the container
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -23,6 +42,7 @@ export const Hero = () => {
         },
     };
 
+    // Animation variants for individual items
     const itemVariants = {
         hidden: { y: 20, opacity: 0 },
         visible: {
@@ -32,7 +52,7 @@ export const Hero = () => {
         },
     };
 
-    // Typewriter Effect
+    // --- Typewriter Effect Logic ---
     const titles = siteConfig.sections.hero.typewriterWords;
     const [titleIndex, setTitleIndex] = useState(0);
     const [displayText, setDisplayText] = useState("");
@@ -70,7 +90,7 @@ export const Hero = () => {
         return () => clearTimeout(timer);
     }, [displayText, isDeleting, titleIndex, titles, effectsEnabled]);
 
-    // 3D Tilt Effect
+    // --- 3D Tilt Effect Logic ---
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 

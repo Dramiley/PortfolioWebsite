@@ -1,7 +1,23 @@
 'use client';
 
+/**
+ * @file Footer.tsx
+ * @description The Footer component.
+ * Displays copyright information and social links at the bottom of the page.
+ */
+
 import { siteConfig } from '@/data/config';
 
+/**
+ * Footer Component
+ * 
+ * Renders the site footer with:
+ * - Copyright notice
+ * - Social media links (GitHub, Email)
+ * - Decorative top border
+ * 
+ * @returns {JSX.Element} The rendered Footer component.
+ */
 export const Footer = () => {
     return (
         <footer className="relative border-t border-white/5 bg-background-secondary/30 backdrop-blur-sm overflow-hidden">

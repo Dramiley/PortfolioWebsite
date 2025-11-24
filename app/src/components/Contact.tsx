@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Contact.tsx
+ * @description The Contact section component.
+ * Displays contact information and a call-to-action button with animated background effects.
+ */
+
 import { siteConfig } from '@/data/config';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
@@ -7,6 +13,17 @@ import { useEffects } from '@/context/EffectsContext';
 
 import { useMobile } from '@/hooks/useMobile';
 
+/**
+ * Contact Component
+ * 
+ * The final section of the page.
+ * Features:
+ * - Large call-to-action title
+ * - Email link button
+ * - Animated background gradients and noise texture
+ * 
+ * @returns {JSX.Element} The rendered Contact section.
+ */
 export const Contact = () => {
     const { effectsEnabled } = useEffects();
     const isMobile = useMobile();

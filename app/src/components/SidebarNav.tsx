@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file SidebarNav.tsx
+ * @description The floating sidebar navigation component.
+ * Displays dots for each section and highlights the active one based on scroll position.
+ */
+
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -12,9 +18,23 @@ const sections = [
     { id: 'contact', label: 'Contact' },
 ];
 
+/**
+ * SidebarNav Component
+ * 
+ * Visible only on large screens.
+ * Features:
+ * - Intersection Observer to detect active section
+ * - Smooth scrolling to sections on click
+ * - Hover effects showing section labels
+ * 
+ * @returns {JSX.Element} The rendered SidebarNav component.
+ */
 export const SidebarNav = () => {
     const [activeSection, setActiveSection] = useState('hero');
 
+    /**
+     * Sets up an IntersectionObserver to track which section is currently in view.
+     */
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -25,7 +45,7 @@ export const SidebarNav = () => {
                 });
             },
             {
-                rootMargin: '-50% 0px -50% 0px',
+                rootMargin: '-50% 0px -50% 0px', // Trigger when section is in the middle of the viewport
             }
         );
 
@@ -69,8 +89,8 @@ export const SidebarNav = () => {
                         <div className="relative">
                             <div
                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === section.id
-                                        ? 'bg-neon-blue w-3 h-3'
-                                        : 'bg-foreground-muted group-hover:bg-white'
+                                    ? 'bg-neon-blue w-3 h-3'
+                                    : 'bg-foreground-muted group-hover:bg-white'
                                     }`}
                             />
                             {activeSection === section.id && (

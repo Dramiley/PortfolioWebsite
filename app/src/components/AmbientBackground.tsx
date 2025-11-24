@@ -1,9 +1,27 @@
 'use client';
 
+/**
+ * @file AmbientBackground.tsx
+ * @description The animated background component.
+ * Creates a dynamic, interactive background with wandering blobs and mouse parallax effects.
+ */
+
 import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue, useTransform, useReducedMotion, useScroll } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 
+/**
+ * AmbientBackground Component
+ * 
+ * Renders multiple layers of animated elements:
+ * 1. Base gradient
+ * 2. Wandering blobs that also react to mouse movement (parallax)
+ * 3. Subtle particles
+ * 4. Scroll-reactive light streaks
+ * 5. Noise texture overlay
+ * 
+ * @returns {JSX.Element} The rendered AmbientBackground component.
+ */
 export default function AmbientBackground() {
     const [isClient, setIsClient] = useState(false);
     const mouseX = useMotionValue(0);
@@ -30,12 +48,16 @@ export default function AmbientBackground() {
     const { effectsEnabled } = useEffects();
 
     useEffect(() => {
-        // Set client flag after mount
+        // Set client flag after mount to avoid hydration mismatch
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsClient(true);
 
         if (shouldReduceMotion || !effectsEnabled) return;
 
+        /**
+         * Tracks mouse movement and updates motion values.
+         * Coordinates are normalized to -1 to 1 range.
+         */
         const handleMouseMove = (e: MouseEvent) => {
             const { clientX, clientY } = e;
             const windowWidth = window.innerWidth;
@@ -52,7 +74,7 @@ export default function AmbientBackground() {
 
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [mouseX, mouseY, shouldReduceMotion]);
+    }, [mouseX, mouseY, shouldReduceMotion, effectsEnabled]);
 
     return (
         <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#020617]">

@@ -1,5 +1,14 @@
+/**
+ * @file config.ts
+ * @description Central configuration file for the website's content.
+ * Allows for easy updates to text and links without modifying components.
+ */
+
 import { SiteConfig } from '@/types';
 
+/**
+ * The main configuration object for the site.
+ */
 export const siteConfig: SiteConfig = {
     name: "Robin Morgenstern",
     tagline: "Software Engineer",

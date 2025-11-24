@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Experience.tsx
+ * @description The Experience section component.
+ * Displays a timeline of work experience.
+ */
+
 import { experience } from '@/data/experience';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
@@ -7,6 +13,17 @@ import { useEffects } from '@/context/EffectsContext';
 
 import { useMobile } from '@/hooks/useMobile';
 
+/**
+ * Experience Component
+ * 
+ * Renders a vertical timeline of professional experience.
+ * Features:
+ * - Alternating layout for desktop
+ * - Responsive design for mobile
+ * - Animated entry for timeline items
+ * 
+ * @returns {JSX.Element} The rendered Experience section.
+ */
 export const Experience = () => {
     const { effectsEnabled } = useEffects();
     const isMobile = useMobile();

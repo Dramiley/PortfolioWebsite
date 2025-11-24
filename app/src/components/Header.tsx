@@ -1,9 +1,19 @@
 'use client';
 
+/**
+ * @file Header.tsx
+ * @description The main navigation header component.
+ * Handles scroll-based styling changes and responsive navigation.
+ */
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
+/**
+ * Navigation items configuration.
+ * Each item contains a name and an href anchor link.
+ */
 const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
@@ -12,9 +22,21 @@ const navItems = [
     { name: 'Contact', href: '#contact' },
 ];
 
+/**
+ * Header Component
+ * 
+ * Displays the site logo, navigation links, and a resume download button.
+ * Changes appearance (glassmorphism effect) when the user scrolls down.
+ * 
+ * @returns {JSX.Element} The rendered Header component.
+ */
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false);
 
+    /**
+     * Effect to handle scroll event listener.
+     * Updates the `scrolled` state based on window scroll position.
+     */
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
