@@ -75,13 +75,7 @@ See [PROJECT_GUIDE.md](PROJECT_GUIDE.md) for detailed instructions on adding pro
 
 ## Navigation & State Management
 
-This portfolio implements a sophisticated state preservation system to ensure seamless navigation:
-- Scroll positions are saved when navigating to project details
-- Returning from any project (via browser back, top button, or bottom button) restores the exact scroll position
-- Animation states are preserved to prevent flicker or re-triggering
-- All navigation methods (browser back/forward, in-page links, direct URLs) are handled consistently
-
-Technical details are available in [PROJECTS_STATE_RESTORATION.md](PROJECTS_STATE_RESTORATION.md).
+This portfolio implements a sophisticated state preservation system using sessionStorage snapshots and the History API. When navigating to project details, the current scroll position is saved and restored upon return, ensuring the Projects section appears exactly as you left it. Both "Back" buttons (top and bottom) on project pages use a unified component to guarantee identical behavior across all navigation methods.
 
 ## Accessibility
 
