@@ -239,7 +239,13 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5, duration: 1 }}
                 >
-                    <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">Scroll</span>
+                    <motion.span
+                        animate={{ y: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="text-xs font-medium text-foreground-muted tracking-widest uppercase"
+                    >
+                        Scroll
+                    </motion.span>
                     <div className="w-[1px] h-16 bg-gradient-to-b from-neon-blue/0 via-neon-blue to-neon-blue/0 animate-pulse" />
                 </motion.div>
             )}
