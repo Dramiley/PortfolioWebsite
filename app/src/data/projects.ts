@@ -19,6 +19,7 @@ export const projects: Project[] = [
         ],
         heroImage: '/images/projects/inspection.jpg',
         galleryImages: [],
+        githubUrl: 'closed source',
         details: {
             problem: 'Manual inspection of industrial components was slow, inconsistent, and prone to human error. The lack of structured data made it difficult to analyze long-term quality trends or identify root causes of defects.',
             solution: 'We developed an end-to-end automated pipeline. High-resolution cameras capture component images, which are processed by a custom-trained YOLOv8 model to detect defects. The results are spatially reconciled across multiple views and exported into an OWL knowledge graph, enabling complex semantic queries about defect types and locations.',
@@ -54,8 +55,8 @@ export const projects: Project[] = [
         ],
         heroImage: '/images/projects/portfolio.jpg',
         galleryImages: [],
-        link: 'https://robinmorgenstern.com',
-        githubUrl: 'https://github.com/robinmorgenstern/portfolio',
+        link: 'https://robinmorgenstern.dev',
+        githubUrl: 'https://github.com/Dramiley/PortfolioWebsite/tree/main',
         details: {
             problem: 'Existing portfolio templates felt static and generic. I needed a platform that could showcase my technical skills not just through content, but through the implementation itself. It also needed to be easy to maintain without touching code for every content update.',
             solution: 'I architected a completely data-driven solution. All content—projects, skills, experience—is stored in typed data files. The frontend dynamically renders this content, ensuring that the design remains consistent. I implemented a custom "Ambient Background" and physics-based interactions to give the site a unique, premium feel.',

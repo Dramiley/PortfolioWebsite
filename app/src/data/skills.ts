@@ -9,6 +9,7 @@ export const skills: Skill[] = [
     { name: 'Next.js', category: 'frontend', level: 'Basic' },
     { name: 'Tailwind CSS', category: 'frontend', level: 'Basic' },
     { name: 'React', category: 'frontend', level: 'Basic' },
+    { name: 'Framer Motion', category: 'frontend', level: 'Basic' },
     { name: 'Git / Github', category: 'tools', level: 'Advanced' },
     { name: 'Docker', category: 'tools', level: 'Intermediate' },
     { name: 'VS Code', category: 'tools', level: 'Advanced' },
