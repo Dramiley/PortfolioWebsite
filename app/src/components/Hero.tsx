@@ -239,14 +239,24 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5, duration: 1 }}
                 >
-                    <motion.span
-                        animate={{ y: [0, 4, 0] }}
+                    <motion.div
+                        animate={{ y: [0, 5, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="text-xs font-medium text-foreground-muted tracking-widest uppercase"
+                        className="flex flex-col items-center gap-1"
                     >
-                        Scroll
-                    </motion.span>
-                    <div className="w-[1px] h-16 bg-gradient-to-b from-neon-blue/0 via-neon-blue to-neon-blue/0 animate-pulse" />
+                        <span className="text-xs font-medium text-foreground-muted tracking-widest uppercase">
+                            Scroll
+                        </span>
+                        <svg
+                            className="w-4 h-4 text-neon-blue/70"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </motion.div>
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-neon-blue/0 via-neon-blue/50 to-neon-blue/0" />
                 </motion.div>
             )}
         </Section>
