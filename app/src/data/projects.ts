@@ -2,57 +2,61 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
     {
-        id: 'industrial-inspection',
-        slug: 'industrial-inspection',
+        id: "automated-knowledge-graph-generation",
+        slug: "automated-knowledge-graph-generation",
         hasDetailPage: true,
-        title: 'Industrial Inspection Pipeline',
-        shortDescription: 'Automated object detection, OWL knowledge graph export, multi-camera spatial reconciliation.',
-        fullDescription: 'A comprehensive computer vision solution designed to automate the quality control process in manufacturing. This system leverages deep learning for precise defect detection and integrates with semantic web technologies to provide structured, queryable data about production quality.',
-        tags: ['Python', 'PyTorch', 'React', 'RDF/OWL'],
+        title: "Bachelor thesis",
+        shortDescription: "Automated knowledge graph creation via multi-object detection for an AI maintenance assistant",
+        fullDescription: "This research project addresses the gap between visual object detection and structured knowledge representation. I developed a system that automatically converts bounding box data from images of industrial machines into formal Knowledge Graphs (RDF/OWL). These graphs serve as a structured knowledge base for Large Language Models (LLMs), enabling them to answer spatial and maintenance-related questions in an industrial context without hallucinations.",
+        tags: ["Python", "Semantic Web", "Computer Vision", "LLMs", "Research"],
         techStack: [
-            { name: 'Python' },
-            { name: 'PyTorch' },
-            { name: 'OpenCV' },
-            { name: 'FastAPI' },
-            { name: 'React' },
-            { name: 'RDF/OWL' }
+            { name: "Python" },
+            { name: "owlready2" },
+            { name: "RDF / OWL" },
+            { name: "DeepSeek / Llama / Qwen" },
+            { name: "SSD Object Detection" }
         ],
-        heroImage: '/images/projects/inspection.jpg',
-        galleryImages: [],
-        githubUrl: 'closed source',
+        heroImage: "/images/projects/thesis_bounding_boxes.jpg",
+        galleryImages: [
+            "/images/projects/thesis_flowchart.jpg",
+            "/images/projects/thesis_evaluation_charts.jpg",
+            "/images/projects/thesis_evaluation_charts2.jpg"
+        ],
+        link: "",
+        githubUrl: "https://github.com/Dramiley/Bachelorarbeit",
         details: {
-            problem: 'Manual inspection of industrial components was slow, inconsistent, and prone to human error. The lack of structured data made it difficult to analyze long-term quality trends or identify root causes of defects.',
-            problemImage: '',
-            solution: 'We developed an end-to-end automated pipeline. High-resolution cameras capture component images, which are processed by a custom-trained YOLOv8 model to detect defects. The results are spatially reconciled across multiple views and exported into an OWL knowledge graph, enabling complex semantic queries about defect types and locations.',
-            solutionImage: '',
-            architecture: 'The system consists of a distributed sensor network feeding into a central processing unit. The inference engine runs on edge devices for low latency, while the knowledge graph and analytics dashboard are hosted on a central server. Communication is handled via MQTT and REST APIs.',
+            problem: "Creating Knowledge Graphs manually is time-intensive and error-prone. While text-to-graph methods exist, there is a significant lack of automated approaches that transform visual object detection data into formal, logic-based knowledge structures that LLMs can process efficiently for industrial maintenance tasks.",
+            problemImage: "",
+            solution: "I designed and implemented a modular Python based pipeline (`OntologyGenerator.py`) that ingests CSV output from Multi-Object Detection models. Using geometric algorithms, it automatically derives semantic spatial relations (e.g., 'left_of', 'above', 'inside_of') and instantiates them into an OWL ontology. The system supports multi-camera fusion to minimize the uncertainty and problems of object detection.",
+            solutionImage: "",
+            architecture: "The system processes annotated image data (CSV) containing bounding boxes. It calculates the center of each object and applies threshold-based logic to determine spatial relationships. It utilizes `owlready2` to generate standard-compliant RDF triples. The output was evaluated against four LLMs (DeepSeek-R1, DeepSeek-V3, Llama 3.1, Qwen 2.5) using specific metrics for correctness and completeness.",
             features: [
-                { title: 'Real-time Detection', description: 'Process video streams at 30fps with <50ms latency.' },
-                { title: 'Spatial Reconciliation', description: 'Map 2D detections from multiple cameras to 3D component coordinates.' },
-                { title: 'Semantic Export', description: 'Output inspection results as RDF triples for integration with enterprise knowledge bases.' },
-                { title: 'Interactive Dashboard', description: 'React-based frontend for monitoring inspection status and visualizing defect statistics.' }
+                { title: "Geometric Relation Extraction", description: "Algorithms to automatically determine 'above', 'below', 'left_to', and 'inside_of' relations based on pixel coordinates." },
+                { title: "Multi-Camera Fusion", description: "Logic to merge object detection data from multiple angles into a single consistent Knowledge Graph." },
+                { title: "Implicit vs. Explicit Modeling", description: "Implemented variants to test graph compactness versus semantic completeness for LLM processing." },
+                { title: "LLM Integration", description: "Evaluated different serialization formats (OWL vs. Triples) to optimize LLM reasoning capabilities." }
             ],
             timeline: [
-                { date: 'Jan 2024', title: 'Project Kickoff', description: 'Requirements gathering and hardware selection.' },
-                { date: 'Mar 2024', title: 'Prototype', description: 'Initial model training and single-camera proof of concept.' },
-                { date: 'May 2024', title: 'Integration', description: 'Multi-camera setup and knowledge graph integration.' },
-                { date: 'Jul 2024', title: 'Deployment', description: 'Pilot deployment on the factory floor.' }
+                { date: "May 2025", title: "Research & Concept", description: "Analyzing state of the art in Semantic Web and Object Detection." },
+                { date: "Jun 2025", title: "Implementation", description: "Developing the Python generator and relation logic algorithms." },
+                { date: "Sep 2025", title: "Submission", description: "Final evaluation of LLM performance and thesis submission at TU Dresden." },
+                { date: "Oct 2025", title: "Defense", description: "Final defense of thesis at TU Dresden. Received a grade of 1.4" }
             ]
-        }
+        },
     },
     {
         id: 'portfolio-website',
         slug: 'portfolio-website',
         hasDetailPage: true,
         title: 'Portfolio Website',
-        shortDescription: 'A data-driven portfolio website to showcase my skills and projects.',
-        fullDescription: 'A personal portfolio designed to be more than just a resume. It serves as a playground for experimenting with modern web technologies, motion design, and accessible UI patterns. The site is built for performance, achieving perfect Lighthouse scores while delivering a rich, immersive user experience.',
-        tags: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Framer Motion'],
+        shortDescription: 'A motion-first, hyper-responsive portfolio that evolved from a simple showcase into a technical playground.',
+        fullDescription: 'What started as a straightforward portfolio quickly became an exploration of modern web capabilities. Through multiple iterations, I refined the design into a motion-first experience with glassmorphic UI, scroll-linked animations, and thoughtful microinteractions. The site balances visual richness with accessibility and performance—a learning journey as much as a finished product.',
+        tags: ['Next.js', 'React', 'TypeScript', 'Framer Motion', 'Accessibility'],
         techStack: [
-            { name: 'Next.js 16' },
+            { name: 'Next.js 15' },
             { name: 'React 19' },
             { name: 'TypeScript' },
-            { name: 'Tailwind CSS 4' },
+            { name: 'Tailwind CSS' },
             { name: 'Framer Motion' }
         ],
         heroImage: '/images/projects/portfolio.jpg',
@@ -60,21 +64,24 @@ export const projects: Project[] = [
         link: 'https://robinmorgenstern.dev',
         githubUrl: 'https://github.com/Dramiley/PortfolioWebsite/tree/main',
         details: {
-            problem: 'Existing portfolio templates felt static and generic. I needed a platform that could showcase my technical skills not just through content, but through the implementation itself. It also needed to be easy to maintain without touching code for every content update.',
+            problem: 'Most portfolios feel like static resumes. I wanted something that could demonstrate technical skills through execution itself—not just describe them. The challenge was creating a memorable experience without sacrificing maintainability, performance, or accessibility.',
             problemImage: '',
-            solution: 'I architected a completely data-driven solution. All content—projects, skills, experience—is stored in typed data files. The frontend dynamically renders this content, ensuring that the design remains consistent. I implemented a custom "Ambient Background" and physics-based interactions to give the site a unique, premium feel.',
+            solution: 'I built a fully data-driven architecture where content lives in typed TypeScript files, separate from presentation. This let me iterate rapidly on design while keeping content updates simple. The site evolved through several redesigns, adding sophisticated motion systems, glassmorphic effects, and interactive elements. Each iteration taught me something about balancing aesthetics with usability.',
             solutionImage: '',
-            architecture: 'The site uses Next.js App Router for server-side rendering and static generation. Framer Motion handles all animations, including complex scroll-linked effects. Tailwind CSS provides a utility-first styling engine, configured with a custom design system for consistent theming.',
+            architecture: 'Built on Next.js 15 with App Router for optimal performance. Framer Motion powers complex orchestrated animations, scroll-triggered reveals, and page transitions. The design system uses CSS custom properties for theming with a Deep Navy background, Vibrant Orange accents, and Neon Blue highlights. Glassmorphism and backdrop filters add depth. All animations respect prefers-reduced-motion for accessibility.',
             features: [
-                { title: 'Data-Driven Content', description: 'Add new projects or skills by simply editing a JSON-like structure.' },
-                { title: 'Ambient Background', description: 'Custom canvas-based animation that reacts to mouse movement.' },
-                { title: 'Physics Interactions', description: 'Magnetic buttons and 3D tilt effects for a tactile feel.' },
-                { title: 'Perfect Performance', description: '100/100 Lighthouse scores for Performance, Accessibility, Best Practices, and SEO.' }
+                { title: 'Motion-First Design', description: 'Scroll-linked parallax, orchestrated section reveals, and physics-based interactions create a living interface that responds naturally to user input.' },
+                { title: 'Glassmorphic UI', description: 'Layered transparency effects with backdrop blur, subtle borders, and controlled opacity for depth without visual clutter.' },
+                { title: 'Ambient Background', description: 'Canvas-based animated blobs that react to mouse movement and scroll position, adding atmosphere while staying performant.' },
+                { title: 'Accessible by Design', description: 'Semantic HTML, keyboard navigation, ARIA labels, and reduced-motion support ensure the site works for everyone.' },
+                { title: 'Data-Driven Content', description: 'Projects, skills, and experience are defined in typed data files, making updates straightforward without touching components.' },
+                { title: 'Lightbox Gallery', description: 'Fullscreen image viewing with keyboard navigation, thumbnails, and smooth transitions for showcasing project visuals.' }
             ],
             timeline: [
-                { date: 'Nov 2024', title: 'Design & Planning', description: 'Defining the aesthetic and technical requirements.' },
-                { date: 'Nov 2024', title: 'Development', description: 'Core component implementation and motion design.' },
-                { date: 'Nov 2024', title: 'Launch', description: 'Deployment to Vercel and final polish.' }
+                { date: 'Oct 2024', title: 'Concept & Planning', description: 'Defining the aesthetic and technical requirements.' },
+                { date: 'Nov 2024', title: 'Initial Build and Premium Redesign', description: 'Set up Next.js architecture with basic components and data structure. Overhauled with Vibrant Orange / Neon Blue palette, glassmorphism, and scroll animations.' },
+                { date: 'Nov 2024', title: 'Motion Refinement', description: 'Added ambient background, physics interactions, and microanimations throughout.' },
+                { date: 'Nov 2024', title: 'Polish & Accessibility', description: 'Improved motion quality, added reduced-motion support, and refined responsive behavior.' }
             ]
         }
     },

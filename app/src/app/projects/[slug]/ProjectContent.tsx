@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Section } from '@/components/Section';
 import AmbientBackground from '@/components/AmbientBackground';
 import { BackToProjectsButton } from '@/components/BackToProjectsButton';
+import { ImageGallery } from '@/components/ImageGallery';
 import { Project } from '@/types';
 
 export default function ProjectContent({ project }: { project: Project }) {
@@ -210,6 +211,14 @@ export default function ProjectContent({ project }: { project: Project }) {
                     ))}
                 </div>
             </Section>
+
+            {/* Gallery (Optional) */}
+            {project.galleryImages && project.galleryImages.length > 0 && (
+                <Section className="py-20">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center">Project Gallery</h2>
+                    <ImageGallery images={project.galleryImages} projectTitle={project.title} />
+                </Section>
+            )}
 
             {/* Timeline (Optional) */}
             {project.details.timeline && (
