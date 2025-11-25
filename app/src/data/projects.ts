@@ -53,7 +53,7 @@ export const projects: Project[] = [
         title: 'AI Maintenance Assistant',
         shortDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
         fullDescription: 'A comprehensive hardware and software solution designed to assist technicians during complex maintenance tasks. By integrating a Raspberry Pi with a finetuned SSD Object Detection model, this system identifies machinery components in real-time. It leverages Large Language Models (LLMs) to provide context-aware answers to maintenance questions and utilizes a projector to overlay visual guidance directly onto the equipment.',
-        tags: ['Python', 'Tensorflow', 'Docker', 'OpenCV', 'LLMs', 'Raspberry Pi'],
+        tags: ['Python', 'Tensorflow', 'Docker', 'LLMs', 'Raspberry Pi'],
         techStack: [
             { name: 'Python' },
             { name: 'Tensorflow' },
@@ -72,6 +72,7 @@ export const projects: Project[] = [
             problemImage: '',
             solution: 'We developed an AR-capable AI assistant that identifies components in real-time using Computer Vision. By projecting information directly onto the equipment and allowing natural language Q&A via LLMs, technicians receive immediate, hands-free guidance.',
             solutionImage: '',
+            architecture: 'The system follows a distributed client-server model. The Raspberry Pi functions as the edge device, managing the camera input, calibration, and projector output for the AR overlay. The backend consists of a Dockerized server environment that hosts the computation-heavy SSD Object Detection model and LLM logic. Python scripts facilitate real-time network communication, transmitting images for inference and returning bounding box coordinates and textual guidance to the edge device for immediate visualization.',
             features: [
                 { title: 'Object Detection', description: 'Object Detection finetuned on own created dataset of maintenance tasks.' },
                 { title: 'Raspberry Pi', description: 'Integration of Raspberry Pi for real-time object detection and visual feedback.' },
