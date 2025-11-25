@@ -15,7 +15,7 @@ export const siteConfig: SiteConfig = {
     subtitle: "Bachelor of Science in Computer Science",
     social: {
         github: "https://github.com/Dramiley",
-        linkedin: "https://www.linkedin.com/in/robin-morgenstern-5338ab2a1/",
+        linkedin: "www.linkedin.com/in/robin-morgenstern",
         email: "morgensternrobin04@gmail.com"
     },
     sections: {
