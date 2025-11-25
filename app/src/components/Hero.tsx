@@ -129,13 +129,16 @@ export const Hero = () => {
                     className="flex flex-col items-start"
                 >
                     <motion.div variants={itemVariants} className="mb-6">
-                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-blue/5 border border-neon-blue/20 text-neon-blue text-xs font-medium tracking-wider shadow-[0_0_15px_rgba(14,165,233,0.15)] backdrop-blur-sm">
+                        <a
+                            href="#contact"
+                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-blue/5 border border-neon-blue/20 text-neon-blue text-xs font-medium tracking-wider shadow-[0_0_15px_rgba(14,165,233,0.15)] backdrop-blur-sm transition-all duration-300 hover:bg-neon-blue/10 hover:border-neon-blue/40 hover:shadow-[0_0_25px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95 cursor-pointer"
+                        >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-blue shadow-[0_0_8px_rgba(14,165,233,0.6)]"></span>
                             </span>
                             {siteConfig.sections.hero.availableForWork}
-                        </span>
+                        </a>
                     </motion.div>
 
                     <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 text-foreground leading-[1.1]">
