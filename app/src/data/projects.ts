@@ -14,9 +14,10 @@ export const projects: Project[] = [
             { name: "owlready2" },
             { name: "RDF / OWL" },
             { name: "DeepSeek / Llama / Qwen" },
-            { name: "SSD Object Detection" }
+            { name: "SSD Object Detection" },
+            { name: 'Git' }
         ],
-        heroImage: "/images/projects/thesis_bounding_boxes.jpg",
+        heroImage: "/images/projects/thesis_flowchart.jpg",
         galleryImages: [
             "/images/projects/thesis_flowchart.jpg",
             "/images/projects/thesis_evaluation_charts.jpg",
@@ -44,6 +45,48 @@ export const projects: Project[] = [
             ]
         },
     },
+
+    {
+        id: 'ai-maintenance-assistant',
+        slug: 'ai-maintenance-assistant',
+        hasDetailPage: true,
+        title: 'AI Maintenance Assistant',
+        shortDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
+        fullDescription: 'A comprehensive hardware and software solution designed to assist technicians during complex maintenance tasks. By integrating a Raspberry Pi with a finetuned SSD Object Detection model, this system identifies machinery components in real-time. It leverages Large Language Models (LLMs) to provide context-aware answers to maintenance questions and utilizes a projector to overlay visual guidance directly onto the equipment.',
+        tags: ['Python', 'Tensorflow', 'Docker', 'OpenCV', 'LLMs', 'Raspberry Pi'],
+        techStack: [
+            { name: 'Python' },
+            { name: 'Tensorflow' },
+            { name: 'Docker' },
+            { name: 'Raspberry Pi' },
+            { name: 'SSD Object Detection' },
+            { name: 'LLMs' },
+            { name: 'Git' }
+        ],
+        heroImage: '/images/projects/bounding_boxes.jpg',
+        galleryImages: [],
+        link: '',
+        githubUrl: 'closed source',
+        details: {
+            problem: "Expert supervision isn't always available, and technicians often struggle to identify specific components in complex machinery using inefficient paper manuals.",
+            problemImage: '',
+            solution: 'We developed an AR-capable AI assistant that identifies components in real-time using Computer Vision. By projecting information directly onto the equipment and allowing natural language Q&A via LLMs, technicians receive immediate, hands-free guidance.',
+            solutionImage: '',
+            features: [
+                { title: 'Object Detection', description: 'Object Detection finetuned on own created dataset of maintenance tasks.' },
+                { title: 'Raspberry Pi', description: 'Integration of Raspberry Pi for real-time object detection and visual feedback.' },
+                { title: 'Docker', description: 'Integration of Docker for containerization of the object detection model for easy deployment on servers.' },
+                { title: 'Python Scripts', description: 'Python scripts are used to control the Raspberry Pi and the server.' },
+            ],
+            timeline: [
+                { date: "Feb 2024", title: "Finetuning Object Detection", description: "Finetuning SSD Object Detection on own created dataset of maintenance tasks." },
+                { date: "Sep 2024", title: "Development of Raspberry Pi", description: "Developing the Python backend for the Server and the Raspberry Pi." },
+                { date: "Apr 2025", title: "Added more features to the Raspberry Pi", description: "Added image checking, camera calibration, network-wide server scanner and visualization of the object detection with a beamer." },
+                { date: "Oct 2025", title: "Research for further development", description: "Researching if implementation of the results of my bachelor's thesis is possible or if we should train a new scene graph generation model." },
+            ]
+        }
+    },
+
     {
         id: 'portfolio-website',
         slug: 'portfolio-website',
@@ -57,7 +100,8 @@ export const projects: Project[] = [
             { name: 'React 19' },
             { name: 'TypeScript' },
             { name: 'Tailwind CSS' },
-            { name: 'Framer Motion' }
+            { name: 'Framer Motion' },
+            { name: 'Git' }
         ],
         heroImage: '/images/projects/portfolio.jpg',
         galleryImages: [],
@@ -82,38 +126,6 @@ export const projects: Project[] = [
                 { date: 'Nov 2024', title: 'Initial Build and Premium Redesign', description: 'Set up Next.js architecture with basic components and data structure. Overhauled with Vibrant Orange / Neon Blue palette, glassmorphism, and scroll animations.' },
                 { date: 'Nov 2024', title: 'Motion Refinement', description: 'Added ambient background, physics interactions, and microanimations throughout.' },
                 { date: 'Nov 2024', title: 'Polish & Accessibility', description: 'Improved motion quality, added reduced-motion support, and refined responsive behavior.' }
-            ]
-        }
-    },
-    {
-        id: 'ai-maintenance-assistant',
-        slug: 'ai-maintenance-assistant',
-        hasDetailPage: true,
-        title: 'AI Maintenance Assistant',
-        shortDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
-        fullDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
-        tags: ['Python', 'Tensorflow', 'Docker', 'OpenCV', 'LLMs', 'Raspberry Pi'],
-        techStack: [
-            { name: 'Python' },
-            { name: 'Tensorflow' },
-            { name: 'Docker' },
-            { name: 'Raspberry Pi' },
-            { name: 'SSD Object Detection' },
-            { name: 'LLMs' }
-        ],
-        heroImage: '',
-        galleryImages: [],
-        link: '',
-        githubUrl: 'closed source',
-        details: {
-            problem: 'Different teams were building inconsistent UIs, leading to a fragmented user experience and duplicated effort.',
-            problemImage: '',
-            solution: 'We established a centralized design system with strict accessibility standards. We used Storybook for documentation and automated testing to ensure component reliability.',
-            solutionImage: '',
-            features: [
-                { title: 'Accessible Components', description: 'WCAG 2.1 AA compliant components.' },
-                { title: 'Live Documentation', description: 'Interactive playground for developers.' },
-                { title: 'Theming Engine', description: 'Support for light/dark modes and custom branding.' }
             ]
         }
     }
