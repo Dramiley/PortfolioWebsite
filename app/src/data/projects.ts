@@ -49,8 +49,8 @@ export const projects: Project[] = [
         slug: 'portfolio-website',
         hasDetailPage: true,
         title: 'Portfolio Website',
-        shortDescription: 'A motion-first, hyper-responsive portfolio that evolved from a simple showcase into a technical playground.',
-        fullDescription: 'What started as a straightforward portfolio quickly became an exploration of modern web capabilities. Through multiple iterations, I refined the design into a motion-first experience with glassmorphic UI, scroll-linked animations, and thoughtful microinteractions. The site balances visual richness with accessibility and performance—a learning journey as much as a finished product.',
+        shortDescription: 'A motion-first, responsive portfolio that shows off my skills and projects.',
+        fullDescription: 'What started as a straightforward portfolio quickly became an exploration of modern web capabilities. Through multiple iterations, I refined the design into a motion-first experience with glassmorphic UI, scroll-linked animations, and thoughtful microinteractions. The site balances visual richness with accessibility and performance.',
         tags: ['Next.js', 'React', 'TypeScript', 'Framer Motion', 'Accessibility'],
         techStack: [
             { name: 'Next.js 15' },
@@ -64,7 +64,7 @@ export const projects: Project[] = [
         link: 'https://robinmorgenstern.dev',
         githubUrl: 'https://github.com/Dramiley/PortfolioWebsite/tree/main',
         details: {
-            problem: 'Most portfolios feel like static resumes. I wanted something that could demonstrate technical skills through execution itself—not just describe them. The challenge was creating a memorable experience without sacrificing maintainability, performance, or accessibility.',
+            problem: 'Most portfolios feel like static resumes. I wanted something that could demonstrate technical skills through execution itself,not just describe them. The challenge was creating a memorable experience without sacrificing maintainability, performance, or accessibility.',
             problemImage: '',
             solution: 'I built a fully data-driven architecture where content lives in typed TypeScript files, separate from presentation. This let me iterate rapidly on design while keeping content updates simple. The site evolved through several redesigns, adding sophisticated motion systems, glassmorphic effects, and interactive elements. Each iteration taught me something about balancing aesthetics with usability.',
             solutionImage: '',
