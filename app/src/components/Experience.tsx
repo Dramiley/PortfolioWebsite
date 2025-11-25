@@ -10,6 +10,7 @@ import { experience } from '@/data/experience';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
+import { useState } from 'react';
 
 import { useMobile } from '@/hooks/useMobile';
 
@@ -21,12 +22,14 @@ import { useMobile } from '@/hooks/useMobile';
  * - Alternating layout for desktop
  * - Responsive design for mobile
  * - Animated entry for timeline items
+ * - Interactive timeline dots with hover effects
  * 
  * @returns {JSX.Element} The rendered Experience section.
  */
 export const Experience = () => {
     const { effectsEnabled } = useEffects();
     const isMobile = useMobile();
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
         <Section id="experience">
@@ -58,11 +61,42 @@ export const Experience = () => {
                             }`}
                     >
                         {/* Timeline Dot */}
-                        <div className="absolute left-0 top-0 w-14 h-14 flex items-center justify-center md:left-1/2 md:-ml-7">
-                            <div className="w-4 h-4 rounded-full bg-neon-blue shadow-[0_0_10px_rgba(89,223,255,0.6)] z-10" />
+                        <div className="absolute left-0 top-0 w-14 h-14 flex items-center justify-center md:left-1/2 md:-ml-7 pointer-events-none">
+                            <motion.div
+                                className="relative rounded-full bg-neon-blue z-10"
+                                animate={{
+                                    width: hoveredIndex === index ? '18px' : '16px',
+                                    height: hoveredIndex === index ? '18px' : '16px',
+                                    boxShadow: hoveredIndex === index
+                                        ? '0 0 15px rgba(89,223,255,0.8), 0 0 25px rgba(89,223,255,0.3)'
+                                        : '0 0 10px rgba(89,223,255,0.6)',
+                                }}
+                                transition={{ duration: 0.3, ease: "easeOut" }}
+                            >
+                                {/* Subtle pulsing ring on hover */}
+                                {hoveredIndex === index && (
+                                    <motion.div
+                                        className="absolute inset-0 rounded-full border-2 border-neon-blue"
+                                        initial={{ scale: 1, opacity: 0 }}
+                                        animate={{
+                                            scale: [1, 1.5, 1],
+                                            opacity: [0.6, 0, 0.6],
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            repeat: Infinity,
+                                            ease: "easeOut"
+                                        }}
+                                    />
+                                )}
+                            </motion.div>
                         </div>
 
-                        <div className="ml-16 md:ml-0 md:w-1/2 p-6 bg-background-secondary/50 backdrop-blur-sm border border-white/5 rounded-2xl hover:border-neon-blue/30 transition-all duration-300">
+                        <div
+                            className="ml-16 md:ml-0 md:w-1/2 p-6 bg-background-secondary/50 backdrop-blur-sm border border-white/5 rounded-2xl hover:border-neon-blue/30 transition-all duration-300"
+                            onMouseEnter={() => setHoveredIndex(index)}
+                            onMouseLeave={() => setHoveredIndex(null)}
+                        >
                             <div className="flex flex-col mb-4">
                                 <h3 className="text-xl font-bold text-white">{job.role}</h3>
                                 <span className="text-primary font-medium">{job.company}</span>
