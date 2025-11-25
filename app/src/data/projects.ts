@@ -170,5 +170,43 @@ export const projects: Project[] = [
                 { date: '', title: '', description: '' }
             ]
         }
+    },
+
+    {
+        id: 'robolab',
+        slug: 'robolab',
+        hasDetailPage: false,
+        title: 'Robolab',
+        shortDescription: 'A short 14 day project at the TU Dresden where we built a robot to navigate a maze.',
+        fullDescription: '',
+        tags: ['Python'],
+        techStack: [
+            { name: 'Python' },
+        ],
+        heroImage: '/images/projects/robolab.jpg',
+        galleryImages: [],
+        link: '',
+        githubUrl: 'https://github.com/Dramiley/Robolab23',
+        details: {
+            problem: '',
+            problemImage: '',
+            solution: '',
+            solutionImage: '',
+            architecture: '',
+            features: [
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' }
+            ],
+            timeline: [
+                { date: '', title: '', description: '' },
+                { date: '', title: '', description: '' },
+                { date: '', title: '', description: '' },
+                { date: '', title: '', description: '' }
+            ]
+        }
     }
 ];
