@@ -129,5 +129,46 @@ export const projects: Project[] = [
                 { date: 'Nov 2024', title: 'Polish & Accessibility', description: 'Improved motion quality, added reduced-motion support, and refined responsive behavior.' }
             ]
         }
+    },
+
+    {
+        id: 'software-technology-internship',
+        slug: 'software-technology-internship',
+        hasDetailPage: false,
+        title: 'Software Technology Internship',
+        shortDescription: 'A small, 10 week internship at the TU Dresden.',
+        fullDescription: '',
+        tags: ['Java', 'Spring Boot', 'JavaScript'],
+        techStack: [
+            { name: 'Java' },
+            { name: 'Spring Boot' },
+            { name: 'JavaScript' },
+            { name: 'Git' }
+        ],
+        heroImage: '/images/projects/swt_praktikum.jpg',
+        galleryImages: [],
+        link: '',
+        githubUrl: 'https://github.com/Dramiley/swt23w30/tree/main',
+        details: {
+            problem: '',
+            problemImage: '',
+            solution: '',
+            solutionImage: '',
+            architecture: '',
+            features: [
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' },
+                { title: '', description: '' }
+            ],
+            timeline: [
+                { date: '', title: '', description: '' },
+                { date: '', title: '', description: '' },
+                { date: '', title: '', description: '' },
+                { date: '', title: '', description: '' }
+            ]
+        }
     }
 ];
