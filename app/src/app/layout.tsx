@@ -19,6 +19,31 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Robin Morgenstern",
   description: "Portfolio of Robin Morgenstern",
+  openGraph: {
+    title: "Robin Morgenstern | Portfolio",
+    description: "Portfolio of Robin Morgenstern - Software Engineer",
+    siteName: "Robin Morgenstern Portfolio",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Robin Morgenstern Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Robin Morgenstern | Portfolio",
+    description: "Portfolio of Robin Morgenstern - Software Engineer",
+    images: ["/images/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
