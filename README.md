@@ -90,13 +90,4 @@ src/
 - **Motion**: Animations are handled by Framer Motion.
 - **Linting**: ESLint configuration is provided in `eslint.config.mjs`.
 
-### Scripts
-- `npm run dev`: Start development server.
-- `npm run build`: Build for production.
-- `npm run start`: Start production server.
-- `npm run lint`: Run ESLint.
 
-## Roadmap & Limitations
-
-- **Gallery Support**: Project gallery image rendering is currently in progress.
-- **Testing**: Comprehensive unit and integration tests are planned for future updates.
