@@ -1,32 +1,59 @@
-# Robin Morgenstern
+# Portfolio Website
 
-A high-performance, interactive portfolio built to demonstrate modern web capabilities. This project focuses on fluid motion, reactive design, and a polished user experience.
+A high-performance, interactive portfolio built with Next.js 16, React 19, and Tailwind CSS 4. This project implements a reactive, motion-first design system featuring ambient background effects, physics-based UI interactions, and seamless state preservation across routes. It is designed for performance, accessibility, and ease of maintenance.
 
-## Overview
+## Features
 
-Built with **Next.js 16** and **React 19**, this application leverages **Framer Motion** for complex orchestrations and **Tailwind CSS 4** for a streamlined styling engine. The goal was to move beyond static templates and create an environment that feels alive—responding to mouse movement, scroll position, and user interaction.
+- **Ambient Interactivity**: Custom background system with wandering light sources and parallax depth reacting to cursor movement.
+- **Physics-Based UI**: 3D tilt effects and magnetic button interactions.
+- **Scroll-Linked Navigation**: Floating sidebar that dynamically tracks viewport intersection.
+- **Dynamic Routing**: Conditional routing for project details (`/projects/[slug]`) vs. modal views.
+- **State Preservation**: Custom navigation management preserves scroll position and UI state between views.
+- **Data-Driven Architecture**: Content, projects, and skills are managed via centralized data files, decoupling content from presentation.
+- **Performance**: Optimized for Core Web Vitals with efficient re-renders and hardware-accelerated animations.
+- **Accessibility**: Full keyboard navigation support and adherence to `prefers-reduced-motion`.
 
-### Key Features
+## Installation
 
-- **Ambient Interactivity**: A custom background system (`AmbientBackground.tsx`) that generates wandering light sources and reacts to cursor movement with parallax depth.
-- **Physics-Based UI**: 3D tilt effects on the hero profile and magnetic button interactions that follow the cursor.
-- **Scroll-Linked Navigation**: A floating sidebar that tracks viewport intersection to highlight the active section dynamically.
-- **Dynamic Project Routes**: Conditional routing system that generates dedicated pages (`/projects/[slug]`) for featured projects while maintaining a lightweight modal view for others.
-- **State Preservation**: Robust navigation state management that preserves scroll position and UI state when navigating between project details and the main portfolio, eliminating visual disruptions.
-- **Data-Driven Architecture**: Content is decoupled from presentation. All text, projects, and skills are managed in `src/data/`, making updates trivial without touching React components.
-- **Performance First**: Optimized for Core Web Vitals with efficient re-renders and hardware-accelerated animations.
+Ensure you have Node.js installed.
 
-## Tech Stack
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd PortfolioWebsite
+    ```
 
-- **Framework**: Next.js 16 (App Router)
-- **Core**: React 19, TypeScript
-- **Styling**: Tailwind CSS 4
-- **Motion**: Framer Motion
-- **Tooling**: ESLint, PostCSS
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+### Development Server
+Start the local development server:
+```bash
+npm run dev
+```
+The application will be available at `http://localhost:3000`.
+
+### Production Build
+Build the application for production:
+```bash
+npm run build
+```
+
+Start the production server:
+```bash
+npm start
+```
 
 ## Configuration
 
-The site is designed to be easily customized. All personal information and content are located in `src/data/config.ts`.
+The application is configured via TypeScript files in `src/data/`.
+
+### Site Configuration
+General site settings (name, tagline, contact info) are in `src/data/config.ts`:
 
 ```typescript
 // src/data/config.ts
@@ -37,53 +64,39 @@ export const siteConfig = {
 };
 ```
 
-### Managing Projects
+### Project Management
+Projects are defined in `src/data/projects.ts`. Each entry supports:
+- `hasDetailPage`: Boolean to toggle between dedicated page and modal view.
+- `slug`: URL identifier.
+- `details`: Extended metadata for deep-dive pages.
 
-Projects are defined in `src/data/projects.ts`. Each project supports:
-- Dynamic detail pages (`hasDetailPage: true`) for in-depth case studies
-- Inline modal views (`hasDetailPage: false`) for lightweight presentations
-- Rich metadata including tech stack, timeline, and feature breakdowns
+Refer to `PROJECT_GUIDE.md` for the complete schema and examples.
 
-See [PROJECT_GUIDE.md](PROJECT_GUIDE.md) for detailed instructions on adding projects.
+## Folder Structure
 
-## Development
+```
+src/
+├── app/              # Next.js App Router pages and layouts
+├── components/       # Reusable UI components
+├── context/          # Global state (e.g., EffectsContext)
+├── data/             # Centralized content and configuration
+├── hooks/            # Custom hooks (scroll restoration, etc.)
+└── types/            # TypeScript definitions
+```
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+## Development Notes
 
-2. **Start the dev server**:
-   ```bash
-   npm run dev
-   ```
+- **Styling**: Uses Tailwind CSS 4. Global styles are defined in `src/app/globals.css`.
+- **Motion**: Animations are handled by Framer Motion.
+- **Linting**: ESLint configuration is provided in `eslint.config.mjs`.
 
-3. **Build for production**:
-   ```bash
-   npm run build
-   ```
+### Scripts
+- `npm run dev`: Start development server.
+- `npm run build`: Build for production.
+- `npm run start`: Start production server.
+- `npm run lint`: Run ESLint.
 
-## Project Structure
+## Roadmap & Limitations
 
-- `src/app`: Next.js App Router pages and layouts
-  - `projects/[slug]`: Dynamic project detail pages
-- `src/components`: Reusable UI components and section layouts
-- `src/context`: Global state management (e.g., `EffectsContext` for toggling animations)
-- `src/data`: Centralized content and configuration
-- `src/hooks`: Custom hooks for responsive logic, scroll restoration, and more
-- `src/types`: TypeScript definitions for data consistency
-
-## Navigation & State Management
-
-This portfolio implements a sophisticated state preservation system using sessionStorage snapshots and the History API. When navigating to project details, the current scroll position is saved and restored upon return, ensuring the Projects section appears exactly as you left it. Both "Back" buttons (top and bottom) on project pages use a unified component to guarantee identical behavior across all navigation methods.
-
-## Accessibility
-
-- Respects `prefers-reduced-motion` for users with motion sensitivity
-- Keyboard navigation fully supported across all interactive elements
-- Semantic HTML structure for screen reader compatibility
-- Focus management ensures intuitive tab order
-
----
-
-© 2025 Robin Morgenstern. Built with precision.
+- **Gallery Support**: Project gallery image rendering is currently in progress.
+- **Testing**: Comprehensive unit and integration tests are planned for future updates.
