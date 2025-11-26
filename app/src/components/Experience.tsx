@@ -47,7 +47,7 @@ export const Experience = () => {
 
             <div className="space-y-8 relative">
                 {/* Vertical Line */}
-                <div className="absolute left-[28px] top-0 bottom-0 w-[2px] bg-white/10 md:left-[50%] md:-ml-[1px]" />
+                <div className="absolute left-7 -ml-[1px] top-0 bottom-0 w-[2px] bg-white/10 md:left-[50%]" />
 
                 {experience.map((job, index) => (
                     <motion.div
