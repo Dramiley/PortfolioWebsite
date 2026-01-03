@@ -5,6 +5,8 @@ export const skills: Skill[] = [
     { name: 'Java', category: 'backend', level: 'Intermediate' },
     { name: 'C#', category: 'backend', level: 'Basic' },
     { name: 'Tensorflow', category: 'backend', level: 'Intermediate' },
+    { name: 'PyTorch', category: 'backend', level: 'Basic' },
+    { name: 'Transformers', category: 'backend', level: 'Basic' },
     { name: 'Flask', category: 'backend', level: 'Basic' },
     { name: 'Node.js', category: 'backend', level: 'Basic' },
     { name: 'Next.js', category: 'frontend', level: 'Basic' },

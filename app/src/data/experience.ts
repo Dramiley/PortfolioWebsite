@@ -7,7 +7,7 @@ export const experience: Experience[] = [
         company: 'own business',
         period: '2025 - Present',
         description: [
-            'Developing a web application for myself',
+            'Small independent software projects for clients',
         ]
     },
     {

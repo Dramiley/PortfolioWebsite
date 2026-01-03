@@ -75,16 +75,62 @@ export const projects: Project[] = [
             solutionImage: '',
             architecture: 'The system follows a distributed client-server model. The Raspberry Pi functions as the edge device, managing the camera input, calibration, and projector output for the AR overlay. The backend consists of a Dockerized server environment that hosts the computation-heavy SSD Object Detection model and LLM logic. Python scripts facilitate real-time network communication, transmitting images for inference and returning bounding box coordinates and textual guidance to the edge device for immediate visualization.',
             features: [
-                { title: 'Object Detection', description: 'Object Detection finetuned on own created dataset of maintenance tasks.' },
+                { title: 'Object Detection', description: 'Fine-tuned SSD Object Detection on a custom-curated dataset of maintenance tasks.' },
                 { title: 'Raspberry Pi', description: 'Integration of Raspberry Pi for real-time object detection and visual feedback.' },
-                { title: 'Docker', description: 'Integration of Docker for containerization of the object detection model for easy deployment on servers.' },
+                { title: 'Docker', description: 'Dockerized architecture ensuring consistent deployment across edge (Pi) and server environments' },
                 { title: 'Python Scripts', description: 'Python scripts are used to control the Raspberry Pi and the server.' },
             ],
             timeline: [
-                { date: "Feb 2024", title: "Finetuning Object Detection", description: "Finetuning SSD Object Detection on own created dataset of maintenance tasks." },
-                { date: "Sep 2024", title: "Development of Raspberry Pi", description: "Developing the Python backend for the Server and the Raspberry Pi." },
+                { date: "Feb 2024", title: "Finetuning Object Detection", description: "Fine-tuned SSD Object Detection on a custom-curated dataset of maintenance tasks." },
+                { date: "Sep 2024", title: "Development of Raspberry Pi", description: "Developed the Python backend for the Server and the Raspberry Pi." },
                 { date: "Apr 2025", title: "Added more features to the Raspberry Pi", description: "Added image checking, camera calibration, network-wide server scanner and visualization of the object detection with a beamer." },
-                { date: "Oct 2025", title: "Research for further development", description: "Researching if implementation of the results of my bachelor's thesis is possible or if we should train a new scene graph generation model." },
+                { date: "Oct 2025", title: "Future Roadmap Research", description: "Researched the viability of implementing thesis findings versus training a new scene graph generation model." },
+            ]
+        }
+    },
+    {
+        id: 'secret-llm-cultural-qa',
+        slug: 'secret-llm-cultural-qa',
+        hasDetailPage: true,
+        title: 'SecretLLM - Cultural QA System',
+        shortDescription: 'Optimizing Llama-3-8B for cultural reasoning for a 2 month project at TU Dresden.',
+        fullDescription: 'Developed for the "Behind the Secrets of Large Language Models" module at TU Dresden, this project addresses the "cultural gap" in standard LLMs. I engineered a question-answering system using Meta-Llama-3-8B that improves accuracy on cultural tasks. While Supervised Fine-Tuning (SFT) helped with format alignment, the implementation of a Dynamic Retrieval-Augmented Generation (RAG) system yielded the most significant results, increasing Short Answer Question (SAQ) accuracy by 0.16 over the baseline.\nFull project report can be found in the github repository.',
+        tags: ['Python', 'Transformers', 'Llama 3 8B', 'RAG', 'Fine-tuning'],
+        techStack: [
+            { name: 'Python' },
+            { name: 'Transformers' },
+            { name: 'Sentence Transformers' },
+            { name: 'PEFT / LoRA' },
+            { name: 'Llama 3 8B' },
+            { name: 'Hugging Face' },
+            { name: 'WandB' },
+            { name: 'BitsAndBytes' }
+        ],
+        heroImage: '/images/projects/eval-accuarcy.jpg',
+        galleryImages: [
+            '/images/projects/rag_architecture.jpg',
+            '/images/projects/eval-accuarcy.jpg',
+            '/images/projects/eval-loss.jpg',
+        ],
+        link: '',
+        githubUrl: 'https://github.com/Dramiley/SecretLLM-Project',
+        details: {
+            problem: 'Standard Large Language Models often exhibit Western-centric biases and lack the nuance required for specific cultural queries. Additionally, the 8B parameter model struggled with strict output formatting (JSON) and zero-shot reasoning for complex Short Answer Questions (SAQ), often leading to "instruction drift".',
+            problemImage: '',
+            solution: 'I moved from complex JSON prompts to simplified natural language instructions and implemented a "Dynamic Few-Shot" RAG framework. By converting Multiple Choice data into Short Answer pairs, I created an augmented knowledge base. For every incoming query, the system retrieves and injects the top-k = 3 semantically similar examples into the prompt, grounding the model in relevant cultural context.',
+            solutionImage: '',
+            architecture: 'The solution utilizes the Llama-3-8B model with 4-bit quantization (NF4) for efficiency. It employs `all-MiniLM-L6-v2` for semantic embedding and retrieval. The pipeline includes a data augmentation stage where training data is stripped of options to create direct QA pairs. Inference uses Greedy Search to ensure deterministic and concise outputs required by the evaluation script.',
+            features: [
+                { title: 'Dynamic RAG', description: 'Retrieval system that injects semantically relevant "in-context" examples for each specific query, boosting SAQ accuracy by 16%.' },
+                { title: 'Data Augmentation', description: 'Automated pipeline to transform MCQ datasets into SAQ pairs, effectively doubling the training resources for the retrieval corpus.' },
+                { title: 'Efficient Fine-Tuning', description: 'Used LoRA (Low-Rank Adaptation) and quantization to fine-tune the 8B model on limited hardware, optimizing for task alignment.' },
+                { title: 'Ablation Studies', description: 'Evaluated external internet search (DuckDuckGo), discovering that "clean" internal data outperforms noisy web results for this specific domain.' }
+            ],
+            timeline: [
+                { date: 'Dec 2025', title: 'Setup & Training', description: 'Setting up the environment with Transformers/PEFT and executing initial Fine-Tuning runs.' },
+                { date: 'Dec 2025', title: 'RAG Implementation', description: 'Developing the Dynamic Few-Shot logic and constructing the augmented knowledge base.' },
+                { date: 'Dec 2025', title: 'Evaluation', description: 'Running ablation studies on decoding strategies and external search integration.' },
+                { date: 'Jan 2026', title: 'Report Submission', description: 'Finalizing the project report and analysis of the 0.16 accuracy gain.' }
             ]
         }
     },
@@ -95,7 +141,7 @@ export const projects: Project[] = [
         hasDetailPage: true,
         title: 'Portfolio Website',
         shortDescription: 'A responsive portfolio that shows off my skills and projects.',
-        fullDescription: 'The Website startet as a simple portfolio and then got more advanced with motion-first experience with glassmorphic UI, scroll-linked animations, and thoughtful microinteractions. The site balances visual richness with accessibility and performance.',
+        fullDescription: 'The Website started as a simple portfolio and then got more advanced with motion-first experience with glassmorphic UI, scroll-linked animations, and thoughtful microinteractions. The site balances visual richness with accessibility and performance.',
         tags: ['Next.js', 'React', 'TypeScript', 'Framer Motion', 'Accessibility'],
         techStack: [
             { name: 'Next.js 15' },
@@ -135,15 +181,17 @@ export const projects: Project[] = [
     {
         id: 'software-technology-internship',
         slug: 'software-technology-internship',
-        hasDetailPage: false,
+        hasDetailPage: true,
         title: 'Software Technology Internship',
-        shortDescription: 'A small, 10 week internship at the TU Dresden.',
-        fullDescription: '',
-        tags: ['Java', 'Spring Boot', 'JavaScript'],
+        shortDescription: 'An internal order management system for streamlining beverage procurement and stock control.',
+        fullDescription: 'Developed during the Software Technology module at TU Dresden, this project is a web-based management tool designed to digitize the internal ordering processes of a beverage shop. Working in an agile Scrum team, we engineered a robust system to track inventory levels, automate reordering workflows, and manage staff permissions. The application ensures seamless supply chain operations by providing real-time stock insights and accounting features.',
+        tags: ['Java', 'Spring Boot', 'Thymeleaf', 'Scrum', 'Accounting'],
         techStack: [
-            { name: 'Java' },
-            { name: 'Spring Boot' },
+            { name: 'Java 17' },
+            { name: 'Spring Boot 3' },
             { name: 'JavaScript' },
+            { name: 'Thymeleaf' },
+            { name: 'H2 / MySQL' },
             { name: 'Git' }
         ],
         heroImage: '/images/projects/swt_praktikum.jpg',
@@ -151,24 +199,22 @@ export const projects: Project[] = [
         link: '',
         githubUrl: 'https://github.com/Dramiley/swt23w30/tree/main',
         details: {
-            problem: '',
+            problem: 'The client required a shop-internal control mechanism to replace inefficient manual tracking of beverage stocks. The challenge was to create a system that handles complex dependencies between stock levels, expiration dates, and automated reordering logic while enforcing strict user role permissions.',
             problemImage: '',
-            solution: '',
+            solution: 'We built a monolithic Spring Boot application that serves as a central hub for all shop operations. I contributed to the Inventory module, implementing logic that automatically flags low-stock items and generates procurement orders. The frontend uses server-side rendering with Thymeleaf for a responsive internal dashboard.',
             solutionImage: '',
-            architecture: '',
+            architecture: 'The system is architected using the Model-View-Controller (MVC) pattern typical of Spring Boot applications. It utilizes Spring Data JPA for object-relational mapping to the database and Spring Security for granular access control (e.g., identifying Warehouse Managers vs. Sales Staff).',
             features: [
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' }
+                { title: 'Inventory Tracking', description: 'Real-time monitoring of beverage stock levels with automated low-stock alerts.' },
+                { title: 'Procurement Automation', description: 'Logic to generate supplier orders automatically when inventory dips below defined thresholds.' },
+                { title: 'Role-Based Access', description: 'Secure authentication system separating administrative duties from standard staff operations.' },
+                { title: 'Financial Reporting', description: 'Integrated accounting features to track procurement costs vs. internal usage or sales.' }
             ],
             timeline: [
-                { date: '', title: '', description: '' },
-                { date: '', title: '', description: '' },
-                { date: '', title: '', description: '' },
-                { date: '', title: '', description: '' }
+                { date: 'Oct 2023', title: 'Requirements Analysis', description: 'Mapped out the "To-Be" processes for the beverage shop\'s internal logistics.' },
+                { date: 'Nov 2023', title: 'Core Implementation', description: 'Developed the backend services for inventory management and order processing.' },
+                { date: 'Dec 2023', title: 'Integration & Testing', description: 'Refined the Thymeleaf UI and conducted integration tests using JUnit.' },
+                { date: 'Jan 2024', title: 'Final Deployment', description: 'Delivered the functional prototype with completed acceptance testing.' }
             ]
         }
     },
@@ -176,37 +222,38 @@ export const projects: Project[] = [
     {
         id: 'robolab',
         slug: 'robolab',
-        hasDetailPage: false,
-        title: 'Robolab',
-        shortDescription: 'A short 14 day project at the TU Dresden where we built a robot to navigate a maze.',
-        fullDescription: '',
-        tags: ['Python'],
+        hasDetailPage: true,
+        title: 'Autonomous Maze Navigator',
+        shortDescription: 'Engineering a Python-based control system for autonomous robots in dynamic environments.',
+        fullDescription: 'Participated in the "Robolab" systems engineering challenge. My team developed a Python control stack for an EV3 rover designed to navigate unknown mazes autonomously. The system features a custom state machine for decision making, PID controllers for precise line following, and MQTT communication for real-time telemetry. We successfully implemented graph-based pathfinding to optimize exploration and retrieval tasks.',
+        tags: ['Python', 'Robotics', 'MQTT', 'Algorithms', 'PID Control'],
         techStack: [
             { name: 'Python' },
+            { name: 'LEGO EV3Dev' },
+            { name: 'MQTT' },
+            { name: 'Git' }
         ],
         heroImage: '/images/projects/robolab.jpg',
         galleryImages: [],
         link: '',
         githubUrl: 'https://github.com/Dramiley/Robolab23',
         details: {
-            problem: '',
+            problem: 'The challenge was to program a robot to explore a randomly generated maze until it received a specific destination coordinate from a central server. The robot then had to navigate to this server-assigned target efficiently while adhering to strict memory and timing constraints.',
             problemImage: '',
-            solution: '',
+            solution: 'We engineered a modular Python codebase centered around a finite state machine. We implemented a robust communication layer that handled MQTT messages to parse the target coordinates. We used a mapping algorithm (DFS) to explore the maze and a pathfinding algorithm to calculate the route to the server\'s target once received.',
             solutionImage: '',
-            architecture: '',
+            architecture: 'The software runs on the ev3dev Linux kernel. It utilizes a main event loop that polls sensors (color, distance, gyro) and feeds data into a central logic controller. An asynchronous MQTT client handles the negotiation with the server to receive the "Target" payload.',
             features: [
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' },
-                { title: '', description: '' }
+                { title: 'Server-Guided Navigation', description: 'Logic to request, parse, and validate target coordinates received from the central server via MQTT.' },
+                { title: 'PID Control Loop', description: 'Implemented Proportional-Integral-Derivative logic for smooth line tracing and wall alignment.' },
+                { title: 'State Machine Architecture', description: 'Robust logic handling for switching between "Exploration Mode" and "Target Navigation Mode".' },
+                { title: 'Pathfinding', description: 'Algorithms to map the maze structure in memory and calculate the shortest path to the assigned goal.' }
             ],
             timeline: [
-                { date: '', title: '', description: '' },
-                { date: '', title: '', description: '' },
-                { date: '', title: '', description: '' },
-                { date: '', title: '', description: '' }
+                { date: 'Day 1-3', title: 'Sensor & Comms Setup', description: 'Calibrated sensors and established the MQTT handshake with the game server.' },
+                { date: 'Day 4-10', title: 'Algorithm Development', description: 'Implemented the exploration logic and the target-parsing state.' },
+                { date: 'Day 11-13', title: 'Optimization', description: 'Refined the pathfinding to handle the server-assigned targets faster.' },
+                { date: 'Day 14', title: 'Final Examination', description: 'Robot successfully received the target from the server and navigated to the destination.' }
             ]
         }
     }
