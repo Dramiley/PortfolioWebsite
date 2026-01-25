@@ -2,10 +2,52 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
     {
+        id: 'ai-maintenance-assistant',
+        slug: 'ai-maintenance-assistant',
+        hasDetailPage: true,
+        title: 'AI Maintenance Assistant',
+        shortDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
+        fullDescription: 'A comprehensive hardware and software solution designed to assist technicians during complex maintenance tasks. By integrating a Raspberry Pi with a finetuned SSD Object Detection model, this system identifies machinery components in real-time. It leverages Large Language Models (LLMs) to provide context-aware answers to maintenance questions and utilizes a projector to overlay visual guidance directly onto the equipment.',
+        tags: ['Python', 'Tensorflow', 'Docker', 'Flask', 'LLMs', 'Raspberry Pi'],
+        techStack: [
+            { name: 'Python' },
+            { name: 'Tensorflow' },
+            { name: 'Docker' },
+            { name: 'Flask' },
+            { name: 'Raspberry Pi' },
+            { name: 'SSD Object Detection' },
+            { name: 'LLMs' },
+            { name: 'Git' }
+        ],
+        heroImage: '/images/projects/bounding_boxes.jpg',
+        galleryImages: [],
+        link: '',
+        githubUrl: 'closed source',
+        details: {
+            problem: "Expert supervision isn't always available, and technicians often struggle to identify specific components in complex machinery using inefficient paper manuals.",
+            problemImage: '',
+            solution: 'We developed an AR-capable AI assistant that identifies components in real-time using Computer Vision. By projecting information directly onto the equipment and allowing natural language Q&A via LLMs, technicians receive immediate, hands-free guidance.',
+            solutionImage: '',
+            architecture: 'The system follows a distributed client-server model. The Raspberry Pi functions as the edge device, managing the camera input, calibration, and projector output for the AR overlay. The backend consists of a Dockerized server environment that hosts the computation-heavy SSD Object Detection model and LLM logic. Python scripts facilitate real-time network communication, transmitting images for inference and returning bounding box coordinates and textual guidance to the edge device for immediate visualization.',
+            features: [
+                { title: 'Object Detection', description: 'Fine-tuned SSD Object Detection on a custom-curated dataset of maintenance tasks.' },
+                { title: 'Raspberry Pi', description: 'Integration of Raspberry Pi for real-time object detection and visual feedback.' },
+                { title: 'Docker', description: 'Dockerized architecture ensuring consistent deployment across edge (Pi) and server environments' },
+                { title: 'Python Scripts', description: 'Python scripts are used to control the Raspberry Pi and the server.' },
+            ],
+            timeline: [
+                { date: "Feb 2024", title: "Finetuning Object Detection", description: "Fine-tuned SSD Object Detection on a custom-curated dataset of maintenance tasks." },
+                { date: "Sep 2024", title: "Development of Raspberry Pi", description: "Developed the Python backend for the Server and the Raspberry Pi." },
+                { date: "Apr 2025", title: "Added more features to the Raspberry Pi", description: "Added image checking, camera calibration, network-wide server scanner and visualization of the object detection with a beamer." },
+                { date: "Oct 2025", title: "Future Roadmap Research", description: "Researched the viability of implementing thesis findings versus training a new scene graph generation model." },
+            ]
+        }
+    },
+    {
         id: "hidezone",
         slug: "hidezone",
         hasDetailPage: true,
-        title: "Hidezone - Real World Hide & Seek",
+        title: "Hidezone - IRL Hide and Seek",
         shortDescription: "A real-world multiplayer Hide and Seek game using GPS tracking and synchronization.",
         fullDescription: "Hidezone is a location-based mobile game that brings the classic Hide and Seek experience to the real world. Players can create lobbies, define game zones on a map, and play as either Hiders or Seekers. The app features real-time GPS tracking, dynamic game modes (like Zombie Mode), and a robust backend for game state synchronization. It leverages modern mobile technologies to create an immersive outdoor gaming experience.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
@@ -40,8 +82,9 @@ export const projects: Project[] = [
                 { title: " robust Synchronization", description: "Optimized network usage with throttled location updates and delta synchronization via Cloud Functions." }
             ],
             timeline: [
-                { date: "Dec 2025", title: "Core Development", description: "Integrating Firebase for reliable backend sync and implementing the robust Flutter architecture." },
-                { date: "Jan 2026", title: "Closed Testing", description: "Field testing with local groups to refine GPS accuracy and battery consumption." },
+                { date: "Dec 2025", title: "Core Development", description: "Started app development and implemented basic features." },
+                { date: "Jan 2026", title: "Further Development", description: "Added features like game modes, events, items and further quality of life improvements." },
+                { date: "Jan 2026", title: "Closed Testing", description: "Field testing with local groups to refine GPS tracking, battery consumption and overall user experience." },
             ]
         },
     },
@@ -88,49 +131,6 @@ export const projects: Project[] = [
                 { date: "Oct 2025", title: "Defense", description: "Final defense of thesis at TU Dresden. Received a grade of 1.4" }
             ]
         },
-    },
-
-    {
-        id: 'ai-maintenance-assistant',
-        slug: 'ai-maintenance-assistant',
-        hasDetailPage: true,
-        title: 'AI Maintenance Assistant',
-        shortDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
-        fullDescription: 'A comprehensive hardware and software solution designed to assist technicians during complex maintenance tasks. By integrating a Raspberry Pi with a finetuned SSD Object Detection model, this system identifies machinery components in real-time. It leverages Large Language Models (LLMs) to provide context-aware answers to maintenance questions and utilizes a projector to overlay visual guidance directly onto the equipment.',
-        tags: ['Python', 'Tensorflow', 'Docker', 'Flask', 'LLMs', 'Raspberry Pi'],
-        techStack: [
-            { name: 'Python' },
-            { name: 'Tensorflow' },
-            { name: 'Docker' },
-            { name: 'Flask' },
-            { name: 'Raspberry Pi' },
-            { name: 'SSD Object Detection' },
-            { name: 'LLMs' },
-            { name: 'Git' }
-        ],
-        heroImage: '/images/projects/bounding_boxes.jpg',
-        galleryImages: [],
-        link: '',
-        githubUrl: 'closed source',
-        details: {
-            problem: "Expert supervision isn't always available, and technicians often struggle to identify specific components in complex machinery using inefficient paper manuals.",
-            problemImage: '',
-            solution: 'We developed an AR-capable AI assistant that identifies components in real-time using Computer Vision. By projecting information directly onto the equipment and allowing natural language Q&A via LLMs, technicians receive immediate, hands-free guidance.',
-            solutionImage: '',
-            architecture: 'The system follows a distributed client-server model. The Raspberry Pi functions as the edge device, managing the camera input, calibration, and projector output for the AR overlay. The backend consists of a Dockerized server environment that hosts the computation-heavy SSD Object Detection model and LLM logic. Python scripts facilitate real-time network communication, transmitting images for inference and returning bounding box coordinates and textual guidance to the edge device for immediate visualization.',
-            features: [
-                { title: 'Object Detection', description: 'Fine-tuned SSD Object Detection on a custom-curated dataset of maintenance tasks.' },
-                { title: 'Raspberry Pi', description: 'Integration of Raspberry Pi for real-time object detection and visual feedback.' },
-                { title: 'Docker', description: 'Dockerized architecture ensuring consistent deployment across edge (Pi) and server environments' },
-                { title: 'Python Scripts', description: 'Python scripts are used to control the Raspberry Pi and the server.' },
-            ],
-            timeline: [
-                { date: "Feb 2024", title: "Finetuning Object Detection", description: "Fine-tuned SSD Object Detection on a custom-curated dataset of maintenance tasks." },
-                { date: "Sep 2024", title: "Development of Raspberry Pi", description: "Developed the Python backend for the Server and the Raspberry Pi." },
-                { date: "Apr 2025", title: "Added more features to the Raspberry Pi", description: "Added image checking, camera calibration, network-wide server scanner and visualization of the object detection with a beamer." },
-                { date: "Oct 2025", title: "Future Roadmap Research", description: "Researched the viability of implementing thesis findings versus training a new scene graph generation model." },
-            ]
-        }
     },
     {
         id: 'secret-llm-cultural-qa',
