@@ -55,6 +55,33 @@ export default function ProjectContent({ project }: { project: Project }) {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="flex flex-wrap justify-center gap-4 mt-8"
                     >
+                        {project.link && (
+                            <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all hover:scale-105 ${project.link.includes('play.google.com') ? 'bg-primary text-white hover:bg-primary-soft shadow-[0_0_20px_rgba(249,115,22,0.4)]' : 'bg-white text-background hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.4)]'}`}
+                            >
+                                {project.link.includes('play.google.com') ? (
+                                    <>
+                                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-1.081.042.996.996 0 0 1-.529-.872V2.844c0-.368.197-.707.529-.872a.996.996 0 0 1 1.08.142z" />
+                                            <path d="M14.67 12.879l4.908 4.908-4.234 2.45c-.381.22-.863.02-1.011-.417l-.545-1.706 4.316-4.316.566-.919z" />
+                                            <path d="M19.578 6.213L14.67 11.121 14.104 10.203 9.788 5.887 10.334 4.18c.148-.437.63-.638 1.011-.417l4.233 2.45h0z" />
+                                            <path d="M12.914 12L4.629 3.715 4.628 20.285 12.914 12z" />
+                                        </svg>
+                                        Play Store
+                                    </>
+                                ) : (
+                                    <>
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                        </svg>
+                                        Check it out
+                                    </>
+                                )}
+                            </a>
+                        )}
                         {project.githubUrl && (
                             project.githubUrl.toLowerCase() === 'closed source' ? (
                                 <button

@@ -67,7 +67,7 @@ export function ImageGallery({ images, projectTitle }: ImageGalleryProps) {
                             src={image}
                             alt={`${projectTitle} - Gallery Image ${idx + 1}`}
                             fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="object-contain group-hover:scale-110 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -122,13 +122,12 @@ export function ImageGallery({ images, projectTitle }: ImageGalleryProps) {
                             className="relative max-w-7xl max-h-[85vh] w-full mx-8"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="relative w-full h-full">
+                            <div className="relative w-full h-[80vh]">
                                 <Image
                                     src={images[selectedIndex]}
                                     alt={`${projectTitle} - Gallery Image ${selectedIndex + 1}`}
-                                    width={1920}
-                                    height={1080}
-                                    className="object-contain w-full h-full rounded-lg"
+                                    fill
+                                    className="object-contain"
                                     priority
                                 />
                             </div>
@@ -178,8 +177,8 @@ export function ImageGallery({ images, projectTitle }: ImageGalleryProps) {
                                             setSelectedIndex(idx);
                                         }}
                                         className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${idx === selectedIndex
-                                                ? 'border-neon-blue scale-110'
-                                                : 'border-white/20 hover:border-white/50'
+                                            ? 'border-neon-blue scale-110'
+                                            : 'border-white/20 hover:border-white/50'
                                             }`}
                                     >
                                         <Image

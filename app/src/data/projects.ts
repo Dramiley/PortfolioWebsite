@@ -2,6 +2,50 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
     {
+        id: "hidezone",
+        slug: "hidezone",
+        hasDetailPage: true,
+        title: "Hidezone - Real World Hide & Seek",
+        shortDescription: "A real-world multiplayer Hide and Seek game using GPS tracking and synchronization.",
+        fullDescription: "Hidezone is a location-based mobile game that brings the classic Hide and Seek experience to the real world. Players can create lobbies, define game zones on a map, and play as either Hiders or Seekers. The app features real-time GPS tracking, dynamic game modes (like Zombie Mode), and a robust backend for game state synchronization. It leverages modern mobile technologies to create an immersive outdoor gaming experience.",
+        tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
+        techStack: [
+            { name: "Flutter" },
+            { name: "Dart" },
+            { name: "Firebase Realtime Database" },
+            { name: "Flutter Riverpod" },
+            { name: "Flutter Map" },
+            { name: "Geolocator" },
+            { name: "Git" }
+        ],
+        heroImage: "/images/projects/HideZoneMenu.jpg",
+        galleryImages: [
+            "/images/projects/HideZone1.jpg",
+            "/images/projects/HideZone2.jpg",
+            "/images/projects/HideZone3.jpg",
+            "/images/projects/HideZone4.jpg"
+        ],
+        link: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone",
+        githubUrl: "closed source",
+        details: {
+            problem: "Traditional outdoor games often lack the structure, boundary enforcement, and real-time feedback that modern gamers expect. Organizing a large-scale Hide and Seek game in a park or city center is difficult due to communication challenges and unclear play zones.",
+            problemImage: "",
+            solution: "Hidezone provides a digital referee and game master in your pocket. By using GPS geofencing, it enforces game boundaries automatically. Real-time synchronization ensures that every player knows the game state, while roles and abilities (like scanners or power-ups) add depth to the gameplay.",
+            solutionImage: "",
+            architecture: "The application is built with Flutter for cross-platform performance. It employs a clean architecture using the Strategy Pattern to handle different game modes (e.g., Classic, Zombie). State management is driven by Flutter Riverpod, ensuring a reactive and testable codebase. Firebase Realtime Database acts as the single source of truth, synchronizing player types, locations, and game events across all clients in milliseconds.",
+            features: [
+                { title: "Real-Time GPS Tracking", description: "Precise location tracking with background service support to keep the game running even when the phone is locked." },
+                { title: "Dynamic Game Zones", description: "Hosts can define custom game boundaries on an interactive map, which utilizing Ray-Casting algorithms to check if a player is inside the polygon." },
+                { title: "Multiple Game Modes", description: "Includes Classic Mode and Zombie Mode, where tagged survivors turn into hunters, implemented via flexible Strategy Patterns." },
+                { title: " robust Synchronization", description: "Optimized network usage with throttled location updates and delta synchronization via Cloud Functions." }
+            ],
+            timeline: [
+                { date: "Dec 2025", title: "Core Development", description: "Integrating Firebase for reliable backend sync and implementing the robust Flutter architecture." },
+                { date: "Jan 2026", title: "Closed Testing", description: "Field testing with local groups to refine GPS accuracy and battery consumption." },
+            ]
+        },
+    },
+    {
         id: "automated-knowledge-graph-generation",
         slug: "automated-knowledge-graph-generation",
         hasDetailPage: true,
