@@ -47,9 +47,9 @@ export const projects: Project[] = [
         id: "hidezone",
         slug: "hidezone",
         hasDetailPage: true,
-        title: "Hidezone - IRL Hide and Seek",
-        shortDescription: "A real-world multiplayer Hide and Seek game using GPS tracking and synchronization.",
-        fullDescription: "Hidezone is a location-based mobile game that brings the classic Hide and Seek experience to the real world. Players can create lobbies, define game zones on a map, and play as either Hiders or Seekers. The app features real-time GPS tracking, dynamic game modes (like Zombie Mode), and a robust backend for game state synchronization. It leverages modern mobile technologies to create an immersive outdoor gaming experience.",
+        title: "HideZone - Real-world GPS Tag",
+        shortDescription: "Real-world multiplayer tag! Hunt friends with live GPS, tactical items, and traps.",
+        fullDescription: "HideZone transforms the classic game of Hide & Seek into a high-tech, adrenaline-fueled GPS adventure. Whether in the park, the city, or the woods, it's like a battle royale in your own neighborhood! The game features multiple modes including Classic Hide & Seek with shrinking zones and Zombie Infection. Players can utilize a tactical inventory system with Scanners, Proximity Mines, and Ghost Mode to outsmart opponents. Designed with a privacy-first approach, it requires no accounts and ensures all data is wiped instantly when the match ends.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
             { name: "Flutter" },
@@ -70,16 +70,16 @@ export const projects: Project[] = [
         link: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone",
         githubUrl: "closed source",
         details: {
-            problem: "Traditional outdoor games often lack the structure, boundary enforcement, and real-time feedback that modern gamers expect. Organizing a large-scale Hide and Seek game in a park or city center is difficult due to communication challenges and unclear play zones.",
+            problem: "Traditional outdoor games often lack the structure, boundary enforcement, and strategic depth that modern gamers expect. Organizing a large-scale game in a city center is difficult due to unclear play zones, and simple running games often fail to engage players who crave tactical complexity.",
             problemImage: "",
-            solution: "Hidezone provides a digital referee and game master in your pocket. By using GPS geofencing, it enforces game boundaries automatically. Real-time synchronization ensures that every player knows the game state, while roles and abilities (like scanners or power-ups) add depth to the gameplay.",
+            solution: "HideZone acts as a digital referee and game master. It enforces boundaries with GPS geofencing and introduces 'Tactical Warfare' mechanics—virtual items like Proximity Mines and Scanners, to add strategy to the physical exertion. It supports dynamic modes like Zombie Infection, where gameplay mechanics shift entirely (Survivors vs. Zombies).",
             solutionImage: "",
             architecture: "The application is built with Flutter for cross-platform performance. It employs a clean architecture using the Strategy Pattern to handle different game modes (e.g., Classic, Zombie). State management is driven by Flutter Riverpod, ensuring a reactive and testable codebase. Firebase Realtime Database acts as the single source of truth, synchronizing player types, locations, and game events across all clients in milliseconds.",
             features: [
-                { title: "Real-Time GPS Tracking", description: "Precise location tracking with background service support to keep the game running even when the phone is locked." },
-                { title: "Dynamic Game Zones", description: "Hosts can define custom game boundaries on an interactive map, which utilizing Ray-Casting algorithms to check if a player is inside the polygon." },
-                { title: "Multiple Game Modes", description: "Includes Classic Mode and Zombie Mode, where tagged survivors turn into hunters, implemented via flexible Strategy Patterns." },
-                { title: " robust Synchronization", description: "Optimized network usage with throttled location updates and delta synchronization via Cloud Functions." }
+                { title: "Tactical Warfare Items", description: "Use Scanners to reveal locations, Proximity Mines for traps, Ghost Mode for stealth, and Zone Movers to flush out campers." },
+                { title: "Dynamic Game Modes", description: "Includes Classic Hide & Seek with shrinking interaction zones and Zombie Infection with 'Patient Zero' mechanics." },
+                { title: "Real-Time GPS Action", description: "Live tracking with geofencing that supports custom lobbies for 2 to 10+ friends." },
+                { title: "Privacy First Design", description: "No account required. All data is wiped instantly when the match ends. 100% Fair Play with no Pay-to-Win mechanics." }
             ],
             timeline: [
                 { date: "Dec 2025", title: "Core Development", description: "Started app development and implemented basic features." },
