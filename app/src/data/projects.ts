@@ -197,7 +197,7 @@ export const projects: Project[] = [
         ],
         heroImage: '/images/projects/portfolio.jpg',
         galleryImages: [],
-        link: 'https://robinmorgenstern.dev',
+        link: '',
         githubUrl: 'https://github.com/Dramiley/PortfolioWebsite/tree/main',
         details: {
             problem: 'Most portfolios feel like static resumes. I wanted something that could demonstrate technical skills through execution itself and not just describe them. The challenge was creating a memorable experience without sacrificing maintainability, performance, or accessibility.',
