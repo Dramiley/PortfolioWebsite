@@ -47,8 +47,8 @@ export const projects: Project[] = [
         id: "hidezone",
         slug: "hidezone",
         hasDetailPage: true,
-        title: "HideZone - Real-world GPS Tag",
-        shortDescription: "Real-world multiplayer tag! Hunt friends with live GPS, tactical items, and traps.",
+        title: "HideZone: IRL GPS Hide & Seek",
+        shortDescription: "Real-world multiplayer Hide & Seek! Hunt friends with live GPS, tactical items, and traps.",
         fullDescription: "HideZone transforms the classic game of Hide & Seek into a high-tech, adrenaline-fueled GPS adventure. Whether in the park, the city, or the woods, it's like a battle royale in your own neighborhood! The game features multiple modes including Classic Hide & Seek with shrinking zones and Zombie Infection. Players can utilize a tactical inventory system with Scanners, Proximity Mines, and Ghost Mode to outsmart opponents. Designed with a privacy-first approach, it requires no accounts and ensures all data is wiped instantly when the match ends.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
