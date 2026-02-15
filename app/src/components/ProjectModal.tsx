@@ -119,7 +119,19 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
 
                                 {/* Links */}
                                 <div className="flex gap-4 pt-8 border-t border-white/10">
-                                    {project.link && (
+                                    {project.links ? (
+                                        project.links.map((link, idx) => (
+                                            <a
+                                                key={idx}
+                                                href={link.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary-soft transition-colors"
+                                            >
+                                                {link.label}
+                                            </a>
+                                        ))
+                                    ) : project.link && (
                                         <a
                                             href={project.link}
                                             target="_blank"

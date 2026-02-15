@@ -67,6 +67,10 @@ export const projects: Project[] = [
             "/images/projects/HideZone3.jpg",
             "/images/projects/HideZone4.jpg"
         ],
+        links: [
+            { label: "View App Page", url: "https://dramiley.github.io/" },
+            { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone" }
+        ],
         link: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone",
         githubUrl: "closed source",
         details: {
@@ -85,6 +89,7 @@ export const projects: Project[] = [
                 { date: "Dec 2025", title: "Core Development", description: "Started app development and implemented basic features." },
                 { date: "Jan 2026", title: "Further Development", description: "Added features like game modes, events, items and further quality of life improvements." },
                 { date: "Jan 2026", title: "Closed Testing", description: "Field testing with local groups to refine GPS tracking, battery consumption and overall user experience." },
+                { date: "Feb 2026", title: "Release", description: "Released the app to the Google Play Store and improving the app based on feedback." },
             ]
         },
     },

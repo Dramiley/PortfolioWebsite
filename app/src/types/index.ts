@@ -18,6 +18,7 @@ export interface Project {
   heroImage: string;
   galleryImages: string[];
   link?: string;
+  links?: { label: string; url: string }[];
   githubUrl?: string;
   details: {
     problem: string;
