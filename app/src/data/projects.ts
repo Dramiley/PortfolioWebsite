@@ -68,7 +68,7 @@ export const projects: Project[] = [
             "/images/projects/HideZone4.jpg"
         ],
         links: [
-            { label: "View App Page", url: "https://dramiley.github.io/" },
+            { label: "View App Page", url: "https://dramiley.dev/" },
             { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone" }
         ],
         link: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone",
