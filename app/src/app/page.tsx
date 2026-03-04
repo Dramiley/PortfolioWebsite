@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
-import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { getLatestGitHubActivity } from "@/lib/github";
 
 const WhatIBuild = dynamic(() => import("@/components/WhatIBuild").then(mod => mod.WhatIBuild));
 const About = dynamic(() => import("@/components/About").then(mod => mod.About));
@@ -10,12 +10,13 @@ const Skills = dynamic(() => import("@/components/Skills").then(mod => mod.Skill
 const Contact = dynamic(() => import("@/components/Contact").then(mod => mod.Contact));
 const Footer = dynamic(() => import("@/components/Footer").then(mod => mod.Footer));
 
-export default function Home() {
+export default async function Home() {
+  const github = await getLatestGitHubActivity();
+
   return (
     <div className="min-h-screen text-foreground font-sans">
-      <Header />
       <main>
-        <Hero />
+        <Hero lastPushAt={github.lastPushAt} />
         <WhatIBuild />
         <About />
         <Experience />

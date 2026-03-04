@@ -42,7 +42,7 @@ export const Projects = () => {
         : projects.filter(p => p.categories.includes(activeFilter as 'ml-ai' | 'mobile' | 'web' | 'systems'));
 
     return (
-        <Section id="projects" className="relative">
+        <Section id="projects" className="relative border-t border-white/5 pt-32">
             <motion.div
                 ref={headerRef}
                 initial={false}

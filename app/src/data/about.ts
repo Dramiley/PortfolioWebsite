@@ -6,8 +6,8 @@ export interface AboutContent {
 export const aboutContent: AboutContent = {
     title: "About",
     bio: [
-        "I build things that work in the real world — from an AI system that guides technicians through machine repairs using projected AR overlays, to a GPS hide-and-seek game with 200+ downloads in its first month on the Play Store.",
-        "I'm currently finishing my M.Sc. in Computer Science at TU Dresden. My bachelor's thesis automated the generation of knowledge graphs from multi-object detection data, grounding LLM responses in structured spatial reasoning. I also work as a student assistant building the full pipeline — from training SSD detection models and engineering the Dockerized server backend, to setting up the Raspberry Pi edge system with camera calibration, network scanning, and beamer-based AR projection.",
-        "I'm strongest in Python and the ML ecosystem (TensorFlow, PyTorch, Transformers), and I build production apps with Flutter + Firebase. I pick up new stacks fast — this website, for instance, was my first Next.js project.",
+        "I care about software that works when nobody's watching. The AI maintenance assistant I built projects repair instructions onto machinery through a beamer, so technicians don't have to split attention between a manual and the hardware in front of them. HideZone, a GPS hide-and-seek game I shipped to the Play Store, hit 200+ downloads its first month with zero marketing budget. If I build something, it ships and it runs.",
+        "I'm wrapping up my M.Sc. in Computer Science at TU Dresden. My bachelor's thesis tackled a problem I genuinely found fascinating: automatically generating knowledge graphs from object detection data, so LLMs can reason about spatial relationships in physical environments. As a student assistant, I own the full pipeline end-to-end: training the detection models, running the Dockerized backend, and configuring the Raspberry Pi edge system down to camera calibration and network discovery.",
+        "Python and the ML stack (TensorFlow, PyTorch, Transformers) are where I'm most dangerous. I build production apps in Flutter + Firebase. And I learn fast: this portfolio was my first Next.js project."
     ]
 };

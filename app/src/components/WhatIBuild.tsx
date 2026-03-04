@@ -2,7 +2,7 @@
 
 /**
  * @file WhatIBuild.tsx
- * @description Value proposition section — domain cards with accent bars and
+ * @description Value proposition section - domain cards with accent bars and
  * large decorative indices. Data-driven from siteConfig.
  */
 

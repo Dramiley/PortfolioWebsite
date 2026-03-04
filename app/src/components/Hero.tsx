@@ -2,7 +2,7 @@
 
 /**
  * @file Hero.tsx
- * @description Clean, editorial hero section. No gimmicks — just name, statement, and CTAs.
+ * @description Clean, editorial hero section. No gimmicks - just name, statement, and CTAs.
  */
 
 import { siteConfig } from '@/data/config';
@@ -10,8 +10,9 @@ import { Section } from './Section';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffects } from '@/context/EffectsContext';
+import { GitHubPulse } from './GitHubPulse';
 
-export const Hero = () => {
+export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
     const { effectsEnabled } = useEffects();
 
     const duration = effectsEnabled ? 0.8 : 0;
@@ -20,7 +21,7 @@ export const Hero = () => {
     return (
         <Section id="hero" className="pt-36 md:pt-48 pb-24 min-h-[90vh] flex flex-col justify-center relative">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center relative z-10">
-                {/* Text — takes 3 of 5 columns */}
+                {/* Text - takes 3 of 5 columns */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -38,11 +39,13 @@ export const Hero = () => {
                         {siteConfig.sections.hero.statement}
                     </p>
 
-                    <p className="text-base md:text-lg text-foreground-muted/70 leading-relaxed max-w-xl mb-10 whitespace-pre-line">
+                    <p className="text-base md:text-lg text-foreground-muted/70 leading-relaxed max-w-xl mb-6 whitespace-pre-line">
                         {siteConfig.sections.hero.subtext}
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <GitHubPulse lastPushAt={lastPushAt ?? null} />
+
+                    <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         {/* Primary CTA */}
                         <a
                             href="#projects"
@@ -96,7 +99,7 @@ export const Hero = () => {
                     </div>
                 </motion.div>
 
-                {/* Photo — takes 2 of 5 columns */}
+                {/* Photo - takes 2 of 5 columns */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -107,7 +110,7 @@ export const Hero = () => {
                         {/* Subtle background glow */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-primary/8 to-accent/8 rounded-2xl blur-[40px] -z-10" />
 
-                        {/* Image Container — rounded rectangle, not circle */}
+                        {/* Image Container - rounded rectangle, not circle */}
                         <div className="absolute inset-0 rounded-2xl overflow-hidden border border-white/8 shadow-2xl shadow-black/30 bg-background-secondary">
                             <Image
                                 src="/images/profile.jpg"

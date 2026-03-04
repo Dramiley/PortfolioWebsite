@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { useRouter } from 'next/navigation';
 
 interface BackToProjectsButtonProps {
@@ -41,6 +40,7 @@ export function BackToProjectsButton({ variant = 'top', className }: BackToProje
         return (
             <button
                 onClick={handleClick}
+                aria-label="View all projects"
                 className={className || "inline-block px-10 py-5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/8 text-foreground font-semibold text-lg transition-all hover:scale-[1.02]"}
             >
                 View All Projects
@@ -51,6 +51,7 @@ export function BackToProjectsButton({ variant = 'top', className }: BackToProje
     return (
         <button
             onClick={handleClick}
+            aria-label="Back to projects"
             className={className || "inline-flex items-center text-sm text-primary mb-6 hover:underline"}
         >
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

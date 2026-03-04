@@ -21,12 +21,12 @@ html {
     --foreground-muted: #8d96a7;
     --foreground-accent: #7c8db0;
 
-    /* Brand Colors — Warm Terracotta */
+    /* Brand Colors - Warm Terracotta */
     --primary: #c2703e;
     --primary-soft: #d4885a;
     --primary-glow: rgba(194, 112, 62, 0.35);
 
-    /* Accent — Slate Blue */
+    /* Accent - Slate Blue */
     --accent: #7c8db0;
     --accent-dim: #5e6d8a;
     --accent-glow: rgba(124, 141, 176, 0.3);
@@ -123,6 +123,7 @@ body {
 
     /* Mobile Optimization for Blur */
     @media (max-width: 768px) {
+
         .glass-panel,
         .glass-card {
             backdrop-filter: blur(8px);

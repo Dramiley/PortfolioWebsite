@@ -79,7 +79,7 @@ export const projects: Project[] = [
         details: {
             problem: "Traditional outdoor games often lack the structure, boundary enforcement, and strategic depth that modern gamers expect. Organizing a large-scale game in a city center is difficult due to unclear play zones, and simple running games often fail to engage players who crave tactical complexity.",
             problemImage: "",
-            approach: "HideZone acts as a digital referee and game master. It enforces boundaries with GPS geofencing and introduces 'Tactical Warfare' mechanics—virtual items like Proximity Mines and Scanners, to add strategy to the physical exertion. It supports dynamic modes like Zombie Infection, where gameplay mechanics shift entirely (Survivors vs. Zombies).",
+            approach: "HideZone acts as a digital referee and game master. It enforces boundaries with GPS geofencing and introduces 'Tactical Warfare' mechanics: virtual items like Proximity Mines and Scanners, to add strategy to the physical exertion. It supports dynamic modes like Zombie Infection, where gameplay mechanics shift entirely (Survivors vs. Zombies).",
             approachImage: "",
             impact: "Bootstrapped from concept to production, the app successfully gained traction organically, achieving over 200 downloads from the Play Store in its first month and proving the viability of the tech stack and game design in real-world scenarios.",
             metrics: [

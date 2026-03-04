@@ -35,13 +35,17 @@ export const Contact = () => {
 
                     <a
                         href={`mailto:${siteConfig.social.email}`}
-                        className="group inline-flex items-center gap-3 text-lg font-medium text-primary hover:text-primary-soft transition-colors duration-300"
+                        className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary-soft transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
                     >
-                        <span>→</span>
-                        <span className="border-b border-primary/30 group-hover:border-primary/60 transition-colors duration-300 pb-0.5">
-                            {siteConfig.social.email}
-                        </span>
+                        <span>{siteConfig.sections.contact.buttonText}</span>
+                        <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                     </a>
+
+                    <p className="mt-4 text-sm text-foreground-muted/60">
+                        {siteConfig.social.email}
+                    </p>
                 </div>
             </motion.div>
         </Section>

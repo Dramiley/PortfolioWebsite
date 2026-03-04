@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', href: '/#about' },
+    { name: 'Experience', href: '/#experience' },
+    { name: 'Skills', href: '/#skills' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'Contact', href: '/#contact' },
 ];
 
 export const Header = () => {
@@ -45,8 +45,8 @@ export const Header = () => {
                 <div className="max-w-6xl mx-auto px-6">
                     <div
                         className={`flex items-center justify-between rounded-xl px-5 py-2.5 transition-all duration-300 ${scrolled
-                                ? 'glass-panel shadow-lg'
-                                : 'bg-transparent'
+                            ? 'glass-panel shadow-lg'
+                            : 'bg-transparent'
                             }`}
                     >
                         <Link href="/" className="text-lg font-bold tracking-tight group">

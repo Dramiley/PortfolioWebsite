@@ -8,7 +8,7 @@ import { SiteConfig } from '@/types';
 export const siteConfig: SiteConfig = {
     name: "Robin Morgenstern",
     tagline: "Software Engineer",
-    subtitle: "B.Sc. Computer Science — TU Dresden",
+    subtitle: "B.Sc. Computer Science - TU Dresden",
     social: {
         github: "https://github.com/Dramiley",
         linkedin: "https://www.linkedin.com/in/robin-morgenstern",
@@ -44,7 +44,7 @@ export const siteConfig: SiteConfig = {
         },
         contact: {
             title: "Let's talk.",
-            description: "I'm looking for engineering roles where I can work on hard problems — ideally involving ML, computer vision, real-time systems, or software development.",
+            description: "I'm looking for teams that ship real products to real users. If you're solving hard problems in ML, computer vision, or systems engineering and need someone who can own a feature end-to-end, I want to hear about it.",
             buttonText: "Get in Touch"
         }
     }
