@@ -28,7 +28,7 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                     transition={{ duration, ease }}
                     className="lg:col-span-3 flex flex-col items-start"
                 >
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 text-foreground leading-[1.05]">
+                    <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-10 text-foreground leading-tight break-words">
                         Robin{' '}
                         <span className="text-gradient-primary">
                             Morgenstern
@@ -49,7 +49,7 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                         {/* Primary CTA */}
                         <a
                             href="#projects"
-                            className="group flex items-center justify-center h-12 px-8 font-semibold text-white transition-all duration-300 bg-primary rounded-lg hover:bg-primary-soft hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98]"
+                            className="group flex items-center justify-center h-12 px-8 font-semibold text-white transition-all duration-300 bg-primary rounded-lg hover:bg-primary-soft hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                             <span className="mr-2">See my work</span>
                             <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,7 +62,7 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                             <a
                                 href="/resume.pdf"
                                 download="Robin_Morgenstern_CV.pdf"
-                                className="flex items-center justify-center h-12 px-6 font-medium text-foreground-muted transition-all duration-300 rounded-lg border border-white/10 hover:border-primary/30 hover:text-foreground hover:bg-white/[0.03] active:scale-[0.98]"
+                                className="flex items-center justify-center h-12 px-6 font-medium text-foreground-muted transition-all duration-300 rounded-lg border border-white/10 hover:border-primary/30 hover:text-foreground hover:bg-white/[0.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                             >
                                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -74,7 +74,7 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                                 href={siteConfig.social.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center h-12 px-6 font-medium text-foreground-muted transition-all duration-300 rounded-lg border border-white/10 hover:border-primary/30 hover:text-foreground hover:bg-white/[0.03] active:scale-[0.98]"
+                                className="flex items-center justify-center h-12 px-6 font-medium text-foreground-muted transition-all duration-300 rounded-lg border border-white/10 hover:border-primary/30 hover:text-foreground hover:bg-white/[0.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                                 aria-label="GitHub Profile"
                             >
                                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -87,7 +87,7 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                                 href={siteConfig.social.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center h-12 px-6 font-medium text-foreground-muted transition-all duration-300 rounded-lg border border-white/10 hover:border-primary/30 hover:text-foreground hover:bg-white/[0.03] active:scale-[0.98]"
+                                className="flex items-center justify-center h-12 px-6 font-medium text-foreground-muted transition-all duration-300 rounded-lg border border-white/10 hover:border-primary/30 hover:text-foreground hover:bg-white/[0.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                                 aria-label="LinkedIn Profile"
                             >
                                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -107,11 +107,8 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                     className="lg:col-span-2 relative flex justify-center lg:justify-end"
                 >
                     <div className="relative w-64 h-80 md:w-72 md:h-96">
-                        {/* Subtle background glow */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-primary/8 to-accent/8 rounded-2xl blur-[40px] -z-10" />
-
                         {/* Image Container - rounded rectangle, not circle */}
-                        <div className="absolute inset-0 rounded-2xl overflow-hidden border border-white/8 shadow-2xl shadow-black/30 bg-background-secondary">
+                        <div className="absolute inset-0 rounded-2xl overflow-hidden border border-white/10 bg-background-secondary">
                             <Image
                                 src="/images/profile.jpg"
                                 alt="Robin Morgenstern"

@@ -2,6 +2,7 @@
 
 html {
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 @media (max-width: 768px) {
@@ -60,7 +61,6 @@ html {
 body {
     color: var(--foreground);
     font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -149,8 +149,4 @@ body.no-effects .animate-ping,
 body.no-effects .animate-gradient-x {
     animation: none !important;
     opacity: 1 !important;
-}
-
-body.no-effects .group:hover .group-hover\:opacity-100 {
-    opacity: 0 !important;
 }

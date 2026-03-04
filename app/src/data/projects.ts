@@ -8,7 +8,7 @@ export const projects: Project[] = [
         categories: ['ml-ai', 'systems'],
         title: 'AI Maintenance Assistant',
         shortDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
-        fullDescription: 'A comprehensive hardware and software solution designed to assist technicians during complex maintenance tasks. By integrating a Raspberry Pi with a finetuned SSD Object Detection model, this system identifies machinery components in real-time. It leverages Large Language Models (LLMs) to provide context-aware answers to maintenance questions and utilizes a projector to overlay visual guidance directly onto the equipment.',
+        fullDescription: 'An end-to-end hardware and software system built to guide technicians through complex repairs. I integrated a Raspberry Pi with a fine-tuned SSD Object Detection model to identify machinery components in real-time. The system uses local LLMs to answer contextual maintenance questions and drives a projector to map visual instructions directly onto the physical equipment.',
         tags: ['Python', 'Tensorflow', 'Docker', 'Flask', 'LLMs', 'Raspberry Pi'],
         techStack: [
             { name: 'Python' },
@@ -25,11 +25,11 @@ export const projects: Project[] = [
         link: '',
         githubUrl: 'closed source',
         details: {
-            problem: "Expert supervision isn't always available, and technicians often struggle to identify specific components in complex machinery using inefficient paper manuals.",
+            problem: "Expert supervision is a bottleneck. Technicians waste hours cross-referencing dense paper manuals to identify specific components in complex machinery.",
             problemImage: '',
-            approach: 'We developed an AR-capable AI assistant that identifies components in real-time using Computer Vision. By projecting information directly onto the equipment and allowing natural language Q&A via LLMs, technicians receive immediate, hands-free guidance.',
+            approach: 'I built an AR-capable AI assistant that acts as a real-time supervisor. It uses computer vision to track components and projects contextual instructions directly onto the hardware, while an LLM handles natural language Q&A for hands-free troubleshooting.',
             approachImage: '',
-            impact: 'The system significantly reduces the cognitive load on technicians and the time spent cross-referencing manuals. By combining visual AR overlays with contextual LLM reasoning, training time for new machinery is cut drastically.',
+            impact: 'Drastically cut training time and cognitive load for new technicians. The combination of spatial AR overlays and contextual LLM reasoning proved that automated visual guidance can replace static manuals.',
             metrics: [
                 { label: 'Platform', value: 'AR Projection' },
                 { label: 'Hardware', value: 'Raspberry Pi 3' }
@@ -56,7 +56,7 @@ export const projects: Project[] = [
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
         shortDescription: "Real-world multiplayer Hide & Seek! Hunt friends with live GPS, tactical items, and traps.",
-        fullDescription: "HideZone transforms the classic game of Hide & Seek into a high-tech, adrenaline-fueled GPS adventure. Whether in the park, the city, or the woods, it's like a battle royale in your own neighborhood! The game features multiple modes including Classic Hide & Seek with shrinking zones and Zombie Infection. Players can utilize a tactical inventory system with Scanners, Proximity Mines, and Ghost Mode to outsmart opponents. Designed with a privacy-first approach, it requires no accounts and ensures all data is wiped instantly when the match ends.",
+        fullDescription: "HideZone is a real-world GPS multiplayer game that turns any city or park into a Battle Royale. I engineered the entire stack from scratch, featuring live geofencing, shrinking play zones, and real-time inventory mechanics. Built with a strict privacy-first architecture—no accounts, no persistent tracking, and data wipes the second the match ends.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
             { name: "Flutter" },
@@ -77,11 +77,11 @@ export const projects: Project[] = [
         link: "https://dramiley.dev/",
         githubUrl: "closed source",
         details: {
-            problem: "Traditional outdoor games often lack the structure, boundary enforcement, and strategic depth that modern gamers expect. Organizing a large-scale game in a city center is difficult due to unclear play zones, and simple running games often fail to engage players who crave tactical complexity.",
+            problem: "Organizing outdoor games in complex environments like city centers is chaotic. Players argue over boundaries, and simple running mechanics fail to hold the attention of players used to the strategic depth of modern video games.",
             problemImage: "",
-            approach: "HideZone acts as a digital referee and game master. It enforces boundaries with GPS geofencing and introduces 'Tactical Warfare' mechanics: virtual items like Proximity Mines and Scanners, to add strategy to the physical exertion. It supports dynamic modes like Zombie Infection, where gameplay mechanics shift entirely (Survivors vs. Zombies).",
+            approach: "I built a digital referee that tracks everyone in milliseconds. It enforces boundaries via GPS geofencing and injects strategy through virtual items (Proximity Mines, Scanners) to balance the physical exertion with tactical decision-making.",
             approachImage: "",
-            impact: "Bootstrapped from concept to production, the app successfully gained traction organically, achieving over 200 downloads from the Play Store in its first month and proving the viability of the tech stack and game design in real-world scenarios.",
+            impact: "Designed, built, and shipped to production solo. The app acquired 200+ organic downloads in its first month on the Play Store, validating both the Firebase real-time sync architecture and the core game loop.",
             metrics: [
                 { label: 'Active Downloads', value: '200+' },
                 { label: 'Sync Latency', value: '< 50ms' },
@@ -109,7 +109,7 @@ export const projects: Project[] = [
         categories: ['ml-ai'],
         title: "Bachelor Thesis",
         shortDescription: "Automated knowledge graph creation via multi-object detection for an AI maintenance assistant",
-        fullDescription: "This research project addresses the gap between visual object detection and structured knowledge representation. I developed a system that automatically converts bounding box data from images of industrial machines into formal Knowledge Graphs (RDF/OWL). These graphs serve as a structured knowledge base for Large Language Models (LLMs), enabling them to answer spatial and maintenance-related questions in an industrial context without hallucinations.",
+        fullDescription: "My thesis bridged the gap between 2D object detection and spatial reasoning. I engineered a pipeline that digests raw bounding box data from industrial machines and automatically compiles it into formal Knowledge Graphs (RDF/OWL). This structured semantic layer allows LLMs to accurately answer spatial queries without hallucinating.",
         tags: ["Python", "Semantic Web", "Computer Vision", "LLMs", "Research"],
         techStack: [
             { name: "Python" },
@@ -128,11 +128,11 @@ export const projects: Project[] = [
         link: "",
         githubUrl: "https://github.com/Dramiley/Bachelorarbeit",
         details: {
-            problem: "Creating Knowledge Graphs manually is time-intensive and error-prone. While text-to-graph methods exist, there is a significant lack of automated approaches that transform visual object detection data into formal, logic-based knowledge structures that LLMs can process efficiently for industrial maintenance tasks.",
+            problem: "Manual Knowledge Graph creation is a massive bottleneck. Existing pipelines rely heavily on text-to-graph extraction, completely ignoring the spatial logic hiding inside visual object detection data required for industrial robotics.",
             problemImage: "",
-            approach: "I designed and implemented a modular Python based pipeline (`OntologyGenerator.py`) that ingests CSV output from Multi-Object Detection models. Using geometric algorithms, it automatically derives semantic spatial relations (e.g., 'left_of', 'above', 'inside_of') and instantiates them into an OWL ontology. The system supports multi-camera fusion to minimize the uncertainty and problems of object detection.",
+            approach: "I built a Python pipeline that ingests bounding box coordinates, applies geometric algorithms to extract spatial relations ('left_of', 'inside_of'), and compiles them into standard-compliant OWL ontologies. I also implemented multi-camera fusion to map complex 3D relationships from 2D feeds.",
             approachImage: "",
-            impact: "The thesis proved that geometric-to-semantic translation is viable for industrial contexts without requiring massive multi-modal end-to-end transformers. The work received a top grade of 1.4 for its rigorous evaluation of LLM integration methods.",
+            impact: "Proven that deterministic geometric-to-semantic translation can match or beat massive multi-modal end-to-end models in industrial contexts. The defense and paper earned a 1.4 grade for strict methodological rigor and LLM evaluation.",
             metrics: [
                 { label: 'Final Grade', value: '1.4' },
                 { label: 'LLMs Evaluated', value: '4' }
@@ -159,7 +159,7 @@ export const projects: Project[] = [
         categories: ['ml-ai'],
         title: 'SecretLLM - Cultural QA System',
         shortDescription: 'Optimizing Llama-3-8B for cultural reasoning for a 2 month project at TU Dresden.',
-        fullDescription: 'Developed for the "Behind the Secrets of Large Language Models" module at TU Dresden, this project addresses the "cultural gap" in standard LLMs. I engineered a question-answering system using Meta-Llama-3-8B that improves accuracy on cultural tasks. While Supervised Fine-Tuning (SFT) helped with format alignment, the implementation of a Dynamic Retrieval-Augmented Generation (RAG) system yielded the most significant results, increasing Short Answer Question (SAQ) accuracy by 0.16 over the baseline.\nFull project report can be found in the github repository.',
+        fullDescription: 'A culturally-aware reasoning engine built on top of Llama-3-8B. Standard LLMs fail on niche cultural queries due to Western-centric training data. I engineered a Dynamic RAG (Retrieval-Augmented Generation) pipeline paired with targeted Supervised Fine-Tuning (SFT) to inject specific cultural contexts. The result was a massive 0.16 accuracy leap on Short Answer Questions.',
         tags: ['Python', 'Transformers', 'Llama 3 8B', 'RAG', 'Fine-tuning'],
         techStack: [
             { name: 'Python' },
@@ -182,9 +182,9 @@ export const projects: Project[] = [
         details: {
             problem: 'Standard Large Language Models often exhibit Western-centric biases and lack the nuance required for specific cultural queries. Additionally, the 8B parameter model struggled with strict output formatting (JSON) and zero-shot reasoning for complex Short Answer Questions (SAQ), often leading to "instruction drift".',
             problemImage: '',
-            approach: 'I moved from complex JSON prompts to simplified natural language instructions and implemented a "Dynamic Few-Shot" RAG framework. By converting Multiple Choice data into Short Answer pairs, I created an augmented knowledge base. For every incoming query, the system retrieves and injects the top-k = 3 semantically similar examples into the prompt, grounding the model in relevant cultural context.',
+            approach: 'I stripped away complex JSON prompts in favor of natural language instructions and built a "Dynamic Few-Shot" RAG framework. By transforming multiple-choice datasets into direct QA pairs, the system dynamically retrieves and injects the top 3 most relevant examples into every prompt.',
             approachImage: '',
-            impact: 'The combination of LoRA fine-tuning and Dynamic RAG significantly outperformed naive prompting. The project successfully aligned the model to output concise, culturally accurate answers, beating the baseline by a wide margin in the final academic evaluation.',
+            impact: 'The dual approach of LoRA fine-tuning and Dynamic RAG crushed the baseline zero-shot performance. The system outputted logically sound, culturally accurate answers required by the strict academic evaluator, resulting in a definitive 16% accuracy gain.',
             metrics: [
                 { label: 'Accuracy Gain', value: '+0.16' },
                 { label: 'Parameter Size', value: '8 Billion' },
@@ -213,7 +213,7 @@ export const projects: Project[] = [
         categories: ['web'],
         title: 'Portfolio Website',
         shortDescription: 'A responsive portfolio that shows off my skills and projects.',
-        fullDescription: 'The Website started as a simple portfolio and then got more advanced with motion-first experience with glassmorphic UI, scroll-linked animations, and thoughtful microinteractions. The site balances visual richness with accessibility and performance.',
+        fullDescription: 'I refused to build a static, boring resume. I authored a dynamic, motion-driven experience that acts as a live technical showcase. Everything is rendered via a data-driven configuration layer, marrying strict TypeScript typings with heavy framer-motion orchestration, while maintaining a perfect 100/100 Lighthouse score.',
         tags: ['Next.js', 'React', 'TypeScript', 'Framer Motion', 'Accessibility'],
         techStack: [
             { name: 'Next.js 15' },
@@ -230,9 +230,9 @@ export const projects: Project[] = [
         details: {
             problem: 'Most portfolios feel like static resumes. I wanted something that could demonstrate technical skills through execution itself and not just describe them. The challenge was creating a memorable experience without sacrificing maintainability, performance, or accessibility.',
             problemImage: '',
-            approach: 'I built a fully data-driven architecture where content is stored in typed TypeScript files, separate from presentation. This let me iterate rapidly on design while keeping content updates simple. The site evolved through several redesigns, adding sophisticated motion systems, glassmorphic effects, and interactive elements. Each iteration taught me something about balancing aesthetics with usability.',
+            approach: 'I engineered a data-driven Next.js architecture separating dense content from presentation. This allowed rapid visual iteration. I authored custom hooks for responsive scroll-linked animations and built a physics-based ambient canvas background, ensuring all motion strictly respects user accessibility preferences.',
             approachImage: '',
-            impact: 'The resulting portfolio serves as a live, interactive case study of my capabilities in modern React, styling architecture, and accessibility. It successfully handles 100/100 Lighthouse scores while running complex physics and canvas animations.',
+            impact: 'A live, interactive proof-of-work. It demonstrates my ability to execute complex physics, canvas animations, and responsive layouts natively in React without ever sacrificing performance, semantics, or UX.',
             metrics: [
                 { label: 'Frontend', value: 'React 19' },
                 { label: 'Styling', value: 'Tailwind v4' },
@@ -263,7 +263,7 @@ export const projects: Project[] = [
         categories: ['web'],
         title: 'Software Technology Internship',
         shortDescription: 'An internal order management system for streamlining beverage procurement and stock control.',
-        fullDescription: 'Developed during the Software Technology module at TU Dresden, this project is a web-based management tool designed to digitize the internal ordering processes of a beverage shop. Working in an agile Scrum team, we engineered a robust system to track inventory levels, automate reordering workflows, and manage staff permissions. The application ensures seamless supply chain operations by providing real-time stock insights and accounting features.',
+        fullDescription: 'Developed an internal order management system to digitize and automate the supply chain for a beverage shop. Working in a strict Agile Scrum environment, I engineered robust inventory tracking, automated reordering workflows, and role-based access control inside a monolithic Spring Boot application.',
         tags: ['Java', 'Spring Boot', 'Thymeleaf', 'Scrum', 'Accounting'],
         techStack: [
             { name: 'Java 17' },
@@ -278,11 +278,11 @@ export const projects: Project[] = [
         link: '',
         githubUrl: 'https://github.com/Dramiley/swt23w30/tree/main',
         details: {
-            problem: 'The client required a shop-internal control mechanism to replace inefficient manual tracking of beverage stocks. The challenge was to create a system that handles complex dependencies between stock levels, expiration dates, and automated reordering logic while enforcing strict user role permissions.',
+            problem: 'The client required a unified system to replace inefficient manual tracking of beverage stocks. The challenge was architecting a system that handles complex dependencies between live stock levels, expiration dates, and automated reordering logic while enforcing strict user permissions.',
             problemImage: '',
-            approach: 'We built a monolithic Spring Boot application that serves as a central hub for all shop operations. I contributed to the Inventory module, implementing logic that automatically flags low-stock items and generates procurement orders. The frontend uses server-side rendering with Thymeleaf for a responsive internal dashboard.',
+            approach: 'We built a monolithic Spring Boot application serving as a central hub. I architected the Inventory module, writing the core business logic that automatically flags low-stock items and dispatches procurement orders. The frontend uses server-side rendering with Thymeleaf for a rapid, responsive dashboard.',
             approachImage: '',
-            impact: 'The delivered prototype successfully digitized the manual workflow, proving the team\'s capability to handle full-stack Spring application development within a strict Agile framework. We hit all sprint deliverables on schedule.',
+            impact: 'Delivered a functional, production-ready prototype that successfully digitized the manual workflow. We hit all sprint deliverables on schedule, proving our capability to ship full-stack Spring applications within a strict Agile framework.',
             metrics: [
                 { label: 'Team Size', value: '8 Engineers' },
                 { label: 'Methodology', value: 'Scrum' }

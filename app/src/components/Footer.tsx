@@ -15,7 +15,7 @@ export const Footer = () => {
                     </p>
                 </div>
 
-                <div className="flex gap-6">
+                <nav className="flex gap-6" aria-label="Footer navigation">
                     <a
                         href={siteConfig.social.github}
                         target="_blank"
@@ -38,7 +38,7 @@ export const Footer = () => {
                     >
                         Email
                     </a>
-                </div>
+                </nav>
             </div>
         </footer>
     );

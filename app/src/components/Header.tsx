@@ -24,14 +24,20 @@ export const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Lock body scroll when mobile menu open
+    // Lock body scroll and trap focus when mobile menu open
     useEffect(() => {
+        const mainContent = document.getElementById('main-content');
         if (mobileOpen) {
             document.body.style.overflow = 'hidden';
+            mainContent?.setAttribute('inert', 'true');
         } else {
             document.body.style.overflow = '';
+            mainContent?.removeAttribute('inert');
         }
-        return () => { document.body.style.overflow = ''; };
+        return () => {
+            document.body.style.overflow = '';
+            document.getElementById('main-content')?.removeAttribute('inert');
+        };
     }, [mobileOpen]);
 
     return (
@@ -60,7 +66,7 @@ export const Header = () => {
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="relative text-sm font-medium text-foreground-muted hover:text-foreground transition-colors duration-300 group"
+                                    className="relative text-sm font-medium text-foreground-muted hover:text-foreground transition-colors duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
                                 >
                                     {item.name}
                                     <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-primary/60 transition-all duration-300 group-hover:w-full" />
@@ -73,7 +79,7 @@ export const Header = () => {
                                 <motion.button
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
-                                    className="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary/20 rounded-lg hover:bg-primary/10 transition-all duration-300"
+                                    className="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary/20 rounded-lg hover:bg-primary/10 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                                 >
                                     CV
                                 </motion.button>
@@ -82,8 +88,9 @@ export const Header = () => {
                             {/* Mobile Hamburger */}
                             <button
                                 onClick={() => setMobileOpen(!mobileOpen)}
-                                className="md:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5"
+                                className="md:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
                                 aria-label="Toggle navigation menu"
+                                aria-expanded={mobileOpen}
                             >
                                 <motion.span
                                     animate={mobileOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
@@ -139,7 +146,7 @@ export const Header = () => {
                                     href="/resume.pdf"
                                     download="Robin_Morgenstern_CV.pdf"
                                     onClick={() => setMobileOpen(false)}
-                                    className="text-lg font-medium text-primary border border-primary/20 rounded-lg px-6 py-3 hover:bg-primary/10 transition-all duration-300"
+                                    className="text-lg font-medium text-primary border border-primary/20 rounded-lg px-6 py-3 hover:bg-primary/10 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                                 >
                                     Download CV
                                 </a>

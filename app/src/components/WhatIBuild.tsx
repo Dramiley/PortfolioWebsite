@@ -41,17 +41,12 @@ export const WhatIBuild = () => {
                         viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
                         transition={{ duration: effectsEnabled ? 0.5 : 0, delay: effectsEnabled ? idx * 0.1 : 0 }}
                         style={{ willChange: 'transform, opacity' }}
-                        className="relative group overflow-hidden rounded-2xl border border-white/5 hover:border-primary/20 transition-all duration-500 bg-white/[0.02] hover:bg-white/[0.04]"
+                        className="relative group overflow-hidden rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-500 h-full flex flex-col"
                     >
                         {/* Top accent bar */}
                         <div className="h-1 w-full bg-gradient-to-r from-primary/60 via-primary/30 to-transparent" />
 
-                        <div className="p-8 md:p-10 relative">
-                            {/* Large decorative index number */}
-                            <span className="absolute top-4 right-6 text-7xl md:text-8xl font-bold text-white/[0.03] select-none leading-none group-hover:text-primary/[0.06] transition-colors duration-500">
-                                {String(idx + 1).padStart(2, '0')}
-                            </span>
-
+                        <div className="p-8 md:p-10 relative flex-1 flex flex-col justify-center">
                             <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 relative z-10">
                                 {domain.title}
                             </h3>
@@ -62,6 +57,6 @@ export const WhatIBuild = () => {
                     </motion.div>
                 ))}
             </div>
-        </Section>
+        </Section >
     );
 };

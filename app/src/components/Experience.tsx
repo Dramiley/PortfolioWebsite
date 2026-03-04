@@ -38,8 +38,8 @@ export const Experience = () => {
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         className={`p-6 md:p-8 rounded-2xl border transition-all duration-400 ${hoveredIndex === index
-                                ? 'bg-white/[0.03] border-primary/20'
-                                : 'bg-transparent border-white/5'
+                            ? 'bg-white/[0.03] border-primary/20'
+                            : 'bg-transparent border-white/5'
                             }`}
                     >
                         <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-4 gap-1">
@@ -52,7 +52,7 @@ export const Experience = () => {
                         <ul className="space-y-2.5">
                             {job.description.map((item, i) => (
                                 <li key={i} className="flex items-start text-foreground-muted leading-relaxed">
-                                    <span className="mr-3 mt-2 w-1 h-1 rounded-full bg-primary/60 shrink-0" />
+                                    <span className="mr-4 mt-[11px] w-1.5 h-1.5 rounded-full bg-primary/80 shrink-0" />
                                     {item}
                                 </li>
                             ))}

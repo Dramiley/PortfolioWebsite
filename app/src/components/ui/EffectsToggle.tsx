@@ -13,6 +13,7 @@ export const EffectsToggle = () => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             title={effectsEnabled ? "Disable Effects" : "Enable Effects"}
+            aria-label={effectsEnabled ? "Disable visual effects" : "Enable visual effects"}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}

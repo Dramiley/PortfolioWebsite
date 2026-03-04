@@ -44,7 +44,7 @@ export const siteConfig: SiteConfig = {
         },
         contact: {
             title: "Let's talk.",
-            description: "I'm looking for teams that ship real products to real users. If you're solving hard problems in ML, computer vision, or systems engineering and need someone who can own a feature end-to-end, I want to hear about it.",
+            description: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you have a specific project in mind or just want to explore possibilities, feel free to reach out.",
             buttonText: "Get in Touch"
         }
     }

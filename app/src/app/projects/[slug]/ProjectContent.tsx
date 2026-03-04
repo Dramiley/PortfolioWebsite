@@ -323,12 +323,6 @@ export default function ProjectContent({ project }: { project: Project }) {
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                                 className="group p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all duration-300 relative overflow-hidden"
                             >
-                                <span
-                                    className="absolute top-6 right-6 text-5xl font-bold text-white/[0.02] group-hover:text-primary/[0.05] transition-colors select-none pointer-events-none"
-                                    aria-hidden="true"
-                                >
-                                    {String(idx + 1).padStart(2, '0')}
-                                </span>
                                 <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors relative z-10 pr-12">
                                     {feature.title}
                                 </h3>
