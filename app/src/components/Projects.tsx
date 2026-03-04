@@ -9,27 +9,18 @@ import { useEffects } from '@/context/EffectsContext';
 import { ProjectCard } from './ProjectCard';
 import { useProjectsScrollRestoration } from '@/hooks/useProjectsScrollRestoration';
 
-/**
- * Projects Component
- * 
- * Renders a list of projects in an alternating layout with robust state restoration.
- * 
- * Features:
- * - Preserves scroll position when navigating to/from project details
- * - Prevents animation flicker when returning from detail pages
- * - Handles both in-page navigation and browser back/forward
- * - Respects prefers-reduced-motion accessibility setting
- * 
- * Each project card features:
- * - A project screenshot with hover effects
- * - Title, description, and tags
- * - Links to the live site and project detail page
- * 
- * @returns {JSX.Element} The rendered Projects section.
- */
+const filterCategories = [
+    { key: 'all', label: 'All' },
+    { key: 'ml-ai', label: 'ML & AI' },
+    { key: 'mobile', label: 'Mobile' },
+    { key: 'web', label: 'Web' },
+    { key: 'systems', label: 'Systems' },
+];
+
 export const Projects = () => {
     const { effectsEnabled } = useEffects();
     const [hasVisited, setHasVisited] = useState(false);
+    const [activeFilter, setActiveFilter] = useState('all');
     const { shouldForceVisible, saveScrollPosition } = useProjectsScrollRestoration();
 
     const headerRef = useRef(null);
@@ -46,26 +37,46 @@ export const Projects = () => {
 
     const shouldShowHeader = shouldForceVisible || !effectsEnabled || hasVisited || headerInView;
 
+    const filteredProjects = activeFilter === 'all'
+        ? projects
+        : projects.filter(p => p.categories.includes(activeFilter as 'ml-ai' | 'mobile' | 'web' | 'systems'));
+
     return (
         <Section id="projects" className="relative">
             <motion.div
                 ref={headerRef}
                 initial={false}
                 animate={shouldShowHeader ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: (effectsEnabled && !hasVisited && !shouldForceVisible) ? 0.6 : 0 }}
+                transition={{ duration: (effectsEnabled && !hasVisited && !shouldForceVisible) ? 0.5 : 0 }}
                 style={{ willChange: (effectsEnabled && !hasVisited && !shouldForceVisible) ? 'transform, opacity' : undefined }}
-                className="mb-24"
+                className="mb-12"
             >
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                    Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-soft">Projects</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                    Projects
                 </h2>
-                <p className="text-foreground-muted text-lg max-w-2xl">
+                <p className="text-foreground-muted text-lg max-w-2xl mb-8">
                     {siteConfig.sections.projects.description}
                 </p>
+
+                {/* Filter Tabs */}
+                <div className="flex flex-wrap gap-2">
+                    {filterCategories.map((cat) => (
+                        <button
+                            key={cat.key}
+                            onClick={() => setActiveFilter(cat.key)}
+                            className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-all duration-300 ${activeFilter === cat.key
+                                ? 'bg-primary/15 text-primary border border-primary/25'
+                                : 'text-foreground-muted border border-white/8 hover:border-white/15 hover:text-foreground'
+                                }`}
+                        >
+                            {cat.label}
+                        </button>
+                    ))}
+                </div>
             </motion.div>
 
-            <div className="flex flex-col gap-32">
-                {projects.map((project, index) => (
+            <div className="flex flex-col gap-28">
+                {filteredProjects.map((project, index) => (
                     <ProjectCard
                         key={project.id}
                         project={project}

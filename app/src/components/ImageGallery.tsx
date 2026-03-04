@@ -61,7 +61,7 @@ export function ImageGallery({ images, projectTitle }: ImageGalleryProps) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: idx * 0.1 }}
                         onClick={() => openLightbox(idx)}
-                        className="group relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/10 hover:border-neon-blue/30 transition-all duration-300 cursor-pointer"
+                        className="group relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/8 hover:border-primary/20 transition-all duration-300 cursor-pointer"
                     >
                         <Image
                             src={image}
@@ -177,7 +177,7 @@ export function ImageGallery({ images, projectTitle }: ImageGalleryProps) {
                                             setSelectedIndex(idx);
                                         }}
                                         className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${idx === selectedIndex
-                                            ? 'border-neon-blue scale-110'
+                                            ? 'border-primary scale-110'
                                             : 'border-white/20 hover:border-white/50'
                                             }`}
                                     >

@@ -1,18 +1,14 @@
 /**
  * @file config.ts
  * @description Central configuration file for the website's content.
- * Allows for easy updates to text and links without modifying components.
  */
 
 import { SiteConfig } from '@/types';
 
-/**
- * The main configuration object for the site.
- */
 export const siteConfig: SiteConfig = {
     name: "Robin Morgenstern",
     tagline: "Software Engineer",
-    subtitle: "Bachelor of Science in Computer Science",
+    subtitle: "B.Sc. Computer Science — TU Dresden",
     social: {
         github: "https://github.com/Dramiley",
         linkedin: "https://www.linkedin.com/in/robin-morgenstern",
@@ -20,20 +16,36 @@ export const siteConfig: SiteConfig = {
     },
     sections: {
         hero: {
-            availableForWork: "AVAILABLE FOR WORK",
-            typewriterWords: ["Software Engineer", "Full Stack Developer", "Programmer", "Bachelor in Computer Science"]
+            statement: "Software engineer building at the intersection of AI, computer vision, and real-time systems.",
+            subtext: "Currently pursuing an M.Sc. at TU Dresden.\nPreviously shipped a GPS game to 200+ users."
+        },
+        whatIBuild: {
+            title: "What I build",
+            domains: [
+                {
+                    title: 'ML & Computer Vision',
+                    description: 'Object detection, knowledge graphs, fine-tuning LLMs, RAG systems',
+                },
+                {
+                    title: 'Cross-Platform Apps',
+                    description: 'GPS-based games, Firebase real-time sync, Flutter production apps',
+                },
+                {
+                    title: 'Systems & Automation',
+                    description: 'Raspberry Pi edge computing, Docker pipelines, server-client architectures',
+                },
+            ]
         },
         projects: {
-            description: "A selection of projects that I have done."
+            description: "Selected work across ML, mobile, and systems engineering."
         },
         skills: {
-            description: "A list of technologies that I use to build software."
+            description: "The tools and technologies I reach for most."
         },
         contact: {
-            titlePrefix: "Ready to start your next",
-            titleHighlight: "Project?",
-            description: "I'm currently open to new opportunities. I'll try my best to get back to you!",
-            buttonText: "Contact Me"
+            title: "Let's talk.",
+            description: "I'm looking for engineering roles where I can work on hard problems — ideally involving ML, computer vision, real-time systems, or software development.",
+            buttonText: "Get in Touch"
         }
     }
 };

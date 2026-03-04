@@ -3,23 +3,24 @@ import { Experience } from '@/types';
 export const experience: Experience[] = [
     {
         id: 'independent-software-engineer',
-        role: 'independent software engineer',
-        company: 'own business',
-        period: '2025 - Present',
+        role: 'Independent Software Engineer',
+        company: 'Self-Employed',
+        period: '2025 – Present',
         description: [
-            'Small independent software projects for clients',
-            'Developing HideZone',
+            'Built and shipped HideZone, a real-time GPS game with 200+ Play Store downloads',
+            'Developed and delivered a remote desktop solution with time-linked password authentication for a client',
         ]
     },
     {
         id: 'student-assistant',
-        role: 'student assistant',
+        role: 'Student Assistant',
         company: 'TU Dresden',
-        period: '2024 - Present',
+        period: '2024 – Present',
         description: [
-            'Training and implementing an AI for object detection on industry machines',
-            'Setting up a Raspberry Pi for industrial use',
-            'Setting up Docker Containers for easy usage across other systems'
+            'Training SSD object detection models on custom industrial machine datasets',
+            'Engineered a Raspberry Pi edge system with camera calibration, network-wide server scanning, and beamer-based AR overlay projection',
+            'Built the full server-to-client pipeline connecting Dockerized backend inference to the edge device',
+            'Dockerized the deployment pipeline for reproducibility across lab environments',
         ]
     }
 ];

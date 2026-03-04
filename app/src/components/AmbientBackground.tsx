@@ -1,27 +1,9 @@
 'use client';
 
-/**
- * @file AmbientBackground.tsx
- * @description The animated background component.
- * Creates a dynamic, interactive background with wandering blobs and mouse parallax effects.
- */
-
 import { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue, useTransform, useReducedMotion, useScroll } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 
-/**
- * AmbientBackground Component
- * 
- * Renders multiple layers of animated elements:
- * 1. Base gradient
- * 2. Wandering blobs that also react to mouse movement (parallax)
- * 3. Subtle particles
- * 4. Scroll-reactive light streaks
- * 5. Noise texture overlay
- * 
- * @returns {JSX.Element} The rendered AmbientBackground component.
- */
 export default function AmbientBackground() {
     const [isClient, setIsClient] = useState(false);
     const mouseX = useMotionValue(0);
@@ -29,47 +11,34 @@ export default function AmbientBackground() {
     const shouldReduceMotion = useReducedMotion();
     const { scrollYProgress } = useScroll();
 
-    // Smooth spring animation for mouse movement
     const springConfig = { damping: 50, stiffness: 400 };
     const x = useSpring(mouseX, springConfig);
     const y = useSpring(mouseY, springConfig);
 
-    // Parallax transforms for different layers
-    const x1 = useTransform(x, (value) => value * 0.5);
-    const y1 = useTransform(y, (value) => value * 0.5);
+    const x1 = useTransform(x, (value) => value * 0.4);
+    const y1 = useTransform(y, (value) => value * 0.4);
     const x2 = useTransform(x, (value) => value * 0.2);
     const y2 = useTransform(y, (value) => value * 0.2);
-    const x3 = useTransform(x, (value) => value * 0.8);
-    const y3 = useTransform(y, (value) => value * 0.8);
 
-    // Scroll-reactive transforms
-    const scrollY1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+    const scrollY1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
     const { effectsEnabled } = useEffects();
 
     useEffect(() => {
-        // Set client flag after mount to avoid hydration mismatch
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsClient(true);
 
         if (shouldReduceMotion || !effectsEnabled) return;
 
-        /**
-         * Tracks mouse movement and updates motion values.
-         * Coordinates are normalized to -1 to 1 range.
-         */
         const handleMouseMove = (e: MouseEvent) => {
             const { clientX, clientY } = e;
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
 
-            // Normalize coordinates -1 to 1
             const xVal = (clientX / windowWidth - 0.5) * 2;
             const yVal = (clientY / windowHeight - 0.5) * 2;
 
-            // Update motion values (max offset in pixels)
-            mouseX.set(xVal * 50);
-            mouseY.set(yVal * 50);
+            mouseX.set(xVal * 40);
+            mouseY.set(yVal * 40);
         };
 
         window.addEventListener('mousemove', handleMouseMove);
@@ -78,28 +47,26 @@ export default function AmbientBackground() {
 
     return (
         <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#020617]">
-            {/* Layer 1: Deep Base Gradient (Vignette) */}
+            {/* Base vignette */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background-secondary)_0%,_#000000_100%)] opacity-80" />
 
-            {/* Only render animated elements on client and if effects are enabled */}
             {isClient && effectsEnabled && (
                 <>
-                    {/* Layer 2: Atmospheric Light Beams with Wandering + Mouse Tracking */}
-                    {/* Orange blob - Outer div for wandering, inner for mouse parallax */}
+                    {/* Terracotta blob */}
                     <motion.div
                         className="absolute will-change-transform"
                         animate={{
-                            x: [0, 30, -20, 0],
-                            y: [0, -20, 30, 0],
+                            x: [0, 25, -15, 0],
+                            y: [0, -15, 25, 0],
                         }}
                         transition={{
-                            duration: 20,
+                            duration: 22,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
                     >
                         <motion.div
-                            className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.25] blur-[100px]"
+                            className="absolute top-[-15%] left-[-5%] w-[70vw] h-[70vw] rounded-full opacity-[0.12] blur-[120px]"
                             style={{
                                 background: 'radial-gradient(circle, var(--primary) 0%, transparent 60%)',
                                 x: x2,
@@ -109,23 +76,23 @@ export default function AmbientBackground() {
                         />
                     </motion.div>
 
-                    {/* Blue blob - Outer div for wandering, inner for mouse parallax */}
+                    {/* Slate blue blob */}
                     <motion.div
                         className="absolute will-change-transform"
                         animate={{
-                            x: [0, -40, 20, 0],
-                            y: [0, 30, -30, 0],
+                            x: [0, -30, 15, 0],
+                            y: [0, 20, -25, 0],
                         }}
                         transition={{
-                            duration: 25,
+                            duration: 28,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
                     >
                         <motion.div
-                            className="absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full opacity-[0.2] blur-[120px]"
+                            className="absolute bottom-[-15%] right-[-5%] w-[70vw] h-[70vw] rounded-full opacity-[0.10] blur-[130px]"
                             style={{
-                                background: 'radial-gradient(circle, var(--neon-blue) 0%, transparent 60%)',
+                                background: 'radial-gradient(circle, var(--accent) 0%, transparent 60%)',
                                 x: x1,
                                 y: y1,
                                 mixBlendMode: 'screen',
@@ -133,23 +100,11 @@ export default function AmbientBackground() {
                         />
                     </motion.div>
 
-                    {/* Layer 3: Subtle Particles (CSS Box Shadow Trick for Performance) */}
+                    {/* Subtle aurora streak */}
                     <motion.div
-                        className="absolute inset-0 opacity-30 will-change-transform"
-                        style={{ x: x3, y: y3 }}
-                    >
-                        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full shadow-[0_0_10px_white] opacity-20" />
-                        <div className="absolute top-3/4 left-1/3 w-1.5 h-1.5 bg-neon-blue rounded-full shadow-[0_0_15px_var(--neon-blue)] opacity-20" />
-                        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary rounded-full shadow-[0_0_10px_var(--primary)] opacity-20" />
-                        <div className="absolute bottom-1/4 right-1/3 w-2 h-2 bg-white rounded-full shadow-[0_0_20px_white] opacity-10" />
-                        <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-neon-blue rounded-full shadow-[0_0_8px_var(--neon-blue)] opacity-20" />
-                    </motion.div>
-
-                    {/* Layer 4: Moving Light Streaks (Aurora effect) - Scroll Reactive */}
-                    <motion.div
-                        className="absolute top-0 left-0 right-0 h-[500px] opacity-10 blur-[80px] will-change-transform"
+                        className="absolute top-0 left-0 right-0 h-[400px] opacity-[0.06] blur-[100px] will-change-transform"
                         style={{
-                            background: 'linear-gradient(180deg, var(--neon-blue-dim) 0%, transparent 100%)',
+                            background: 'linear-gradient(180deg, var(--accent-dim) 0%, transparent 100%)',
                             x: x2,
                             y: scrollY1,
                             mixBlendMode: 'screen',
@@ -158,8 +113,8 @@ export default function AmbientBackground() {
                 </>
             )}
 
-            {/* Layer 5: Noise Texture - Always visible */}
-            <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-noise mix-blend-overlay" />
+            {/* Noise texture */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-noise mix-blend-overlay" />
         </div>
     );
 }

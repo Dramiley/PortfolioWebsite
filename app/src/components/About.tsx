@@ -1,28 +1,11 @@
 'use client';
 
-/**
- * @file About.tsx
- * @description The About section component.
- * Displays personal information and biography.
- */
-
 import { aboutContent } from '@/data/about';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
-
 import { useMobile } from '@/hooks/useMobile';
 
-/**
- * About Component
- * 
- * Displays the user's biography in a styled glass panel.
- * Features:
- * - Animated entrance for text paragraphs
- * - Decorative background elements
- * 
- * @returns {JSX.Element} The rendered About section.
- */
 export const About = () => {
     const { effectsEnabled } = useEffects();
     const isMobile = useMobile();
@@ -30,29 +13,26 @@ export const About = () => {
     return (
         <Section id="about" className="relative">
             <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2, margin: isMobile ? "100px" : "-100px" }}
-                transition={{ duration: effectsEnabled ? 0.8 : 0, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: effectsEnabled ? 0.7 : 0, ease: [0.16, 1, 0.3, 1] }}
                 style={{ willChange: 'transform, opacity' }}
                 className="max-w-4xl mx-auto"
             >
-                <div className="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden group">
-                    {/* Decorative gradient blob */}
-                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-neon-blue/10 rounded-full blur-[80px] group-hover:bg-neon-blue/20 transition-colors duration-700" />
-
-                    <h2 className="text-3xl md:text-5xl font-bold mb-10 text-white relative z-10">
-                        {aboutContent.title.split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-soft">{aboutContent.title.split(' ').slice(1).join(' ')}</span>
+                <div className="glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-10 text-foreground">
+                        {aboutContent.title}
                     </h2>
 
-                    <div className="space-y-6 text-lg md:text-xl text-foreground-muted leading-relaxed relative z-10">
+                    <div className="space-y-6 text-base md:text-lg text-foreground-muted leading-relaxed">
                         {aboutContent.bio.map((paragraph, index) => (
                             <motion.p
                                 key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 15 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
-                                transition={{ duration: effectsEnabled ? 0.6 : 0, delay: effectsEnabled ? index * 0.1 + 0.2 : 0 }}
+                                transition={{ duration: effectsEnabled ? 0.5 : 0, delay: effectsEnabled ? index * 0.08 + 0.15 : 0 }}
                                 style={{ willChange: 'transform, opacity' }}
                                 className="hover:text-foreground transition-colors duration-300"
                             >
@@ -60,9 +40,6 @@ export const About = () => {
                             </motion.p>
                         ))}
                     </div>
-
-                    {/* Bottom accent line */}
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50" />
                 </div>
             </motion.div>
         </Section>

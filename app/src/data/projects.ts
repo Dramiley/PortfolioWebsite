@@ -5,6 +5,7 @@ export const projects: Project[] = [
         id: 'ai-maintenance-assistant',
         slug: 'ai-maintenance-assistant',
         hasDetailPage: true,
+        categories: ['ml-ai', 'systems'],
         title: 'AI Maintenance Assistant',
         shortDescription: 'An AI maintenance assistant that uses Object Detection and LLMs to answer common maintenance questions.',
         fullDescription: 'A comprehensive hardware and software solution designed to assist technicians during complex maintenance tasks. By integrating a Raspberry Pi with a finetuned SSD Object Detection model, this system identifies machinery components in real-time. It leverages Large Language Models (LLMs) to provide context-aware answers to maintenance questions and utilizes a projector to overlay visual guidance directly onto the equipment.',
@@ -26,8 +27,13 @@ export const projects: Project[] = [
         details: {
             problem: "Expert supervision isn't always available, and technicians often struggle to identify specific components in complex machinery using inefficient paper manuals.",
             problemImage: '',
-            solution: 'We developed an AR-capable AI assistant that identifies components in real-time using Computer Vision. By projecting information directly onto the equipment and allowing natural language Q&A via LLMs, technicians receive immediate, hands-free guidance.',
-            solutionImage: '',
+            approach: 'We developed an AR-capable AI assistant that identifies components in real-time using Computer Vision. By projecting information directly onto the equipment and allowing natural language Q&A via LLMs, technicians receive immediate, hands-free guidance.',
+            approachImage: '',
+            impact: 'The system significantly reduces the cognitive load on technicians and the time spent cross-referencing manuals. By combining visual AR overlays with contextual LLM reasoning, training time for new machinery is cut drastically.',
+            metrics: [
+                { label: 'Platform', value: 'AR Projection' },
+                { label: 'Hardware', value: 'Raspberry Pi 3' }
+            ],
             architecture: 'The system follows a distributed client-server model. The Raspberry Pi functions as the edge device, managing the camera input, calibration, and projector output for the AR overlay. The backend consists of a Dockerized server environment that hosts the computation-heavy SSD Object Detection model and LLM logic. Python scripts facilitate real-time network communication, transmitting images for inference and returning bounding box coordinates and textual guidance to the edge device for immediate visualization.',
             features: [
                 { title: 'Object Detection', description: 'Fine-tuned SSD Object Detection on a custom-curated dataset of maintenance tasks.' },
@@ -47,6 +53,7 @@ export const projects: Project[] = [
         id: "hidezone",
         slug: "hidezone",
         hasDetailPage: true,
+        categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
         shortDescription: "Real-world multiplayer Hide & Seek! Hunt friends with live GPS, tactical items, and traps.",
         fullDescription: "HideZone transforms the classic game of Hide & Seek into a high-tech, adrenaline-fueled GPS adventure. Whether in the park, the city, or the woods, it's like a battle royale in your own neighborhood! The game features multiple modes including Classic Hide & Seek with shrinking zones and Zombie Infection. Players can utilize a tactical inventory system with Scanners, Proximity Mines, and Ghost Mode to outsmart opponents. Designed with a privacy-first approach, it requires no accounts and ensures all data is wiped instantly when the match ends.",
@@ -67,17 +74,19 @@ export const projects: Project[] = [
             "/images/projects/HideZone3.jpg",
             "/images/projects/HideZone4.jpg"
         ],
-        links: [
-            { label: "View App Page", url: "https://dramiley.dev/" },
-            { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone" }
-        ],
-        link: "https://play.google.com/store/apps/details?id=com.hidezone.hidezone",
+        link: "https://dramiley.dev/",
         githubUrl: "closed source",
         details: {
             problem: "Traditional outdoor games often lack the structure, boundary enforcement, and strategic depth that modern gamers expect. Organizing a large-scale game in a city center is difficult due to unclear play zones, and simple running games often fail to engage players who crave tactical complexity.",
             problemImage: "",
-            solution: "HideZone acts as a digital referee and game master. It enforces boundaries with GPS geofencing and introduces 'Tactical Warfare' mechanics—virtual items like Proximity Mines and Scanners, to add strategy to the physical exertion. It supports dynamic modes like Zombie Infection, where gameplay mechanics shift entirely (Survivors vs. Zombies).",
-            solutionImage: "",
+            approach: "HideZone acts as a digital referee and game master. It enforces boundaries with GPS geofencing and introduces 'Tactical Warfare' mechanics—virtual items like Proximity Mines and Scanners, to add strategy to the physical exertion. It supports dynamic modes like Zombie Infection, where gameplay mechanics shift entirely (Survivors vs. Zombies).",
+            approachImage: "",
+            impact: "Bootstrapped from concept to production, the app successfully gained traction organically, achieving over 200 downloads from the Play Store in its first month and proving the viability of the tech stack and game design in real-world scenarios.",
+            metrics: [
+                { label: 'Active Downloads', value: '200+' },
+                { label: 'Sync Latency', value: '< 50ms' },
+                { label: 'Cost to Run', value: '$0/mo' }
+            ],
             architecture: "The application is built with Flutter for cross-platform performance. It employs a clean architecture using the Strategy Pattern to handle different game modes (e.g., Classic, Zombie). State management is driven by Flutter Riverpod, ensuring a reactive and testable codebase. Firebase Realtime Database acts as the single source of truth, synchronizing player types, locations, and game events across all clients in milliseconds.",
             features: [
                 { title: "Tactical Warfare Items", description: "Use Scanners to reveal locations, Proximity Mines for traps, Ghost Mode for stealth, and Zone Movers to flush out campers." },
@@ -97,6 +106,7 @@ export const projects: Project[] = [
         id: "automated-knowledge-graph-generation",
         slug: "automated-knowledge-graph-generation",
         hasDetailPage: true,
+        categories: ['ml-ai'],
         title: "Bachelor Thesis",
         shortDescription: "Automated knowledge graph creation via multi-object detection for an AI maintenance assistant",
         fullDescription: "This research project addresses the gap between visual object detection and structured knowledge representation. I developed a system that automatically converts bounding box data from images of industrial machines into formal Knowledge Graphs (RDF/OWL). These graphs serve as a structured knowledge base for Large Language Models (LLMs), enabling them to answer spatial and maintenance-related questions in an industrial context without hallucinations.",
@@ -120,8 +130,13 @@ export const projects: Project[] = [
         details: {
             problem: "Creating Knowledge Graphs manually is time-intensive and error-prone. While text-to-graph methods exist, there is a significant lack of automated approaches that transform visual object detection data into formal, logic-based knowledge structures that LLMs can process efficiently for industrial maintenance tasks.",
             problemImage: "",
-            solution: "I designed and implemented a modular Python based pipeline (`OntologyGenerator.py`) that ingests CSV output from Multi-Object Detection models. Using geometric algorithms, it automatically derives semantic spatial relations (e.g., 'left_of', 'above', 'inside_of') and instantiates them into an OWL ontology. The system supports multi-camera fusion to minimize the uncertainty and problems of object detection.",
-            solutionImage: "",
+            approach: "I designed and implemented a modular Python based pipeline (`OntologyGenerator.py`) that ingests CSV output from Multi-Object Detection models. Using geometric algorithms, it automatically derives semantic spatial relations (e.g., 'left_of', 'above', 'inside_of') and instantiates them into an OWL ontology. The system supports multi-camera fusion to minimize the uncertainty and problems of object detection.",
+            approachImage: "",
+            impact: "The thesis proved that geometric-to-semantic translation is viable for industrial contexts without requiring massive multi-modal end-to-end transformers. The work received a top grade of 1.4 for its rigorous evaluation of LLM integration methods.",
+            metrics: [
+                { label: 'Final Grade', value: '1.4' },
+                { label: 'LLMs Evaluated', value: '4' }
+            ],
             architecture: "The system processes annotated image data (CSV) containing bounding boxes. It calculates the center of each object and applies threshold-based logic to determine spatial relationships. It utilizes `owlready2` to generate standard-compliant RDF triples. The output was evaluated against four LLMs (DeepSeek-R1, DeepSeek-V3, Llama 3.1, Qwen 2.5) using specific metrics for correctness and completeness.",
             features: [
                 { title: "Geometric Relation Extraction", description: "Algorithms to automatically determine 'above', 'below', 'left_to', and 'inside_of' relations based on pixel coordinates." },
@@ -141,6 +156,7 @@ export const projects: Project[] = [
         id: 'secret-llm-cultural-qa',
         slug: 'secret-llm-cultural-qa',
         hasDetailPage: true,
+        categories: ['ml-ai'],
         title: 'SecretLLM - Cultural QA System',
         shortDescription: 'Optimizing Llama-3-8B for cultural reasoning for a 2 month project at TU Dresden.',
         fullDescription: 'Developed for the "Behind the Secrets of Large Language Models" module at TU Dresden, this project addresses the "cultural gap" in standard LLMs. I engineered a question-answering system using Meta-Llama-3-8B that improves accuracy on cultural tasks. While Supervised Fine-Tuning (SFT) helped with format alignment, the implementation of a Dynamic Retrieval-Augmented Generation (RAG) system yielded the most significant results, increasing Short Answer Question (SAQ) accuracy by 0.16 over the baseline.\nFull project report can be found in the github repository.',
@@ -166,8 +182,14 @@ export const projects: Project[] = [
         details: {
             problem: 'Standard Large Language Models often exhibit Western-centric biases and lack the nuance required for specific cultural queries. Additionally, the 8B parameter model struggled with strict output formatting (JSON) and zero-shot reasoning for complex Short Answer Questions (SAQ), often leading to "instruction drift".',
             problemImage: '',
-            solution: 'I moved from complex JSON prompts to simplified natural language instructions and implemented a "Dynamic Few-Shot" RAG framework. By converting Multiple Choice data into Short Answer pairs, I created an augmented knowledge base. For every incoming query, the system retrieves and injects the top-k = 3 semantically similar examples into the prompt, grounding the model in relevant cultural context.',
-            solutionImage: '',
+            approach: 'I moved from complex JSON prompts to simplified natural language instructions and implemented a "Dynamic Few-Shot" RAG framework. By converting Multiple Choice data into Short Answer pairs, I created an augmented knowledge base. For every incoming query, the system retrieves and injects the top-k = 3 semantically similar examples into the prompt, grounding the model in relevant cultural context.',
+            approachImage: '',
+            impact: 'The combination of LoRA fine-tuning and Dynamic RAG significantly outperformed naive prompting. The project successfully aligned the model to output concise, culturally accurate answers, beating the baseline by a wide margin in the final academic evaluation.',
+            metrics: [
+                { label: 'Accuracy Gain', value: '+0.16' },
+                { label: 'Parameter Size', value: '8 Billion' },
+                { label: 'Quantization', value: '4-bit' }
+            ],
             architecture: 'The solution utilizes the Llama-3-8B model with 4-bit quantization (NF4) for efficiency. It employs `all-MiniLM-L6-v2` for semantic embedding and retrieval. The pipeline includes a data augmentation stage where training data is stripped of options to create direct QA pairs. Inference uses Greedy Search to ensure deterministic and concise outputs required by the evaluation script.',
             features: [
                 { title: 'Dynamic RAG', description: 'Retrieval system that injects semantically relevant "in-context" examples for each specific query, boosting SAQ accuracy by 16%.' },
@@ -188,6 +210,7 @@ export const projects: Project[] = [
         id: 'portfolio-website',
         slug: 'portfolio-website',
         hasDetailPage: true,
+        categories: ['web'],
         title: 'Portfolio Website',
         shortDescription: 'A responsive portfolio that shows off my skills and projects.',
         fullDescription: 'The Website started as a simple portfolio and then got more advanced with motion-first experience with glassmorphic UI, scroll-linked animations, and thoughtful microinteractions. The site balances visual richness with accessibility and performance.',
@@ -207,9 +230,15 @@ export const projects: Project[] = [
         details: {
             problem: 'Most portfolios feel like static resumes. I wanted something that could demonstrate technical skills through execution itself and not just describe them. The challenge was creating a memorable experience without sacrificing maintainability, performance, or accessibility.',
             problemImage: '',
-            solution: 'I built a fully data-driven architecture where content is stored in typed TypeScript files, separate from presentation. This let me iterate rapidly on design while keeping content updates simple. The site evolved through several redesigns, adding sophisticated motion systems, glassmorphic effects, and interactive elements. Each iteration taught me something about balancing aesthetics with usability.',
-            solutionImage: '',
-            architecture: 'Built on Next.js 15 with App Router for optimal performance. Framer Motion powers complex animations, scroll-triggered reveals, and page transitions. The design system uses CSS custom properties for theming with a Deep Navy background, Vibrant Orange accents, and Neon Blue highlights. Glassmorphism and backdrop filters add depth. All animations respect prefers-reduced-motion for accessibility.',
+            approach: 'I built a fully data-driven architecture where content is stored in typed TypeScript files, separate from presentation. This let me iterate rapidly on design while keeping content updates simple. The site evolved through several redesigns, adding sophisticated motion systems, glassmorphic effects, and interactive elements. Each iteration taught me something about balancing aesthetics with usability.',
+            approachImage: '',
+            impact: 'The resulting portfolio serves as a live, interactive case study of my capabilities in modern React, styling architecture, and accessibility. It successfully handles 100/100 Lighthouse scores while running complex physics and canvas animations.',
+            metrics: [
+                { label: 'Frontend', value: 'React 19' },
+                { label: 'Styling', value: 'Tailwind v4' },
+                { label: 'Architecture', value: 'Data-Driven' }
+            ],
+            architecture: 'Built on Next.js 16 with App Router for optimal performance. Framer Motion powers complex animations, scroll-triggered reveals, and page transitions. The design system uses CSS custom properties for theming with a Slate base and Terracotta accents. Glassmorphism and backdrop filters add depth. All animations respect prefers-reduced-motion for accessibility.',
             features: [
                 { title: 'Motion-First Design', description: 'Scroll-linked parallax, orchestrated section reveals, and physics-based interactions create a living interface that responds naturally to user input.' },
                 { title: 'Glassmorphic UI', description: 'Layered transparency effects with backdrop blur, subtle borders, and controlled opacity for depth without visual clutter.' },
@@ -231,6 +260,7 @@ export const projects: Project[] = [
         id: 'software-technology-internship',
         slug: 'software-technology-internship',
         hasDetailPage: true,
+        categories: ['web'],
         title: 'Software Technology Internship',
         shortDescription: 'An internal order management system for streamlining beverage procurement and stock control.',
         fullDescription: 'Developed during the Software Technology module at TU Dresden, this project is a web-based management tool designed to digitize the internal ordering processes of a beverage shop. Working in an agile Scrum team, we engineered a robust system to track inventory levels, automate reordering workflows, and manage staff permissions. The application ensures seamless supply chain operations by providing real-time stock insights and accounting features.',
@@ -250,8 +280,13 @@ export const projects: Project[] = [
         details: {
             problem: 'The client required a shop-internal control mechanism to replace inefficient manual tracking of beverage stocks. The challenge was to create a system that handles complex dependencies between stock levels, expiration dates, and automated reordering logic while enforcing strict user role permissions.',
             problemImage: '',
-            solution: 'We built a monolithic Spring Boot application that serves as a central hub for all shop operations. I contributed to the Inventory module, implementing logic that automatically flags low-stock items and generates procurement orders. The frontend uses server-side rendering with Thymeleaf for a responsive internal dashboard.',
-            solutionImage: '',
+            approach: 'We built a monolithic Spring Boot application that serves as a central hub for all shop operations. I contributed to the Inventory module, implementing logic that automatically flags low-stock items and generates procurement orders. The frontend uses server-side rendering with Thymeleaf for a responsive internal dashboard.',
+            approachImage: '',
+            impact: 'The delivered prototype successfully digitized the manual workflow, proving the team\'s capability to handle full-stack Spring application development within a strict Agile framework. We hit all sprint deliverables on schedule.',
+            metrics: [
+                { label: 'Team Size', value: '8 Engineers' },
+                { label: 'Methodology', value: 'Scrum' }
+            ],
             architecture: 'The system is architected using the Model-View-Controller (MVC) pattern typical of Spring Boot applications. It utilizes Spring Data JPA for object-relational mapping to the database and Spring Security for granular access control (e.g., identifying Warehouse Managers vs. Sales Staff).',
             features: [
                 { title: 'Inventory Tracking', description: 'Real-time monitoring of beverage stock levels with automated low-stock alerts.' },
@@ -272,6 +307,7 @@ export const projects: Project[] = [
         id: 'robolab',
         slug: 'robolab',
         hasDetailPage: true,
+        categories: ['systems'],
         title: 'Autonomous Maze Navigator',
         shortDescription: 'Engineering a Python-based control system for autonomous robots in dynamic environments.',
         fullDescription: 'Participated in the "Robolab" systems engineering challenge. My team developed a Python control stack for an EV3 rover designed to navigate unknown mazes autonomously. The system features a custom state machine for decision making, PID controllers for precise line following, and MQTT communication for real-time telemetry. We successfully implemented graph-based pathfinding to optimize exploration and retrieval tasks.',
@@ -289,8 +325,13 @@ export const projects: Project[] = [
         details: {
             problem: 'The challenge was to program a robot to explore a randomly generated maze until it received a specific destination coordinate from a central server. The robot then had to navigate to this server-assigned target efficiently while adhering to strict memory and timing constraints.',
             problemImage: '',
-            solution: 'We engineered a modular Python codebase centered around a finite state machine. We implemented a robust communication layer that handled MQTT messages to parse the target coordinates. We used a mapping algorithm (DFS) to explore the maze and a pathfinding algorithm to calculate the route to the server\'s target once received.',
-            solutionImage: '',
+            approach: 'We engineered a modular Python codebase centered around a finite state machine. We implemented a robust communication layer that handled MQTT messages to parse the target coordinates. We used a mapping algorithm (DFS) to explore the maze and a pathfinding algorithm to calculate the route to the server\'s target once received.',
+            approachImage: '',
+            impact: 'The robot successfully passed the final examination under tight time pressure, correctly receiving the server\'s payload, mapping the maze, and navigating to the destination without error or memory leaks.',
+            metrics: [
+                { label: 'Platform', value: 'EV3 Linux' },
+                { label: 'Final Exam', value: '100% Passed' }
+            ],
             architecture: 'The software runs on the ev3dev Linux kernel. It utilizes a main event loop that polls sensors (color, distance, gyro) and feeds data into a central logic controller. An asynchronous MQTT client handles the negotiation with the server to receive the "Target" payload.',
             features: [
                 { title: 'Server-Guided Navigation', description: 'Logic to request, parse, and validate target coordinates received from the central server via MQTT.' },

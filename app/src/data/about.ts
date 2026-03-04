@@ -4,10 +4,10 @@ export interface AboutContent {
 }
 
 export const aboutContent: AboutContent = {
-    title: "About Me",
+    title: "About",
     bio: [
-        "Hello, I'm Robin Morgenstern. I'm currently studying for a master's degree in computer science and working both as a student assistant and as a freelance software developer. ",
-        "In my student assistant position, I am primarily involved in AI development and the automation of a Raspberry Pi system to support the maintenance of industrial machines. Technically, I mainly work in the full-stack and backend areas as well as in machine learning. ",
-        "I love breaking down problems, automating processes, and finding creative ways to make them more efficient. I am fast, eager to experiment, and enjoy familiarizing myself with complex systems. ",
+        "I build things that work in the real world — from an AI system that guides technicians through machine repairs using projected AR overlays, to a GPS hide-and-seek game with 200+ downloads in its first month on the Play Store.",
+        "I'm currently finishing my M.Sc. in Computer Science at TU Dresden. My bachelor's thesis automated the generation of knowledge graphs from multi-object detection data, grounding LLM responses in structured spatial reasoning. I also work as a student assistant building the full pipeline — from training SSD detection models and engineering the Dockerized server backend, to setting up the Raspberry Pi edge system with camera calibration, network scanning, and beamer-based AR projection.",
+        "I'm strongest in Python and the ML ecosystem (TensorFlow, PyTorch, Transformers), and I build production apps with Flutter + Firebase. I pick up new stacks fast — this website, for instance, was my first Next.js project.",
     ]
 };

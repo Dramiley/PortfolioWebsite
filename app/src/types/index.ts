@@ -14,6 +14,7 @@ export interface Project {
   shortDescription: string;
   fullDescription: string;
   tags: string[];
+  categories: ('ml-ai' | 'mobile' | 'web' | 'systems')[];
   techStack: { name: string; icon?: string }[];
   heroImage: string;
   galleryImages: string[];
@@ -23,8 +24,10 @@ export interface Project {
   details: {
     problem: string;
     problemImage?: string;
-    solution: string;
-    solutionImage?: string;
+    approach: string;
+    approachImage?: string;
+    impact?: string;
+    metrics?: { label: string; value: string }[];
     architecture?: string;
     features: { title: string; description: string }[];
     timeline?: { date: string; title: string; description: string }[];
@@ -47,8 +50,8 @@ export interface Experience {
  */
 export interface Skill {
   name: string;
-  category: 'frontend' | 'backend' | 'tools' | 'other';
-  level: 'Basic' | 'Intermediate' | 'Advanced';
+  category: 'languages' | 'ml-ai' | 'frameworks' | 'infrastructure';
+  primary?: boolean;
 }
 
 /**
@@ -65,8 +68,12 @@ export interface SiteConfig {
   };
   sections: {
     hero: {
-      availableForWork: string;
-      typewriterWords: string[];
+      statement: string;
+      subtext: string;
+    };
+    whatIBuild: {
+      title: string;
+      domains: { title: string; description: string }[];
     };
     projects: {
       description: string;
@@ -75,8 +82,7 @@ export interface SiteConfig {
       description: string;
     };
     contact: {
-      titlePrefix: string;
-      titleHighlight: string;
+      title: string;
       description: string;
       buttonText: string;
     };

@@ -1,34 +1,36 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AmbientBackground from "@/components/AmbientBackground";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { EffectsProvider } from "@/context/EffectsContext";
 import { EffectsToggle } from "@/components/ui/EffectsToggle";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Robin Morgenstern",
-  description: "Portfolio of Robin Morgenstern",
+  title: "Robin Morgenstern — Software Engineer",
+  description: "Software engineer working across AI, computer vision, and real-time systems. B.Sc. in Computer Science from TU Dresden.",
   openGraph: {
-    title: "Robin Morgenstern | Portfolio",
-    description: "Portfolio of Robin Morgenstern - Software Engineer",
-    siteName: "Robin Morgenstern Portfolio",
+    title: "Robin Morgenstern — Software Engineer",
+    description: "Building at the intersection of AI, computer vision, and real-time systems.",
+    siteName: "Robin Morgenstern",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Robin Morgenstern Portfolio",
+        alt: "Robin Morgenstern — Software Engineer",
       },
     ],
     locale: "en_US",
@@ -36,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Robin Morgenstern | Portfolio",
-    description: "Portfolio of Robin Morgenstern - Software Engineer",
+    title: "Robin Morgenstern — Software Engineer",
+    description: "Building at the intersection of AI, computer vision, and real-time systems.",
     images: ["/images/og-image.jpg"],
   },
   robots: {
@@ -53,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-slate-200 selection:bg-orange-500/30`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased text-foreground`}>
         <EffectsProvider>
           <ScrollProgress />
           <AmbientBackground />

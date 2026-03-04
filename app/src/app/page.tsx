@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 
+const WhatIBuild = dynamic(() => import("@/components/WhatIBuild").then(mod => mod.WhatIBuild));
 const About = dynamic(() => import("@/components/About").then(mod => mod.About));
 const Experience = dynamic(() => import("@/components/Experience").then(mod => mod.Experience));
 const Projects = dynamic(() => import("@/components/Projects").then(mod => mod.Projects));
@@ -11,10 +12,11 @@ const Footer = dynamic(() => import("@/components/Footer").then(mod => mod.Foote
 
 export default function Home() {
   return (
-    <div className="min-h-screen text-foreground font-sans selection:bg-primary/30 selection:text-white">
+    <div className="min-h-screen text-foreground font-sans">
       <Header />
       <main>
         <Hero />
+        <WhatIBuild />
         <About />
         <Experience />
         <Skills />

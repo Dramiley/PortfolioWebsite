@@ -41,7 +41,7 @@ export function BackToProjectsButton({ variant = 'top', className }: BackToProje
         return (
             <button
                 onClick={handleClick}
-                className={className || "inline-block px-12 py-6 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xl transition-all hover:scale-105"}
+                className={className || "inline-block px-10 py-5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/8 text-foreground font-semibold text-lg transition-all hover:scale-[1.02]"}
             >
                 View All Projects
             </button>
@@ -51,7 +51,7 @@ export function BackToProjectsButton({ variant = 'top', className }: BackToProje
     return (
         <button
             onClick={handleClick}
-            className={className || "inline-flex items-center text-sm text-neon-blue mb-6 hover:underline"}
+            className={className || "inline-flex items-center text-sm text-primary mb-6 hover:underline"}
         >
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
