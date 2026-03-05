@@ -3,7 +3,7 @@
 /**
  * @file GitHubPulse.tsx
  * @description Tiny indicator showing the user's latest GitHub activity.
- * Renders as a subtle mono-text line: "▍Active — last commit 2h ago"
+ * Renders as a subtle mono-text line: "▍Active - last commit 2h ago"
  * Falls back to nothing if no data is available.
  */
 

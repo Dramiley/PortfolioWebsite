@@ -21,17 +21,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!project) return {};
 
     return {
-        title: `${project.title} — Case Study`,
+        title: `${project.title} - Case Study`,
         description: project.shortDescription,
         openGraph: {
-            title: `${project.title} — Robin Morgenstern`,
+            title: `${project.title} - Robin Morgenstern`,
             description: project.shortDescription,
             images: project.heroImage ? [{ url: project.heroImage, width: 1200, height: 630, alt: project.title }] : [],
             type: 'article',
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${project.title} — Robin Morgenstern`,
+            title: `${project.title} - Robin Morgenstern`,
             description: project.shortDescription,
             images: project.heroImage ? [project.heroImage] : [],
         },

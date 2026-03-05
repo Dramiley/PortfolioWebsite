@@ -4,7 +4,7 @@
  * @file CaseStudyNav.tsx
  * @description Scroll-driven vertical section indicator for detail pages.
  * Shows which case study section the reader is currently viewing.
- * Hidden on mobile (< 1280px) — only shows when there's enough screen width.
+ * Hidden on mobile (< 1280px) - only shows when there's enough screen width.
  */
 
 import { useEffect, useState, useCallback } from 'react';
@@ -96,8 +96,8 @@ export function CaseStudyNav() {
                                 {/* Dot */}
                                 <motion.div
                                     className={`relative z-10 w-[15px] h-[15px] rounded-full border-2 transition-colors duration-300 ${isActive
-                                            ? 'border-primary bg-primary/20'
-                                            : 'border-white/15 bg-background group-hover:border-white/30'
+                                        ? 'border-primary bg-primary/20'
+                                        : 'border-white/15 bg-background group-hover:border-white/30'
                                         }`}
                                     animate={isActive ? { scale: 1.1 } : { scale: 1 }}
                                     transition={{ duration: 0.2 }}
@@ -115,8 +115,8 @@ export function CaseStudyNav() {
                                 {/* Label */}
                                 <span
                                     className={`ml-4 text-xs font-medium whitespace-nowrap transition-all duration-300 ${isActive
-                                            ? 'text-foreground opacity-100'
-                                            : 'text-foreground-muted opacity-0 group-hover:opacity-100'
+                                        ? 'text-foreground opacity-100'
+                                        : 'text-foreground-muted opacity-0 group-hover:opacity-100'
                                         }`}
                                 >
                                     {section.label}

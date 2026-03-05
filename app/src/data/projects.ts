@@ -56,7 +56,7 @@ export const projects: Project[] = [
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
         shortDescription: "Real-world multiplayer Hide & Seek! Hunt friends with live GPS, tactical items, and traps.",
-        fullDescription: "HideZone is a real-world GPS multiplayer game that turns any city or park into a Battle Royale. I engineered the entire stack from scratch, featuring live geofencing, shrinking play zones, and real-time inventory mechanics. Built with a strict privacy-first architecture—no accounts, no persistent tracking, and data wipes the second the match ends.",
+        fullDescription: "HideZone is a real-world GPS multiplayer game that turns any city or park into a Battle Royale. I engineered the entire stack from scratch, featuring live geofencing, shrinking play zones, and real-time inventory mechanics. Built with a strict privacy-first architecture: no accounts, no persistent tracking, and data wipes the second the match ends.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
             { name: "Flutter" },
