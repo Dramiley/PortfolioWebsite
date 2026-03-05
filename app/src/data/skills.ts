@@ -17,11 +17,11 @@ export const skills: Skill[] = [
     { name: 'LLMs / RAG', category: 'ml-ai' },
 
     // Frameworks
+    { name: 'Flask', category: 'frameworks', primary: true },
     { name: 'Flutter', category: 'frameworks', primary: true },
     { name: 'Firebase', category: 'frameworks', primary: true },
     { name: 'Next.js', category: 'frameworks' },
     { name: 'React', category: 'frameworks' },
-    { name: 'Flask', category: 'frameworks' },
     { name: 'Spring Boot', category: 'frameworks' },
     { name: 'Tailwind CSS', category: 'frameworks' },
     { name: 'Framer Motion', category: 'frameworks' },
