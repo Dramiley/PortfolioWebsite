@@ -6,8 +6,8 @@ export interface AboutContent {
 export const aboutContent: AboutContent = {
     title: "About",
     bio: [
-        "I care about software that works when nobody's watching. The AI maintenance assistant I built projects repair instructions onto machinery through a beamer, so technicians don't have to split attention between a manual and the hardware in front of them. HideZone, a GPS hide-and-seek game I shipped to the Play Store, hit 200+ downloads its first month with zero marketing budget. If I build something, it ships and it runs.",
-        "I'm wrapping up my M.Sc. in Computer Science at TU Dresden. My bachelor's thesis tackled a problem I genuinely found fascinating: automatically generating knowledge graphs from object detection data, so LLMs can reason about spatial relationships in physical environments. As a student assistant, I own the full pipeline end-to-end: training the detection models, running the Dockerized backend, and configuring the Raspberry Pi edge system down to camera calibration and network discovery.",
-        "Python and the ML stack (TensorFlow, PyTorch, Transformers) are where I'm most dangerous. I build production apps in Flutter + Firebase. And I learn fast: this portfolio was my first Next.js project."
+"Hello, I'm Robin Morgenstern. I'm currently studying for a master's degree in computer science and working both as a student assistant and as a freelance software developer.",
+"In my student assistant position, I am primarily involved in AI development and the automation of a Raspberry Pi system to support the maintenance of industrial machines. Technically, I mainly work in the full-stack and backend areas as well as in machine learning.",
+"I love breaking down problems, automating processes, and finding creative ways to make them more efficient. I am fast, eager to experiment, and enjoy familiarizing myself with complex systems." 
     ]
 };
