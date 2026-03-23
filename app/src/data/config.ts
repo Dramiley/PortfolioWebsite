@@ -17,7 +17,7 @@ export const siteConfig: SiteConfig = {
     sections: {
         hero: {
             statement: "Software engineer building at the intersection of AI, computer vision, and real-time systems.",
-            subtext: "Currently pursuing an M.Sc. at TU Dresden.\nPreviously shipped a GPS game to 200+ users."
+            subtext: "Currently pursuing an M.Sc. at TU Dresden.\nPreviously shipped a GPS game to 300+ users."
         },
         whatIBuild: {
             title: "What I build",
