@@ -60,7 +60,7 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                         {/* Secondary CTAs */}
                         <div className="flex gap-3 w-full sm:w-auto">
                             <a
-                                href="/resume.pdf"
+                                href="/CV.pdf"
                                 download="Robin_Morgenstern_CV.pdf"
                                 className="flex items-center justify-center h-12 px-6 font-medium text-foreground-muted transition-all duration-300 rounded-lg border border-white/10 hover:border-primary/30 hover:text-foreground hover:bg-white/[0.03] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                             >

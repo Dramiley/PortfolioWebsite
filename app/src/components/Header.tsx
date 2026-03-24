@@ -75,7 +75,7 @@ export const Header = () => {
                         </nav>
 
                         <div className="flex items-center gap-3">
-                            <a href="/resume.pdf" download="Robin_Morgenstern_CV.pdf">
+                            <a href="/CV.pdf" download="Robin_Morgenstern_CV.pdf">
                                 <motion.button
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
@@ -143,7 +143,7 @@ export const Header = () => {
                                 transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
                             >
                                 <a
-                                    href="/resume.pdf"
+                                    href="/CV.pdf"
                                     download="Robin_Morgenstern_CV.pdf"
                                     onClick={() => setMobileOpen(false)}
                                     className="text-lg font-medium text-primary border border-primary/20 rounded-lg px-6 py-3 hover:bg-primary/10 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
