@@ -67,12 +67,8 @@ export function useProjectsScrollRestoration() {
                         setIsReturning(true);
                         setShouldForceVisible(true);
 
-                        // First, scroll to top to ensure all sections mount
-                        window.scrollTo(0, 0);
+                        // Find the projects section
 
-                        // Then wait a frame for React to render
-                        requestAnimationFrame(() => {
-                            // Find the projects section
                             const projectsSection = document.getElementById('projects');
 
                             if (projectsSection && state.scrollY > 0) {
@@ -89,7 +85,6 @@ export function useProjectsScrollRestoration() {
                                 setShouldForceVisible(false);
                                 sessionStorage.removeItem(RETURN_FLAG_KEY);
                             }, 100);
-                        });
                     });
                 } else {
                     // Clear old state

@@ -2,13 +2,13 @@ import { Experience } from '@/types';
 
 export const experience: Experience[] = [
     {
-        id: 'independent-software-engineer',
-        role: 'Independent Software Engineer',
+        id: 'independent-software-developer',
+        role: 'Independent Software Developer',
         company: 'Self-Employed',
         period: '2025 – Present',
         description: [
             'Built and shipped HideZone, a real-time GPS game with 300+ Play Store downloads',
-            'Developed and delivered a remote desktop solution with time-linked password authentication for a client',
+            'Developed and delivered a secure remote desktop solution with time-linked password authentication for a business customer',
         ]
     },
     {
