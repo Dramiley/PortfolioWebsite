@@ -87,10 +87,10 @@ export const projects: Project[] = [
                 { label: 'Server Optimization', value: '85% Less' },
                 { label: 'Sync Latency', value: '< 50ms' }
             ],
-            architecture: "The application is built with Flutter for cross-platform performance. It employs a clean architecture using the Strategy Pattern to handle different game modes (e.g., Classic, Zombie). State management is driven by Flutter Riverpod, ensuring a reactive and testable codebase. Firebase Realtime Database acts as the single source of truth, synchronizing player types, locations, and game events across all clients in milliseconds.",
+            architecture: "The application is built with Flutter for cross-platform performance. It employs a clean architecture using the Strategy Pattern to handle different game modes (e.g., Classic, Zombie, Chase). State management is driven by Flutter Riverpod, ensuring a reactive and testable codebase. Firebase Realtime Database acts as the single source of truth, synchronizing player types, locations, and game events across all clients in milliseconds.",
             features: [
                 { title: "Tactical Warfare Items", description: "Use Scanners to reveal locations, Proximity Mines for traps, Ghost Mode for stealth, and Zone Movers to flush out campers." },
-                { title: "Dynamic Game Modes", description: "Includes Classic Hide & Seek with shrinking interaction zones, Zombie Infection, and 'Chase' - a mode where runners are tracked only by general area, creating an intense game of cat and mouse." },
+                { title: "Dynamic Game Modes", description: "Includes 3 different game modes: Classic Hide & Seek, Zombie Infection, and Chase" },
                 { title: "Real-Time GPS Action", description: "Live tracking with geofencing that supports custom lobbies for 2 to 10+ friends." },
                 { title: "Privacy First Design", description: "No account required. All data is wiped instantly when the match ends. 100% Fair Play with no Pay-to-Win mechanics." }
             ],

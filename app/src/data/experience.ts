@@ -7,7 +7,7 @@ export const experience: Experience[] = [
         company: 'Self-Employed',
         period: '2025 – Present',
         description: [
-            'Built and shipped HideZone, a real-time GPS game with 400+ downloads across the Play Store and App Store',
+            'Built and shipped HideZone, a real-time GPS game with 1000+ downloads across the Play Store and App Store',
             'Developed and delivered a secure remote desktop solution with time-linked password authentication for a business customer',
         ]
     },
