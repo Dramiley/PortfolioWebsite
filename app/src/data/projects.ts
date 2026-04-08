@@ -56,7 +56,7 @@ export const projects: Project[] = [
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
         shortDescription: "Real-world multiplayer Hide & Seek! Hunt friends with live GPS, tactical items, and traps.",
-        fullDescription: "HideZone is a real-world GPS multiplayer game that turns any city or park into a Battle Royale. I engineered the entire stack from scratch, featuring live geofencing, shrinking play zones, and real-time inventory mechanics. Built with a strict privacy-first architecture: no accounts, no persistent tracking, and data wipes the second the match ends.",
+        fullDescription: "HideZone is a real-world GPS multiplayer game that turns any city or park into a Battle Royale. I engineered the entire stack from scratch, featuring live geofencing, shrinking play zones, and real-time inventory mechanics. Recently optimized to reduce server requests by 85%, ensuring the architecture is both profitable and highly scalable.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
             { name: "Flutter" },
@@ -81,16 +81,16 @@ export const projects: Project[] = [
             problemImage: "",
             approach: "I built a digital referee that tracks everyone in milliseconds. It enforces boundaries via GPS geofencing and injects strategy through virtual items (Proximity Mines, Scanners) to balance the physical exertion with tactical decision-making.",
             approachImage: "",
-            impact: "Designed, built, and shipped to production solo. The app acquired 400+ organic downloads in its first month on the Play Store, validating both the Firebase real-time sync architecture and the core game loop.",
+            impact: "Designed, built, and shipped to production solo. The app acquired 1000+ organic downloads across the Play Store and App Store, validating both the Firebase real-time sync architecture and the core game loop. I recently refactored the communication layer to achieve an 85% reduction in server requests, making the platform sustainable and scalable.",
             metrics: [
-                { label: 'Active Downloads', value: '400+' },
-                { label: 'Sync Latency', value: '< 50ms' },
-                { label: 'Cost to Run', value: '$0/mo' }
+                { label: 'Active Downloads', value: '1000+' },
+                { label: 'Server Optimization', value: '85% Less' },
+                { label: 'Sync Latency', value: '< 50ms' }
             ],
             architecture: "The application is built with Flutter for cross-platform performance. It employs a clean architecture using the Strategy Pattern to handle different game modes (e.g., Classic, Zombie). State management is driven by Flutter Riverpod, ensuring a reactive and testable codebase. Firebase Realtime Database acts as the single source of truth, synchronizing player types, locations, and game events across all clients in milliseconds.",
             features: [
                 { title: "Tactical Warfare Items", description: "Use Scanners to reveal locations, Proximity Mines for traps, Ghost Mode for stealth, and Zone Movers to flush out campers." },
-                { title: "Dynamic Game Modes", description: "Includes Classic Hide & Seek with shrinking interaction zones and Zombie Infection with 'Patient Zero' mechanics." },
+                { title: "Dynamic Game Modes", description: "Includes Classic Hide & Seek with shrinking interaction zones, Zombie Infection, and 'Chase' - a mode where runners are tracked only by general area, creating an intense game of cat and mouse." },
                 { title: "Real-Time GPS Action", description: "Live tracking with geofencing that supports custom lobbies for 2 to 10+ friends." },
                 { title: "Privacy First Design", description: "No account required. All data is wiped instantly when the match ends. 100% Fair Play with no Pay-to-Win mechanics." }
             ],
@@ -98,7 +98,9 @@ export const projects: Project[] = [
                 { date: "Dec 2025", title: "Core Development", description: "Started app development and implemented basic features." },
                 { date: "Jan 2026", title: "Further Development", description: "Added features like game modes, events, items and further quality of life improvements." },
                 { date: "Jan 2026", title: "Closed Testing", description: "Field testing with local groups to refine GPS tracking, battery consumption and overall user experience." },
-                { date: "Feb 2026", title: "Release", description: "Released the app to the Google Play Store and improving the app based on feedback." },
+                { date: "Feb 2026", title: "Android Release", description: "Released the app to the Google Play Store and improving the app based on feedback." },
+                { date: "Mar 2026", title: "Scalability Update", description: "Implemented 'Chase' mode and optimized the networking layer to reduce server requests by 85%." },
+                { date: "Apr 2026", title: "iOS Release", description: "Released the app to the Apple App Store and continuing to improve the app based on feedback." },
             ]
         },
     },
