@@ -6,7 +6,7 @@
  */
 
 const GITHUB_USERNAME = 'Dramiley';
-const GITHUB_API = `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=10`;
+const GITHUB_API = `https://api.github.com/users/${GITHUB_USERNAME}/events?per_page=10`;
 
 export interface GitHubActivity {
     lastPushAt: string | null; // ISO 8601 timestamp
@@ -14,16 +14,22 @@ export interface GitHubActivity {
 }
 
 /**
- * Fetches the most recent PushEvent from the user's public GitHub activity.
- * Returns null timestamps if the API is unavailable or no push events exist.
+ * Fetches the most recent PushEvent from the user's GitHub activity.
+ * If GITHUB_TOKEN is provided in .env, it can fetch private commits too.
  */
 export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
     try {
+        const headers: HeadersInit = {
+            'Accept': 'application/vnd.github.v3+json',
+            'User-Agent': 'PortfolioWebsite',
+        };
+
+        if (process.env.GITHUB_TOKEN) {
+            headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
+        }
+
         const res = await fetch(GITHUB_API, {
-            headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                'User-Agent': 'PortfolioWebsite',
-            },
+            headers,
             next: { revalidate: 3600 }, // ISR: revalidate every hour
         });
 
