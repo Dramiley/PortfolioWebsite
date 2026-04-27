@@ -84,7 +84,7 @@ export const projects: Project[] = [
             impact: "Designed, built, and shipped to production solo. The app acquired 2000+ organic downloads across the Play Store and App Store, validating both the Firebase real-time sync architecture and the core game loop. I recently refactored the communication layer to achieve an 85% reduction in server requests, making the platform sustainable and scalable.",
             metrics: [
                 { label: 'Active Downloads', value: '2000+' },
-                { label: 'Server Optimization', value: '85% Less' },
+                { label: 'Server Costs', value: '1€ per 6€ revenue' },
                 { label: 'Sync Latency', value: '< 50ms' }
             ],
             architecture: "The application is built with Flutter for cross-platform performance. It employs a clean architecture using the Strategy Pattern to handle different game modes (e.g., Classic, Zombie, Chase). State management is driven by Flutter Riverpod, ensuring a reactive and testable codebase. Firebase Realtime Database acts as the single source of truth, synchronizing player types, locations, and game events across all clients in milliseconds.",
