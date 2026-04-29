@@ -6,7 +6,8 @@
  */
 
 const GITHUB_USERNAME = 'Dramiley';
-const GITHUB_API = `https://api.github.com/users/${GITHUB_USERNAME}/events?per_page=10`;
+const GITHUB_REST_API = `https://api.github.com/users/${GITHUB_USERNAME}/events?per_page=100`;
+const GITHUB_GRAPHQL_API = 'https://api.github.com/graphql';
 
 export interface GitHubActivity {
     lastPushAt: string | null; // ISO 8601 timestamp
@@ -19,18 +20,84 @@ export interface GitHubActivity {
  */
 export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
     try {
+        const token = process.env.GITHUB_TOKEN;
+
+        // If a token is provided, prefer GraphQL API.
+        // It properly supports fine-grained PATs for private repos
+        // and has a higher rate limit (5000 req/hr).
+        if (token) {
+            const graphqlQuery = {
+                query: `
+                    query {
+                        user(login: "${GITHUB_USERNAME}") {
+                            contributionsCollection {
+                                commitContributionsByRepository(maxRepositories: 10) {
+                                    repository {
+                                        name
+                                    }
+                                    contributions(first: 1) {
+                                        nodes {
+                                            occurredAt
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                `
+            };
+
+            const res = await fetch(GITHUB_GRAPHQL_API, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                    'User-Agent': 'PortfolioWebsite',
+                },
+                next: { revalidate: 600 }, // Revalidate every 10 minutes when authenticated
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                const repos = data?.data?.user?.contributionsCollection?.commitContributionsByRepository;
+                
+                if (repos && repos.length > 0) {
+                    // Extract all commits and find the absolute latest one
+                    const commits = repos.flatMap((r: any) => {
+                        const occurredAt = r.contributions?.nodes?.[0]?.occurredAt;
+                        if (!occurredAt) return [];
+                        return [{
+                            repo: r.repository.name,
+                            lastPushAt: occurredAt,
+                            time: new Date(occurredAt).getTime()
+                        }];
+                    });
+
+                    if (commits.length > 0) {
+                        commits.sort((a: any, b: any) => b.time - a.time);
+                        return {
+                            lastPushAt: commits[0].lastPushAt,
+                            repo: commits[0].repo,
+                        };
+                    }
+                }
+            }
+            // If GraphQL fails (e.g. token lacks permissions), fallback to REST
+        }
+
         const headers: HeadersInit = {
             'Accept': 'application/vnd.github.v3+json',
             'User-Agent': 'PortfolioWebsite',
         };
 
-        if (process.env.GITHUB_TOKEN) {
-            headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const res = await fetch(GITHUB_API, {
+        const res = await fetch(GITHUB_REST_API, {
             headers,
-            next: { revalidate: 3600 }, // ISR: revalidate every hour
+            // Revalidate less frequently (every 10 minutes)
+            next: { revalidate: token ? 600 : 3600 }, 
         });
 
         if (!res.ok) {
