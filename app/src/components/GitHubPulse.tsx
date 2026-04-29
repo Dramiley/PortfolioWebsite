@@ -51,7 +51,9 @@ export function GitHubPulse({ lastPushAt }: GitHubPulseProps) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400/75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </span>
-            <span suppressHydrationWarning>Last commit {timeText || getTimeAgo(lastPushAt)}</span>
+            <span key={timeText ? "client" : "server"} suppressHydrationWarning>
+                Last commit {timeText || getTimeAgo(lastPushAt)}
+            </span>
         </div>
     );
 }
