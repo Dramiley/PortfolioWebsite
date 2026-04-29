@@ -30,17 +30,20 @@ function getTimeAgo(dateString: string): string {
 }
 
 export function GitHubPulse({ lastPushAt }: GitHubPulseProps) {
-    const [, setTick] = useState(0);
+    const [timeText, setTimeText] = useState("");
 
     useEffect(() => {
+        if (!lastPushAt) return;
+        
+        // Calculate immediately on mount to correct any stale SSR text
+        setTimeText(getTimeAgo(lastPushAt));
+
         // Update the time ago string every minute
-        const interval = setInterval(() => setTick(t => t + 1), 60000);
+        const interval = setInterval(() => setTimeText(getTimeAgo(lastPushAt)), 60000);
         return () => clearInterval(interval);
-    }, []);
+    }, [lastPushAt]);
 
     if (!lastPushAt) return null;
-
-    const timeAgo = getTimeAgo(lastPushAt);
 
     return (
         <div className="flex items-center gap-2 text-sm font-mono text-foreground-muted/60" suppressHydrationWarning>
@@ -48,7 +51,7 @@ export function GitHubPulse({ lastPushAt }: GitHubPulseProps) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400/75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </span>
-            <span suppressHydrationWarning>Last commit {timeAgo}</span>
+            <span suppressHydrationWarning>Last commit {timeText || getTimeAgo(lastPushAt)}</span>
         </div>
     );
 }
