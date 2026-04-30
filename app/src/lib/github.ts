@@ -29,7 +29,7 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
             const graphqlQuery = {
                 query: `
                     query {
-                        user(login: "${GITHUB_USERNAME}") {
+                        viewer {
                             repositories(first: 10, orderBy: {field: PUSHED_AT, direction: DESC}) {
                                 nodes {
                                     name
