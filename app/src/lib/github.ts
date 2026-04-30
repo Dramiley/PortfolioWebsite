@@ -29,17 +29,11 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
             const graphqlQuery = {
                 query: `
                     query {
-                        user(login: "${GITHUB_USERNAME}") {
-                            contributionsCollection {
-                                commitContributionsByRepository(maxRepositories: 10) {
-                                    repository {
-                                        name
-                                    }
-                                    contributions(first: 1) {
-                                        nodes {
-                                            occurredAt
-                                        }
-                                    }
+                        viewer {
+                            repositories(first: 10, orderBy: {field: PUSHED_AT, direction: DESC}, ownerAffiliations: [OWNER, COLLABORATOR]) {
+                                nodes {
+                                    name
+                                    pushedAt
                                 }
                             }
                         }
@@ -59,25 +53,14 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
 
             if (res.ok) {
                 const data = await res.json();
-                const repos = data?.data?.user?.contributionsCollection?.commitContributionsByRepository;
+                const repos = data?.data?.viewer?.repositories?.nodes;
                 
                 if (repos && repos.length > 0) {
-                    // Extract all commits and find the absolute latest one
-                    const commits = repos.flatMap((r: any) => {
-                        const occurredAt = r.contributions?.nodes?.[0]?.occurredAt;
-                        if (!occurredAt) return [];
-                        return [{
-                            repo: r.repository.name,
-                            lastPushAt: occurredAt,
-                            time: new Date(occurredAt).getTime()
-                        }];
-                    });
-
-                    if (commits.length > 0) {
-                        commits.sort((a: any, b: any) => b.time - a.time);
+                    const validRepos = repos.filter((r: any) => r.pushedAt);
+                    if (validRepos.length > 0) {
                         return {
-                            lastPushAt: commits[0].lastPushAt,
-                            repo: commits[0].repo,
+                            lastPushAt: validRepos[0].pushedAt,
+                            repo: validRepos[0].name,
                         };
                     }
                 }
@@ -94,11 +77,21 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        const res = await fetch(GITHUB_REST_API, {
+        let res = await fetch(GITHUB_REST_API, {
             headers,
             // Revalidate less frequently (every 10 minutes)
             next: { revalidate: token ? 600 : 3600 }, 
         });
+
+        // Fine-grained tokens do NOT support the REST Events API and will return 403 Forbidden.
+        // If we get an error and we used a token, try again WITHOUT the token!
+        if (!res.ok && token) {
+            delete headers['Authorization'];
+            res = await fetch(GITHUB_REST_API, {
+                headers,
+                next: { revalidate: 3600 }, 
+            });
+        }
 
         if (!res.ok) {
             return { lastPushAt: null, repo: null };
