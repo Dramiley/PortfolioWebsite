@@ -58,7 +58,7 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
                     console.error("GitHub GraphQL API Errors:", data.errors);
                 }
 
-                const repos = data?.data?.user?.repositories?.nodes;
+                const repos = data?.data?.viewer?.repositories?.nodes;
                 
                 if (repos && repos.length > 0) {
                     const validRepos = repos.filter((r: any) => r.pushedAt);
