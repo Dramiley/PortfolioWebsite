@@ -29,8 +29,8 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
             const graphqlQuery = {
                 query: `
                     query {
-                        viewer {
-                            repositories(first: 10, orderBy: {field: PUSHED_AT, direction: DESC}, ownerAffiliations: [OWNER, COLLABORATOR]) {
+                        user(login: "${GITHUB_USERNAME}") {
+                            repositories(first: 10, orderBy: {field: PUSHED_AT, direction: DESC}) {
                                 nodes {
                                     name
                                     pushedAt
@@ -53,7 +53,12 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
 
             if (res.ok) {
                 const data = await res.json();
-                const repos = data?.data?.viewer?.repositories?.nodes;
+                
+                if (data.errors) {
+                    console.error("GitHub GraphQL API Errors:", data.errors);
+                }
+
+                const repos = data?.data?.user?.repositories?.nodes;
                 
                 if (repos && repos.length > 0) {
                     const validRepos = repos.filter((r: any) => r.pushedAt);
