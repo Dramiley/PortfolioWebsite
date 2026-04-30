@@ -48,6 +48,7 @@ export async function getLatestGitHubActivity(): Promise<GitHubActivity> {
                     'Content-Type': 'application/json',
                     'User-Agent': 'PortfolioWebsite',
                 },
+                body: JSON.stringify(graphqlQuery),
                 next: { revalidate: 600 }, // Revalidate every 10 minutes when authenticated
             });
 
