@@ -81,9 +81,9 @@ export const projects: Project[] = [
             problemImage: "",
             approach: "I built a digital referee that tracks everyone in milliseconds. It enforces boundaries via GPS geofencing and injects strategy through virtual items (Proximity Mines, Scanners) to balance the physical exertion with tactical decision-making.",
             approachImage: "",
-            impact: "Designed, built, and shipped to production solo. The app acquired 4000+ organic downloads across the Play Store and App Store, validating both the Firebase real-time sync architecture and the core game loop. I recently refactored the communication layer to achieve an 85% reduction in server requests, making the platform sustainable and scalable.",
+            impact: "Designed, built, and shipped to production solo. The app acquired 5000+ organic downloads across the Play Store and App Store, validating both the Firebase real-time sync architecture and the core game loop. I recently refactored the communication layer to achieve an 85% reduction in server requests, making the platform sustainable and scalable.",
             metrics: [
-                { label: 'Active Downloads', value: '4000+' },
+                { label: 'Active Downloads', value: '5000+' },
                 { label: 'Server Costs', value: '1€ per 6€ revenue' },
                 { label: 'Sync Latency', value: '< 50ms' }
             ],
