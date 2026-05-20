@@ -2,6 +2,15 @@ import { Experience } from '@/types';
 
 export const experience: Experience[] = [
     {
+        id: 'working-student',
+        role: 'Working Student - Automation, Robotics & AI (via Siltectra GmbH)',
+        company: 'Infineon Technologies AG',
+        period: '05/2026 - Present',
+        description: [
+            'Developing and maintaining internal tools and applications within the company for the production of semiconductors',
+        ]
+    },
+    {
         id: 'independent-software-developer',
         role: 'Independent Software Developer',
         company: 'Self-Employed',
@@ -21,15 +30,6 @@ export const experience: Experience[] = [
             'Engineered a Raspberry Pi edge system with camera calibration, network-wide server scanning, and beamer-based AR overlay projection',
             'Built the full server-to-client pipeline connecting Dockerized backend inference to the edge device',
             'Dockerized the deployment pipeline for reproducibility across lab environments',
-        ]
-    },
-    {
-        id: 'working-student',
-        role: 'Working Student - Automation, Robotics & AI (via Siltectra GmbH)',
-        company: 'Infineon Technologies AG',
-        period: '05/2026 - Present',
-        description: [
-            'Developing and maintaining internal tools and applications within the company for the production of semiconductors',
         ]
     }
 ];

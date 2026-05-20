@@ -31,4 +31,8 @@ export const skills: Skill[] = [
     { name: 'Git / GitHub', category: 'infrastructure', primary: true },
     { name: 'Raspberry Pi', category: 'infrastructure' },
     { name: 'Node.js', category: 'infrastructure' },
+    { name: 'Node-RED', category: 'infrastructure' },
+    { name: 'InfluxDB', category: 'infrastructure'},
+    { name: 'N8N', category: 'infrastructure' },
+    { name: 'Apache Kafka', category: 'infrastructure'},
 ];
