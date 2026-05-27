@@ -9,9 +9,10 @@ A high-performance, interactive portfolio built with Next.js 16, React 19, and T
 - **Scroll-Linked Navigation**: Floating sidebar that dynamically tracks viewport intersection.
 - **Dynamic Routing**: Conditional routing for project details (`/projects/[slug]`) vs. modal views.
 - **State Preservation**: Custom navigation management preserves scroll position and UI state between views.
-- **Data-Driven Architecture**: Content, projects, and skills are managed via centralized data files, decoupling content from presentation.
-- **Performance**: Optimized for Core Web Vitals with efficient re-renders and hardware-accelerated animations.
-- **Accessibility**: Full keyboard navigation support and adherence to `prefers-reduced-motion`.
+- **Dynamic Theming**: Custom, blocking-script-backed floating Dark/Light theme switcher that eliminates unstyled flashes (FOUC) on client load.
+- **Data-Driven Architecture**: Content, projects, and skills are managed via centralized, schema-compliant data files, decoupling content from presentation.
+- **Performance**: Optimized for Core Web Vitals with high scrolling frame-rates and hardware-accelerated animations.
+- **Accessibility**: Full keyboard navigation support and adherence to `prefers-reduced-motion` profiles.
 
 ## Installation
 

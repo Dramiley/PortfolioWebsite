@@ -18,6 +18,7 @@ To add a new project, edit `app/src/data/projects.ts`. Each project object must 
 - **heroImage**: Path to the hero image (e.g., `/images/projects/my-project.jpg`).
 - **galleryImages**: Array of image paths (currently unused but ready).
 - **details**: Object containing `problem`, `solution`, `architecture` (optional), `features` (array), and `timeline` (optional).
+    - **CRITICAL**: The `features` array **must contain exactly 4 items** to maintain the integrity of the responsive layout grid on project pages.
 
 ### Example Entry
 ```typescript
@@ -36,7 +37,10 @@ To add a new project, edit `app/src/data/projects.ts`. Each project object must 
         problem: 'The problem I solved.',
         solution: 'How I solved it.',
         features: [
-            { title: 'Feature 1', description: 'Description 1' }
+            { title: 'Core Feature A', description: 'Description for primary feature.' },
+            { title: 'Core Feature B', description: 'Description for secondary feature.' },
+            { title: 'Core Feature C', description: 'Description for tertiary feature.' },
+            { title: 'Core Feature D', description: 'Description for quaternary feature.' }
         ]
     }
 }
