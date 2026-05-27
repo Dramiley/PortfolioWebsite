@@ -46,9 +46,9 @@ export default function AmbientBackground() {
     }, [mouseX, mouseY, shouldReduceMotion, effectsEnabled]);
 
     return (
-        <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#020617]">
+        <div id="ambient-bg" className="fixed inset-0 z-[-1] overflow-hidden bg-background">
             {/* Base vignette */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background-secondary)_0%,_#000000_100%)] opacity-80" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--background-secondary)_0%,_var(--background)_100%)] opacity-80" />
 
             {isClient && effectsEnabled && (
                 <>
@@ -66,9 +66,9 @@ export default function AmbientBackground() {
                         }}
                     >
                         <motion.div
-                            className="absolute top-[-15%] left-[-5%] w-[70vw] h-[70vw] rounded-full opacity-[0.12] blur-[120px]"
+                            className="absolute top-[-15%] left-[-5%] w-[70vw] h-[70vw] rounded-full opacity-[0.12]"
                             style={{
-                                background: 'radial-gradient(circle, var(--primary) 0%, transparent 60%)',
+                                background: 'radial-gradient(circle, var(--primary) 0%, rgba(194, 112, 62, 0.3) 35%, rgba(194, 112, 62, 0.08) 55%, transparent 70%)',
                                 x: x2,
                                 y: y2,
                                 mixBlendMode: 'screen',
@@ -90,9 +90,9 @@ export default function AmbientBackground() {
                         }}
                     >
                         <motion.div
-                            className="absolute bottom-[-15%] right-[-5%] w-[70vw] h-[70vw] rounded-full opacity-[0.10] blur-[130px]"
+                            className="absolute bottom-[-15%] right-[-5%] w-[70vw] h-[70vw] rounded-full opacity-[0.10]"
                             style={{
-                                background: 'radial-gradient(circle, var(--accent) 0%, transparent 60%)',
+                                background: 'radial-gradient(circle, var(--accent) 0%, rgba(124, 141, 176, 0.3) 35%, rgba(124, 141, 176, 0.08) 55%, transparent 70%)',
                                 x: x1,
                                 y: y1,
                                 mixBlendMode: 'screen',
@@ -102,9 +102,9 @@ export default function AmbientBackground() {
 
                     {/* Subtle aurora streak */}
                     <motion.div
-                        className="absolute top-0 left-0 right-0 h-[400px] opacity-[0.06] blur-[100px] will-change-transform"
+                        className="absolute top-0 left-0 right-0 h-[400px] opacity-[0.06] will-change-transform"
                         style={{
-                            background: 'linear-gradient(180deg, var(--accent-dim) 0%, transparent 100%)',
+                            background: 'linear-gradient(180deg, var(--accent-dim) 0%, rgba(94, 109, 138, 0.2) 50%, transparent 100%)',
                             x: x2,
                             y: scrollY1,
                             mixBlendMode: 'screen',
@@ -112,9 +112,6 @@ export default function AmbientBackground() {
                     />
                 </>
             )}
-
-            {/* Noise texture */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-noise mix-blend-overlay" />
         </div>
     );
 }

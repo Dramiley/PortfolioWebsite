@@ -10,11 +10,9 @@ import { siteConfig } from '@/data/config';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
-import { useMobile } from '@/hooks/useMobile';
 
 export const WhatIBuild = () => {
     const { effectsEnabled } = useEffects();
-    const isMobile = useMobile();
     const { title, domains } = siteConfig.sections.whatIBuild;
 
     return (
@@ -22,7 +20,7 @@ export const WhatIBuild = () => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: effectsEnabled ? 0.5 : 0 }}
                 style={{ willChange: 'transform, opacity' }}
                 className="mb-12"
@@ -38,7 +36,7 @@ export const WhatIBuild = () => {
                         key={domain.title}
                         initial={{ opacity: 0, y: 25 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                        viewport={{ once: true, amount: 0.1 }}
                         transition={{ duration: effectsEnabled ? 0.5 : 0, delay: effectsEnabled ? idx * 0.1 : 0 }}
                         style={{ willChange: 'transform, opacity' }}
                         className="relative group overflow-hidden rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-500 h-full flex flex-col"

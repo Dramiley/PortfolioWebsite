@@ -20,13 +20,13 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
 
     return (
         <Section id="hero" className="pt-36 md:pt-48 pb-24 min-h-[90vh] flex flex-col justify-center relative">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center relative z-10">
                 {/* Text - takes 3 of 5 columns */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration, ease }}
-                    className="lg:col-span-3 flex flex-col items-start"
+                    className="lg:col-span-3 flex flex-col items-start order-2 lg:order-1"
                 >
                     <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-10 text-foreground leading-tight break-words">
                         Robin{' '}
@@ -104,7 +104,7 @@ export const Hero = ({ lastPushAt }: { lastPushAt?: string | null }) => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration, delay: effectsEnabled ? 0.15 : 0, ease }}
-                    className="lg:col-span-2 relative flex justify-center lg:justify-end"
+                    className="lg:col-span-2 relative flex justify-center lg:justify-end order-1 lg:order-2 mb-6 lg:mb-0"
                 >
                     <div className="relative w-64 h-80 md:w-72 md:h-96">
                         {/* Image Container - rounded rectangle, not circle */}

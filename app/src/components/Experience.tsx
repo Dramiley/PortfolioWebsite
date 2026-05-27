@@ -5,11 +5,9 @@ import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
 import { useState } from 'react';
-import { useMobile } from '@/hooks/useMobile';
 
 export const Experience = () => {
     const { effectsEnabled } = useEffects();
-    const isMobile = useMobile();
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
@@ -17,7 +15,7 @@ export const Experience = () => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: effectsEnabled ? 0.5 : 0 }}
                 style={{ willChange: 'transform, opacity' }}
             >
@@ -32,7 +30,7 @@ export const Experience = () => {
                         key={job.id}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                        viewport={{ once: true, amount: 0.1 }}
                         transition={{ duration: effectsEnabled ? 0.5 : 0, delay: effectsEnabled ? index * 0.08 : 0 }}
                         style={{ willChange: 'transform, opacity' }}
                         onMouseEnter={() => setHoveredIndex(index)}

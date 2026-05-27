@@ -59,7 +59,7 @@ export const Projects = () => {
                 </p>
 
                 {/* Filter Tabs */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex overflow-x-auto no-scrollbar -mx-6 px-6 gap-2 flex-nowrap pb-2 md:flex-wrap md:overflow-visible md:px-0 md:mx-0">
                     {filterCategories.map((cat) => (
                         <button
                             key={cat.key}

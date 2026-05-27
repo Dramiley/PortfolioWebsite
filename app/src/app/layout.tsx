@@ -4,7 +4,7 @@ import "./globals.css";
 import AmbientBackground from "@/components/AmbientBackground";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { EffectsProvider } from "@/context/EffectsContext";
-import { EffectsToggle } from "@/components/ui/EffectsToggle";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Header } from "@/components/Header";
 
 const inter = Inter({
@@ -69,6 +69,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased text-foreground`} suppressHydrationWarning>
+        {/* Theme Initialization Script to avoid FOUC */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme');
+                  if (theme === 'light') {
+                    document.documentElement.classList.add('light');
+                  } else {
+                    document.documentElement.classList.remove('light');
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
@@ -107,7 +124,7 @@ export default function RootLayout({
           <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
             {children}
           </main>
-          <EffectsToggle />
+          <ThemeToggle />
         </EffectsProvider>
       </body>
     </html>

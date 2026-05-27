@@ -16,6 +16,7 @@ export const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
+
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
@@ -84,6 +85,7 @@ export const Header = () => {
                                     CV
                                 </motion.button>
                             </a>
+
 
                             {/* Mobile Hamburger */}
                             <button

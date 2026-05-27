@@ -4,18 +4,16 @@ import { siteConfig } from '@/data/config';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
-import { useMobile } from '@/hooks/useMobile';
 
 export const Contact = () => {
     const { effectsEnabled } = useEffects();
-    const isMobile = useMobile();
 
     return (
         <Section id="contact" className="mb-20 relative">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: effectsEnabled ? 0.7 : 0, ease: [0.16, 1, 0.3, 1] }}
                 style={{ willChange: 'transform, opacity' }}
                 className="relative rounded-2xl overflow-hidden p-12 md:p-20 glass-panel"

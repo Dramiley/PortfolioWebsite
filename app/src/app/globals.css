@@ -19,7 +19,7 @@ html {
 
     /* Text Colors */
     --foreground: #f0f0f0;
-    --foreground-muted: #8d96a7;
+    --foreground-muted: #a3aebf;
     --foreground-accent: #7c8db0;
 
     /* Brand Colors - Warm Terracotta */
@@ -67,6 +67,14 @@ body {
 
 /* Custom Utilities */
 @layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
     .glass-panel {
         background: rgba(15, 23, 42, 0.5);
         backdrop-filter: blur(20px);
@@ -113,9 +121,6 @@ body {
         background-image: linear-gradient(135deg, #7c8db0, #9aa8c7);
     }
 
-    .bg-noise {
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1' /%3E%3C/svg%3E");
-    }
 
     .subtle-glow {
         box-shadow: 0 0 20px rgba(194, 112, 62, 0.08);
@@ -149,4 +154,59 @@ body.no-effects .animate-ping,
 body.no-effects .animate-gradient-x {
     animation: none !important;
     opacity: 1 !important;
+}
+
+/* Light Mode Variables & Overrides */
+.light {
+    /* Crisp Light Backgrounds */
+    --background: #f8fafc;
+    --background-secondary: #ffffff;
+    --background-tertiary: #f1f5f9;
+
+    /* Text Colors */
+    --foreground: #0f172a;
+    --foreground-muted: #475569;
+    --foreground-accent: #64748b;
+
+    /* Brand Colors - Terracotta adjusted for contrast */
+    --primary: #c2410c;
+    --primary-soft: #ea580c;
+    --primary-glow: rgba(194, 65, 12, 0.08);
+
+    /* Accent - Slate Blue */
+    --accent: #475569;
+    --accent-dim: #64748b;
+    --accent-glow: rgba(71, 85, 105, 0.08);
+}
+
+.light .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(15, 23, 42, 0.08);
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+}
+
+.light .glass-card {
+    background: rgba(241, 245, 249, 0.6);
+    border-color: rgba(15, 23, 42, 0.06);
+}
+
+.light .glass-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(194, 65, 12, 0.25);
+    box-shadow: 0 8px 40px rgba(15, 23, 42, 0.10);
+}
+
+.light ::selection {
+    background: rgba(194, 65, 12, 0.15);
+    color: #0f172a;
+}
+
+.light #ambient-bg * {
+    mix-blend-mode: multiply !important;
+    opacity: 0.18 !important; /* soft, subtle overlay on light bg */
+}
+
+/* Ensure smooth theme transitions for layout bg and panel colors */
+body, main, header, .glass-panel, .glass-card, button, a {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }

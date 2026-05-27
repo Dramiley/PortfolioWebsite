@@ -239,14 +239,12 @@ export const projects: Project[] = [
                 { label: 'Styling Layer', value: 'Tailwind v4' },
                 { label: 'Data Architecture', value: 'Decoupled' }
             ],
-            architecture: 'Built on Next.js 16 with App Router for optimal performance. Framer Motion powers complex animations, scroll-triggered reveals, and page transitions. The design system uses CSS custom properties for theming with a Slate base and Terracotta accents. Glassmorphism and backdrop filters add depth. All animations respect system-level preferences to reduce motion for accessibility.',
+            architecture: 'Built on Next.js 16 with App Router for optimal performance. Integrates a custom dark/light theme switcher using a blocking inline script to eliminate unstyled theme flashing (FOUC). Framer Motion powers complex animations, scroll-triggered reveals, and page transitions. All animations respect system-level preferences to reduce motion for accessibility.',
             features: [
                 { title: 'Motion Orchestration', description: 'Scroll-linked parallax, orchestrated section reveals, and physics-based interactions create a living interface that responds naturally to user input.' },
                 { title: 'Glassmorphic Styling', description: 'Layered transparency effects with backdrop blur, subtle borders, and controlled opacity for depth without visual clutter.' },
-                { title: 'Ambient Canvas', description: 'Canvas-based animated elements that react to mouse movement and scroll position, adding atmosphere while staying performant.' },
-                { title: 'Inclusive Semantics', description: 'Semantic HTML, keyboard navigation, ARIA labels, and reduced-motion support ensure the site works for everyone.' },
-                { title: 'Modular Data Schema', description: 'Projects, skills, and experience are defined in typed data files, making updates straightforward without touching components.' },
-                { title: 'Media Lightbox', description: 'Fullscreen image viewing with keyboard navigation, thumbnails, and smooth transitions for showcasing project visuals.' }
+                { title: 'Dynamic Theming', description: 'A custom, blocking-script-backed floating dark/light mode switcher that persists theme selections without unstyled flashes (FOUC).' },
+                { title: 'Inclusive Semantics', description: 'Semantic HTML, keyboard navigation, ARIA labels, and reduced-motion support ensure the site works for everyone.' }
             ],
             timeline: [
                 { date: 'Oct 2024', title: 'Conceptual Design', description: 'Established styling guides, visual components, and content models.' },

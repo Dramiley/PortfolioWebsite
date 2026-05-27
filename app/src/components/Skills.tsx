@@ -5,7 +5,6 @@ import { skills } from '@/data/skills';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
 import { useEffects } from '@/context/EffectsContext';
-import { useMobile } from '@/hooks/useMobile';
 
 const categoryLabels: Record<string, string> = {
     'languages': 'Languages',
@@ -16,7 +15,6 @@ const categoryLabels: Record<string, string> = {
 
 export const Skills = () => {
     const { effectsEnabled } = useEffects();
-    const isMobile = useMobile();
 
     const skillsByCategory = skills.reduce((acc, skill) => {
         if (!acc[skill.category]) {
@@ -33,7 +31,7 @@ export const Skills = () => {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: effectsEnabled ? 0.5 : 0 }}
                 style={{ willChange: 'transform, opacity' }}
                 className="mb-12"
@@ -52,7 +50,7 @@ export const Skills = () => {
                         key={category}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: isMobile, amount: isMobile ? 0 : 0.2 }}
+                        viewport={{ once: true, amount: 0.1 }}
                         transition={{ duration: effectsEnabled ? 0.5 : 0, delay: effectsEnabled ? idx * 0.08 : 0 }}
                         style={{ willChange: 'transform, opacity' }}
                         className="p-6 rounded-2xl border border-white/5 hover:border-primary/15 transition-colors duration-400"
