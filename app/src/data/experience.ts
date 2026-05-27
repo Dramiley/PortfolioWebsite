@@ -3,11 +3,11 @@ import { Experience } from '@/types';
 export const experience: Experience[] = [
     {
         id: 'working-student',
-        role: 'Working Student - Automation, Robotics & AI (via Siltectra GmbH)',
+        role: 'Working Student in Automation, Robotics, and AI (via Siltectra GmbH)',
         company: 'Infineon Technologies AG',
         period: '05/2026 - Present',
         description: [
-            'Developing and maintaining internal tools and applications within the company for the production of semiconductors',
+            'Developing and maintaining internal tools and applications for semiconductor manufacturing processes.',
         ]
     },
     {
@@ -16,8 +16,8 @@ export const experience: Experience[] = [
         company: 'Self-Employed',
         period: '10/2025 - Present',
         description: [
-            'Built and shipped HideZone, a real-time GPS game with 6000+ downloads across the Play Store and App Store',
-            'Developed and delivered a secure remote desktop solution with time-linked password authentication for a business customer',
+            'Engineered and deployed HideZone, which is a location-based mobile game that acquired over 10,000 organic downloads across the App Store and Google Play.',
+            'Developed and delivered a secure remote desktop client featuring time-linked authentication for an enterprise client.',
         ]
     },
     {
@@ -26,10 +26,10 @@ export const experience: Experience[] = [
         company: 'TU Dresden',
         period: '03/2024 - Present',
         description: [
-            'Training SSD object detection models on custom industrial machine datasets',
-            'Engineered a Raspberry Pi edge system with camera calibration, network-wide server scanning, and beamer-based AR overlay projection',
-            'Built the full server-to-client pipeline connecting Dockerized backend inference to the edge device',
-            'Dockerized the deployment pipeline for reproducibility across lab environments',
+            'Trained SSD object detection models on custom industrial machinery datasets.',
+            'Engineered a Raspberry Pi edge system integrating camera calibration, server auto-discovery, and projector-based augmented reality overlays.',
+            'Built the distributed network pipeline connecting Dockerized backend inference servers to edge devices.',
+            'Dockerized the deployment pipelines to guarantee complete reproducibility across laboratory environments.',
         ]
     }
 ];

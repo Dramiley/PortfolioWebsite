@@ -6,9 +6,9 @@ export interface AboutContent {
 export const aboutContent: AboutContent = {
     title: "About",
     bio: [
-        "I'm currently studying for my master's degree in computer science at TU Dresden, balancing my studies with work as a student assistant and a freelance software engineer.",
-        "As a freelancer, I enjoy turning ideas into real products. Recently, I built and shipped HideZone, a real-time GPS game with over 6000 downloads across the Play Store and App Store, and delivered a secure remote desktop client for a business customer.",
-        "In my student assistant position, my work sits at the intersection of AI and hardware. I'm currently engineering a Raspberry Pi edge system that uses object detection models and an AR beamer to project maintenance instructions directly onto industrial machines.",
-        "Technically, I primarily work across full-stack development, server-client architectures, and machine learning. I love breaking down problems, automating processes, and finding creative ways to make them more efficient. I'm fast, eager to experiment, and I genuinely enjoy wrapping my head around complex systems."
+        "I am pursuing a Master's degree in Computer Science at TU Dresden, combining advanced academic research with active roles as a research assistant and freelance systems engineer.",
+        "In my freelance work, I specialize in transforming complex requirements into reliable, user-facing applications. My recent work includes engineering and deploying HideZone, which is a real-time, GPS-enabled mobile game that scaled to over 10,000 organic downloads across the App Store and Google Play. I also developed a secure, custom remote desktop client featuring time-linked authentication for an enterprise client.",
+        "At TU Dresden, my research and development work sits at the intersection of computer vision and edge computing. I am currently designing a Raspberry Pi edge system that processes real-time object detection models to overlay precise, projector-based augmented reality instructions directly onto industrial machinery.",
+        "Technically, my core expertise spans full-stack engineering, distributed systems architecture, and machine learning integration. I focus on developing clean, testable, and highly optimized codebases that solve tangible operational problems. I approach engineering challenges with rigorous analysis, a rapid prototyping mindset, and a strong commitment to technical excellence."
     ]
 };
