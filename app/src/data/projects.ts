@@ -110,7 +110,7 @@ export const projects: Project[] = [
         hasDetailPage: true,
         categories: ['ml-ai'],
         title: "Bachelor Thesis",
-        shortDescription: "Automated semantic knowledge graph compilation from multi-view 2D object detection datasets for industrial robotics context-mapping.",
+        shortDescription: "Automated knowledge graph creation via multi-object detection for an AI maintenance assistant",
         fullDescription: "My thesis developed a novel bridge between 2D computer vision and symbolic spatial reasoning. The engineered pipeline processes raw 2D bounding box coordinates from industrial machinery, applying spatial geometric heuristics to dynamically compile standard-compliant RDF and OWL Knowledge Graphs. This semantic representation acts as a structured context layer for LLMs, enabling highly accurate spatial query resolution and mitigating hallucinations.",
         tags: ["Python", "Semantic Web", "Computer Vision", "LLMs", "Research"],
         techStack: [
