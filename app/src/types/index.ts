@@ -71,10 +71,6 @@ export interface SiteConfig {
       statement: string;
       subtext: string;
     };
-    whatIBuild: {
-      title: string;
-      domains: { title: string; description: string }[];
-    };
     projects: {
       description: string;
     };

@@ -19,23 +19,6 @@ export const siteConfig: SiteConfig = {
             statement: "Software engineer building at the intersection of AI, computer vision, and real-time systems.",
             subtext: "Currently pursuing an M.Sc. at TU Dresden.\nPreviously shipped a GPS game to 10,000+ users."
         },
-        whatIBuild: {
-            title: "What I build",
-            domains: [
-                {
-                    title: 'ML and Computer Vision',
-                    description: 'Object detection, knowledge graphs, fine-tuning LLMs, and RAG systems',
-                },
-                {
-                    title: 'Cross-Platform Apps',
-                    description: 'GPS-based games, Firebase real-time sync, and Flutter production apps',
-                },
-                {
-                    title: 'Systems and Automation',
-                    description: 'Raspberry Pi edge computing, Docker pipelines, and server-client architectures',
-                },
-            ]
-        },
         projects: {
             description: "Selected work across machine learning, mobile, and systems engineering."
         },
