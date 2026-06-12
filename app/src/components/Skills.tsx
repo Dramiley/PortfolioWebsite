@@ -4,7 +4,6 @@ import { siteConfig } from '@/data/config';
 import { skills } from '@/data/skills';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
-import { useEffects } from '@/context/EffectsContext';
 
 const categoryLabels: Record<string, string> = {
     'languages': 'Languages',
@@ -14,8 +13,6 @@ const categoryLabels: Record<string, string> = {
 };
 
 export const Skills = () => {
-    const { effectsEnabled } = useEffects();
-
     const skillsByCategory = skills.reduce((acc, skill) => {
         if (!acc[skill.category]) {
             acc[skill.category] = [];
@@ -29,11 +26,10 @@ export const Skills = () => {
     return (
         <Section id="skills" className="relative">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: effectsEnabled ? 0.5 : 0 }}
-                style={{ willChange: 'transform, opacity' }}
+                transition={{ duration: 0.5 }}
                 className="mb-12"
             >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
@@ -48,12 +44,11 @@ export const Skills = () => {
                 {categories.map((category, idx) => (
                     <motion.div
                         key={category}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.1 }}
-                        transition={{ duration: effectsEnabled ? 0.5 : 0, delay: effectsEnabled ? idx * 0.08 : 0 }}
-                        style={{ willChange: 'transform, opacity' }}
-                        className="p-6 rounded-2xl border border-white/5 hover:border-primary/15 transition-colors duration-400"
+                        transition={{ duration: 0.5, delay: idx * 0.05 }}
+                        className="p-6 rounded-2xl border border-border hover:border-primary/20 transition-colors duration-300"
                     >
                         <h3 className="text-sm font-semibold text-foreground-muted uppercase tracking-wider mb-5 flex items-center">
                             <span className="w-1 h-4 bg-primary/60 rounded-full mr-3" />
@@ -65,8 +60,8 @@ export const Skills = () => {
                                 <span
                                     key={skill.name}
                                     className={`px-3.5 py-1.5 text-sm font-medium rounded-lg transition-colors duration-300 ${skill.primary
-                                            ? 'bg-primary/10 text-primary-soft border border-primary/20 hover:border-primary/40'
-                                            : 'bg-white/[0.04] text-foreground-muted border border-white/8 hover:border-white/15 hover:text-foreground'
+                                            ? 'bg-primary/10 text-primary border border-primary/20 hover:border-primary/40'
+                                            : 'bg-surface text-foreground-muted border border-border hover:border-border-strong hover:text-foreground'
                                         }`}
                                 >
                                     {skill.name}

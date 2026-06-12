@@ -34,13 +34,16 @@ export function GitHubPulse({ lastPushAt }: GitHubPulseProps) {
 
     useEffect(() => {
         if (!lastPushAt) return;
-        
-        // Calculate immediately on mount to correct any stale SSR text
-        setTimeText(getTimeAgo(lastPushAt));
 
-        // Update the time ago string every minute
-        const interval = setInterval(() => setTimeText(getTimeAgo(lastPushAt)), 60000);
-        return () => clearInterval(interval);
+        const update = () => setTimeText(getTimeAgo(lastPushAt));
+
+        // Correct any stale SSR text right after paint, then refresh every minute
+        const raf = requestAnimationFrame(update);
+        const interval = setInterval(update, 60000);
+        return () => {
+            cancelAnimationFrame(raf);
+            clearInterval(interval);
+        };
     }, [lastPushAt]);
 
     if (!lastPushAt) return null;

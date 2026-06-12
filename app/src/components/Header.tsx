@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { ThemeToggle } from './ui/ThemeToggle';
 
 const navItems = [
     { name: 'About', href: '/#about' },
@@ -16,13 +17,16 @@ export const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
-
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        const raf = requestAnimationFrame(handleScroll);
+        return () => {
+            cancelAnimationFrame(raf);
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     // Lock body scroll and trap focus when mobile menu open
@@ -43,15 +47,10 @@ export const Header = () => {
 
     return (
         <>
-            <motion.header
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}>
                 <div className="max-w-6xl mx-auto px-6">
                     <div
-                        className={`flex items-center justify-between rounded-xl px-5 py-2.5 transition-all duration-300 ${scrolled
+                        className={`flex items-center justify-between rounded-xl px-5 py-2 transition-all duration-300 ${scrolled
                             ? 'glass-panel shadow-lg'
                             : 'bg-transparent'
                             }`}
@@ -75,17 +74,16 @@ export const Header = () => {
                             ))}
                         </nav>
 
-                        <div className="flex items-center gap-3">
-                            <a href="/CV.pdf" download="Robin_Morgenstern_CV.pdf">
-                                <motion.button
-                                    whileHover={{ scale: 1.03 }}
-                                    whileTap={{ scale: 0.97 }}
-                                    className="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary/20 rounded-lg hover:bg-primary/10 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                                >
-                                    CV
-                                </motion.button>
-                            </a>
+                        <div className="flex items-center gap-2">
+                            <ThemeToggle />
 
+                            <a
+                                href="/CV.pdf"
+                                download="Robin_Morgenstern_CV.pdf"
+                                className="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary/20 rounded-lg hover:bg-primary/10 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                            >
+                                CV
+                            </a>
 
                             {/* Mobile Hamburger */}
                             <button
@@ -110,7 +108,7 @@ export const Header = () => {
                         </div>
                     </div>
                 </div>
-            </motion.header>
+            </header>
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>
@@ -119,40 +117,28 @@ export const Header = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.25 }}
                         className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
                     >
                         <nav className="flex flex-col items-center gap-8">
-                            {navItems.map((item, index) => (
-                                <motion.div
+                            {navItems.map((item) => (
+                                <Link
                                     key={item.name}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.05, duration: 0.3 }}
-                                >
-                                    <Link
-                                        href={item.href}
-                                        onClick={() => setMobileOpen(false)}
-                                        className="text-2xl font-semibold text-foreground hover:text-primary transition-colors duration-300"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
-                            >
-                                <a
-                                    href="/CV.pdf"
-                                    download="Robin_Morgenstern_CV.pdf"
+                                    href={item.href}
                                     onClick={() => setMobileOpen(false)}
-                                    className="text-lg font-medium text-primary border border-primary/20 rounded-lg px-6 py-3 hover:bg-primary/10 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                                    className="text-2xl font-semibold text-foreground hover:text-primary transition-colors duration-300"
                                 >
-                                    Download CV
-                                </a>
-                            </motion.div>
+                                    {item.name}
+                                </Link>
+                            ))}
+                            <a
+                                href="/CV.pdf"
+                                download="Robin_Morgenstern_CV.pdf"
+                                onClick={() => setMobileOpen(false)}
+                                className="text-lg font-medium text-primary border border-primary/20 rounded-lg px-6 py-3 hover:bg-primary/10 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                            >
+                                Download CV
+                            </a>
                         </nav>
                     </motion.div>
                 )}

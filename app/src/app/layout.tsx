@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AmbientBackground from "@/components/AmbientBackground";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import { EffectsProvider } from "@/context/EffectsContext";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Providers } from "@/components/Providers";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { siteConfig } from "@/data/config";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     default: 'Robin Morgenstern - Software Engineer',
     template: '%s | Robin Morgenstern',
   },
-  description: 'Software engineer building at the intersection of AI, computer vision, and real-time systems. B.Sc. in Computer Science from TU Dresden.',
+  description: 'Software engineer working on computer vision, machine learning, and mobile apps. M.Sc. student at TU Dresden.',
   openGraph: {
     title: 'Robin Morgenstern - Software Engineer',
-    description: 'Building at the intersection of AI, computer vision, and real-time systems.',
+    description: 'Software engineer working on computer vision, machine learning, and mobile apps.',
     siteName: 'Robin Morgenstern',
     url: 'https://robin-morgenstern.dev',
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Robin Morgenstern - Software Engineer',
-    description: 'Building at the intersection of AI, computer vision, and real-time systems.',
+    description: 'Software engineer working on computer vision, machine learning, and mobile apps.',
     images: ['/images/og-image.jpg'],
   },
   robots: {
@@ -56,9 +56,13 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
-  other: {
-    'theme-color': '#020617',
-  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#020617' },
+  ],
 };
 
 export default function RootLayout({
@@ -75,12 +79,11 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  const theme = localStorage.getItem('theme');
-                  if (theme === 'light') {
-                    document.documentElement.classList.add('light');
-                  } else {
-                    document.documentElement.classList.remove('light');
+                  var theme = localStorage.getItem('theme');
+                  if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
                   }
+                  document.documentElement.classList.toggle('light', theme === 'light');
                 } catch (e) {}
               })();
             `
@@ -97,8 +100,8 @@ export default function RootLayout({
               jobTitle: 'Software Engineer',
               url: 'https://robin-morgenstern.dev',
               sameAs: [
-                'https://github.com/Dramiley',
-                'https://www.linkedin.com/in/robin-morgenstern-a910a5239/',
+                siteConfig.social.github,
+                siteConfig.social.linkedin,
               ],
               alumniOf: {
                 '@type': 'CollegeOrUniversity',
@@ -117,15 +120,14 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        <EffectsProvider>
-          <ScrollProgress />
+        <Providers>
           <AmbientBackground />
           <Header />
           <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
             {children}
           </main>
-          <ThemeToggle />
-        </EffectsProvider>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

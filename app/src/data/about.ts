@@ -6,9 +6,9 @@ export interface AboutContent {
 export const aboutContent: AboutContent = {
     title: "About",
     bio: [
-        "I am pursuing a Master's degree in Computer Science at TU Dresden, combining advanced academic research with active roles as a research assistant and freelance systems engineer.",
-        "In my freelance work, I specialize in transforming complex requirements into reliable, user-facing applications. My recent work includes engineering and deploying HideZone, which is a real-time, GPS-enabled mobile game that scaled to over 10,000 organic downloads across the App Store and Google Play. I also developed a secure, custom remote desktop client featuring time-linked authentication for an enterprise client.",
-        "At TU Dresden, my research and development work sits at the intersection of computer vision and edge computing. I am currently designing a Raspberry Pi edge system that processes real-time object detection models to overlay precise, projector-based augmented reality instructions directly onto industrial machinery.",
-        "Technically, my core expertise spans full-stack engineering, distributed systems architecture, and machine learning integration. I focus on developing clean, testable, and highly optimized codebases that solve tangible operational problems. I approach engineering challenges with rigorous analysis, a rapid prototyping mindset, and a strong commitment to technical excellence."
+        "I'm a Computer Science Master's student at TU Dresden, splitting my time between coursework, a research assistant position, and freelance projects.",
+        "The freelance side is where things get shipped. Most recently that was HideZone, a real-time GPS hide-and-seek game that has passed 10,000 downloads on the App Store and Google Play, and before that a remote desktop client with time-linked authentication for an enterprise customer.",
+        "At the university I work where computer vision meets edge computing: a Raspberry Pi system that runs real-time object detection and uses a projector to overlay repair instructions directly onto industrial machinery.",
+        "Day to day that means Python, Dart, and TypeScript, full-stack work, and a fair amount of ML integration. Whatever the stack, I want the code to be tested, readable, and fast enough to stay out of the way."
     ]
 };

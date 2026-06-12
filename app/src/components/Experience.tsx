@@ -3,21 +3,15 @@
 import { experience } from '@/data/experience';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
-import { useEffects } from '@/context/EffectsContext';
-import { useState } from 'react';
 
 export const Experience = () => {
-    const { effectsEnabled } = useEffects();
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
     return (
         <Section id="experience">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: effectsEnabled ? 0.5 : 0 }}
-                style={{ willChange: 'transform, opacity' }}
+                transition={{ duration: 0.5 }}
             >
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-foreground">
                     Experience
@@ -28,17 +22,11 @@ export const Experience = () => {
                 {experience.map((job, index) => (
                     <motion.div
                         key={job.id}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.1 }}
-                        transition={{ duration: effectsEnabled ? 0.5 : 0, delay: effectsEnabled ? index * 0.08 : 0 }}
-                        style={{ willChange: 'transform, opacity' }}
-                        onMouseEnter={() => setHoveredIndex(index)}
-                        onMouseLeave={() => setHoveredIndex(null)}
-                        className={`p-6 md:p-8 rounded-2xl border transition-all duration-400 ${hoveredIndex === index
-                            ? 'bg-white/[0.03] border-primary/20'
-                            : 'bg-transparent border-white/5'
-                            }`}
+                        transition={{ duration: 0.5, delay: index * 0.05 }}
+                        className="p-6 md:p-8 rounded-2xl border border-border bg-transparent hover:bg-surface hover:border-primary/20 transition-colors duration-300"
                     >
                         <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-4 gap-1">
                             <div>

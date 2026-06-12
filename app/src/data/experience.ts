@@ -3,8 +3,8 @@ import { Experience } from '@/types';
 export const experience: Experience[] = [
     {
         id: 'working-student',
-        role: 'Working Student in Automation, Robotics, and AI (via Siltectra GmbH)',
-        company: 'Infineon Technologies AG',
+        role: 'Working Student, Automation & AI',
+        company: 'Infineon Technologies AG (via Siltectra GmbH)',
         period: '05/2026 - Present',
         description: [
             'Developing and maintaining internal tools and applications for semiconductor manufacturing processes.',
@@ -16,8 +16,8 @@ export const experience: Experience[] = [
         company: 'Self-Employed',
         period: '10/2025 - Present',
         description: [
-            'Engineered and deployed HideZone, which is a location-based mobile game that acquired over 10,000 organic downloads across the App Store and Google Play.',
-            'Developed and delivered a secure remote desktop client featuring time-linked authentication for an enterprise client.',
+            'Built and shipped HideZone, a location-based mobile game with over 10,000 organic downloads on the App Store and Google Play.',
+            'Delivered a secure remote desktop client with time-linked authentication for an enterprise client.',
         ]
     },
     {
@@ -27,9 +27,9 @@ export const experience: Experience[] = [
         period: '03/2024 - Present',
         description: [
             'Trained SSD object detection models on custom industrial machinery datasets.',
-            'Engineered a Raspberry Pi edge system integrating camera calibration, server auto-discovery, and projector-based augmented reality overlays.',
-            'Built the distributed network pipeline connecting Dockerized backend inference servers to edge devices.',
-            'Dockerized the deployment pipelines to guarantee complete reproducibility across laboratory environments.',
+            'Built a Raspberry Pi edge system with camera calibration, server auto-discovery, and projector-based augmented reality overlays.',
+            'Connected Dockerized backend inference servers to edge devices over a distributed network pipeline.',
+            'Dockerized the deployment pipelines for reproducibility across laboratory environments.',
         ]
     }
 ];

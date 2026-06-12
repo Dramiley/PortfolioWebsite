@@ -5,22 +5,12 @@ import { siteConfig } from '@/data/config';
 import { projects } from '@/data/projects';
 import { Section } from './Section';
 import { motion, useInView } from 'framer-motion';
-import { useEffects } from '@/context/EffectsContext';
 import { ProjectCard } from './ProjectCard';
+import { CompactProjectCard } from './CompactProjectCard';
 import { useProjectsScrollRestoration } from '@/hooks/useProjectsScrollRestoration';
 
-const filterCategories = [
-    { key: 'all', label: 'All' },
-    { key: 'ml-ai', label: 'ML & AI' },
-    { key: 'mobile', label: 'Mobile' },
-    { key: 'web', label: 'Web' },
-    { key: 'systems', label: 'Systems' },
-];
-
 export const Projects = () => {
-    const { effectsEnabled } = useEffects();
     const [hasVisited, setHasVisited] = useState(false);
-    const [activeFilter, setActiveFilter] = useState('all');
     const { shouldForceVisible, saveScrollPosition } = useProjectsScrollRestoration();
 
     const headerRef = useRef(null);
@@ -35,59 +25,61 @@ export const Projects = () => {
         }
     }, []);
 
-    const shouldShowHeader = shouldForceVisible || !effectsEnabled || hasVisited || headerInView;
+    const shouldShowHeader = shouldForceVisible || hasVisited || headerInView;
+    const animateHeader = !hasVisited && !shouldForceVisible;
 
-    const filteredProjects = activeFilter === 'all'
-        ? projects
-        : projects.filter(p => p.categories.includes(activeFilter as 'ml-ai' | 'mobile' | 'web' | 'systems'));
+    const featured = projects.filter(p => p.featured);
+    const more = projects.filter(p => !p.featured);
 
     return (
-        <Section id="projects" className="relative border-t border-white/5 pt-32">
+        <Section id="projects" className="relative border-t border-border pt-32">
             <motion.div
                 ref={headerRef}
                 initial={false}
-                animate={shouldShowHeader ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: (effectsEnabled && !hasVisited && !shouldForceVisible) ? 0.5 : 0 }}
-                style={{ willChange: (effectsEnabled && !hasVisited && !shouldForceVisible) ? 'transform, opacity' : undefined }}
-                className="mb-12"
+                animate={shouldShowHeader ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                transition={{ duration: animateHeader ? 0.5 : 0 }}
+                className="mb-16"
             >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
                     Projects
                 </h2>
-                <p className="text-foreground-muted text-lg max-w-2xl mb-8">
+                <p className="text-foreground-muted text-lg max-w-2xl">
                     {siteConfig.sections.projects.description}
                 </p>
-
-                {/* Filter Tabs */}
-                <div className="flex overflow-x-auto no-scrollbar -mx-6 px-6 gap-2 flex-nowrap pb-2 md:flex-wrap md:overflow-visible md:px-0 md:mx-0">
-                    {filterCategories.map((cat) => (
-                        <button
-                            key={cat.key}
-                            onClick={() => setActiveFilter(cat.key)}
-                            className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-all duration-300 ${activeFilter === cat.key
-                                ? 'bg-primary/15 text-primary border border-primary/25'
-                                : 'text-foreground-muted border border-white/8 hover:border-white/15 hover:text-foreground'
-                                }`}
-                        >
-                            {cat.label}
-                        </button>
-                    ))}
-                </div>
             </motion.div>
 
-            <div className="flex flex-col gap-28">
-                {filteredProjects.map((project, index) => (
+            {/* Featured case studies */}
+            <div className="flex flex-col gap-24">
+                {featured.map((project, index) => (
                     <ProjectCard
                         key={project.id}
                         project={project}
                         index={index}
                         hasVisited={hasVisited}
-                        effectsEnabled={effectsEnabled}
                         forceVisible={shouldForceVisible}
                         onNavigate={saveScrollPosition}
                     />
                 ))}
             </div>
+
+            {/* The rest, in brief */}
+            {more.length > 0 && (
+                <div className="mt-28">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">More projects</h3>
+                    <p className="text-foreground-muted mb-8">
+                        Coursework, research, and this site itself.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        {more.map((project) => (
+                            <CompactProjectCard
+                                key={project.id}
+                                project={project}
+                                onNavigate={saveScrollPosition}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
         </Section>
     );
 };

@@ -2,17 +2,16 @@
 
 /**
  * @file ProjectContent.tsx
- * @description Premium case study layout for individual project pages.
- * Structure: Compact Hero → Metrics Bar → Narrative (Challenge/Approach/Impact) → Features → Timeline → Gallery
+ * @description Case study layout for individual project pages.
+ * Structure: Hero → Metrics → Narrative (centered reading column) →
+ * Highlights → Timeline (vertical) → Gallery → Prev/Next navigation.
  */
 
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Section } from '@/components/Section';
+import { motion } from 'framer-motion';
 import { BackToProjectsButton } from '@/components/BackToProjectsButton';
 import { ImageGallery } from '@/components/ImageGallery';
 import { ProjectNavigation } from '@/components/ProjectNavigation';
-import { CaseStudyNav } from '@/components/CaseStudyNav';
 import { Project } from '@/types';
 
 /* ------------------------------------------------------------------ */
@@ -59,63 +58,67 @@ function LockIcon({ className = 'w-5 h-5' }: { className?: string }) {
 /* ------------------------------------------------------------------ */
 const isPlayStoreUrl = (url: string) => url.includes('play.google.com');
 
+/* Entrance animation shared by the content blocks */
+const fadeUp = {
+    initial: { opacity: 0, y: 16 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-80px' },
+    transition: { duration: 0.5 },
+} as const;
+
 /* ------------------------------------------------------------------ */
 /*  Main component                                                     */
 /* ------------------------------------------------------------------ */
 
 export default function ProjectContent({ project }: { project: Project }) {
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
-    const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
     return (
-        <main className="relative min-h-screen overflow-hidden">
-            <CaseStudyNav />
-
+        <div className="relative min-h-screen">
             {/* ── Hero ─────────────────────────────────────────── */}
             <section
-                id="case-overview"
                 aria-label={`${project.title} overview`}
-                className="relative pt-32 pb-20 md:pt-40 md:pb-32 flex flex-col justify-center overflow-hidden"
+                className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden"
             >
-                <motion.div
-                    style={{ y, opacity: heroOpacity }}
-                    className="absolute inset-0 z-0 h-[60vh]"
-                >
+                {/* Dimmed hero image backdrop */}
+                <div className="absolute inset-0 z-0 h-[55vh]" aria-hidden="true">
                     <Image
                         src={project.heroImage}
                         alt=""
                         fill
                         sizes="100vw"
-                        className="object-cover opacity-20"
+                        className="object-cover opacity-15"
                         priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
-                </motion.div>
+                </div>
 
                 <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
                     >
                         <BackToProjectsButton variant="top" />
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 tracking-tight max-w-4xl">
+                        {project.meta && (
+                            <p className="font-mono text-sm uppercase tracking-wider text-primary mb-4">
+                                {project.meta}
+                            </p>
+                        )}
+                        <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 tracking-tight max-w-4xl">
                             {project.title}
                         </h1>
-                        <p className="text-xl md:text-2xl text-foreground-muted max-w-3xl leading-relaxed mb-8">
+                        <p className="text-xl md:text-2xl text-foreground-muted max-w-3xl leading-relaxed">
                             {project.shortDescription}
                         </p>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-6"
+                        transition={{ duration: 0.6, delay: 0.15 }}
+                        className="mt-8"
                     >
                         {/* Action buttons */}
-                        <nav aria-label="Project links" className="flex flex-wrap gap-4">
+                        <nav aria-label="Project links" className="flex flex-wrap gap-3">
                             {project.links ? (
                                 project.links.map((link, idx) => (
                                     <a
@@ -123,9 +126,9 @@ export default function ProjectContent({ project }: { project: Project }) {
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-[1.03] ${isPlayStoreUrl(link.url)
+                                        className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-[1.02] ${isPlayStoreUrl(link.url)
                                             ? 'bg-primary text-white hover:bg-primary-soft shadow-lg shadow-primary/20'
-                                            : 'bg-accent text-white hover:bg-accent/80 shadow-lg shadow-accent/20'
+                                            : 'bg-foreground text-background hover:opacity-90 shadow-lg'
                                             }`}
                                     >
                                         {isPlayStoreUrl(link.url) ? <PlayStoreIcon /> : <ExternalLinkIcon />}
@@ -137,35 +140,34 @@ export default function ProjectContent({ project }: { project: Project }) {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-[1.03] ${isPlayStoreUrl(project.link)
+                                    className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-[1.02] ${isPlayStoreUrl(project.link)
                                         ? 'bg-primary text-white hover:bg-primary-soft shadow-lg shadow-primary/20'
-                                        : 'bg-white text-background hover:bg-white/90 shadow-lg shadow-white/20'
+                                        : 'bg-foreground text-background hover:opacity-90 shadow-lg'
                                         }`}
                                 >
                                     {isPlayStoreUrl(project.link) ? (
                                         <><PlayStoreIcon /> Play Store</>
                                     ) : (
-                                        <><ExternalLinkIcon /> Check it out</>
+                                        <><ExternalLinkIcon /> Website</>
                                     )}
                                 </a>
                             )}
 
                             {project.githubUrl && (
                                 project.githubUrl.toLowerCase() === 'closed source' ? (
-                                    <button
-                                        disabled
-                                        aria-label="Source code is not publicly available"
-                                        className="flex items-center gap-2 px-6 py-3 rounded-lg bg-white/[0.03] text-foreground-muted/50 border border-white/5 cursor-not-allowed font-medium"
+                                    <span
+                                        title="Source code is not publicly available"
+                                        className="flex items-center gap-2 px-6 py-3 rounded-lg bg-surface text-foreground-muted/60 border border-border cursor-not-allowed font-medium"
                                     >
                                         <LockIcon />
                                         Closed Source
-                                    </button>
+                                    </span>
                                 ) : (
                                     <a
                                         href={project.githubUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary-soft transition-all hover:scale-[1.03] shadow-lg shadow-primary/20"
+                                        className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary-soft transition-all hover:scale-[1.02] shadow-lg shadow-primary/20"
                                     >
                                         <GithubIcon />
                                         View Code
@@ -174,11 +176,11 @@ export default function ProjectContent({ project }: { project: Project }) {
                             )}
                         </nav>
 
-                        {/* Tech stack pills */}
-                        <ul aria-label="Tech stack" className="flex flex-wrap gap-2 items-center sm:ml-auto list-none">
+                        {/* Tech stack pills - their own row, aligned with the text above */}
+                        <ul aria-label="Tech stack" className="flex flex-wrap gap-2 mt-6 list-none">
                             {project.techStack.map((tech) => (
                                 <li key={tech.name}>
-                                    <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/8 text-sm font-medium text-foreground-muted/80 whitespace-nowrap inline-block">
+                                    <span className="px-3 py-1 rounded-full bg-surface border border-border text-sm font-medium text-foreground-muted whitespace-nowrap inline-block">
                                         {tech.name}
                                     </span>
                                 </li>
@@ -190,8 +192,8 @@ export default function ProjectContent({ project }: { project: Project }) {
 
             {/* ── Metrics Bar ──────────────────────────────────── */}
             {project.details.metrics && project.details.metrics.length > 0 && (
-                <section aria-label="Key metrics" className="relative z-20 -mt-8 mb-16 max-w-6xl mx-auto px-6">
-                    <dl className="glass-panel rounded-2xl p-8 md:p-10 flex flex-wrap gap-8 md:gap-16 justify-center md:justify-around text-center border-l-4 border-l-primary">
+                <section aria-label="Key metrics" className="max-w-6xl mx-auto px-6 mb-8">
+                    <dl className="glass-panel rounded-2xl p-8 md:p-10 flex flex-wrap gap-8 md:gap-16 justify-center md:justify-around text-center">
                         {project.details.metrics.map((metric, idx) => (
                             <div key={idx} className="flex flex-col">
                                 <dd className="text-3xl md:text-5xl font-bold text-foreground tracking-tight mb-2 order-first">
@@ -206,170 +208,141 @@ export default function ProjectContent({ project }: { project: Project }) {
                 </section>
             )}
 
-            {/* ── Narrative Block ──────────────────────────────── */}
-            <Section id="case-narrative" className="py-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            {/* ── Narrative: centered reading column ───────────── */}
+            <section aria-label="Case study" className="max-w-3xl mx-auto px-6 py-16">
+                {/* Lede */}
+                <motion.p
+                    {...fadeUp}
+                    className="text-lg md:text-xl text-foreground-muted leading-relaxed whitespace-pre-line"
+                >
+                    {project.fullDescription}
+                </motion.p>
 
-                    {/* Left: Context  */}
-                    <aside className="lg:col-span-4">
-                        <div className="sticky top-32">
-                            <h2 className="text-sm font-semibold text-primary tracking-widest uppercase mb-4">Context</h2>
-                            <p className="text-lg text-foreground-muted leading-relaxed font-light whitespace-pre-line">
-                                {project.fullDescription}
-                            </p>
+                {/* Problem */}
+                <motion.article {...fadeUp} className="mt-16">
+                    <h2 className="text-2xl font-bold text-foreground mb-4">Problem</h2>
+                    <p className="text-lg text-foreground-muted leading-relaxed">
+                        {project.details.problem}
+                    </p>
+                    {project.details.problemImage && (
+                        <div className="mt-8 rounded-2xl overflow-hidden border border-border bg-surface">
+                            <Image
+                                src={project.details.problemImage}
+                                alt={`${project.title} - the problem`}
+                                width={1200}
+                                height={675}
+                                sizes="(max-width: 768px) 100vw, 768px"
+                                className="w-full h-auto"
+                            />
                         </div>
-                    </aside>
+                    )}
+                </motion.article>
 
-                    {/* Right: Narrative arc */}
-                    <div className="lg:col-span-8 space-y-16">
-                        {/* Challenge */}
+                {/* Approach */}
+                <motion.article {...fadeUp} className="mt-16">
+                    <h2 className="text-2xl font-bold text-foreground mb-4">Approach</h2>
+                    <p className="text-lg text-foreground-muted leading-relaxed">
+                        {project.details.approach}
+                    </p>
+                    {project.details.approachImage && (
+                        <div className="mt-8 rounded-2xl overflow-hidden border border-border bg-surface">
+                            <Image
+                                src={project.details.approachImage}
+                                alt={`${project.title} - the approach`}
+                                width={1200}
+                                height={675}
+                                sizes="(max-width: 768px) 100vw, 768px"
+                                className="w-full h-auto"
+                            />
+                        </div>
+                    )}
+                </motion.article>
+
+                {/* Outcome */}
+                {project.details.impact && (
+                    <motion.article {...fadeUp} className="mt-16">
+                        <h2 className="text-2xl font-bold text-foreground mb-4">Outcome</h2>
+                        <p className="text-lg text-foreground-muted leading-relaxed">
+                            {project.details.impact}
+                        </p>
+                    </motion.article>
+                )}
+
+                {/* Architecture */}
+                {project.details.architecture && (
+                    <motion.article {...fadeUp} className="mt-16">
+                        <h2 className="text-2xl font-bold text-foreground mb-4">Architecture</h2>
+                        <p className="text-lg text-foreground-muted leading-relaxed">
+                            {project.details.architecture}
+                        </p>
+                    </motion.article>
+                )}
+            </section>
+
+            {/* ── Highlights ───────────────────────────────────── */}
+            <section aria-label="Highlights" className="max-w-6xl mx-auto px-6 py-16">
+                <h2 className="text-3xl font-bold text-foreground mb-10">Highlights</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5" role="list">
+                    {project.details.features.map((feature, idx) => (
                         <motion.article
-                            initial={{ opacity: 0, y: 30 }}
+                            key={idx}
+                            role="listitem"
+                            initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: idx * 0.05 }}
+                            className="group p-7 rounded-2xl bg-surface border border-border hover:border-primary/20 transition-colors duration-300"
                         >
-                            <h2 className="text-2xl font-bold text-foreground mb-4">The Challenge</h2>
-                            <p className="text-lg text-foreground-muted leading-relaxed">
-                                {project.details.problem}
+                            <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                {feature.title}
+                            </h3>
+                            <p className="text-foreground-muted leading-relaxed text-sm">
+                                {feature.description}
                             </p>
-                            {project.details.problemImage && (
-                                <div className="mt-8 rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02]">
-                                    <Image
-                                        src={project.details.problemImage}
-                                        alt={`${project.title} - the challenge`}
-                                        width={1200}
-                                        height={675}
-                                        sizes="(max-width: 1024px) 100vw, 66vw"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-                            )}
                         </motion.article>
-
-                        {/* Approach */}
-                        <motion.article
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6 }}
-                            className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-10 relative overflow-hidden"
-                        >
-                            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-accent" aria-hidden="true" />
-                            <h2 className="text-2xl font-bold text-foreground mb-4">The Approach</h2>
-                            <p className="text-lg text-foreground-muted leading-relaxed">
-                                {project.details.approach}
-                            </p>
-                            {project.details.approachImage && (
-                                <div className="mt-8 rounded-2xl overflow-hidden border border-white/5 bg-black/50">
-                                    <Image
-                                        src={project.details.approachImage}
-                                        alt={`${project.title} - the approach`}
-                                        width={1200}
-                                        height={675}
-                                        sizes="(max-width: 1024px) 100vw, 66vw"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-                            )}
-                        </motion.article>
-
-                        {/* Impact */}
-                        {project.details.impact && (
-                            <motion.article
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                <h2 className="text-2xl font-bold text-foreground mb-4">The Impact</h2>
-                                <p className="text-lg text-foreground-muted leading-relaxed">
-                                    {project.details.impact}
-                                </p>
-                            </motion.article>
-                        )}
-
-                        {/* Architecture */}
-                        {project.details.architecture && (
-                            <motion.article
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                <h2 className="text-2xl font-bold text-foreground mb-4">System Architecture</h2>
-                                <p className="text-lg text-foreground-muted leading-relaxed">
-                                    {project.details.architecture}
-                                </p>
-                            </motion.article>
-                        )}
-                    </div>
+                    ))}
                 </div>
-            </Section>
+            </section>
 
-            {/* ── Key Features ─────────────────────────────────── */}
-            <Section id="case-features" className="py-24 border-y border-white/5 relative">
-                <div className="absolute inset-0 bg-background-secondary/30" aria-hidden="true" />
-                <div className="relative z-10">
-                    <h2 className="text-3xl font-bold text-foreground mb-12">Key Engineering Features</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
-                        {project.details.features.map((feature, idx) => (
-                            <motion.article
-                                key={idx}
-                                role="listitem"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="group p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all duration-300 relative overflow-hidden"
-                            >
-                                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors relative z-10 pr-12">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-foreground-muted relative z-10 leading-relaxed text-sm">
-                                    {feature.description}
-                                </p>
-                            </motion.article>
-                        ))}
-                    </div>
-                </div>
-            </Section>
-
-            {/* ── Timeline (Condensed Horizontal) ──────────────── */}
+            {/* ── Timeline (vertical) ──────────────────────────── */}
             {project.details.timeline && (
-                <Section id="case-timeline" className="py-24">
-                    <h2 className="text-3xl font-bold text-foreground mb-16">Development Lifecycle</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <section aria-label="Timeline" className="max-w-3xl mx-auto px-6 py-16">
+                    <h2 className="text-3xl font-bold text-foreground mb-10">Timeline</h2>
+                    <ol className="relative border-l border-border pl-8 space-y-10 list-none">
                         {project.details.timeline.map((item, idx) => (
-                            <motion.div
+                            <motion.li
                                 key={idx}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 12 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                transition={{ duration: 0.4, delay: idx * 0.04 }}
                                 className="relative"
                             >
-                                <div className="hidden md:block absolute top-1.5 left-0 w-full h-[2px] bg-white/10 -z-10" aria-hidden="true" />
-                                <div className="w-3 h-3 rounded-full bg-primary mb-6 shadow-[0_0_10px_var(--primary-glow)] border-2 border-background" aria-hidden="true" />
-                                <time className="text-primary font-mono text-xs uppercase tracking-wider font-semibold mb-2 block">{item.date}</time>
-                                <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                                <span
+                                    className="absolute -left-[38px] top-1 w-3 h-3 rounded-full bg-primary border-2 border-background"
+                                    aria-hidden="true"
+                                />
+                                <time className="text-primary font-mono text-xs uppercase tracking-wider font-semibold block mb-1.5">
+                                    {item.date}
+                                </time>
+                                <h3 className="text-lg font-bold text-foreground mb-1.5">{item.title}</h3>
                                 <p className="text-foreground-muted text-sm leading-relaxed">{item.description}</p>
-                            </motion.div>
+                            </motion.li>
                         ))}
-                    </div>
-                </Section>
+                    </ol>
+                </section>
             )}
 
             {/* ── Gallery ──────────────────────────────────────── */}
             {project.galleryImages && project.galleryImages.length > 0 && (
-                <Section id="case-gallery" className="py-24">
-                    <h2 className="text-3xl font-bold text-foreground mb-12">Project Gallery</h2>
+                <section aria-label="Gallery" className="max-w-6xl mx-auto px-6 py-16">
+                    <h2 className="text-3xl font-bold text-foreground mb-10">Gallery</h2>
                     <ImageGallery images={project.galleryImages} projectTitle={project.title} />
-                </Section>
+                </section>
             )}
 
             {/* ── Next / Prev Project Navigation ─────────────── */}
             <ProjectNavigation currentProject={project} />
-        </main>
+        </div>
     );
 }

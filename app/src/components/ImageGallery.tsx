@@ -69,7 +69,7 @@ export function ImageGallery({ images, projectTitle }: ImageGalleryProps) {
                         transition={{ duration: 0.5, delay: idx * 0.1 }}
                         onClick={() => openLightbox(idx)}
                         aria-label={`View ${projectTitle} image ${idx + 1} of ${images.length}`}
-                        className="group relative aspect-video rounded-2xl overflow-hidden bg-black/50 border border-white/8 hover:border-primary/20 transition-all duration-300 cursor-pointer"
+                        className="group relative aspect-video rounded-2xl overflow-hidden bg-background-secondary border border-border hover:border-primary/20 transition-all duration-300 cursor-pointer"
                     >
                         <Image
                             src={image}

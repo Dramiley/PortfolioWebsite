@@ -3,25 +3,17 @@
 import { siteConfig } from '@/data/config';
 import { Section } from './Section';
 import { motion } from 'framer-motion';
-import { useEffects } from '@/context/EffectsContext';
 
 export const Contact = () => {
-    const { effectsEnabled } = useEffects();
-
     return (
         <Section id="contact" className="mb-20 relative">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: effectsEnabled ? 0.7 : 0, ease: [0.16, 1, 0.3, 1] }}
-                style={{ willChange: 'transform, opacity' }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="relative rounded-2xl overflow-hidden p-12 md:p-20 glass-panel"
             >
-                {/* Subtle background accents */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px]" />
-
                 <div className="relative z-10 max-w-xl">
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
                         {siteConfig.sections.contact.title}
@@ -41,8 +33,15 @@ export const Contact = () => {
                         </svg>
                     </a>
 
-                    <p className="mt-4 text-sm text-foreground-muted/60">
-                        {siteConfig.social.email}
+                    <p className="mt-4 text-sm text-foreground-muted/70">
+                        <a
+                            href={`mailto:${siteConfig.social.email}`}
+                            className="hover:text-primary transition-colors duration-300"
+                        >
+                            {siteConfig.social.email}
+                        </a>
+                        <span className="mx-2" aria-hidden="true">·</span>
+                        Dresden, Germany
                     </p>
                 </div>
             </motion.div>

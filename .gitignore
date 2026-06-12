@@ -1,0 +1,7 @@
+# Environment Variablen
+.env
+.env.*
+!.env.example
+
+# Claude Files
+/.Claude

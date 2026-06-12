@@ -41,7 +41,7 @@ export function BackToProjectsButton({ variant = 'top', className }: BackToProje
             <button
                 onClick={handleClick}
                 aria-label="View all projects"
-                className={className || "inline-block px-10 py-5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/8 text-foreground font-semibold text-lg transition-all hover:scale-[1.02]"}
+                className={className || "inline-block px-10 py-5 rounded-lg bg-surface hover:bg-surface-hover border border-border text-foreground font-semibold text-lg transition-all hover:scale-[1.02]"}
             >
                 View All Projects
             </button>

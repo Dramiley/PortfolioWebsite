@@ -24,13 +24,13 @@ export function ProjectNavigation({ currentProject }: ProjectNavigationProps) {
 
     return (
         <section aria-label="Project navigation" className="max-w-6xl mx-auto px-6 py-24">
-            <div className="border-t border-white/5 pt-16">
+            <div className="border-t border-border pt-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Previous Project */}
                     {prevProject ? (
                         <Link
                             href={`/projects/${prevProject.slug}`}
-                            className="group flex flex-col p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all duration-300 hover:bg-white/[0.04]"
+                            className="group flex flex-col p-8 rounded-2xl bg-surface border border-border hover:border-primary/20 transition-all duration-300 hover:bg-surface-hover"
                         >
                             <span className="text-xs font-semibold text-foreground-muted uppercase tracking-wider mb-3 flex items-center gap-2">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -50,7 +50,7 @@ export function ProjectNavigation({ currentProject }: ProjectNavigationProps) {
                     {nextProject ? (
                         <Link
                             href={`/projects/${nextProject.slug}`}
-                            className="group flex flex-col items-end text-right p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all duration-300 hover:bg-white/[0.04]"
+                            className="group flex flex-col items-end text-right p-8 rounded-2xl bg-surface border border-border hover:border-primary/20 transition-all duration-300 hover:bg-surface-hover"
                         >
                             <span className="text-xs font-semibold text-foreground-muted uppercase tracking-wider mb-3 flex items-center gap-2">
                                 Next

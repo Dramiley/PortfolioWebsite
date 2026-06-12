@@ -10,6 +10,10 @@ export interface Project {
   id: string;
   slug: string;
   hasDetailPage: boolean;
+  /** Featured projects get a large row on the homepage; the rest go in the compact grid. */
+  featured?: boolean;
+  /** Short kicker line, e.g. "Solo build · 10,000+ downloads · 2025 - 2026". */
+  meta?: string;
   title: string;
   shortDescription: string;
   fullDescription: string;
