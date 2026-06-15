@@ -11,7 +11,7 @@ export const siteConfig: SiteConfig = {
     subtitle: "M.Sc. Computer Science student - TU Dresden",
     social: {
         github: "https://github.com/Dramiley",
-        linkedin: "https://www.linkedin.com/in/robin-morgenstern-a910a5239/",
+        linkedin: "https://www.linkedin.com/in/robin-morgenstern/",
         email: "morgensternrobin04@gmail.com"
     },
     sections: {
