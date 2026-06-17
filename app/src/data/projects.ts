@@ -6,10 +6,10 @@ export const projects: Project[] = [
         slug: "hidezone",
         hasDetailPage: true,
         featured: true,
-        meta: "Solo build · 10,000+ downloads · 2025 - 2026",
+        meta: "Solo build · 15,000+ downloads · 2025 - 2026",
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
-        shortDescription: "A real-time GPS hide-and-seek game for iOS and Android, with geofenced play areas and tactical items. 10,000+ downloads.",
+        shortDescription: "A real-time GPS hide-and-seek game for iOS and Android, with geofenced play areas and tactical items. 15,000+ downloads.",
         fullDescription: "HideZone turns parks and city centers into playing fields. I built the entire cross-platform stack: real-time GPS geofencing, dynamic boundary zones, and an in-game item system. A later rewrite of the network layer cut database operations by 85%.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
@@ -37,9 +37,9 @@ export const projects: Project[] = [
             problemImage: "",
             approach: "Built a real-time coordination engine on Firebase that syncs player positions with sub-50ms latency, enforces virtual boundaries through geofencing, and processes item triggers like scanners and proximity mines for tactical depth.",
             approachImage: "",
-            impact: "Designed, built, and shipped solo to the Google Play Store and Apple App Store. The game passed 10,000 organic downloads, and a later refactor of the synchronization and polling layer cut Realtime Database operations by 85%, keeping server costs at roughly 1€ for every 6€ of revenue.",
+            impact: "Designed, built, and shipped solo to the Google Play Store and Apple App Store. The game passed 15,000 organic downloads, and a later refactor of the synchronization and polling layer cut Realtime Database operations by 85%, keeping server costs at roughly 1€ for every 6€ of revenue.",
             metrics: [
-                { label: 'Downloads', value: '10,000+' },
+                { label: 'Downloads', value: '15,000+' },
                 { label: 'DB Operations', value: '-85%' },
                 { label: 'Sync Latency', value: '< 50ms' }
             ],
