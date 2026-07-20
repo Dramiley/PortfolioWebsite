@@ -37,7 +37,7 @@ export const projects: Project[] = [
             problemImage: "",
             approach: "Built a real-time coordination engine on Firebase that syncs player positions with sub-50ms latency, enforces virtual boundaries through geofencing, and processes item triggers like scanners and proximity mines for tactical depth.",
             approachImage: "",
-            impact: "Designed, built, and shipped solo to the Google Play Store and Apple App Store. The game passed 25,000 organic downloads, and a later refactor of the synchronization and polling layer cut Realtime Database operations by 85%, keeping server costs at roughly 1€ for every 6€ of revenue.",
+            impact: "Designed, built, and shipped solo to the Google Play Store and Apple App Store. The game passed 25,000 organic downloads, monetized via ads and a Pro subscription tier. A later refactor of the synchronization and polling layer cut Realtime Database operations by 85%, keeping server costs under 20% of the ad revenue alone.",
             metrics: [
                 { label: 'Downloads', value: '25,000+' },
                 { label: 'DB Operations', value: '-85%' },
