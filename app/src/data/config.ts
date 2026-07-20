@@ -16,8 +16,8 @@ export const siteConfig: SiteConfig = {
     },
     sections: {
         hero: {
-            statement: "I build software where machine learning meets the real world: computer vision on edge devices and real-time mobile apps.",
-            subtext: "M.Sc. Computer Science student at TU Dresden.\nShipped a GPS game to 25,000+ players."
+            statement: "I build software focused on AI, automation, mobile apps, and server deployment.",
+            subtext: "M.Sc. Computer Science student at TU Dresden.\nWorking Student at Infineon & developer of HideZone."
         },
         projects: {
             description: "Selected work across machine learning, mobile, and systems engineering."
