@@ -16,7 +16,7 @@ export const siteConfig: SiteConfig = {
     },
     sections: {
         hero: {
-            statement: "I build software focused on AI, automation, mobile apps, and server deployment.",
+            statement: "I build dependable software across AI, automation, mobile, and distributed systems.",
             subtext: "M.Sc. Computer Science student at TU Dresden.\nWorking Student at Infineon & developer of HideZone."
         },
         projects: {

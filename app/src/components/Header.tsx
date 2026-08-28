@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ThemeToggle } from './ui/ThemeToggle';
 
 const navItems = [
@@ -16,6 +16,8 @@ const navItems = [
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const menuButtonRef = useRef<HTMLButtonElement>(null);
+    const mobileMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,19 +31,57 @@ export const Header = () => {
         };
     }, []);
 
-    // Lock body scroll and trap focus when mobile menu open
+    // Keep keyboard focus inside the mobile navigation while it is open.
     useEffect(() => {
         const mainContent = document.getElementById('main-content');
-        if (mobileOpen) {
-            document.body.style.overflow = 'hidden';
-            mainContent?.setAttribute('inert', 'true');
-        } else {
-            document.body.style.overflow = '';
-            mainContent?.removeAttribute('inert');
-        }
+        const footer = document.querySelector('footer');
+        if (!mobileOpen) return;
+
+        const previouslyFocused = document.activeElement as HTMLElement | null;
+        const menuButton = menuButtonRef.current;
+        document.body.style.overflow = 'hidden';
+        mainContent?.setAttribute('inert', 'true');
+        footer?.setAttribute('inert', 'true');
+
+        const focusFrame = requestAnimationFrame(() => {
+            mobileMenuRef.current?.querySelector<HTMLElement>('a[href], button:not([disabled])')?.focus();
+        });
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setMobileOpen(false);
+                return;
+            }
+
+            if (event.key !== 'Tab') return;
+
+            const focusable = Array.from(
+                mobileMenuRef.current?.querySelectorAll<HTMLElement>(
+                    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                ) ?? []
+            );
+            if (focusable.length === 0) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
         return () => {
+            cancelAnimationFrame(focusFrame);
+            document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = '';
             document.getElementById('main-content')?.removeAttribute('inert');
+            document.querySelector('footer')?.removeAttribute('inert');
+            requestAnimationFrame(() => (previouslyFocused ?? menuButton)?.focus());
         };
     }, [mobileOpen]);
 
@@ -87,10 +127,12 @@ export const Header = () => {
 
                             {/* Mobile Hamburger */}
                             <button
+                                ref={menuButtonRef}
                                 onClick={() => setMobileOpen(!mobileOpen)}
                                 className="md:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
-                                aria-label="Toggle navigation menu"
+                                aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
                                 aria-expanded={mobileOpen}
+                                aria-controls="mobile-navigation"
                             >
                                 <motion.span
                                     animate={mobileOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
@@ -114,11 +156,16 @@ export const Header = () => {
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
+                        ref={mobileMenuRef}
+                        id="mobile-navigation"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
                         className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Site navigation"
                     >
                         <nav className="flex flex-col items-center gap-8">
                             {navItems.map((item) => (
@@ -126,7 +173,7 @@ export const Header = () => {
                                     key={item.name}
                                     href={item.href}
                                     onClick={() => setMobileOpen(false)}
-                                    className="text-2xl font-semibold text-foreground hover:text-primary transition-colors duration-300"
+                                    className="text-2xl font-semibold text-foreground hover:text-primary transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background rounded-sm"
                                 >
                                     {item.name}
                                 </Link>

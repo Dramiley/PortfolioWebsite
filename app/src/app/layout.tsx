@@ -71,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased text-foreground`} suppressHydrationWarning>
         {/* Theme Initialization Script to avoid FOUC */}
         <script

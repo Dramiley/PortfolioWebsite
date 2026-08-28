@@ -7,9 +7,9 @@ export const experience: Experience[] = [
         company: 'Infineon Technologies AG (via Siltectra GmbH)',
         period: '05/2026 - Present',
         description: [
-            'Developing and maintaining internal applications to optimize semiconductor manufacturing processes.',
-            'Enhancing an internal maintenance chatbot with new automation features and security integrations, such as Single Sign-On (SSO).',
-            'Developing an AI-powered tool that automatically generates and creates Jira tickets from meeting recordings.',
+            'Develop and maintain internal applications that support semiconductor manufacturing workflows.',
+            'Extend an internal maintenance chatbot with workflow automation and enterprise authentication, including Single Sign-On.',
+            'Built an AI-assisted workflow that turns meeting recordings into structured Jira tickets.',
         ]
     },
     {
@@ -18,9 +18,9 @@ export const experience: Experience[] = [
         company: 'Self-Employed',
         period: '10/2025 - Present',
         description: [
-            'Built and shipped HideZone, a location-based mobile game with over 25,000 organic downloads across the App Store and Google Play.',
-            'Designed and delivered a secure remote desktop client with time-linked authentication for an enterprise customer.',
-            'Built a mail forwarding service that routes incoming emails to the users of dynamically allocated virtual machines (VMs).',
+            'Built and now operate HideZone, a real-time GPS multiplayer game with more than 40,000 organic downloads across Google Play and the App Store.',
+            'Delivered a remote desktop client with time-bound authentication for an enterprise customer.',
+            'Built a mail-routing service that forwards incoming messages to users on dynamically assigned virtual machines.',
         ]
     },
     {
@@ -29,10 +29,10 @@ export const experience: Experience[] = [
         company: 'TU Dresden',
         period: '03/2024 - Present',
         description: [
-            'Trained SSD object detection models on custom datasets representing industrial machinery components.',
-            'Built a Raspberry Pi edge system featuring camera calibration, server auto-discovery, and projector-based augmented reality overlays.',
-            'Integrated Dockerized backend inference servers with edge devices over a distributed network pipeline.',
-            'Containerized deployment pipelines with Docker to ensure reproducibility across laboratory environments.',
+            'Developed a distributed maintenance-assistant prototype with SSD object detection, Dockerized Flask services, and Raspberry Pi edge hardware.',
+            'Implemented camera calibration, image-quality checks, local server discovery, and projector-based guidance for industrial machinery.',
+            'Built a pipeline that converts single- and multi-camera object detections into OWL knowledge graphs with derived spatial relations.',
+            'Currently developing an LLM-based ontology generation and benchmarking suite with hierarchical merging, automated quality evaluation, and a Next.js control interface.',
         ]
     }
 ];

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface BackToProjectsButtonProps {
     variant?: 'top' | 'bottom';
@@ -10,47 +10,34 @@ interface BackToProjectsButtonProps {
 /**
  * Unified "Back to Projects" button component.
  * 
- * This component provides a consistent navigation experience when returning from
- * project detail pages. It uses the browser's history API when possible, and falls
- * back to direct navigation if needed.
+ * This component always returns to the project index. Browser history is deliberately
+ * not used because readers may have moved through several case studies first.
  * 
  * Both the top and bottom buttons on project detail pages use this component to
  * ensure identical behavior.
  */
 export function BackToProjectsButton({ variant = 'top', className }: BackToProjectsButtonProps) {
-    const router = useRouter();
-
-    const handleClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-
-        // Set the returning flag so the Projects page knows to restore state
+    const rememberReturnIntent = () => {
         sessionStorage.setItem('returning_from_project', 'true');
-
-        // Check if we can use history.back()
-        // This is preferred as it preserves more browser state
-        if (window.history.length > 1) {
-            router.back();
-        } else {
-            // Fallback to direct navigation if no history
-            router.push('/#projects');
-        }
     };
 
     if (variant === 'bottom') {
         return (
-            <button
-                onClick={handleClick}
+            <Link
+                href="/#projects"
+                onClick={rememberReturnIntent}
                 aria-label="View all projects"
                 className={className || "inline-block px-10 py-5 rounded-lg bg-surface hover:bg-surface-hover border border-border text-foreground font-semibold text-lg transition-all hover:scale-[1.02]"}
             >
                 View All Projects
-            </button>
+            </Link>
         );
     }
 
     return (
-        <button
-            onClick={handleClick}
+        <Link
+            href="/#projects"
+            onClick={rememberReturnIntent}
             aria-label="Back to projects"
             className={className || "inline-flex items-center text-sm text-primary mb-6 hover:underline"}
         >
@@ -58,6 +45,6 @@ export function BackToProjectsButton({ variant = 'top', className }: BackToProje
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
             Back to Projects
-        </button>
+        </Link>
     );
 }

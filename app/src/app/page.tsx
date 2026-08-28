@@ -15,14 +15,14 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen text-foreground font-sans">
-      <main>
+      <div>
         <Hero lastPushAt={github.lastPushAt} />
         <About />
         <Experience />
         <Skills />
         <Projects />
         <Contact />
-      </main>
+      </div>
     </div>
   );
 }

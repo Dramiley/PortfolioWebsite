@@ -6,11 +6,11 @@ export const projects: Project[] = [
         slug: "hidezone",
         hasDetailPage: true,
         featured: true,
-        meta: "Solo build · 25,000+ downloads · 2025 - 2026",
+        meta: "Solo build · 40,000+ downloads · 2025 - present",
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
-        shortDescription: "A real-time GPS hide-and-seek game for iOS and Android, with geofenced play areas and tactical items. 25,000+ downloads.",
-        fullDescription: "HideZone turns parks and city centers into playing fields. I built the entire cross-platform stack: real-time GPS geofencing, dynamic boundary zones, and an in-game item system. A later rewrite of the network layer cut database operations by 85%.",
+        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and seven game modes. 40,000+ downloads.",
+        fullDescription: "HideZone turns any park or neighborhood into a multiplayer game board. I built and shipped the Flutter app end to end, from the host-authoritative game loop and Firebase synchronization to geofenced maps, items, subscriptions, ads, and both store releases.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
             { name: "Flutter" },
@@ -23,62 +23,116 @@ export const projects: Project[] = [
         ],
         heroImage: "/images/projects/HideZoneMenu.jpg",
         galleryImages: [
-            "/images/projects/HideZone1.jpg",
-            "/images/projects/HideZone2.jpg",
-            "/images/projects/HideZone3.jpg",
-            "/images/projects/HideZone4.jpg"
+            "/images/projects/hidezone_01_play_instantly.jpg",
+            "/images/projects/hidezone_02_real_world_gameplay.jpg",
+            "/images/projects/hidezone_03_multiple_themes.jpg",
+            "/images/projects/hidezone_04_game_modes.jpg",
+            "/images/projects/hidezone_05_items.jpg",
+            "/images/projects/hidezone_06_team_chat.jpg",
+            "/images/projects/hidezone_07_stats.jpg",
         ],
         links: [
             { label: "Game website", url: "https://dramiley.dev/" }
         ],
         githubUrl: "closed source",
         details: {
-            problem: "Playing hide and seek across a whole park or district needs boundary enforcement, live coordination, and something to keep the chase tactically interesting. Doing all of that on a phone, in real time, without draining the battery is the hard part.",
+            problem: "A location-based game has to keep several phones in sync while players move through a real environment. It also has to recover cleanly from reconnects, enforce the play zone, and keep network, map, and battery use under control.",
             problemImage: "",
-            approach: "Built a real-time coordination engine on Firebase that syncs player positions with sub-50ms latency, enforces virtual boundaries through geofencing, and processes item triggers like scanners and proximity mines for tactical depth.",
+            approach: "Built a host-authoritative game engine on top of Firebase Realtime Database. Seven game modes plug into isolated strategy bundles, while shared services handle location updates, zone rules, items, reconnects, maps, billing, ads, and privacy-safe diagnostics.",
             approachImage: "",
-            impact: "Designed, built, and shipped solo to the Google Play Store and Apple App Store. The game passed 25,000 organic downloads, monetized via ads and a pro subscription tier. A later refactor of the synchronization and polling layer cut Realtime Database operations by 85%, keeping server costs under 20% of the ad revenue alone.",
+            impact: "Designed, built, and shipped independently on Google Play and the App Store, reaching more than 40,000 organic downloads. The current architecture is backed by more than 2,200 Flutter tests, deterministic multiplayer simulations, traffic budgets, and automated checks around network ownership and wire compatibility.",
             metrics: [
-                { label: 'Downloads', value: '25,000+' },
-                { label: 'DB Operations', value: '-85%' },
-                { label: 'Sync Latency', value: '< 50ms' }
+                { label: 'Downloads', value: '40,000+' },
+                { label: 'Game Modes', value: '7' },
+                { label: 'Flutter Tests', value: '2,200+' }
             ],
-            architecture: "Flutter on both platforms, with the Strategy pattern separating the different game modes. State management runs on Flutter Riverpod for a reactive, testable codebase. Firebase Realtime Database is the single source of truth, synchronizing player roles, locations, and game events across all clients with sub-50ms latency.",
+            architecture: "Flutter and Riverpod power both mobile clients. A synchronous host engine owns game decisions, while mode-specific strategy bundles keep the rules for Standard, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin isolated. Focused Firebase repositories sit behind a compatibility facade, and versioned codecs protect the production wire format.",
             features: [
                 { title: "Tactical Items", description: "Scanners reveal locations, Proximity Mines set traps, Ghost Mode grants stealth, and Zone Movers flush out campers." },
-                { title: "Four Game Modes", description: "Classic, Zombie Infection, Chase, and Sardines, each with its own rules and balance." },
-                { title: "Real-Time GPS Engine", description: "Live tracking with geofencing, supporting custom lobbies with multiple concurrent players." },
-                { title: "Privacy by Design", description: "No account registration. All session data is wiped the moment a match ends." }
+                { title: "Seven Game Modes", description: "Standard, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin share one engine without mixing their rules." },
+                { title: "Live Maps and Replays", description: "Geofenced play areas, cancellable map requests, a bounded tile cache, and local-only match replays." },
+                { title: "Privacy-Safe Diagnostics", description: "Anonymous sessions and tightly allowlisted Crashlytics records keep coordinates, names, lobby codes, and match data out of telemetry." }
             ],
             timeline: [
                 { date: "Dec 2025", title: "Core Architecture", description: "Started mobile development, establishing data schemas and core state structures." },
                 { date: "Jan 2026", title: "Systems Integration", description: "Integrated game modes, the item system, and geographic boundaries." },
                 { date: "Jan 2026", title: "Field Testing", description: "Tested with local groups to tune GPS precision, battery use, and latency." },
                 { date: "Feb 2026", title: "Android Release", description: "Shipped to the Google Play Store and refined systems based on early usage logs." },
-                { date: "Mar 2026", title: "Network Refactoring", description: "Rewrote the network polling layer, cutting Realtime Database operations by 85%." },
-                { date: "Apr 2026", title: "iOS Release", description: "Shipped to the Apple App Store with full cross-platform parity." },
+                { date: "Mar 2026", title: "Network Refactoring", description: "Reworked synchronization and polling to reduce unnecessary Realtime Database traffic." },
+                { date: "Apr 2026", title: "iOS Release", description: "Shipped to the Apple App Store with cross-platform multiplayer support." },
+                { date: "Aug 2026", title: "Architecture Rework", description: "Separated the host engine, mode rules, Firebase repositories, and UI ownership, then locked the behavior down with automated tests and traffic budgets." },
             ]
         },
+    },
+    {
+        id: 'llm-ontology-generation',
+        slug: 'llm-ontology-generation',
+        hasDetailPage: true,
+        featured: true,
+        meta: 'Research paper · TU Dresden · 2026 - present',
+        categories: ['ml-ai', 'systems'],
+        title: 'LLM-Based Ontology Generation',
+        shortDescription: 'An experimental framework that turns long-form text into structured ontologies, merges them hierarchically, and benchmarks their semantic and structural quality.',
+        fullDescription: 'As part of an ongoing research paper at TU Dresden, I am developing a framework for extracting ontologies from long documents with large language models. The system splits source material into manageable sections, generates sub-ontologies in several formats, combines them with configurable merge strategies, and evaluates the result through deterministic checks and LLM-assisted review.',
+        tags: ['Python', 'LLMs', 'OWL and RDF', 'Knowledge Engineering', 'Next.js'],
+        techStack: [
+            { name: 'Python' },
+            { name: 'OWL and RDF' },
+            { name: 'JSON, YAML, and Turtle' },
+            { name: 'OpenAI-compatible APIs' },
+            { name: 'Next.js' },
+            { name: 'TypeScript' },
+            { name: 'Server-Sent Events' },
+            { name: 'Git' }
+        ],
+        heroImage: '/images/projects/ontology_learning_strategies.png',
+        galleryImages: [],
+        link: '',
+        githubUrl: 'closed source',
+        details: {
+            problem: 'Industrial knowledge is often scattered across manuals, process descriptions, notes, and other documents. Modeling that information manually as an ontology is expensive, while processing an entire long document in one LLM prompt tends to lose detail and exceeds the practical context limits of smaller models.',
+            problemImage: '',
+            approach: 'Built a sentence-preserving chunking and generation pipeline that creates focused sub-ontologies in OWL, Turtle, JSON, or YAML. The fragments can then be combined through top-down, bottom-up, tree-based, or sequential merging, with optional overview ontologies and an improvement loop for repairing structural and semantic issues.',
+            approachImage: '',
+            impact: 'The project provides a reproducible environment for comparing language models, serialization formats, chunk sizes, and merge strategies. The accompanying paper investigates how those choices affect syntactic validity, retained detail, semantic quality, and the usefulness of generated ontologies for industrial knowledge management.',
+            metrics: [
+                { label: 'Ontology Formats', value: '4' },
+                { label: 'Merge Strategies', value: '4' },
+                { label: 'Quality Criteria', value: '18' }
+            ],
+            architecture: 'Python modules handle sentence-aware chunking, parallel LLM generation, format conversion, hierarchical merging, automated improvement, and benchmark orchestration. A Next.js dashboard provides visual configuration, live process output over Server-Sent Events, and an explorer for generated ontologies and evaluation reports.',
+            features: [
+                { title: 'Multi-Format Generation', description: 'Generates and converts ontologies across OWL/XML, Turtle, JSON, and YAML to compare model behavior and representation overhead.' },
+                { title: 'Hierarchical Merging', description: 'Supports top-down, bottom-up, tree-based, and sequential strategies for reconstructing one ontology from document-level fragments.' },
+                { title: 'Automated Quality Evaluation', description: 'Combines deterministic graph checks with LLM-assisted semantic review, competency questions, and hallucination analysis.' },
+                { title: 'Ontology Terminal', description: 'A Next.js interface for configuring experiments, streaming live runs, and inspecting generated ontologies and benchmark reports.' }
+            ],
+            timeline: [
+                { date: '2026', title: 'Generation Pipeline', description: 'Implemented document chunking, multi-format ontology extraction, and provider-independent LLM access.' },
+                { date: '2026', title: 'Merge Strategies', description: 'Added configurable hierarchical and sequential methods for combining generated sub-ontologies.' },
+                { date: '2026', title: 'Evaluation Framework', description: 'Built structural, semantic, competency-question, and gold-standard benchmarks across models and configurations.' },
+                { date: 'Ongoing', title: 'Paper and Experiments', description: 'Running comparative experiments and developing the findings into a research paper on ontology learning for manufacturing and logistics.' }
+            ]
+        }
     },
     {
         id: 'ai-maintenance-assistant',
         slug: 'ai-maintenance-assistant',
         hasDetailPage: true,
         featured: true,
-        meta: "Research project · TU Dresden · 2024 - present",
+        meta: "Research project · TU Dresden · 2024 - 2025",
         categories: ['ml-ai', 'systems'],
         title: 'AI Maintenance Assistant',
-        shortDescription: 'AR repair guidance for industrial machinery: real-time object detection on an edge device, with instructions projected straight onto the machine.',
-        fullDescription: 'A hardware-software system that assists technicians during machinery repairs. A Raspberry Pi edge device talks to a host server running a fine-tuned SSD object detection model for component identification, while a locally hosted LLM answers questions about the repair documentation. The results are projected directly onto the machinery as an augmented reality overlay.',
-        tags: ['Python', 'Tensorflow', 'Docker', 'Flask', 'LLMs', 'Raspberry Pi'],
+        shortDescription: 'A projection-based maintenance prototype that detects machine components on a server and maps visual guidance back onto the physical workspace.',
+        fullDescription: 'A distributed hardware-software prototype for industrial maintenance. A Raspberry Pi captures and validates camera frames, discovers the inference server on the local network, and projects returned component overlays. The Dockerized Flask backend runs a custom SSD detector and converts its output into spatial machine representations.',
+        tags: ['Python', 'TensorFlow', 'Docker', 'Flask', 'Raspberry Pi'],
         techStack: [
             { name: 'Python' },
-            { name: 'Tensorflow' },
+            { name: 'TensorFlow' },
             { name: 'Docker' },
             { name: 'Flask' },
             { name: 'Raspberry Pi' },
             { name: 'SSD Object Detection' },
-            { name: 'LLMs' },
             { name: 'Git' }
         ],
         heroImage: '/images/projects/bounding_boxes.jpg',
@@ -86,27 +140,27 @@ export const projects: Project[] = [
         link: '',
         githubUrl: 'closed source',
         details: {
-            problem: "Industrial maintenance still leans on printed manuals and expert supervision. New technicians spend much of a repair flipping between dense documentation and the machine in front of them, which slows onboarding and invites mistakes.",
+            problem: "Maintenance instructions are usually separated from the machine they describe. The prototype explores whether detected components and spatial guidance can be placed directly in the technician's field of view instead.",
             problemImage: '',
-            approach: 'Built a projection-based AR maintenance environment. The system tracks machine components with computer vision and projects step-by-step assembly instructions onto the workspace itself, while an integrated LLM answers spoken questions hands-free.',
+            approach: 'Split the workload between a Raspberry Pi and a server. The edge device handles camera capture, brightness and blur checks, calibration, server discovery, and full-screen projection; the server exposes Flask endpoints for object detection and generates component-level overlay instructions.',
             approachImage: '',
-            impact: 'The prototype showed that spatial AR overlays combined with an LLM assistant work as a hands-free replacement for printed manuals, cutting onboarding time and the constant context-switching between manual and machine.',
+            impact: 'Produced an end-to-end research prototype that connects edge hardware, containerized inference, spatial data generation, and projector output. The same pipeline later became the basis for research into automatically generated knowledge graphs from object detections.',
             metrics: [
                 { label: 'Platform', value: 'AR Projection' },
                 { label: 'Hardware', value: 'Raspberry Pi 3' }
             ],
-            architecture: 'A distributed client-server design. The Raspberry Pi acts as the edge device and handles camera input, calibration, and projector output for the AR overlay. A Dockerized server hosts the computationally heavy SSD object detection model and the LLM logic. Python workflows coordinate the real-time communication: frames go to the server for inference, bounding box coordinates and textual guidance come back to the edge device for immediate visual mapping.',
+            architecture: 'A Python client-server system connected over the local network. The Raspberry Pi sends base64-encoded camera frames to a Flask API and receives detection coordinates as structured data. The server delegates inference to a Dockerized SSD model, derives spatial relations and overlay instructions, and returns them to the edge device for projection.',
             features: [
-                { title: 'Object Detection', description: 'Fine-tuned SSD object detection on a custom dataset of maintenance tasks.' },
-                { title: 'Edge Hardware', description: 'Raspberry Pi integration for real-time component tracking and visual feedback.' },
+                { title: 'Object Detection', description: 'Fine-tuned SSD object detection on a custom dataset of industrial machine components.' },
+                { title: 'Edge Hardware', description: 'Raspberry Pi camera capture, calibration, image-quality checks, and projector output.' },
                 { title: 'Containerization', description: 'Dockerized architecture for consistent deployment across edge and server environments.' },
-                { title: 'Control Workflows', description: 'Python workflows coordinating edge camera capture, frame transport, and server-side model inference.' },
+                { title: 'Network Discovery', description: 'Automatic discovery and health checks for the inference server on the local network.' },
             ],
             timeline: [
                 { date: "Feb 2024", title: "Model Optimization", description: "Fine-tuned SSD object detection on a custom dataset of maintenance tasks." },
                 { date: "Sep 2024", title: "Edge Coordination", description: "Developed the Python backend for both the server and the edge device." },
                 { date: "Apr 2025", title: "Feature Expansion", description: "Added image validation, camera calibration, network-wide server scanning, and the projector-based AR overlay." },
-                { date: "Oct 2025", title: "Roadmap and Extension", description: "Evaluated spatial reasoning extensions: bounding box geometric heuristics versus an end-to-end scene graph generation model." },
+                { date: "Oct 2025", title: "Knowledge Graph Extension", description: "Extended the detection output with geometric spatial relations and multi-camera knowledge graph generation." },
             ]
         }
     },
@@ -118,8 +172,8 @@ export const projects: Project[] = [
         meta: "B.Sc. thesis · Graded 1.4 · 2025",
         categories: ['ml-ai'],
         title: "Bachelor Thesis: Spatial Knowledge Graphs",
-        shortDescription: "Generating RDF/OWL knowledge graphs automatically from object detection output, so LLMs can answer spatial questions about machinery. Graded 1.4.",
-        fullDescription: "My thesis bridges 2D computer vision and symbolic spatial reasoning. The pipeline takes raw bounding box coordinates from industrial machinery, applies geometric heuristics, and compiles standard-compliant RDF/OWL knowledge graphs. The graph then serves as a structured context layer for LLMs, improving spatial question answering and reducing hallucinations.",
+        shortDescription: "Generating OWL knowledge graphs from object-detection output and evaluating how graph structure, format, and model size affect spatial question answering. Graded 1.4.",
+        fullDescription: "My thesis connects object detection with symbolic spatial reasoning. The generator turns bounding-box CSV data into OWL-compliant knowledge graphs, derives relations such as above, left of, and inside, and supports both single- and multi-camera inputs. I evaluated ten graph variants in OWL and plain triples across four language models.",
         tags: ["Python", "Semantic Web", "Computer Vision", "LLMs", "Research"],
         techStack: [
             { name: "Python" },
@@ -129,7 +183,7 @@ export const projects: Project[] = [
             { name: "SSD Object Detection" },
             { name: 'Git' }
         ],
-        heroImage: "/images/projects/thesis_flowchart.jpg",
+        heroImage: "/images/projects/thesis_evaluation_figure.png",
         galleryImages: [
             "/images/projects/thesis_flowchart.jpg",
             "/images/projects/thesis_evaluation_charts.jpg",
@@ -140,21 +194,22 @@ export const projects: Project[] = [
         ],
         githubUrl: "https://github.com/Dramiley/Bachelorarbeit",
         details: {
-            problem: "Building domain-specific semantic graphs by hand is slow, and standard text-to-graph pipelines ignore the spatial coordinate data and multi-view imagery that industrial maintenance settings actually produce.",
+            problem: "Object detectors identify components and bounding boxes, but their output does not directly tell a maintenance assistant how those components relate to one another. Building that spatial knowledge layer by hand would be slow and tied to a specific machine.",
             problemImage: "",
-            approach: "Designed an extraction pipeline that parses the pixel coordinates of detected objects, translates them into deterministic spatial relations (left of, inside of, above), and populates formal OWL ontologies with owlready2. A multi-view fusion algorithm consolidates 2D geometric inputs from several camera angles into one coherent 3D semantic model.",
+            approach: "Designed a deterministic pipeline that reads detected objects and pixel coordinates, derives spatial relations with geometric rules, and writes OWL ontologies with owlready2. For several camera views, it can either retain perspective-specific instances or summarize matching components into a smaller combined graph.",
             approachImage: "",
-            impact: "Showed that a deterministic geometric-to-semantic pipeline can match or beat large end-to-end multi-modal models on structured spatial reasoning in industrial contexts. The thesis and its defense received a grade of 1.4.",
+            impact: "Generated and evaluated ten graph structures in two formats, producing 960 model answers across DeepSeek-R1, DeepSeek-V3, Llama 3.1 8B, and Qwen 2.5 3B. The results showed that graph complexity and serialization strongly affect smaller models; the thesis and defense received a grade of 1.4.",
             metrics: [
                 { label: 'Final Grade', value: '1.4' },
-                { label: 'LLMs Evaluated', value: '4' }
+                { label: 'LLMs Evaluated', value: '4' },
+                { label: 'Answers Reviewed', value: '960' }
             ],
-            architecture: "The system processes annotated image data in tabular form. It computes the center of each detected object and applies threshold-based logic to derive spatial relationships, then uses owlready2 to emit standard-compliant RDF triples. The output was evaluated against four LLMs (DeepSeek-R1, DeepSeek-V3, Llama 3.1, and Qwen 2.5) with metrics for correctness and completeness.",
+            architecture: "The Python pipeline reads object-detection CSV files, calculates bounding-box centers, and applies threshold-based rules for vertical, horizontal, and containment relations. owlready2 serializes the result as OWL, while a statement generator produces a compact triple-text alternative. Both formats were tested across single-view, multi-view, and summarized graph variants.",
             features: [
                 { title: "Geometric Relation Extraction", description: "Algorithms that derive above, below, left-of, and inside-of relations from pixel coordinates." },
-                { title: "Multi-Camera Fusion", description: "Merges object detection data from multiple angles into a single consistent knowledge graph." },
-                { title: "Semantic Density Variants", description: "Compared graph compactness against semantic completeness for LLM consumption." },
-                { title: "Serialization Comparison", description: "Evaluated OWL versus plain triples to find the format LLMs reason over best." }
+                { title: "Multi-Camera Variants", description: "Preserves separate camera perspectives or summarizes repeated components into a more compact graph." },
+                { title: "Ten Graph Models", description: "Compares implicit and explicit relations, coordinates, single views, multiple views, and summarized views." },
+                { title: "Controlled Evaluation", description: "Reviews 960 answers for correctness and completeness across OWL files and plain triples." }
             ],
             timeline: [
                 { date: "May 2025", title: "Literature and Concept", description: "Surveyed the state of the art in Semantic Web architectures and object detection." },
@@ -168,11 +223,11 @@ export const projects: Project[] = [
         id: 'secret-llm-cultural-qa',
         slug: 'secret-llm-cultural-qa',
         hasDetailPage: true,
-        meta: "Research project · +16% accuracy · 2025 - 2026",
+        meta: "Research project · +16 pp SAQ accuracy · 2025 - 2026",
         categories: ['ml-ai'],
         title: 'SecretLLM: Cultural QA System',
-        shortDescription: 'Fine-tuning plus dynamic RAG on a quantized Llama-3-8B for cultural question answering: 16% more accurate than the zero-shot baseline.',
-        fullDescription: 'A research project on improving Llama-3-8B\'s cultural reasoning. LLMs tend to carry cultural alignment biases from Western-dominated training corpora. I built a pipeline that combines dynamic retrieval-augmented generation (RAG) with targeted LoRA fine-tuning, improving short-answer accuracy by 16% over the zero-shot baseline.',
+        shortDescription: 'A quantized Llama-3-8B cultural QA pipeline using LoRA fine-tuning and dynamic few-shot retrieval, improving short-answer accuracy by 16 percentage points.',
+        fullDescription: 'A course research project on cultural question answering with Llama-3-8B. I simplified brittle output prompts, converted multiple-choice training examples into direct question-answer pairs, fine-tuned the model with LoRA, and retrieved the three closest examples for each query. Short-answer accuracy rose from 0.49 to 0.65, while multiple-choice accuracy remained unchanged.',
         tags: ['Python', 'Transformers', 'Llama 3 8B', 'RAG', 'Fine-tuning'],
         techStack: [
             { name: 'Python' },
@@ -197,18 +252,18 @@ export const projects: Project[] = [
             problemImage: '',
             approach: "Replaced the brittle formatting constraints with natural instruction layouts and built a dynamic few-shot retrieval framework. The reference corpus is restructured into clean query-response pairs, and at inference time the pipeline retrieves the three most semantically relevant exemplars and injects them into the prompt.",
             approachImage: '',
-            impact: "The combination of LoRA fine-tuning and dynamic RAG beat the baseline models on the strict verification metrics, with a 16% absolute accuracy improvement on the short-answer evaluation suite.",
+            impact: "The final pipeline improved short-answer accuracy from 0.49 to 0.65. Dynamic retrieval delivered the largest gain, while external web search reduced accuracy by three to five percentage points and was dropped from the final system.",
             metrics: [
-                { label: 'Accuracy Gain', value: '+16%' },
+                { label: 'SAQ Accuracy', value: '0.49 → 0.65' },
                 { label: 'Parameter Size', value: '8 Billion' },
                 { label: 'Quantization', value: '4-bit' }
             ],
             architecture: 'Llama-3-8B with 4-bit quantization for efficiency, MiniLM-L6-v2 for semantic embedding and retrieval. A data augmentation stage strips multiple-choice options from the training data to create direct query-response pairs. Inference uses greedy search for deterministic, concise outputs that satisfy the evaluation script.',
             features: [
-                { title: 'Dynamic Retrieval', description: 'Injects the most semantically relevant in-context examples per query, driving the 16% short-answer accuracy gain.' },
+                { title: 'Dynamic Retrieval', description: 'Embeds each query with MiniLM and injects the three closest examples into the inference prompt.' },
                 { title: 'Dataset Restructuring', description: 'Automated transformation of multiple-choice datasets into direct query-response pairs, doubling the retrieval corpus.' },
                 { title: 'Quantized Tuning', description: 'LoRA plus 4-bit quantization made fine-tuning the 8B model feasible on limited hardware.' },
-                { title: 'Ablation Testing', description: 'Tested external search integration and found that clean internal data beats noisy web results for this domain.' }
+                { title: 'Ablation Testing', description: 'Compared greedy, beam, and self-consistent decoding, then tested web retrieval against the curated internal corpus.' }
             ],
             timeline: [
                 { date: 'Dec 2025', title: 'PEFT Configuration', description: 'Set up the model environment with parameter-efficient adapters and ran the baselines.' },
@@ -222,11 +277,11 @@ export const projects: Project[] = [
         id: 'portfolio-website',
         slug: 'portfolio-website',
         hasDetailPage: true,
-        meta: "Solo build · 2024 - present",
+        meta: "Solo build · Nov 2025 - Jan 2026",
         categories: ['web'],
         title: 'Portfolio Website',
-        shortDescription: 'This site. A Next.js app with typed content data, a flash-free dark/light theme, and attention to performance and accessibility.',
-        fullDescription: 'Built as both a personal site and a small engineering exercise. All content lives in typed TypeScript data files, fully decoupled from the rendering layer, so adding a project is a data change rather than a layout change.',
+        shortDescription: 'This site: a statically generated Next.js portfolio with typed content, case-study pages, flash-free theming, and live GitHub activity.',
+        fullDescription: 'I built the site as a compact, data-driven portfolio rather than a collection of hard-coded pages. Projects, experience, and skills live in typed TypeScript modules, while reusable components handle filtering, case studies, responsive layouts, motion preferences, and theme switching.',
         tags: ['Next.js', 'React', 'TypeScript', 'Framer Motion', 'Accessibility'],
         techStack: [
             { name: 'Next.js 16' },
@@ -245,7 +300,7 @@ export const projects: Project[] = [
             problemImage: '',
             approach: 'A data-driven Next.js App Router structure keeps content schemas separate from rendering. The dark/light theme is applied by a blocking inline script before first paint, so there is no flash of the wrong theme, and all animations respect the system\'s reduced-motion preference.',
             approachImage: '',
-            impact: 'A fast, accessible site that is cheap to extend: new projects, jobs, and skills are added in data files. Case study pages are statically generated, and performance scores stay high.',
+            impact: 'The content model keeps routine updates small: a new project or role is primarily a data change. Case-study routes are generated at build time, and GitHub activity is fetched with a cached fallback path so a failed API request does not break the page.',
             metrics: [
                 { label: 'Framework', value: 'Next.js 16' },
                 { label: 'Styling', value: 'Tailwind v4' },
@@ -255,14 +310,14 @@ export const projects: Project[] = [
             features: [
                 { title: 'Typed Content Layer', description: 'Projects, skills, and experience live in typed TypeScript files, decoupled from the components that render them.' },
                 { title: 'Flash-Free Theming', description: 'A blocking inline script applies the saved or system theme before first paint; one set of CSS variables drives both modes.' },
-                { title: 'Accessible by Default', description: 'Semantic HTML, keyboard navigation, visible focus states, and reduced-motion support throughout.' },
+                { title: 'Motion Preferences', description: 'Framer Motion follows the visitor\'s reduced-motion setting, with focus and keyboard states defined across the interface.' },
                 { title: 'Static Generation', description: 'Every case study page is pre-rendered at build time; GitHub activity revalidates on a timer.' }
             ],
             timeline: [
-                { date: 'Oct 2024', title: 'Design', description: 'Established styling guides, visual components, and content models.' },
-                { date: 'Nov 2024', title: 'Architecture', description: 'Implemented the modular Next.js architecture, base themes, and data-driven rendering.' },
-                { date: 'Nov 2024', title: 'Polish', description: 'Performance tuning, responsive styling audits, and accessibility validation.' },
-                { date: 'Ongoing', title: 'Iteration', description: 'Continued refinement: theme switching, content updates, and performance passes.' }
+                { date: 'Nov 2025', title: 'Design', description: 'Established styling guides, visual components, and content models.' },
+                { date: 'Dec 2025', title: 'Architecture', description: 'Implemented the modular Next.js architecture, base themes, and data-driven rendering.' },
+                { date: 'Jan 2026', title: 'Polish', description: 'Completed performance tuning, responsive styling audits, and accessibility validation.' },
+                { date: 'Jan 2026', title: 'Launch', description: 'Finalized the theme system, project case studies, and production deployment.' }
             ]
         }
     },
@@ -273,8 +328,8 @@ export const projects: Project[] = [
         meta: "University team project · 8 people · 2023 - 2024",
         categories: ['web'],
         title: 'Software Technology Internship',
-        shortDescription: 'An order management and inventory system for a beverage store, built with Spring Boot by an eight-person Scrum team.',
-        fullDescription: 'A team project building an order management system that automates procurement and stock logistics. Within the Spring Boot monolith, I designed the relational database schemas, the inventory depletion models, and the role-based access controls.',
+        shortDescription: 'A browser-based beverage, inventory, and billing system built with Spring Boot by an eight-person Scrum team.',
+        fullDescription: 'A university team project that replaced office drink lists and handwritten payment records with one web application. The system covers purchases, personal balances, stock, suggestions, orders, statistics, and user administration across employee, manager, and administrator roles.',
         tags: ['Java', 'Spring Boot', 'Thymeleaf', 'Scrum', 'Accounting'],
         techStack: [
             { name: 'Java 17' },
@@ -289,27 +344,27 @@ export const projects: Project[] = [
         link: '',
         githubUrl: 'https://github.com/Dramiley/swt23w30/tree/main',
         details: {
-            problem: 'The client tracked beverage stock by hand and needed one system for it. The tricky part was modeling the dependencies between live stock levels, expiration dates, and automated reordering, while enforcing strict per-role permissions.',
+            problem: 'The client managed office drinks with paper lists, which made purchases, outstanding balances, stock, and repeat orders difficult to track. The replacement had to stay quick enough for everyday use while separating employee, manager, and administrator permissions.',
             problemImage: '',
-            approach: 'We built a monolithic Spring Boot application as the central hub. I owned the inventory module: the business logic that flags low-stock items and dispatches procurement orders automatically. The frontend is server-side rendered with Thymeleaf.',
+            approach: 'We built a Spring Boot and Salespoint application using Scrum. The backend separates shop, stock, suggestions, statistics, and user management into focused packages; Thymeleaf renders the interface, and Spring Security enforces role- and office-specific access.',
             approachImage: '',
-            impact: 'Delivered a working prototype that digitized the manual workflow, hitting every sprint deliverable on schedule across the full Scrum cycle.',
+            impact: 'Delivered a working prototype and its supporting requirements, architecture diagrams, tests, and developer documentation. My work included implementation, unit testing, and design documentation within the shared codebase.',
             metrics: [
                 { label: 'Team', value: '8 Members' },
                 { label: 'Methodology', value: 'Scrum' }
             ],
-            architecture: 'A classic Spring Boot Model-View-Controller structure, with Spring Data JPA for object-relational mapping and Spring Security for granular access control separating the warehouse roles.',
+            architecture: 'A classic Spring Boot Model-View-Controller structure, with Spring Data JPA for object-relational mapping and Spring Security for granular access control across employee, manager, and administrator roles.',
             features: [
-                { title: 'Stock Tracking', description: 'Live monitoring of beverage stock levels with automated low-stock alerts.' },
-                { title: 'Procurement Automation', description: 'Supplier orders are generated automatically when inventory dips below defined thresholds.' },
+                { title: 'Purchases and Balances', description: 'One-click drink purchases update personal balances and can be reversed when entered by mistake.' },
+                { title: 'Suggestions and Orders', description: 'Employees suggest products; managers review them, build orders, and retain an order history.' },
                 { title: 'Role-Based Access', description: 'Authentication that separates administrative duties from standard staff operations.' },
                 { title: 'Financial Logging', description: 'Accounting features tracking procurement costs against internal usage and sales.' }
             ],
             timeline: [
                 { date: 'Oct 2023', title: 'Requirements', description: 'Analyzed the existing workflow and mapped the logistics processes to model.' },
-                { date: 'Nov 2023', title: 'Backend', description: 'Built the relational models, depletion engine, and ordering system.' },
+                { date: 'Nov 2023', title: 'Backend', description: 'Implemented domain models and workflows for stock, orders, purchases, and user management.' },
                 { date: 'Dec 2023', title: 'UI and Testing', description: 'Integrated the server-rendered Thymeleaf views and completed the JUnit suites.' },
-                { date: 'Jan 2024', title: 'Delivery', description: 'Handed over the prototype with all acceptance criteria verified.' }
+                { date: 'Jan 2024', title: 'Delivery', description: 'Completed the prototype, tests, cross-team review, and developer documentation.' }
             ]
         }
     },
@@ -320,8 +375,8 @@ export const projects: Project[] = [
         meta: "University course project · 2023",
         categories: ['systems'],
         title: 'Autonomous Maze Navigator',
-        shortDescription: 'An autonomous LEGO EV3 rover that explores mazes with depth-first search, routes with Dijkstra, and stays on track with PID control.',
-        fullDescription: 'A Python control stack for an EV3-based rover navigating dynamic maze environments. It combines real-time hardware interfaces, a PID controller for line following, a finite state machine for mode switching, and MQTT telemetry to a central server. Exploration runs on depth-first search; routing on Dijkstra.',
+        shortDescription: 'A LEGO EV3 rover that follows lines, detects obstacles, maps an unknown planet, and coordinates routes with a central server.',
+        fullDescription: 'A three-person robotics project built in Python on ev3dev. I was responsible for the robot layer: motor control, sensor calibration, PID line following, station scanning, and obstacle handling. We integrated it with the team\'s odometry, graph routing, and MQTT communication modules for autonomous exploration.',
         tags: ['Python', 'Robotics', 'MQTT', 'Algorithms', 'PID Control'],
         techStack: [
             { name: 'Python' },
@@ -334,25 +389,25 @@ export const projects: Project[] = [
         link: '',
         githubUrl: 'https://github.com/Dramiley/Robolab23',
         details: {
-            problem: 'The robot had to explore a randomly generated maze until a central server assigned it a destination coordinate, then navigate there efficiently, all under strict memory and timing constraints.',
+            problem: 'The rover had to move reliably across a line-based map it had never seen, report discovered paths to a remote server, react to blocked routes, and navigate to a target once one was assigned.',
             problemImage: '',
-            approach: 'We built a modular Python codebase around a finite state machine. An MQTT communication layer negotiates with the server and parses target coordinates. Depth-first search drives exploration; once the target arrives, a shortest-path algorithm computes the route.',
+            approach: 'I implemented the EV3 hardware-control layer, including calibration, a PID steering loop, motor-position sampling, station centering, path scanning, and ultrasonic obstacle detection. The team connected it to odometry, an in-memory planet graph, Dijkstra routing, and MQTT callbacks.',
             approachImage: '',
-            impact: 'The robot passed the final examination under time pressure: it received the server payload, mapped the maze, and navigated to the destination without errors or memory leaks.',
+            impact: 'The integrated rover completed the course\'s final autonomous run, combining physical navigation, map exploration, route selection, and server communication on the EV3 platform.',
             metrics: [
                 { label: 'Platform', value: 'EV3 + ev3dev' },
                 { label: 'Examination', value: 'Passed' }
             ],
-            architecture: 'The software runs on the ev3dev Linux kernel. A main event loop polls the color, distance, and gyro sensors and feeds a central logic controller. An asynchronous MQTT client handles the negotiation with the server for target coordinates.',
+            architecture: 'The software runs on ev3dev Linux. A controller coordinates the robot, odometry, planet graph, and communication facade. The robot module drives the motors and reads color and distance sensors; the graph module tracks explored and blocked paths; an asynchronous MQTT client exchanges path and target messages with the course server.',
             features: [
                 { title: 'Telemetry Exchange', description: 'Requests, parses, and validates target coordinates from the central server via MQTT.' },
-                { title: 'PID Regulation Loop', description: 'Proportional-Integral-Derivative control for smooth line tracing and wall alignment.' },
-                { title: 'State Machine', description: 'Robust switching between exploration and target navigation modes.' },
+                { title: 'PID Line Following', description: 'A calibrated proportional-integral-derivative loop keeps the rover centered on the track.' },
+                { title: 'Physical Navigation', description: 'Station centering, four-direction path scans, motor-position sampling, and obstacle recovery.' },
                 { title: 'Graph Pathfinding', description: 'Maps the maze in memory and computes the shortest path to the assigned goal.' }
             ],
             timeline: [
                 { date: 'Day 1-3', title: 'Hardware and Handshake', description: 'Calibrated the sensors and established telemetry sessions via MQTT.' },
-                { date: 'Day 4-10', title: 'Algorithms', description: 'Built the state machine and depth-first exploration loops.' },
+                { date: 'Day 4-10', title: 'Control and Mapping', description: 'Integrated line following, path scanning, odometry, and graph-based exploration.' },
                 { date: 'Day 11-13', title: 'Routing Tuning', description: 'Refined the routing algorithms to compute paths quickly.' },
                 { date: 'Day 14', title: 'Final Run', description: 'The rover completed the formal evaluation under real-time constraints.' }
             ]

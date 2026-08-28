@@ -23,8 +23,8 @@ html {
     --foreground-accent: #7c8db0;
 
     /* Brand Colors - Warm Terracotta */
-    --primary: #c2703e;
-    --primary-soft: #d4885a;
+    --primary: #a9542b;
+    --primary-soft: #ad5a2e;
     --primary-glow: rgba(194, 112, 62, 0.35);
 
     /* Accent - Slate Blue */
@@ -123,7 +123,7 @@ body {
 
     /* Brand Colors - Terracotta adjusted for contrast */
     --primary: #c2410c;
-    --primary-soft: #ea580c;
+    --primary-soft: #9a3412;
     --primary-glow: rgba(194, 65, 12, 0.08);
 
     /* Accent - Slate Blue */
