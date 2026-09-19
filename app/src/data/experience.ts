@@ -16,7 +16,7 @@ export const experience: Experience[] = [
         id: 'independent-software-developer',
         role: 'Independent Software Developer',
         company: 'Self-Employed',
-        period: '10/2025 - Present',
+        period: '04/2025 - Present',
         description: [
             'Built and now operate HideZone, a real-time GPS multiplayer game with more than 40,000 organic downloads across Google Play and the App Store.',
             'Delivered a remote desktop client with time-bound authentication for an enterprise customer.',
@@ -27,7 +27,7 @@ export const experience: Experience[] = [
         id: 'student-assistant',
         role: 'Student Assistant',
         company: 'TU Dresden',
-        period: '03/2024 - Present',
+        period: '02/2024 - Present',
         description: [
             'Developed a distributed maintenance-assistant prototype with SSD object detection, Dockerized Flask services, and Raspberry Pi edge hardware.',
             'Implemented camera calibration, image-quality checks, local server discovery, and projector-based guidance for industrial machinery.',

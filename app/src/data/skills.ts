@@ -8,6 +8,7 @@ export const skills: Skill[] = [
     { name: 'JavaScript', category: 'languages' },
     { name: 'TypeScript', category: 'languages' },
     { name: 'C#', category: 'languages' },
+    { name: 'SQL', category: 'languages' },
 
     // ML & AI
     { name: 'TensorFlow', category: 'ml-ai', primary: true },
@@ -29,11 +30,13 @@ export const skills: Skill[] = [
     // Infrastructure
     { name: 'Docker', category: 'infrastructure', primary: true },
     { name: 'Git / GitHub', category: 'infrastructure', primary: true },
-    { name: 'Jira', category: 'infrastructure'},
+    { name: 'PostgreSQL', category: 'infrastructure' },
+    { name: 'MariaDB', category: 'infrastructure' },
+    { name: 'InfluxDB', category: 'infrastructure' },
+    { name: 'Jira', category: 'infrastructure' },
     { name: 'Raspberry Pi', category: 'infrastructure' },
     { name: 'Node.js', category: 'infrastructure' },
     { name: 'Node-RED', category: 'infrastructure' },
-    { name: 'InfluxDB', category: 'infrastructure'},
     { name: 'N8N', category: 'infrastructure' },
-    { name: 'Apache Kafka', category: 'infrastructure'},
+    { name: 'Apache Kafka', category: 'infrastructure' },
 ];
