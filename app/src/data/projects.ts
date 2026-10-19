@@ -9,7 +9,7 @@ export const projects: Project[] = [
         meta: "Solo build · 70,000+ downloads · #25 US App Store · 2025 - present",
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
-        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and seven game modes. 70,000+ downloads and #25 in the US App Store Adventure charts.",
+        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and eight game modes. 70,000+ downloads and #25 in the US App Store Adventure charts.",
         fullDescription: "HideZone turns any park or neighborhood into a multiplayer game board. I built and shipped the Flutter app end to end, from the host-authoritative game loop and Firebase synchronization to geofenced maps, items, subscriptions, ads, and both store releases.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
@@ -23,14 +23,14 @@ export const projects: Project[] = [
         ],
         heroImage: "/images/projects/HideZoneMenu.jpg",
         galleryImages: [
-            "/images/projects/hidezone_01_play_instantly.jpg",
-            "/images/projects/hidezone_02_real_world_gameplay.jpg",
-            "/images/projects/hidezone_03_multiple_themes.jpg",
-            "/images/projects/hidezone_04_game_modes.jpg",
-            "/images/projects/hidezone_05_items.jpg",
-            "/images/projects/hidezone_06_team_chat.jpg",
-            "/images/projects/hidezone_07_stats.jpg",
             "/images/projects/hidezone_08_app_store_charts.png",
+            "/images/projects/hidezone_02_real_world_gameplay.jpg",
+            "/images/projects/hidezone_05_items.jpg",
+            "/images/projects/hidezone_04_game_modes.jpg",
+            "/images/projects/hidezone_06_team_chat.jpg",
+            "/images/projects/hidezone_03_multiple_themes.jpg",
+            "/images/projects/hidezone_07_stats.jpg",
+            "/images/projects/hidezone_01_play_instantly.jpg",
         ],
         links: [
             { label: "Game website", url: "https://hidezone.app/" }
@@ -39,19 +39,19 @@ export const projects: Project[] = [
         details: {
             problem: "A location-based game has to keep several phones in sync while players move through a real environment. It also has to recover cleanly from reconnects, enforce the play zone, and keep network, map, and battery use under control.",
             problemImage: "",
-            approach: "Built a host-authoritative game engine on top of Firebase Realtime Database. Seven game modes plug into isolated strategy bundles, while shared services handle location updates, zone rules, items, reconnects, maps, billing, ads, and privacy-safe diagnostics.",
+            approach: "Built a host-authoritative game engine on top of Firebase Realtime Database. Eight game modes plug into isolated strategy bundles, while shared services handle location updates, zone rules, items, reconnects, maps, billing, ads, and privacy-safe diagnostics.",
             approachImage: "",
             impact: "Designed, built, and shipped independently on Google Play and the App Store, reaching more than 70,000 organic downloads and placing #25 on the US App Store Adventure charts. The current architecture is backed by more than 2,200 Flutter tests, deterministic multiplayer simulations, traffic budgets, and automated checks around network ownership and wire compatibility.",
             metrics: [
                 { label: 'Downloads', value: '70,000+' },
                 { label: 'US App Store', value: '#25' },
-                { label: 'Game Modes', value: '7' },
+                { label: 'Game Modes', value: '8' },
                 { label: 'Flutter Tests', value: '2,200+' }
             ],
-            architecture: "Flutter and Riverpod power both mobile clients. A synchronous host engine owns game decisions, while mode-specific strategy bundles keep the rules for Standard, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin isolated. Focused Firebase repositories sit behind a compatibility facade, and versioned codecs protect the production wire format.",
+            architecture: "Flutter and Riverpod power both mobile clients. A synchronous host engine owns game decisions, while mode-specific strategy bundles keep the rules for Standard, Freeze Tag, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin isolated. Focused Firebase repositories sit behind a compatibility facade, and versioned codecs protect the production wire format.",
             features: [
                 { title: "Tactical Items", description: "Scanners reveal locations, Proximity Mines set traps, Ghost Mode grants stealth, and Zone Movers flush out campers." },
-                { title: "Seven Game Modes", description: "Standard, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin share one engine without mixing their rules." },
+                { title: "Eight Game Modes", description: "Standard, Freeze Tag, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin share one engine without mixing their rules." },
                 { title: "Live Maps and Replays", description: "Geofenced play areas, cancellable map requests, a bounded tile cache, and local-only match replays." },
                 { title: "Privacy-Safe Diagnostics", description: "Anonymous sessions and tightly allowlisted Crashlytics records keep coordinates, names, lobby codes, and match data out of telemetry." }
             ],
