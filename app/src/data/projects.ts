@@ -33,7 +33,7 @@ export const projects: Project[] = [
             "/images/projects/hidezone_08_app_store_charts.png",
         ],
         links: [
-            { label: "Game website", url: "https://dramiley.dev/" }
+            { label: "Game website", url: "https://hidezone.app/" }
         ],
         githubUrl: "closed source",
         details: {
