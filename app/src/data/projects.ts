@@ -6,10 +6,10 @@ export const projects: Project[] = [
         slug: "hidezone",
         hasDetailPage: true,
         featured: true,
-        meta: "Solo build · 50,000+ downloads · 2025 - present",
+        meta: "Solo build · 70,000+ downloads · #25 US App Store · 2025 - present",
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
-        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and seven game modes. 50,000+ downloads.",
+        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and seven game modes. 70,000+ downloads and #25 in the US App Store Adventure charts.",
         fullDescription: "HideZone turns any park or neighborhood into a multiplayer game board. I built and shipped the Flutter app end to end, from the host-authoritative game loop and Firebase synchronization to geofenced maps, items, subscriptions, ads, and both store releases.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
@@ -30,6 +30,7 @@ export const projects: Project[] = [
             "/images/projects/hidezone_05_items.jpg",
             "/images/projects/hidezone_06_team_chat.jpg",
             "/images/projects/hidezone_07_stats.jpg",
+            "/images/projects/hidezone_08_app_store_charts.png",
         ],
         links: [
             { label: "Game website", url: "https://dramiley.dev/" }
@@ -40,9 +41,10 @@ export const projects: Project[] = [
             problemImage: "",
             approach: "Built a host-authoritative game engine on top of Firebase Realtime Database. Seven game modes plug into isolated strategy bundles, while shared services handle location updates, zone rules, items, reconnects, maps, billing, ads, and privacy-safe diagnostics.",
             approachImage: "",
-            impact: "Designed, built, and shipped independently on Google Play and the App Store, reaching more than 50,000 organic downloads. The current architecture is backed by more than 2,200 Flutter tests, deterministic multiplayer simulations, traffic budgets, and automated checks around network ownership and wire compatibility.",
+            impact: "Designed, built, and shipped independently on Google Play and the App Store, reaching more than 70,000 organic downloads and placing #25 on the US App Store Adventure charts. The current architecture is backed by more than 2,200 Flutter tests, deterministic multiplayer simulations, traffic budgets, and automated checks around network ownership and wire compatibility.",
             metrics: [
-                { label: 'Downloads', value: '50,000+' },
+                { label: 'Downloads', value: '70,000+' },
+                { label: 'US App Store', value: '#25' },
                 { label: 'Game Modes', value: '7' },
                 { label: 'Flutter Tests', value: '2,200+' }
             ],
@@ -61,6 +63,7 @@ export const projects: Project[] = [
                 { date: "Mar 2026", title: "Network Refactoring", description: "Reworked synchronization and polling to reduce unnecessary Realtime Database traffic." },
                 { date: "Apr 2026", title: "iOS Release", description: "Shipped to the Apple App Store with cross-platform multiplayer support." },
                 { date: "Aug 2026", title: "Architecture Rework", description: "Separated the host engine, mode rules, Firebase repositories, and UI ownership, then locked the behavior down with automated tests and traffic budgets." },
+                { date: "Oct 2026", title: "App Store Milestone", description: "Crossed 70,000 organic downloads and reached #25 on the US App Store Adventure charts." },
             ]
         },
     },
