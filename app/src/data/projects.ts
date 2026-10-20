@@ -6,10 +6,10 @@ export const projects: Project[] = [
         slug: "hidezone",
         hasDetailPage: true,
         featured: true,
-        meta: "Solo build · 70,000+ downloads · #10 UK / #25 US App Store · 2025 - present",
+        meta: "Solo build · 70,000+ downloads · Top 5 UK App Store · 2025 - present",
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
-        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and eight game modes. 70,000+ downloads, reaching #10 in the UK and #25 in the US App Store Adventure charts.",
+        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and eight game modes. 70,000+ downloads, reaching the Top 5 in the UK App Store Adventure charts.",
         fullDescription: "HideZone turns any park or neighborhood into a multiplayer game board. I built and shipped the Flutter app end to end, from the host-authoritative game loop and Firebase synchronization to geofenced maps, items, subscriptions, ads, and both store releases.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
@@ -23,7 +23,6 @@ export const projects: Project[] = [
         ],
         heroImage: "/images/projects/HideZoneMenu.jpg",
         galleryImages: [
-            "/images/projects/hidezone_08_app_store_charts.png",
             "/images/projects/hidezone_09_app_store_uk_charts.png",
             "/images/projects/hidezone_02_real_world_gameplay.jpg",
             "/images/projects/hidezone_05_items.jpg",
@@ -42,10 +41,10 @@ export const projects: Project[] = [
             problemImage: "",
             approach: "Built a host-authoritative game engine on top of Firebase Realtime Database. Eight game modes plug into isolated strategy bundles, while shared services handle location updates, zone rules, items, reconnects, maps, billing, ads, and privacy-safe diagnostics.",
             approachImage: "",
-            impact: "Designed, built, and shipped independently on Google Play and the App Store, reaching more than 70,000 organic downloads and placing #10 in the UK and #25 in the US on the App Store Adventure charts. The current architecture is backed by more than 2,200 Flutter tests, deterministic multiplayer simulations, traffic budgets, and automated checks around network ownership and wire compatibility.",
+            impact: "Designed, built, and shipped independently on Google Play and the App Store, reaching more than 70,000 organic downloads and peaking in the Top 5 (#5) on the UK App Store Adventure charts. The current architecture is backed by more than 2,200 Flutter tests, deterministic multiplayer simulations, traffic budgets, and automated checks around network ownership and wire compatibility.",
             metrics: [
                 { label: 'Downloads', value: '70,000+' },
-                { label: 'UK / US App Store', value: '#10 / #25' },
+                { label: 'UK App Store', value: 'Top 5' },
                 { label: 'Game Modes', value: '8' },
                 { label: 'Flutter Tests', value: '2,200+' }
             ],
@@ -64,7 +63,7 @@ export const projects: Project[] = [
                 { date: "Mar 2026", title: "Network Refactoring", description: "Reworked synchronization and polling to reduce unnecessary Realtime Database traffic." },
                 { date: "Apr 2026", title: "iOS Release", description: "Shipped to the Apple App Store with cross-platform multiplayer support." },
                 { date: "Aug 2026", title: "Architecture Rework", description: "Separated the host engine, mode rules, Firebase repositories, and UI ownership, then locked the behavior down with automated tests and traffic budgets." },
-                { date: "Oct 2026", title: "App Store Milestones", description: "Crossed 70,000 organic downloads, reaching #10 in the UK and #25 in the US App Store Adventure charts." },
+                { date: "Oct 2026", title: "App Store Milestone", description: "Crossed 70,000 organic downloads and reached the Top 5 in the UK App Store Adventure charts (#5)." },
             ]
         },
     },
