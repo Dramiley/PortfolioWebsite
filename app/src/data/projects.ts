@@ -9,7 +9,7 @@ export const projects: Project[] = [
         meta: "Solo build · 70,000+ downloads · Top 5 UK App Store · 2025 - present",
         categories: ['mobile'],
         title: "HideZone: IRL GPS Hide & Seek",
-        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and eight game modes. 70,000+ downloads, reaching the Top 5 in the UK App Store Adventure charts.",
+        shortDescription: "A real-time outdoor multiplayer game for iOS and Android, with live GPS, custom play zones, tactical items, and nine game modes. 70,000+ downloads, reaching the Top 5 in the UK App Store Adventure charts.",
         fullDescription: "HideZone turns any park or neighborhood into a multiplayer game board. I built and shipped the Flutter app end to end, from the host-authoritative game loop and Firebase synchronization to geofenced maps, items, subscriptions, ads, and both store releases.",
         tags: ["Flutter", "Dart", "Firebase", "Riverpod", "Geolocation", "Game Development"],
         techStack: [
@@ -39,31 +39,28 @@ export const projects: Project[] = [
         details: {
             problem: "A location-based game has to keep several phones in sync while players move through a real environment. It also has to recover cleanly from reconnects, enforce the play zone, and keep network, map, and battery use under control.",
             problemImage: "",
-            approach: "Built a host-authoritative game engine on top of Firebase Realtime Database. Eight game modes plug into isolated strategy bundles, while shared services handle location updates, zone rules, items, reconnects, maps, billing, ads, and privacy-safe diagnostics.",
+            approach: "Built a host-authoritative game engine on top of Firebase Realtime Database. Nine game modes plug into isolated strategy bundles, while shared services handle location updates, zone rules, items, reconnects, maps, billing, ads, and privacy-safe diagnostics.",
             approachImage: "",
             impact: "Designed, built, and shipped independently on Google Play and the App Store, reaching more than 70,000 organic downloads and peaking in the Top 5 (#5) on the UK App Store Adventure charts. The current architecture is backed by more than 2,200 Flutter tests, deterministic multiplayer simulations, traffic budgets, and automated checks around network ownership and wire compatibility.",
             metrics: [
                 { label: 'Downloads', value: '70,000+' },
                 { label: 'UK App Store', value: 'Top 5' },
-                { label: 'Game Modes', value: '8' },
+                { label: 'Game Modes', value: '9' },
                 { label: 'Flutter Tests', value: '2,200+' }
             ],
-            architecture: "Flutter and Riverpod power both mobile clients. A synchronous host engine owns game decisions, while mode-specific strategy bundles keep the rules for Standard, Freeze Tag, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin isolated. Focused Firebase repositories sit behind a compatibility facade, and versioned codecs protect the production wire format.",
+            architecture: "Flutter and Riverpod power both mobile clients. A synchronous host engine owns game decisions, while mode-specific strategy bundles keep the rules for Standard, Freeze Tag, Zombie, Chase, Sardines, Murder Mystery, Meteor, Assassin, and Mr X Hunt isolated. Focused Firebase repositories sit behind a compatibility facade, and versioned codecs protect the production wire format.",
             features: [
                 { title: "Tactical Items", description: "Scanners reveal locations, Proximity Mines set traps, Ghost Mode grants stealth, and Zone Movers flush out campers." },
-                { title: "Eight Game Modes", description: "Standard, Freeze Tag, Zombie, Chase, Sardines, Murder Mystery, Meteor, and Assassin share one engine without mixing their rules." },
+                { title: "Nine Game Modes", description: "Standard, Freeze Tag, Zombie, Chase, Sardines, Murder Mystery, Meteor, Assassin, and Mr X Hunt share one engine without mixing their rules." },
                 { title: "Live Maps and Replays", description: "Geofenced play areas, cancellable map requests, a bounded tile cache, and local-only match replays." },
                 { title: "Privacy-Safe Diagnostics", description: "Anonymous sessions and tightly allowlisted Crashlytics records keep coordinates, names, lobby codes, and match data out of telemetry." }
             ],
             timeline: [
-                { date: "Dec 2025", title: "Core Architecture", description: "Started mobile development, establishing data schemas and core state structures." },
-                { date: "Jan 2026", title: "Systems Integration", description: "Integrated game modes, the item system, and geographic boundaries." },
                 { date: "Jan 2026", title: "Field Testing", description: "Tested with local groups to tune GPS precision, battery use, and latency." },
                 { date: "Feb 2026", title: "Android Release", description: "Shipped to the Google Play Store and refined systems based on early usage logs." },
                 { date: "Mar 2026", title: "Network Refactoring", description: "Reworked synchronization and polling to reduce unnecessary Realtime Database traffic." },
                 { date: "Apr 2026", title: "iOS Release", description: "Shipped to the Apple App Store with cross-platform multiplayer support." },
                 { date: "Aug 2026", title: "Architecture Rework", description: "Separated the host engine, mode rules, Firebase repositories, and UI ownership, then locked the behavior down with automated tests and traffic budgets." },
-                { date: "Oct 2026", title: "App Store Milestone", description: "Crossed 70,000 organic downloads and reached the Top 5 in the UK App Store Adventure charts (#5)." },
             ]
         },
     },
